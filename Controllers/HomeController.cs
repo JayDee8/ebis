@@ -21,5 +21,11 @@ namespace ebis.Controllers
 
             return View();
         }
+
+        [Authorize]
+        public ActionResult Contacts()
+        {
+            return View();
+        }
     }
 }

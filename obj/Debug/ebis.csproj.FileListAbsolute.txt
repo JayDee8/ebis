@@ -44,3 +44,4 @@ c:\users\jd\documents\visual studio 2010\Projects\ebis\ebis\bin\DotNetOpenAuth.O
 c:\users\jd\documents\visual studio 2010\Projects\ebis\ebis\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
 c:\users\jd\documents\visual studio 2010\Projects\ebis\ebis\obj\Debug\ebis.dll
 c:\users\jd\documents\visual studio 2010\Projects\ebis\ebis\obj\Debug\ebis.pdb
+C:\Users\JD\Documents\Visual Studio 2010\Projects\ebis\ebis\obj\Debug\ebis.csprojResolveAssemblyReference.cache
