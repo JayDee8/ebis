@@ -41,7 +41,7 @@ namespace ebis.Controllers
             }
 
             // If we got this far, something failed, redisplay form
-            ModelState.AddModelError("", "The user name or password provided is incorrect.");
+            ModelState.AddModelError("", "Zadané přihlašovací jméno nebo heslo je špatně.");
             return View(model);
         }
 

@@ -6,11 +6,12 @@ using System.Web.Mvc;
 
 namespace ebis.Controllers
 {
-    public class HomeController : Controller
+    [Authorize]
+    public class AuthController : Controller
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Pro používání systému se přihlašte.";
+            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
 
             return View();
         }
@@ -21,5 +22,13 @@ namespace ebis.Controllers
 
             return View();
         }
+
+        public ActionResult Contacts()
+        {
+            ViewBag.Message = "Kontakty";
+
+            return View();
+        }
+
     }
 }

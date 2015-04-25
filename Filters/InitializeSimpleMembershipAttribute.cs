@@ -37,8 +37,8 @@ namespace ebis.Filters
                             ((IObjectContextAdapter)context).ObjectContext.CreateDatabase();
                         }
                     }
-
-                    WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+                    
+                    WebSecurity.InitializeDatabaseConnection("DefaultConnection", "Users", "pkUserId", "UserName", autoCreateTables: true);
                 }
                 catch (Exception ex)
                 {
