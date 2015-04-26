@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace ebis.Controllers
 {
@@ -15,17 +16,42 @@ namespace ebis.Controllers
             return View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your app description page.";
-
-            return View();
-        }
-
         [Authorize]
         public ActionResult Contacts()
         {
             return View();
         }
+
+        [Authorize]
+        public ActionResult Artists()
+        {
+            return View();
+        }
+
+        [Authorize]
+        public ActionResult ProdLists()
+        {
+            return View();
+        }
+
+        [Authorize]
+        public ActionResult Locations()
+        {
+            return View();
+        }
+
+        [Authorize]
+        public ActionResult Finances()
+        {
+            return View();
+        }
+
+        [Authorize]
+        public ActionResult Instruments()
+        {
+            return View();
+        }
+
+       
     }
 }
