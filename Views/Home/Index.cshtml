@@ -6,11 +6,15 @@
         <div class="content-wrapper">
             <hgroup class="title">
                 <h1>@ViewBag.Title</h1><br />
-                <h2>@ViewBag.Message</h2> <button>@Html.ActionLink("Přihlásit se", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</button>
+                @if (User.Identity.IsAuthenticated) 
+                {
+                    <h2>Vítejte!</h2>
+                }
+                else
+                {
+                    <h2>@ViewBag.Message</h2> <button>@Html.ActionLink("Přihlásit se", "Login", "Account", routeValues: null, htmlAttributes: new { id = "mainLoginLink" })</button>
+                }
             </hgroup>
         </div>
     </section>
 }
-<p>
-    Vítejte na webu blablabla
-</p>

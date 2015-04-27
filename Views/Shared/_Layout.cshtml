@@ -20,9 +20,7 @@
                     </section>
                     @if (Request.IsAuthenticated) {
                         string controllerName = ViewContext.RouteData.Values["controller"].ToString();
-
                         <nav>
-                        
                             <ul id="menu">
                                 <li class="@(controllerName == "Finance" ? "active" : "")">@Html.ActionLink("Náklady", "Index", "Finance")</li>
                                 <li class="@(controllerName == "Location" ? "active" : "")">@Html.ActionLink("Lokace", "Index", "Location")</li>
