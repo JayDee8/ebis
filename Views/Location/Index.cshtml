@@ -1,51 +1,21 @@
 ﻿@model IEnumerable<ebis.Models.lokace>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Lokace";
+    WebGrid grid = new WebGrid(Model);
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Přidat novou lokaci", "Create")
 </p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.jmeno)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.adresa)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.gps)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.link)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.jmeno)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.adresa)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.gps)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.link)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.pk_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.pk_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.pk_id })
-        </td>
-    </tr>
-}
-
-</table>
+@grid.GetHtml(columns:
+    grid.Columns
+    (
+        grid.Column("jmeno", "Název"),
+        grid.Column("adresa", "Adresa"),
+        grid.Column("gps", "GPS"),
+        grid.Column("link", "Odkaz")
+    ))
