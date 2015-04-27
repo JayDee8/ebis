@@ -21,12 +21,12 @@
                     @if (Request.IsAuthenticated) {
                         <nav>
                             <ul id="menu">
-                                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Finances" ? "active" : "")">@Html.ActionLink("Náklady", "Finances", "Home")</li>
-                                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Locations" ? "active" : "")">@Html.ActionLink("Lokace", "Locations", "Home")</li>
-                                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Instruments" ? "active" : "")">@Html.ActionLink("Nástroje", "Instruments", "Home")</li>
-                                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Artists" ? "active" : "")">@Html.ActionLink("Tituly", "Artists", "Home")</li>
-                                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Contacts" ? "active" : "")">@Html.ActionLink("Kontakty", "Contacts", "Home")</li>
-                                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "ProdLists" ? "active" : "")">@Html.ActionLink("Produkční listy", "ProdLists", "Home")</li>
+                                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Finances" ? "active" : "")">@Html.ActionLink("Náklady", "Index", "Finance")</li>
+                                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Locations" ? "active" : "")">@Html.ActionLink("Lokace", "Index", "Location")</li>
+                                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Instruments" ? "active" : "")">@Html.ActionLink("Nástroje", "Index", "Instrument")</li>
+                                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Artists" ? "active" : "")">@Html.ActionLink("Tituly", "Index", "Art")</li>
+                                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Contacts" ? "active" : "")">@Html.ActionLink("Kontakty", "Index", "Contact")</li>
+                                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "ProdLists" ? "active" : "")">@Html.ActionLink("Produkční listy", "Index", "ProdList")</li>
                             </ul>
                         </nav>
                     }
