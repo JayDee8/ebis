@@ -1,4 +1,4 @@
-﻿html {
+html {
     background-color: #e2e2e2;
     margin: 0;
     padding: 0;
@@ -182,15 +182,26 @@ footer {
 ul#menu {
     font-size: 1.3em;
     font-weight: 600;
-    margin: 0 0 5px;
+    /*margin: 0 0 5px;*/
+    margin: 0;
     padding: 0;
     text-align: right;
 }
 
+    ul#menu .active{
+      background: rgb(239, 238, 239);
+    }
+
     ul#menu li {
-        display: inline;
-        list-style: none;
-        padding-left: 15px;
+          height: 28px;
+          display: inline-block;
+          list-style: none;
+          padding: 0 5px;
+          /* padding-left: 15px; */
+          /*margin-left: 15px;*/
+          /*border-top-left-radius: 5px;*/
+          /*border-top-right-radius: 5px;*/
+          /* margin-bottom: 5px; */
     }
 
         ul#menu li a {

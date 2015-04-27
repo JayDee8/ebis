@@ -19,14 +19,17 @@
                         @Html.Partial("_LoginPartial")
                     </section>
                     @if (Request.IsAuthenticated) {
+                        string controllerName = ViewContext.RouteData.Values["controller"].ToString();
+
                         <nav>
+                        
                             <ul id="menu">
-                                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Finances" ? "active" : "")">@Html.ActionLink("Náklady", "Index", "Finance")</li>
-                                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Location" ? "active" : "")">@Html.ActionLink("Lokace", "Index", "Location")</li>
-                                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Instruments" ? "active" : "")">@Html.ActionLink("Nástroje", "Index", "Instrument")</li>
-                                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Artists" ? "active" : "")">@Html.ActionLink("Tituly", "Index", "Art")</li>
-                                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Contacts" ? "active" : "")">@Html.ActionLink("Kontakty", "Index", "Contact")</li>
-                                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "ProdLists" ? "active" : "")">@Html.ActionLink("Produkční listy", "Index", "ProdList")</li>
+                                <li class="@(controllerName == "Finance" ? "active" : "")">@Html.ActionLink("Náklady", "Index", "Finance")</li>
+                                <li class="@(controllerName == "Location" ? "active" : "")">@Html.ActionLink("Lokace", "Index", "Location")</li>
+                                <li class="@(controllerName == "Instrument" ? "active" : "")">@Html.ActionLink("Nástroje", "Index", "Instrument")</li>
+                                <li class="@(controllerName == "Art" ? "active" : "")">@Html.ActionLink("Tituly", "Index", "Art")</li>
+                                <li class="@(controllerName == "Contact" ? "active" : "")">@Html.ActionLink("Kontakty", "Index", "Contact")</li>
+                                <li class="@(controllerName == "ProdList" ? "active" : "")">@Html.ActionLink("Produkční listy", "Index", "ProdList")</li>
                             </ul>
                         </nav>
                     }
