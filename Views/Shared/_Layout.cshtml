@@ -22,7 +22,7 @@
                         <nav>
                             <ul id="menu">
                                 <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Finances" ? "active" : "")">@Html.ActionLink("Náklady", "Index", "Finance")</li>
-                                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Locations" ? "active" : "")">@Html.ActionLink("Lokace", "Index", "Location")</li>
+                                <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Location" ? "active" : "")">@Html.ActionLink("Lokace", "Index", "Location")</li>
                                 <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Instruments" ? "active" : "")">@Html.ActionLink("Nástroje", "Index", "Instrument")</li>
                                 <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Artists" ? "active" : "")">@Html.ActionLink("Tituly", "Index", "Art")</li>
                                 <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Contacts" ? "active" : "")">@Html.ActionLink("Kontakty", "Index", "Contact")</li>
