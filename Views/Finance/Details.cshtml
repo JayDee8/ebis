@@ -1,0 +1,29 @@
+﻿@model ebis.Models.naklady
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>naklady</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.jmeno)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.jmeno)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.typ)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.typ)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.pk_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

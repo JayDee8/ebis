@@ -1,0 +1,18 @@
+﻿@model IEnumerable<ebis.Models.produkcni_listy>
+
+@{
+    ViewBag.Title = "Produkční list - položky";
+    WebGrid grid = new WebGrid(Model);
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Přidat položku produkčního listu", "Create")
+</p>
+
+@grid.GetHtml(columns:
+    grid.Columns
+    (
+        grid.Column("jmeno_aktivity", "Název aktivity"),
+    ))

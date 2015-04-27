@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbFinanceModelStoreContainer" CdmEntityContainer="dbFinance">
+    <EntitySetMapping Name="naklady">
+      <EntityTypeMapping TypeName="dbFinanceModel.naklady">
+        <MappingFragment StoreEntitySet="naklady">
+          <ScalarProperty Name="pk_id" ColumnName="pk_id" />
+          <ScalarProperty Name="jmeno" ColumnName="jmeno" />
+          <ScalarProperty Name="typ" ColumnName="typ" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

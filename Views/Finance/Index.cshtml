@@ -1,0 +1,19 @@
+﻿@model IEnumerable<ebis.Models.naklady>
+
+@{
+    ViewBag.Title = "Finance";
+    WebGrid grid = new WebGrid(Model);
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Přidat nový náklad", "Create")
+</p>
+
+@grid.GetHtml(columns:
+    grid.Columns
+    (
+        grid.Column("jmeno", "Jméno"),
+        grid.Column("typ", "Typ"),
+    ))

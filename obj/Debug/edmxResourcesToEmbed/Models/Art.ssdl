@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbArtModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="dbArtModelStoreContainer">
+    <EntitySet Name="titul" EntityType="dbArtModel.Store.titul" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="titul">
+    <Key>
+      <PropertyRef Name="pk_id" />
+    </Key>
+    <Property Name="pk_id" Type="int" Nullable="false" />
+    <Property Name="titul" Type="varchar" Nullable="false" MaxLength="40" />
+    <Property Name="autor" Type="varchar" Nullable="false" MaxLength="35" />
+    <Property Name="poznamka" Type="varchar" Nullable="false" MaxLength="160" />
+  </EntityType>
+</Schema>

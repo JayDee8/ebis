@@ -1,0 +1,22 @@
+﻿@model ebis.Models.produkcni_listy
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>produkcni_listy</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.jmeno_aktivity)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.jmeno_aktivity)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.pk_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

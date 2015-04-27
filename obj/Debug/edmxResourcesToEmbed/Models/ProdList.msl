@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbProdListModelStoreContainer" CdmEntityContainer="dbProdList">
+    <EntitySetMapping Name="produkcni_listy">
+      <EntityTypeMapping TypeName="dbProdListModel.produkcni_listy">
+        <MappingFragment StoreEntitySet="produkcni_listy">
+          <ScalarProperty Name="pk_id" ColumnName="pk_id" />
+          <ScalarProperty Name="jmeno_aktivity" ColumnName="jmeno_aktivity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

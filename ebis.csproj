@@ -164,25 +164,48 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ArtController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\FinanceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InstrumentController.cs" />
     <Compile Include="Controllers\LocationController.cs" />
+    <Compile Include="Controllers\ProdListController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\Contact.cs" />
-    <Compile Include="Models\ContactModel.Designer.cs">
+    <Compile Include="Models\Art.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ContactModel.edmx</DependentUpon>
+      <DependentUpon>Art.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Contact.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Contact.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Finance.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Finance.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Instrument.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Instrument.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Location.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Location.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProdList.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProdList.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -316,25 +339,61 @@
     <Content Include="Views\Home\Artists.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="Models\ContactModel.edmx">
+    <EntityDeploy Include="Models\Location.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ContactModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>Location.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Models\Finance.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Finance.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Models\Instrument.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Instrument.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Models\Art.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Art.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Models\ProdList.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ProdList.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Models\Contact.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Contact.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Contact\Details.cshtml" />
     <Content Include="Views\Contact\Create.cshtml" />
     <Content Include="Views\Contact\Edit.cshtml" />
     <Content Include="Views\Contact\Delete.cshtml" />
-    <EntityDeploy Include="Models\Location.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Location.Designer.cs</LastGenOutput>
-    </EntityDeploy>
+    <Content Include="Views\Finance\Index.cshtml" />
+    <Content Include="Views\Finance\Details.cshtml" />
+    <Content Include="Views\Finance\Create.cshtml" />
+    <Content Include="Views\Finance\Edit.cshtml" />
+    <Content Include="Views\Finance\Delete.cshtml" />
+    <Content Include="Views\Art\Index.cshtml" />
+    <Content Include="Views\Art\Details.cshtml" />
+    <Content Include="Views\Art\Create.cshtml" />
+    <Content Include="Views\Art\Edit.cshtml" />
+    <Content Include="Views\Art\Delete.cshtml" />
     <None Include="Views\Home\ProdLists.cshtml" />
     <Content Include="Views\Location\Index.cshtml" />
     <Content Include="Views\Location\Details.cshtml" />
     <Content Include="Views\Location\Create.cshtml" />
     <Content Include="Views\Location\Edit.cshtml" />
     <Content Include="Views\Location\Delete.cshtml" />
+    <Content Include="Views\Instrument\Index.cshtml" />
+    <Content Include="Views\Instrument\Details.cshtml" />
+    <Content Include="Views\Instrument\Create.cshtml" />
+    <Content Include="Views\Instrument\Edit.cshtml" />
+    <Content Include="Views\Instrument\Delete.cshtml" />
+    <Content Include="Views\ProdList\Index.cshtml" />
+    <Content Include="Views\ProdList\Details.cshtml" />
+    <Content Include="Views\ProdList\Create.cshtml" />
+    <Content Include="Views\ProdList\Edit.cshtml" />
+    <Content Include="Views\ProdList\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Instruments.cshtml" />

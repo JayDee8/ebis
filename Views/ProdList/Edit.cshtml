@@ -1,0 +1,37 @@
+﻿@model ebis.Models.produkcni_listy
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>produkcni_listy</legend>
+
+        @Html.HiddenFor(model => model.pk_id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.jmeno_aktivity)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.jmeno_aktivity)
+            @Html.ValidationMessageFor(model => model.jmeno_aktivity)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

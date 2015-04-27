@@ -73,7 +73,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="ContactModel">
+      <Diagram Name="Contact">
         <EntityTypeShape EntityType="dbContactModel.kontakty" Width="1.5" PointX="0.75" PointY="0.75" Height="1.9802864583333331" IsExpanded="true" />
       </Diagram>
     </Diagrams>
