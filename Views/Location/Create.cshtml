@@ -1,0 +1,59 @@
+﻿@model ebis.Models.lokace
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>lokace</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.jmeno)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.jmeno)
+            @Html.ValidationMessageFor(model => model.jmeno)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.adresa)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.adresa)
+            @Html.ValidationMessageFor(model => model.adresa)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.gps)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.gps)
+            @Html.ValidationMessageFor(model => model.gps)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.link)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.link)
+            @Html.ValidationMessageFor(model => model.link)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

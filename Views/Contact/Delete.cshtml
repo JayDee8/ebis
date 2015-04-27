@@ -1,0 +1,46 @@
+﻿@model ebis.Models.kontakty
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>kontakty</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.jmeno)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.jmeno)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.prijmeni)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.prijmeni)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.email)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.telefon)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.telefon)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbLocationModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="dbLocationModelStoreContainer">
+    <EntitySet Name="lokace" EntityType="dbLocationModel.Store.lokace" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="lokace">
+    <Key>
+      <PropertyRef Name="pk_id" />
+    </Key>
+    <Property Name="pk_id" Type="int" Nullable="false" />
+    <Property Name="jmeno" Type="varchar" Nullable="false" MaxLength="40" />
+    <Property Name="adresa" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="gps" Type="varchar" Nullable="false" MaxLength="40" />
+    <Property Name="link" Type="varchar" Nullable="false" MaxLength="200" />
+  </EntityType>
+</Schema>

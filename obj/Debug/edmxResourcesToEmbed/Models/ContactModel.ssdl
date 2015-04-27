@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbContactModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="dbContactModelStoreContainer">
+    <EntitySet Name="kontakty" EntityType="dbContactModel.Store.kontakty" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="kontakty">
+    <Key>
+      <PropertyRef Name="pk_id" />
+    </Key>
+    <Property Name="pk_id" Type="int" Nullable="false" />
+    <Property Name="jmeno" Type="varchar" Nullable="false" MaxLength="15" />
+    <Property Name="prijmeni" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="email" Type="varchar" Nullable="false" MaxLength="40" />
+    <Property Name="telefon" Type="varchar" Nullable="false" MaxLength="13" />
+  </EntityType>
+</Schema>
