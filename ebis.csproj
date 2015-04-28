@@ -183,6 +183,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Art.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Artist.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Artist.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Contact.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -379,6 +384,10 @@
     <Content Include="Views\Art\Create.cshtml" />
     <Content Include="Views\Art\Edit.cshtml" />
     <Content Include="Views\Art\Delete.cshtml" />
+    <EntityDeploy Include="Models\Artist.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Artist.Designer.cs</LastGenOutput>
+    </EntityDeploy>
     <None Include="Views\Home\ProdLists.cshtml" />
     <Content Include="Views\Location\Index.cshtml" />
     <Content Include="Views\Location\Details.cshtml" />
