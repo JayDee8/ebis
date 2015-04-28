@@ -1,0 +1,43 @@
+@model ebis.Models.kontakty
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>kontakty</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.jmeno)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.jmeno)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.prijmeni)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.prijmeni)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.email)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.telefon)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.telefon)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.pk_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -176,6 +176,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Html.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Art.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -281,6 +282,11 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Views\Contact\Create.cshtml" />
+    <Content Include="Views\Contact\Delete.cshtml" />
+    <Content Include="Views\Contact\Details.cshtml" />
+    <Content Include="Views\Contact\Edit.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -363,11 +369,6 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Contact.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Views\Contact\Index.cshtml" />
-    <Content Include="Views\Contact\Details.cshtml" />
-    <Content Include="Views\Contact\Create.cshtml" />
-    <Content Include="Views\Contact\Edit.cshtml" />
-    <Content Include="Views\Contact\Delete.cshtml" />
     <Content Include="Views\Finance\Index.cshtml" />
     <Content Include="Views\Finance\Details.cshtml" />
     <Content Include="Views\Finance\Create.cshtml" />
