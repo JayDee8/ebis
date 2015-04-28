@@ -1,0 +1,502 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dbEventModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="dbEventModelStoreContainer">
+          <EntitySet Name="akce" EntityType="dbEventModel.Store.akce" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="akce_naklady" EntityType="dbEventModel.Store.akce_naklady" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="akce_produkcni_listy" EntityType="dbEventModel.Store.akce_produkcni_listy" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="fermany" EntityType="dbEventModel.Store.fermany" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="osoby_akce" EntityType="dbEventModel.Store.osoby_akce" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ubytovani" EntityType="dbEventModel.Store.ubytovani" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_akce_naklady_akce" Association="dbEventModel.Store.FK_akce_naklady_akce">
+            <End Role="akce" EntitySet="akce" />
+            <End Role="akce_naklady" EntitySet="akce_naklady" />
+          </AssociationSet>
+          <AssociationSet Name="FK_akce_produkcni_listy_akce" Association="dbEventModel.Store.FK_akce_produkcni_listy_akce">
+            <End Role="akce" EntitySet="akce" />
+            <End Role="akce_produkcni_listy" EntitySet="akce_produkcni_listy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fermany_akce" Association="dbEventModel.Store.FK_fermany_akce">
+            <End Role="akce" EntitySet="akce" />
+            <End Role="fermany" EntitySet="fermany" />
+          </AssociationSet>
+          <AssociationSet Name="FK_osoby_akce_akce" Association="dbEventModel.Store.FK_osoby_akce_akce">
+            <End Role="akce" EntitySet="akce" />
+            <End Role="osoby_akce" EntitySet="osoby_akce" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ubytovani_akce" Association="dbEventModel.Store.FK_ubytovani_akce">
+            <End Role="akce" EntitySet="akce" />
+            <End Role="ubytovani" EntitySet="ubytovani" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="akce">
+          <Key>
+            <PropertyRef Name="pk_id" />
+          </Key>
+          <Property Name="pk_id" Type="int" Nullable="false" />
+          <Property Name="jmeno" Type="varchar" Nullable="false" MaxLength="40" />
+          <Property Name="popis" Type="varchar" Nullable="false" MaxLength="160" />
+          <Property Name="titul_id" Type="int" Nullable="false" />
+          <Property Name="datum" Type="datetime" Nullable="false" />
+          <Property Name="cas" Type="varchar" Nullable="false" MaxLength="13" />
+        </EntityType>
+        <EntityType Name="akce_naklady">
+          <Key>
+            <PropertyRef Name="akce_id" />
+            <PropertyRef Name="naklady_id" />
+          </Key>
+          <Property Name="akce_id" Type="int" Nullable="false" />
+          <Property Name="naklady_id" Type="int" Nullable="false" />
+          <Property Name="cena" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="akce_produkcni_listy">
+          <Key>
+            <PropertyRef Name="akce_id" />
+            <PropertyRef Name="produkcni_listy_id" />
+          </Key>
+          <Property Name="akce_id" Type="int" Nullable="false" />
+          <Property Name="produkcni_listy_id" Type="int" Nullable="false" />
+          <Property Name="poznamka" Type="varchar" Nullable="false" MaxLength="40" />
+          <Property Name="termin" Type="varchar" Nullable="false" MaxLength="25" />
+          <Property Name="status" Type="int" Nullable="false" />
+          <Property Name="zodpovedna_osoba" Type="varchar" Nullable="false" MaxLength="35" />
+        </EntityType>
+        <EntityType Name="fermany">
+          <Key>
+            <PropertyRef Name="pk_id" />
+          </Key>
+          <Property Name="pk_id" Type="int" Nullable="false" />
+          <Property Name="akce_id" Type="int" Nullable="false" />
+          <Property Name="lokace_id" Type="int" Nullable="false" />
+          <Property Name="datum" Type="datetime" Nullable="false" />
+          <Property Name="cas" Type="varchar" Nullable="false" MaxLength="13" />
+          <Property Name="orchestr" Type="varchar" Nullable="false" MaxLength="40" />
+          <Property Name="sbor" Type="varchar" Nullable="false" MaxLength="40" />
+          <Property Name="solisti" Type="varchar" Nullable="false" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="osoby_akce">
+          <Key>
+            <PropertyRef Name="osoby_id" />
+            <PropertyRef Name="akce_id" />
+            <PropertyRef Name="nastroje_id" />
+          </Key>
+          <Property Name="osoby_id" Type="int" Nullable="false" />
+          <Property Name="akce_id" Type="int" Nullable="false" />
+          <Property Name="nastroje_id" Type="int" Nullable="false" />
+          <Property Name="poznamka" Type="varchar" Nullable="false" MaxLength="160" />
+          <Property Name="honorar" Type="int" Nullable="false" />
+          <Property Name="doprava" Type="int" Nullable="false" />
+          <Property Name="srazkova_dan" Type="int" Nullable="false" />
+          <Property Name="vyplaceno" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ubytovani">
+          <Key>
+            <PropertyRef Name="pk_id" />
+          </Key>
+          <Property Name="pk_id" Type="int" Nullable="false" />
+          <Property Name="osoby_id" Type="int" Nullable="false" />
+          <Property Name="lokace_id" Type="int" Nullable="false" />
+          <Property Name="akce_id" Type="int" Nullable="false" />
+          <Property Name="pokoj" Type="int" Nullable="false" />
+          <Property Name="cena1" Type="int" Nullable="false" />
+          <Property Name="cena2" Type="int" Nullable="false" />
+          <Property Name="cena3" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_akce_naklady_akce">
+          <End Role="akce" Type="dbEventModel.Store.akce" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="akce_naklady" Type="dbEventModel.Store.akce_naklady" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="akce">
+              <PropertyRef Name="pk_id" />
+            </Principal>
+            <Dependent Role="akce_naklady">
+              <PropertyRef Name="akce_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_akce_produkcni_listy_akce">
+          <End Role="akce" Type="dbEventModel.Store.akce" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="akce_produkcni_listy" Type="dbEventModel.Store.akce_produkcni_listy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="akce">
+              <PropertyRef Name="pk_id" />
+            </Principal>
+            <Dependent Role="akce_produkcni_listy">
+              <PropertyRef Name="akce_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fermany_akce">
+          <End Role="akce" Type="dbEventModel.Store.akce" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="fermany" Type="dbEventModel.Store.fermany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="akce">
+              <PropertyRef Name="pk_id" />
+            </Principal>
+            <Dependent Role="fermany">
+              <PropertyRef Name="akce_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_osoby_akce_akce">
+          <End Role="akce" Type="dbEventModel.Store.akce" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="osoby_akce" Type="dbEventModel.Store.osoby_akce" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="akce">
+              <PropertyRef Name="pk_id" />
+            </Principal>
+            <Dependent Role="osoby_akce">
+              <PropertyRef Name="akce_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ubytovani_akce">
+          <End Role="akce" Type="dbEventModel.Store.akce" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ubytovani" Type="dbEventModel.Store.ubytovani" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="akce">
+              <PropertyRef Name="pk_id" />
+            </Principal>
+            <Dependent Role="ubytovani">
+              <PropertyRef Name="akce_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbEventModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="dbEvent" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="akce" EntityType="dbEventModel.akce" />
+          <EntitySet Name="akce_naklady" EntityType="dbEventModel.akce_naklady" />
+          <EntitySet Name="akce_produkcni_listy" EntityType="dbEventModel.akce_produkcni_listy" />
+          <EntitySet Name="fermany" EntityType="dbEventModel.fermany" />
+          <EntitySet Name="osoby_akce" EntityType="dbEventModel.osoby_akce" />
+          <EntitySet Name="ubytovani" EntityType="dbEventModel.ubytovani" />
+          <AssociationSet Name="FK_akce_naklady_akce" Association="dbEventModel.FK_akce_naklady_akce">
+            <End Role="akce" EntitySet="akce" />
+            <End Role="akce_naklady" EntitySet="akce_naklady" />
+          </AssociationSet>
+          <AssociationSet Name="FK_akce_produkcni_listy_akce" Association="dbEventModel.FK_akce_produkcni_listy_akce">
+            <End Role="akce" EntitySet="akce" />
+            <End Role="akce_produkcni_listy" EntitySet="akce_produkcni_listy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fermany_akce" Association="dbEventModel.FK_fermany_akce">
+            <End Role="akce" EntitySet="akce" />
+            <End Role="fermany" EntitySet="fermany" />
+          </AssociationSet>
+          <AssociationSet Name="FK_osoby_akce_akce" Association="dbEventModel.FK_osoby_akce_akce">
+            <End Role="akce" EntitySet="akce" />
+            <End Role="osoby_akce" EntitySet="osoby_akce" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ubytovani_akce" Association="dbEventModel.FK_ubytovani_akce">
+            <End Role="akce" EntitySet="akce" />
+            <End Role="ubytovani" EntitySet="ubytovani" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="akce">
+          <Key>
+            <PropertyRef Name="pk_id" />
+          </Key>
+          <Property Name="pk_id" Type="Int32" Nullable="false" />
+          <Property Name="jmeno" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="popis" Type="String" Nullable="false" MaxLength="160" Unicode="false" FixedLength="false" />
+          <Property Name="titul_id" Type="Int32" Nullable="false" />
+          <Property Name="datum" Type="DateTime" Nullable="false" />
+          <Property Name="cas" Type="String" Nullable="false" MaxLength="13" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="akce_naklady" Relationship="dbEventModel.FK_akce_naklady_akce" FromRole="akce" ToRole="akce_naklady" />
+          <NavigationProperty Name="akce_produkcni_listy" Relationship="dbEventModel.FK_akce_produkcni_listy_akce" FromRole="akce" ToRole="akce_produkcni_listy" />
+          <NavigationProperty Name="fermany" Relationship="dbEventModel.FK_fermany_akce" FromRole="akce" ToRole="fermany" />
+          <NavigationProperty Name="osoby_akce" Relationship="dbEventModel.FK_osoby_akce_akce" FromRole="akce" ToRole="osoby_akce" />
+          <NavigationProperty Name="ubytovani" Relationship="dbEventModel.FK_ubytovani_akce" FromRole="akce" ToRole="ubytovani" />
+        </EntityType>
+        <EntityType Name="akce_naklady">
+          <Key>
+            <PropertyRef Name="akce_id" />
+            <PropertyRef Name="naklady_id" />
+          </Key>
+          <Property Name="akce_id" Type="Int32" Nullable="false" />
+          <Property Name="naklady_id" Type="Int32" Nullable="false" />
+          <Property Name="cena" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="akce" Relationship="dbEventModel.FK_akce_naklady_akce" FromRole="akce_naklady" ToRole="akce" />
+        </EntityType>
+        <EntityType Name="akce_produkcni_listy">
+          <Key>
+            <PropertyRef Name="akce_id" />
+            <PropertyRef Name="produkcni_listy_id" />
+          </Key>
+          <Property Name="akce_id" Type="Int32" Nullable="false" />
+          <Property Name="produkcni_listy_id" Type="Int32" Nullable="false" />
+          <Property Name="poznamka" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="termin" Type="String" Nullable="false" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <Property Name="zodpovedna_osoba" Type="String" Nullable="false" MaxLength="35" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="akce" Relationship="dbEventModel.FK_akce_produkcni_listy_akce" FromRole="akce_produkcni_listy" ToRole="akce" />
+        </EntityType>
+        <EntityType Name="fermany">
+          <Key>
+            <PropertyRef Name="pk_id" />
+          </Key>
+          <Property Name="pk_id" Type="Int32" Nullable="false" />
+          <Property Name="akce_id" Type="Int32" Nullable="false" />
+          <Property Name="lokace_id" Type="Int32" Nullable="false" />
+          <Property Name="datum" Type="DateTime" Nullable="false" />
+          <Property Name="cas" Type="String" Nullable="false" MaxLength="13" Unicode="false" FixedLength="false" />
+          <Property Name="orchestr" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="sbor" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="solisti" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="akce" Relationship="dbEventModel.FK_fermany_akce" FromRole="fermany" ToRole="akce" />
+        </EntityType>
+        <EntityType Name="osoby_akce">
+          <Key>
+            <PropertyRef Name="osoby_id" />
+            <PropertyRef Name="akce_id" />
+            <PropertyRef Name="nastroje_id" />
+          </Key>
+          <Property Name="osoby_id" Type="Int32" Nullable="false" />
+          <Property Name="akce_id" Type="Int32" Nullable="false" />
+          <Property Name="nastroje_id" Type="Int32" Nullable="false" />
+          <Property Name="poznamka" Type="String" Nullable="false" MaxLength="160" Unicode="false" FixedLength="false" />
+          <Property Name="honorar" Type="Int32" Nullable="false" />
+          <Property Name="doprava" Type="Int32" Nullable="false" />
+          <Property Name="srazkova_dan" Type="Int32" Nullable="false" />
+          <Property Name="vyplaceno" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="akce" Relationship="dbEventModel.FK_osoby_akce_akce" FromRole="osoby_akce" ToRole="akce" />
+        </EntityType>
+        <EntityType Name="ubytovani">
+          <Key>
+            <PropertyRef Name="pk_id" />
+          </Key>
+          <Property Name="pk_id" Type="Int32" Nullable="false" />
+          <Property Name="osoby_id" Type="Int32" Nullable="false" />
+          <Property Name="lokace_id" Type="Int32" Nullable="false" />
+          <Property Name="akce_id" Type="Int32" Nullable="false" />
+          <Property Name="pokoj" Type="Int32" Nullable="false" />
+          <Property Name="cena1" Type="Int32" Nullable="false" />
+          <Property Name="cena2" Type="Int32" Nullable="false" />
+          <Property Name="cena3" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="akce" Relationship="dbEventModel.FK_ubytovani_akce" FromRole="ubytovani" ToRole="akce" />
+        </EntityType>
+        <Association Name="FK_akce_naklady_akce">
+          <End Role="akce" Type="dbEventModel.akce" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="akce_naklady" Type="dbEventModel.akce_naklady" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="akce">
+              <PropertyRef Name="pk_id" />
+            </Principal>
+            <Dependent Role="akce_naklady">
+              <PropertyRef Name="akce_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_akce_produkcni_listy_akce">
+          <End Role="akce" Type="dbEventModel.akce" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="akce_produkcni_listy" Type="dbEventModel.akce_produkcni_listy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="akce">
+              <PropertyRef Name="pk_id" />
+            </Principal>
+            <Dependent Role="akce_produkcni_listy">
+              <PropertyRef Name="akce_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fermany_akce">
+          <End Role="akce" Type="dbEventModel.akce" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="fermany" Type="dbEventModel.fermany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="akce">
+              <PropertyRef Name="pk_id" />
+            </Principal>
+            <Dependent Role="fermany">
+              <PropertyRef Name="akce_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_osoby_akce_akce">
+          <End Role="akce" Type="dbEventModel.akce" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="osoby_akce" Type="dbEventModel.osoby_akce" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="akce">
+              <PropertyRef Name="pk_id" />
+            </Principal>
+            <Dependent Role="osoby_akce">
+              <PropertyRef Name="akce_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ubytovani_akce">
+          <End Role="akce" Type="dbEventModel.akce" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ubytovani" Type="dbEventModel.ubytovani" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="akce">
+              <PropertyRef Name="pk_id" />
+            </Principal>
+            <Dependent Role="ubytovani">
+              <PropertyRef Name="akce_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbEventModelStoreContainer" CdmEntityContainer="dbEvent">
+          <EntitySetMapping Name="akce">
+            <EntityTypeMapping TypeName="dbEventModel.akce">
+              <MappingFragment StoreEntitySet="akce">
+                <ScalarProperty Name="pk_id" ColumnName="pk_id" />
+                <ScalarProperty Name="jmeno" ColumnName="jmeno" />
+                <ScalarProperty Name="popis" ColumnName="popis" />
+                <ScalarProperty Name="titul_id" ColumnName="titul_id" />
+                <ScalarProperty Name="datum" ColumnName="datum" />
+                <ScalarProperty Name="cas" ColumnName="cas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="akce_naklady">
+            <EntityTypeMapping TypeName="dbEventModel.akce_naklady">
+              <MappingFragment StoreEntitySet="akce_naklady">
+                <ScalarProperty Name="akce_id" ColumnName="akce_id" />
+                <ScalarProperty Name="naklady_id" ColumnName="naklady_id" />
+                <ScalarProperty Name="cena" ColumnName="cena" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="akce_produkcni_listy">
+            <EntityTypeMapping TypeName="dbEventModel.akce_produkcni_listy">
+              <MappingFragment StoreEntitySet="akce_produkcni_listy">
+                <ScalarProperty Name="akce_id" ColumnName="akce_id" />
+                <ScalarProperty Name="produkcni_listy_id" ColumnName="produkcni_listy_id" />
+                <ScalarProperty Name="poznamka" ColumnName="poznamka" />
+                <ScalarProperty Name="termin" ColumnName="termin" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="zodpovedna_osoba" ColumnName="zodpovedna_osoba" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fermany">
+            <EntityTypeMapping TypeName="dbEventModel.fermany">
+              <MappingFragment StoreEntitySet="fermany">
+                <ScalarProperty Name="pk_id" ColumnName="pk_id" />
+                <ScalarProperty Name="akce_id" ColumnName="akce_id" />
+                <ScalarProperty Name="lokace_id" ColumnName="lokace_id" />
+                <ScalarProperty Name="datum" ColumnName="datum" />
+                <ScalarProperty Name="cas" ColumnName="cas" />
+                <ScalarProperty Name="orchestr" ColumnName="orchestr" />
+                <ScalarProperty Name="sbor" ColumnName="sbor" />
+                <ScalarProperty Name="solisti" ColumnName="solisti" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="osoby_akce">
+            <EntityTypeMapping TypeName="dbEventModel.osoby_akce">
+              <MappingFragment StoreEntitySet="osoby_akce">
+                <ScalarProperty Name="osoby_id" ColumnName="osoby_id" />
+                <ScalarProperty Name="akce_id" ColumnName="akce_id" />
+                <ScalarProperty Name="nastroje_id" ColumnName="nastroje_id" />
+                <ScalarProperty Name="poznamka" ColumnName="poznamka" />
+                <ScalarProperty Name="honorar" ColumnName="honorar" />
+                <ScalarProperty Name="doprava" ColumnName="doprava" />
+                <ScalarProperty Name="srazkova_dan" ColumnName="srazkova_dan" />
+                <ScalarProperty Name="vyplaceno" ColumnName="vyplaceno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ubytovani">
+            <EntityTypeMapping TypeName="dbEventModel.ubytovani">
+              <MappingFragment StoreEntitySet="ubytovani">
+                <ScalarProperty Name="pk_id" ColumnName="pk_id" />
+                <ScalarProperty Name="osoby_id" ColumnName="osoby_id" />
+                <ScalarProperty Name="lokace_id" ColumnName="lokace_id" />
+                <ScalarProperty Name="akce_id" ColumnName="akce_id" />
+                <ScalarProperty Name="pokoj" ColumnName="pokoj" />
+                <ScalarProperty Name="cena1" ColumnName="cena1" />
+                <ScalarProperty Name="cena2" ColumnName="cena2" />
+                <ScalarProperty Name="cena3" ColumnName="cena3" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Event">
+        <EntityTypeShape EntityType="dbEventModel.akce" Width="1.5" PointX="0.75" PointY="7.75" Height="3.1340950520833326" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbEventModel.akce_naklady" Width="1.5" PointX="3" PointY="1.625" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbEventModel.akce_produkcni_listy" Width="1.5" PointX="3" PointY="4.125" Height="2.3648893229166656" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbEventModel.fermany" Width="1.5" PointX="3" PointY="7.25" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbEventModel.osoby_akce" Width="1.5" PointX="3" PointY="10.75" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbEventModel.ubytovani" Width="1.5" PointX="3" PointY="14.25" Height="2.7494921874999996" IsExpanded="true" />
+        <AssociationConnector Association="dbEventModel.FK_akce_naklady_akce" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="7.75" />
+          <ConnectorPoint PointX="1.5" PointY="2.5189925130208337" />
+          <ConnectorPoint PointX="3" PointY="2.5189925130208337" />
+        </AssociationConnector>
+        <AssociationConnector Association="dbEventModel.FK_akce_produkcni_listy_akce" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.9062525" PointY="7.75" />
+          <ConnectorPoint PointX="1.9062525" PointY="5.3074446614583328" />
+          <ConnectorPoint PointX="3" PointY="5.3074446614583328" />
+        </AssociationConnector>
+        <AssociationConnector Association="dbEventModel.FK_fermany_akce" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="8.87474609375" />
+          <ConnectorPoint PointX="3" PointY="8.87474609375" />
+        </AssociationConnector>
+        <AssociationConnector Association="dbEventModel.FK_osoby_akce_akce" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="10.884095052083332" />
+          <ConnectorPoint PointX="1.5" PointY="12.191794119791666" />
+          <ConnectorPoint PointX="1.8229191666666667" PointY="12.191794119791666" />
+          <ConnectorPoint PointX="1.9895858333333332" PointY="12.191794119791666" />
+          <ConnectorPoint PointX="3" PointY="12.191794119791666" />
+        </AssociationConnector>
+        <AssociationConnector Association="dbEventModel.FK_ubytovani_akce" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.9062525" PointY="10.884095052083332" />
+          <ConnectorPoint PointX="1.9062525" PointY="15.62474609375" />
+          <ConnectorPoint PointX="3" PointY="15.62474609375" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
