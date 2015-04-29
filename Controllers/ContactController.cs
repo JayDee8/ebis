@@ -11,7 +11,7 @@ namespace ebis.Controllers
 {
     public class ContactController : Controller
     {
-        private dbContact db = new dbContact();
+        private dbEntities db = new dbEntities();
 
         //
         // GET: /Contact/

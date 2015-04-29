@@ -9,105 +9,110 @@ using ebis.Models;
 
 namespace ebis.Controllers
 {
-    public class ArtController : Controller
+    public class EventController : Controller
     {
         private dbEntities db = new dbEntities();
 
         //
-        // GET: /Art/
+        // GET: /Event/
 
         public ActionResult Index()
         {
-            return View(db.titul.ToList());
+            var akce = db.akce.Include("titul");
+            return View(akce.ToList());
         }
 
         //
-        // GET: /Art/Details/5
+        // GET: /Event/Details/5
 
         public ActionResult Details(int id = 0)
         {
-            titul titul = db.titul.Single(t => t.pk_id == id);
-            if (titul == null)
+            akce akce = db.akce.Single(a => a.pk_id == id);
+            if (akce == null)
             {
                 return HttpNotFound();
             }
-            return View(titul);
+            return View(akce);
         }
 
         //
-        // GET: /Art/Create
+        // GET: /Event/Create
 
         public ActionResult Create()
         {
+            ViewBag.titul_id = new SelectList(db.titul, "pk_id", "titul1");
             return View();
         }
 
         //
-        // POST: /Art/Create
+        // POST: /Event/Create
 
         [HttpPost]
-        public ActionResult Create(titul titul)
+        public ActionResult Create(akce akce)
         {
             if (ModelState.IsValid)
             {
-                db.titul.AddObject(titul);
+                db.akce.AddObject(akce);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(titul);
+            ViewBag.titul_id = new SelectList(db.titul, "pk_id", "titul1", akce.titul_id);
+            return View(akce);
         }
 
         //
-        // GET: /Art/Edit/5
+        // GET: /Event/Edit/5
 
         public ActionResult Edit(int id = 0)
         {
-            titul titul = db.titul.Single(t => t.pk_id == id);
-            if (titul == null)
+            akce akce = db.akce.Single(a => a.pk_id == id);
+            if (akce == null)
             {
                 return HttpNotFound();
             }
-            return View(titul);
+            ViewBag.titul_id = new SelectList(db.titul, "pk_id", "titul1", akce.titul_id);
+            return View(akce);
         }
 
         //
-        // POST: /Art/Edit/5
+        // POST: /Event/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(titul titul)
+        public ActionResult Edit(akce akce)
         {
             if (ModelState.IsValid)
             {
-                db.titul.Attach(titul);
-                db.ObjectStateManager.ChangeObjectState(titul, EntityState.Modified);
+                db.akce.Attach(akce);
+                db.ObjectStateManager.ChangeObjectState(akce, EntityState.Modified);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(titul);
+            ViewBag.titul_id = new SelectList(db.titul, "pk_id", "titul1", akce.titul_id);
+            return View(akce);
         }
 
         //
-        // GET: /Art/Delete/5
+        // GET: /Event/Delete/5
 
         public ActionResult Delete(int id = 0)
         {
-            titul titul = db.titul.Single(t => t.pk_id == id);
-            if (titul == null)
+            akce akce = db.akce.Single(a => a.pk_id == id);
+            if (akce == null)
             {
                 return HttpNotFound();
             }
-            return View(titul);
+            return View(akce);
         }
 
         //
-        // POST: /Art/Delete/5
+        // POST: /Event/Delete/5
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            titul titul = db.titul.Single(t => t.pk_id == id);
-            db.titul.DeleteObject(titul);
+            akce akce = db.akce.Single(a => a.pk_id == id);
+            db.akce.DeleteObject(akce);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

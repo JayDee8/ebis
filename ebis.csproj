@@ -165,8 +165,11 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArtController.cs" />
+    <Compile Include="Controllers\ArtistController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\ContractController.cs" />
+    <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\FinanceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InstrumentController.cs" />
@@ -178,40 +181,10 @@
     </Compile>
     <Compile Include="Helpers\Html.cs" />
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\Art.Designer.cs">
+    <Compile Include="Models\db.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Art.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Artist.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Artist.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Contact.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Contact.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Finance.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Finance.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Instrument.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Instrument.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Location.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Location.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ProdList.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ProdList.edmx</DependentUpon>
+      <DependentUpon>db.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -350,30 +323,6 @@
     <Content Include="Views\Home\Artists.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="Models\Location.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Location.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <EntityDeploy Include="Models\Finance.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Finance.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <EntityDeploy Include="Models\Instrument.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Instrument.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <EntityDeploy Include="Models\Art.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Art.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <EntityDeploy Include="Models\ProdList.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ProdList.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <EntityDeploy Include="Models\Contact.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Contact.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <Content Include="Views\Finance\Index.cshtml" />
     <Content Include="Views\Finance\Details.cshtml" />
     <Content Include="Views\Finance\Create.cshtml" />
@@ -384,9 +333,24 @@
     <Content Include="Views\Art\Create.cshtml" />
     <Content Include="Views\Art\Edit.cshtml" />
     <Content Include="Views\Art\Delete.cshtml" />
-    <EntityDeploy Include="Models\Artist.edmx">
+    <Content Include="Views\Artist\Index.cshtml" />
+    <Content Include="Views\Artist\Details.cshtml" />
+    <Content Include="Views\Artist\Create.cshtml" />
+    <Content Include="Views\Artist\Edit.cshtml" />
+    <Content Include="Views\Artist\Delete.cshtml" />
+    <Content Include="Views\Contract\Index.cshtml" />
+    <Content Include="Views\Contract\Details.cshtml" />
+    <Content Include="Views\Contract\Create.cshtml" />
+    <Content Include="Views\Contract\Edit.cshtml" />
+    <Content Include="Views\Contract\Delete.cshtml" />
+    <Content Include="Views\Event\Index.cshtml" />
+    <Content Include="Views\Event\Details.cshtml" />
+    <Content Include="Views\Event\Create.cshtml" />
+    <Content Include="Views\Event\Edit.cshtml" />
+    <Content Include="Views\Event\Delete.cshtml" />
+    <EntityDeploy Include="Models\db.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Artist.Designer.cs</LastGenOutput>
+      <LastGenOutput>db.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="Views\Home\ProdLists.cshtml" />
     <Content Include="Views\Location\Index.cshtml" />

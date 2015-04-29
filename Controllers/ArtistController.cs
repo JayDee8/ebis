@@ -9,33 +9,33 @@ using ebis.Models;
 
 namespace ebis.Controllers
 {
-    public class ArtController : Controller
+    public class ArtistController : Controller
     {
         private dbEntities db = new dbEntities();
 
         //
-        // GET: /Art/
+        // GET: /Artist/
 
         public ActionResult Index()
         {
-            return View(db.titul.ToList());
+            return View(db.osoby.ToList());
         }
 
         //
-        // GET: /Art/Details/5
+        // GET: /Artist/Details/5
 
         public ActionResult Details(int id = 0)
         {
-            titul titul = db.titul.Single(t => t.pk_id == id);
-            if (titul == null)
+            osoby osoby = db.osoby.Single(o => o.pk_id == id);
+            if (osoby == null)
             {
                 return HttpNotFound();
             }
-            return View(titul);
+            return View(osoby);
         }
 
         //
-        // GET: /Art/Create
+        // GET: /Artist/Create
 
         public ActionResult Create()
         {
@@ -43,71 +43,71 @@ namespace ebis.Controllers
         }
 
         //
-        // POST: /Art/Create
+        // POST: /Artist/Create
 
         [HttpPost]
-        public ActionResult Create(titul titul)
+        public ActionResult Create(osoby osoby)
         {
             if (ModelState.IsValid)
             {
-                db.titul.AddObject(titul);
+                db.osoby.AddObject(osoby);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(titul);
+            return View(osoby);
         }
 
         //
-        // GET: /Art/Edit/5
+        // GET: /Artist/Edit/5
 
         public ActionResult Edit(int id = 0)
         {
-            titul titul = db.titul.Single(t => t.pk_id == id);
-            if (titul == null)
+            osoby osoby = db.osoby.Single(o => o.pk_id == id);
+            if (osoby == null)
             {
                 return HttpNotFound();
             }
-            return View(titul);
+            return View(osoby);
         }
 
         //
-        // POST: /Art/Edit/5
+        // POST: /Artist/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(titul titul)
+        public ActionResult Edit(osoby osoby)
         {
             if (ModelState.IsValid)
             {
-                db.titul.Attach(titul);
-                db.ObjectStateManager.ChangeObjectState(titul, EntityState.Modified);
+                db.osoby.Attach(osoby);
+                db.ObjectStateManager.ChangeObjectState(osoby, EntityState.Modified);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(titul);
+            return View(osoby);
         }
 
         //
-        // GET: /Art/Delete/5
+        // GET: /Artist/Delete/5
 
         public ActionResult Delete(int id = 0)
         {
-            titul titul = db.titul.Single(t => t.pk_id == id);
-            if (titul == null)
+            osoby osoby = db.osoby.Single(o => o.pk_id == id);
+            if (osoby == null)
             {
                 return HttpNotFound();
             }
-            return View(titul);
+            return View(osoby);
         }
 
         //
-        // POST: /Art/Delete/5
+        // POST: /Artist/Delete/5
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            titul titul = db.titul.Single(t => t.pk_id == id);
-            db.titul.DeleteObject(titul);
+            osoby osoby = db.osoby.Single(o => o.pk_id == id);
+            db.osoby.DeleteObject(osoby);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -1,0 +1,29 @@
+﻿@model IEnumerable<ebis.Models.osoby>
+@using ebis.Helpers
+@{
+    ViewBag.Title = "Umělci";
+    WebGrid grid = new WebGrid(Model);
+    
+}
+
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Přidat nového umělce", "Create")
+</p>
+@grid.GetHtml(columns:
+    grid.Columns
+    (
+        grid.Column("id", "ID"),
+        grid.Column("jmeno", "Jméno   " + Html.SortDirection(ref grid, "jmeno")),
+        grid.Column("prijmeni", "Příjmení"),
+        grid.Column("telefon", "Telefon"),
+        grid.Column("email", "E-mail"),
+        grid.Column("mesto", "Město"),
+        grid.Column("narodnost", "Národnost"),
+            grid.Column(format: (item) => Html.ActionLink("Smlouvy", "Index", "Contract", new RouteValueDictionary(new { id = item.pk_id }),null)),
+        grid.Column(format: (item) => new HtmlString(Html.ActionLink("Detaily", "Details", new { id = item.pk_id}) + " | " +
+                    Html.ActionLink("Upravit", "Edit", new { id = item.pk_id }) + " | " +
+                    Html.ActionLink("Smazat", "Delete", new { id = item.pk_id })))
+    ))

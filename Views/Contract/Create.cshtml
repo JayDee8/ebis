@@ -1,0 +1,139 @@
+﻿@model ebis.Models.smlouvy
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>smlouvy</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.spolecnost)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.spolecnost)
+            @Html.ValidationMessageFor(model => model.spolecnost)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ic)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ic)
+            @Html.ValidationMessageFor(model => model.ic)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.sidlo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.sidlo)
+            @Html.ValidationMessageFor(model => model.sidlo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.zastoupeni)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.zastoupeni)
+            @Html.ValidationMessageFor(model => model.zastoupeni)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.jmeno)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.jmeno)
+            @Html.ValidationMessageFor(model => model.jmeno)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.bytem)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.bytem)
+            @Html.ValidationMessageFor(model => model.bytem)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.telefon)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.telefon)
+            @Html.ValidationMessageFor(model => model.telefon)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.email)
+            @Html.ValidationMessageFor(model => model.email)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.cislo_uctu)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.cislo_uctu)
+            @Html.ValidationMessageFor(model => model.cislo_uctu)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.datum_narozeni)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.datum_narozeni)
+            @Html.ValidationMessageFor(model => model.datum_narozeni)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.datum_spolecnost)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.datum_spolecnost)
+            @Html.ValidationMessageFor(model => model.datum_spolecnost)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.datum_osoba)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.datum_osoba)
+            @Html.ValidationMessageFor(model => model.datum_osoba)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.osoby_id, "osoby")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("osoby_id", String.Empty)
+            @Html.ValidationMessageFor(model => model.osoby_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.text_smlouvy_id, "text_smlouvy")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("text_smlouvy_id", String.Empty)
+            @Html.ValidationMessageFor(model => model.text_smlouvy_id)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

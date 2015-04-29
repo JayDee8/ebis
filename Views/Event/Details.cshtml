@@ -1,0 +1,50 @@
+﻿@model ebis.Models.akce
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>akce</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.jmeno)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.jmeno)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.popis)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.popis)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.titul.titul1)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.titul.titul1)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.datum)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.datum)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.cas)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.cas)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.pk_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -12,7 +12,7 @@ namespace ebis.Controllers
     [Authorize]
     public class LocationController : Controller
     {
-        private dbLocation db = new dbLocation();
+        private dbEntities db = new dbEntities();
 
         //
         // GET: /Location/

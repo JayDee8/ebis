@@ -12,14 +12,15 @@
     @Html.ActionLink("Přidat novou lokaci", "Create")
 </p>
 
+
 @grid.GetHtml(columns:
     grid.Columns
     (
-            grid.Column("jmeno", "Název " + Html.SortDirection(ref grid, "jmeno")),
+        grid.Column("jmeno", "Název   " + Html.SortDirection(ref grid, "jmeno")),
         grid.Column("adresa", "Adresa"),
         grid.Column("gps", "GPS souřadnice"),
         grid.Column("link", "Odkaz"),
-        grid.Column(format: (item) => new HtmlString(Html.ActionLink("Detaily", "Details", new { id = item.pk_id}) + " | " +
+        grid.Column(format: (item) => new HtmlString(Html.ActionLink("Detaily", "Details", new { id = item.pk_id }) + " | " +
                     Html.ActionLink("Upravit", "Edit", new { id = item.pk_id }) + " | " +
                     Html.ActionLink("Smazat", "Delete", new { id = item.pk_id })))
     ))

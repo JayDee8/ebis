@@ -1,0 +1,111 @@
+﻿@model IEnumerable<ebis.Models.smlouvy>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.spolecnost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sidlo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.zastoupeni)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.jmeno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bytem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telefon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cislo_uctu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.datum_narozeni)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.datum_spolecnost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.datum_osoba)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.osoby.jmeno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.text_smlouvy.text1)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.spolecnost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sidlo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.zastoupeni)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.jmeno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bytem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telefon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cislo_uctu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.datum_narozeni)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.datum_spolecnost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.datum_osoba)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.osoby.jmeno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.text_smlouvy.text1)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.pk_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.pk_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.pk_id })
+        </td>
+    </tr>
+}
+
+</table>

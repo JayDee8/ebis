@@ -11,7 +11,7 @@ namespace ebis.Controllers
 {
     public class ProdListController : Controller
     {
-        private dbProdList db = new dbProdList();
+        private dbEntities db = new dbEntities();
 
         //
         // GET: /ProdList/

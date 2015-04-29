@@ -1,0 +1,106 @@
+﻿@model ebis.Models.osoby
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>osoby</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.jmeno)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.jmeno)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.prijmeni)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.prijmeni)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.telefon)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.telefon)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.email)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.mesto)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.mesto)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.psc)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.psc)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.narodnost)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.narodnost)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.cislo_uctu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.cislo_uctu)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.adresa)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.adresa)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.datum_narozeni)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.datum_narozeni)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.misto_narozeni)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.misto_narozeni)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ic_dic)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ic_dic)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.poznamka)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.poznamka)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

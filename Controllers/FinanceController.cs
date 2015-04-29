@@ -11,7 +11,7 @@ namespace ebis.Controllers
 {
     public class FinanceController : Controller
     {
-        private dbFinance db = new dbFinance();
+        private dbEntities db = new dbEntities();
 
         //
         // GET: /Finance/

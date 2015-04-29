@@ -11,7 +11,7 @@ namespace ebis.Controllers
 {
     public class InstrumentController : Controller
     {
-        private dbInstrument db = new dbInstrument();
+        private dbEntities db = new dbEntities();
 
         //
         // GET: /Instrument/

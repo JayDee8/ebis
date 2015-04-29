@@ -1,0 +1,116 @@
+﻿@model ebis.Models.smlouvy
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>smlouvy</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.spolecnost)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.spolecnost)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ic)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ic)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.sidlo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.sidlo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.zastoupeni)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.zastoupeni)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.jmeno)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.jmeno)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.bytem)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.bytem)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.telefon)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.telefon)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.email)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.cislo_uctu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.cislo_uctu)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.datum_narozeni)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.datum_narozeni)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.datum_spolecnost)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.datum_spolecnost)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.datum_osoba)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.datum_osoba)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.osoby.jmeno)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.osoby.jmeno)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.text_smlouvy.text1)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.text_smlouvy.text1)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
