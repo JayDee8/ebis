@@ -19,22 +19,22 @@ using System.Xml.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("dbModel", "FK_akce_naklady_akce", "akce", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ebis.Models.akce), "akce_naklady", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.akce_naklady), true)]
-[assembly: EdmRelationshipAttribute("dbModel", "FK_akce_produkcni_listy_akce", "akce", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ebis.Models.akce), "akce_produkcni_listy", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.akce_produkcni_listy), true)]
-[assembly: EdmRelationshipAttribute("dbModel", "FK_akce_titul", "titul", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ebis.Models.titul), "akce", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.akce), true)]
-[assembly: EdmRelationshipAttribute("dbModel", "FK_fermany_akce", "akce", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ebis.Models.akce), "fermany", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.fermany), true)]
-[assembly: EdmRelationshipAttribute("dbModel", "FK_osoby_akce_akce", "akce", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ebis.Models.akce), "osoby_akce", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.osoby_akce), true)]
-[assembly: EdmRelationshipAttribute("dbModel", "FK_ubytovani_akce", "akce", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ebis.Models.akce), "ubytovani", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.ubytovani), true)]
-[assembly: EdmRelationshipAttribute("dbModel", "FK_akce_naklady_naklady", "naklady", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ebis.Models.naklady), "akce_naklady", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.akce_naklady), true)]
-[assembly: EdmRelationshipAttribute("dbModel", "FK_akce_produkcni_listy_produkcni_listy", "produkcni_listy", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ebis.Models.produkcni_listy), "akce_produkcni_listy", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.akce_produkcni_listy), true)]
-[assembly: EdmRelationshipAttribute("dbModel", "FK_fermany_lokace", "lokace", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ebis.Models.lokace), "fermany", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.fermany), true)]
-[assembly: EdmRelationshipAttribute("dbModel", "FK_ubytovani_lokace", "lokace", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ebis.Models.lokace), "ubytovani", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.ubytovani), true)]
-[assembly: EdmRelationshipAttribute("dbModel", "FK_osoby_akce_nastroje", "nastroje", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ebis.Models.nastroje), "osoby_akce", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.osoby_akce), true)]
-[assembly: EdmRelationshipAttribute("dbModel", "FK_osoby_akce_osoby", "osoby", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ebis.Models.osoby), "osoby_akce", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.osoby_akce), true)]
-[assembly: EdmRelationshipAttribute("dbModel", "FK_smlouvy_osoby", "osoby", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ebis.Models.osoby), "smlouvy", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.smlouvy), true)]
-[assembly: EdmRelationshipAttribute("dbModel", "FK_ubytovani_osoby", "osoby", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ebis.Models.osoby), "ubytovani", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.ubytovani), true)]
-[assembly: EdmRelationshipAttribute("dbModel", "FK_smlouvy_text_smlouvy", "text_smlouvy", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ebis.Models.text_smlouvy), "smlouvy", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.smlouvy), true)]
-[assembly: EdmRelationshipAttribute("dbModel", "osoby_nastroje", "nastroje", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.nastroje), "osoby", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.osoby))]
+[assembly: EdmRelationshipAttribute("ebis_dbModel", "FK_akce_naklady_akce", "akce", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ebis.Models.akce), "akce_naklady", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.akce_naklady), true)]
+[assembly: EdmRelationshipAttribute("ebis_dbModel", "FK_akce_produkcni_listy_akce", "akce", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ebis.Models.akce), "akce_produkcni_listy", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.akce_produkcni_listy), true)]
+[assembly: EdmRelationshipAttribute("ebis_dbModel", "FK_akce_titul", "titul", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ebis.Models.titul), "akce", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.akce), true)]
+[assembly: EdmRelationshipAttribute("ebis_dbModel", "FK_fermany_akce", "akce", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ebis.Models.akce), "fermany", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.fermany), true)]
+[assembly: EdmRelationshipAttribute("ebis_dbModel", "FK_osoby_akce_akce", "akce", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ebis.Models.akce), "osoby_akce", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.osoby_akce), true)]
+[assembly: EdmRelationshipAttribute("ebis_dbModel", "FK_ubytovani_akce", "akce", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ebis.Models.akce), "ubytovani", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.ubytovani), true)]
+[assembly: EdmRelationshipAttribute("ebis_dbModel", "FK_akce_naklady_naklady", "naklady", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ebis.Models.naklady), "akce_naklady", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.akce_naklady), true)]
+[assembly: EdmRelationshipAttribute("ebis_dbModel", "FK_akce_produkcni_listy_produkcni_listy", "produkcni_listy", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ebis.Models.produkcni_listy), "akce_produkcni_listy", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.akce_produkcni_listy), true)]
+[assembly: EdmRelationshipAttribute("ebis_dbModel", "FK_fermany_lokace", "lokace", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ebis.Models.lokace), "fermany", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.fermany), true)]
+[assembly: EdmRelationshipAttribute("ebis_dbModel", "FK_ubytovani_lokace", "lokace", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ebis.Models.lokace), "ubytovani", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.ubytovani), true)]
+[assembly: EdmRelationshipAttribute("ebis_dbModel", "FK_osoby_akce_nastroje", "nastroje", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ebis.Models.nastroje), "osoby_akce", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.osoby_akce), true)]
+[assembly: EdmRelationshipAttribute("ebis_dbModel", "FK_osoby_akce_osoby", "osoby", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ebis.Models.osoby), "osoby_akce", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.osoby_akce), true)]
+[assembly: EdmRelationshipAttribute("ebis_dbModel", "FK_smlouvy_osoby", "osoby", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ebis.Models.osoby), "smlouvy", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.smlouvy), true)]
+[assembly: EdmRelationshipAttribute("ebis_dbModel", "FK_ubytovani_osoby", "osoby", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ebis.Models.osoby), "ubytovani", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.ubytovani), true)]
+[assembly: EdmRelationshipAttribute("ebis_dbModel", "FK_smlouvy_text_smlouvy", "text_smlouvy", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ebis.Models.text_smlouvy), "smlouvy", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.smlouvy), true)]
+[assembly: EdmRelationshipAttribute("ebis_dbModel", "osoby_nastroje", "nastroje", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.nastroje), "osoby", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.osoby))]
 
 #endregion
 
@@ -461,7 +461,7 @@ namespace ebis.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="dbModel", Name="akce")]
+    [EdmEntityTypeAttribute(NamespaceName="ebis_dbModel", Name="akce")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class akce : EntityObject
@@ -651,18 +651,18 @@ namespace ebis.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("dbModel", "FK_akce_naklady_akce", "akce_naklady")]
+        [EdmRelationshipNavigationPropertyAttribute("ebis_dbModel", "FK_akce_naklady_akce", "akce_naklady")]
         public EntityCollection<akce_naklady> akce_naklady
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<akce_naklady>("dbModel.FK_akce_naklady_akce", "akce_naklady");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<akce_naklady>("ebis_dbModel.FK_akce_naklady_akce", "akce_naklady");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<akce_naklady>("dbModel.FK_akce_naklady_akce", "akce_naklady", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<akce_naklady>("ebis_dbModel.FK_akce_naklady_akce", "akce_naklady", value);
                 }
             }
         }
@@ -673,18 +673,18 @@ namespace ebis.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("dbModel", "FK_akce_produkcni_listy_akce", "akce_produkcni_listy")]
+        [EdmRelationshipNavigationPropertyAttribute("ebis_dbModel", "FK_akce_produkcni_listy_akce", "akce_produkcni_listy")]
         public EntityCollection<akce_produkcni_listy> akce_produkcni_listy
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<akce_produkcni_listy>("dbModel.FK_akce_produkcni_listy_akce", "akce_produkcni_listy");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<akce_produkcni_listy>("ebis_dbModel.FK_akce_produkcni_listy_akce", "akce_produkcni_listy");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<akce_produkcni_listy>("dbModel.FK_akce_produkcni_listy_akce", "akce_produkcni_listy", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<akce_produkcni_listy>("ebis_dbModel.FK_akce_produkcni_listy_akce", "akce_produkcni_listy", value);
                 }
             }
         }
@@ -695,16 +695,16 @@ namespace ebis.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("dbModel", "FK_akce_titul", "titul")]
+        [EdmRelationshipNavigationPropertyAttribute("ebis_dbModel", "FK_akce_titul", "titul")]
         public titul titul
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<titul>("dbModel.FK_akce_titul", "titul").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<titul>("ebis_dbModel.FK_akce_titul", "titul").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<titul>("dbModel.FK_akce_titul", "titul").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<titul>("ebis_dbModel.FK_akce_titul", "titul").Value = value;
             }
         }
         /// <summary>
@@ -716,13 +716,13 @@ namespace ebis.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<titul>("dbModel.FK_akce_titul", "titul");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<titul>("ebis_dbModel.FK_akce_titul", "titul");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<titul>("dbModel.FK_akce_titul", "titul", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<titul>("ebis_dbModel.FK_akce_titul", "titul", value);
                 }
             }
         }
@@ -733,18 +733,18 @@ namespace ebis.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("dbModel", "FK_fermany_akce", "fermany")]
+        [EdmRelationshipNavigationPropertyAttribute("ebis_dbModel", "FK_fermany_akce", "fermany")]
         public EntityCollection<fermany> fermany
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<fermany>("dbModel.FK_fermany_akce", "fermany");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<fermany>("ebis_dbModel.FK_fermany_akce", "fermany");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<fermany>("dbModel.FK_fermany_akce", "fermany", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<fermany>("ebis_dbModel.FK_fermany_akce", "fermany", value);
                 }
             }
         }
@@ -755,18 +755,18 @@ namespace ebis.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("dbModel", "FK_osoby_akce_akce", "osoby_akce")]
+        [EdmRelationshipNavigationPropertyAttribute("ebis_dbModel", "FK_osoby_akce_akce", "osoby_akce")]
         public EntityCollection<osoby_akce> osoby_akce
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<osoby_akce>("dbModel.FK_osoby_akce_akce", "osoby_akce");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<osoby_akce>("ebis_dbModel.FK_osoby_akce_akce", "osoby_akce");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<osoby_akce>("dbModel.FK_osoby_akce_akce", "osoby_akce", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<osoby_akce>("ebis_dbModel.FK_osoby_akce_akce", "osoby_akce", value);
                 }
             }
         }
@@ -777,18 +777,18 @@ namespace ebis.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("dbModel", "FK_ubytovani_akce", "ubytovani")]
+        [EdmRelationshipNavigationPropertyAttribute("ebis_dbModel", "FK_ubytovani_akce", "ubytovani")]
         public EntityCollection<ubytovani> ubytovani
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ubytovani>("dbModel.FK_ubytovani_akce", "ubytovani");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ubytovani>("ebis_dbModel.FK_ubytovani_akce", "ubytovani");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ubytovani>("dbModel.FK_ubytovani_akce", "ubytovani", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ubytovani>("ebis_dbModel.FK_ubytovani_akce", "ubytovani", value);
                 }
             }
         }
@@ -800,7 +800,7 @@ namespace ebis.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="dbModel", Name="akce_naklady")]
+    [EdmEntityTypeAttribute(NamespaceName="ebis_dbModel", Name="akce_naklady")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class akce_naklady : EntityObject
@@ -915,16 +915,16 @@ namespace ebis.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("dbModel", "FK_akce_naklady_akce", "akce")]
+        [EdmRelationshipNavigationPropertyAttribute("ebis_dbModel", "FK_akce_naklady_akce", "akce")]
         public akce akce
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<akce>("dbModel.FK_akce_naklady_akce", "akce").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<akce>("ebis_dbModel.FK_akce_naklady_akce", "akce").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<akce>("dbModel.FK_akce_naklady_akce", "akce").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<akce>("ebis_dbModel.FK_akce_naklady_akce", "akce").Value = value;
             }
         }
         /// <summary>
@@ -936,13 +936,13 @@ namespace ebis.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<akce>("dbModel.FK_akce_naklady_akce", "akce");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<akce>("ebis_dbModel.FK_akce_naklady_akce", "akce");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<akce>("dbModel.FK_akce_naklady_akce", "akce", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<akce>("ebis_dbModel.FK_akce_naklady_akce", "akce", value);
                 }
             }
         }
@@ -953,16 +953,16 @@ namespace ebis.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("dbModel", "FK_akce_naklady_naklady", "naklady")]
+        [EdmRelationshipNavigationPropertyAttribute("ebis_dbModel", "FK_akce_naklady_naklady", "naklady")]
         public naklady naklady
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<naklady>("dbModel.FK_akce_naklady_naklady", "naklady").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<naklady>("ebis_dbModel.FK_akce_naklady_naklady", "naklady").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<naklady>("dbModel.FK_akce_naklady_naklady", "naklady").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<naklady>("ebis_dbModel.FK_akce_naklady_naklady", "naklady").Value = value;
             }
         }
         /// <summary>
@@ -974,13 +974,13 @@ namespace ebis.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<naklady>("dbModel.FK_akce_naklady_naklady", "naklady");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<naklady>("ebis_dbModel.FK_akce_naklady_naklady", "naklady");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<naklady>("dbModel.FK_akce_naklady_naklady", "naklady", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<naklady>("ebis_dbModel.FK_akce_naklady_naklady", "naklady", value);
                 }
             }
         }
@@ -992,7 +992,7 @@ namespace ebis.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="dbModel", Name="akce_produkcni_listy")]
+    [EdmEntityTypeAttribute(NamespaceName="ebis_dbModel", Name="akce_produkcni_listy")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class akce_produkcni_listy : EntityObject
@@ -1185,16 +1185,16 @@ namespace ebis.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("dbModel", "FK_akce_produkcni_listy_akce", "akce")]
+        [EdmRelationshipNavigationPropertyAttribute("ebis_dbModel", "FK_akce_produkcni_listy_akce", "akce")]
         public akce akce
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<akce>("dbModel.FK_akce_produkcni_listy_akce", "akce").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<akce>("ebis_dbModel.FK_akce_produkcni_listy_akce", "akce").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<akce>("dbModel.FK_akce_produkcni_listy_akce", "akce").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<akce>("ebis_dbModel.FK_akce_produkcni_listy_akce", "akce").Value = value;
             }
         }
         /// <summary>
@@ -1206,13 +1206,13 @@ namespace ebis.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<akce>("dbModel.FK_akce_produkcni_listy_akce", "akce");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<akce>("ebis_dbModel.FK_akce_produkcni_listy_akce", "akce");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<akce>("dbModel.FK_akce_produkcni_listy_akce", "akce", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<akce>("ebis_dbModel.FK_akce_produkcni_listy_akce", "akce", value);
                 }
             }
         }
@@ -1223,16 +1223,16 @@ namespace ebis.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("dbModel", "FK_akce_produkcni_listy_produkcni_listy", "produkcni_listy")]
+        [EdmRelationshipNavigationPropertyAttribute("ebis_dbModel", "FK_akce_produkcni_listy_produkcni_listy", "produkcni_listy")]
         public produkcni_listy produkcni_listy
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<produkcni_listy>("dbModel.FK_akce_produkcni_listy_produkcni_listy", "produkcni_listy").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<produkcni_listy>("ebis_dbModel.FK_akce_produkcni_listy_produkcni_listy", "produkcni_listy").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<produkcni_listy>("dbModel.FK_akce_produkcni_listy_produkcni_listy", "produkcni_listy").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<produkcni_listy>("ebis_dbModel.FK_akce_produkcni_listy_produkcni_listy", "produkcni_listy").Value = value;
             }
         }
         /// <summary>
@@ -1244,13 +1244,13 @@ namespace ebis.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<produkcni_listy>("dbModel.FK_akce_produkcni_listy_produkcni_listy", "produkcni_listy");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<produkcni_listy>("ebis_dbModel.FK_akce_produkcni_listy_produkcni_listy", "produkcni_listy");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<produkcni_listy>("dbModel.FK_akce_produkcni_listy_produkcni_listy", "produkcni_listy", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<produkcni_listy>("ebis_dbModel.FK_akce_produkcni_listy_produkcni_listy", "produkcni_listy", value);
                 }
             }
         }
@@ -1262,7 +1262,7 @@ namespace ebis.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="dbModel", Name="fermany")]
+    [EdmEntityTypeAttribute(NamespaceName="ebis_dbModel", Name="fermany")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class fermany : EntityObject
@@ -1504,16 +1504,16 @@ namespace ebis.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("dbModel", "FK_fermany_akce", "akce")]
+        [EdmRelationshipNavigationPropertyAttribute("ebis_dbModel", "FK_fermany_akce", "akce")]
         public akce akce
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<akce>("dbModel.FK_fermany_akce", "akce").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<akce>("ebis_dbModel.FK_fermany_akce", "akce").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<akce>("dbModel.FK_fermany_akce", "akce").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<akce>("ebis_dbModel.FK_fermany_akce", "akce").Value = value;
             }
         }
         /// <summary>
@@ -1525,13 +1525,13 @@ namespace ebis.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<akce>("dbModel.FK_fermany_akce", "akce");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<akce>("ebis_dbModel.FK_fermany_akce", "akce");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<akce>("dbModel.FK_fermany_akce", "akce", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<akce>("ebis_dbModel.FK_fermany_akce", "akce", value);
                 }
             }
         }
@@ -1542,16 +1542,16 @@ namespace ebis.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("dbModel", "FK_fermany_lokace", "lokace")]
+        [EdmRelationshipNavigationPropertyAttribute("ebis_dbModel", "FK_fermany_lokace", "lokace")]
         public lokace lokace
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lokace>("dbModel.FK_fermany_lokace", "lokace").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lokace>("ebis_dbModel.FK_fermany_lokace", "lokace").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lokace>("dbModel.FK_fermany_lokace", "lokace").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lokace>("ebis_dbModel.FK_fermany_lokace", "lokace").Value = value;
             }
         }
         /// <summary>
@@ -1563,13 +1563,13 @@ namespace ebis.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lokace>("dbModel.FK_fermany_lokace", "lokace");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lokace>("ebis_dbModel.FK_fermany_lokace", "lokace");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<lokace>("dbModel.FK_fermany_lokace", "lokace", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<lokace>("ebis_dbModel.FK_fermany_lokace", "lokace", value);
                 }
             }
         }
@@ -1581,7 +1581,7 @@ namespace ebis.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="dbModel", Name="kontakty")]
+    [EdmEntityTypeAttribute(NamespaceName="ebis_dbModel", Name="kontakty")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class kontakty : EntityObject
@@ -1742,7 +1742,7 @@ namespace ebis.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="dbModel", Name="lokace")]
+    [EdmEntityTypeAttribute(NamespaceName="ebis_dbModel", Name="lokace")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class lokace : EntityObject
@@ -1906,18 +1906,18 @@ namespace ebis.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("dbModel", "FK_fermany_lokace", "fermany")]
+        [EdmRelationshipNavigationPropertyAttribute("ebis_dbModel", "FK_fermany_lokace", "fermany")]
         public EntityCollection<fermany> fermany
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<fermany>("dbModel.FK_fermany_lokace", "fermany");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<fermany>("ebis_dbModel.FK_fermany_lokace", "fermany");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<fermany>("dbModel.FK_fermany_lokace", "fermany", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<fermany>("ebis_dbModel.FK_fermany_lokace", "fermany", value);
                 }
             }
         }
@@ -1928,18 +1928,18 @@ namespace ebis.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("dbModel", "FK_ubytovani_lokace", "ubytovani")]
+        [EdmRelationshipNavigationPropertyAttribute("ebis_dbModel", "FK_ubytovani_lokace", "ubytovani")]
         public EntityCollection<ubytovani> ubytovani
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ubytovani>("dbModel.FK_ubytovani_lokace", "ubytovani");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ubytovani>("ebis_dbModel.FK_ubytovani_lokace", "ubytovani");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ubytovani>("dbModel.FK_ubytovani_lokace", "ubytovani", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ubytovani>("ebis_dbModel.FK_ubytovani_lokace", "ubytovani", value);
                 }
             }
         }
@@ -1951,7 +1951,7 @@ namespace ebis.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="dbModel", Name="naklady")]
+    [EdmEntityTypeAttribute(NamespaceName="ebis_dbModel", Name="naklady")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class naklady : EntityObject
@@ -2063,18 +2063,18 @@ namespace ebis.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("dbModel", "FK_akce_naklady_naklady", "akce_naklady")]
+        [EdmRelationshipNavigationPropertyAttribute("ebis_dbModel", "FK_akce_naklady_naklady", "akce_naklady")]
         public EntityCollection<akce_naklady> akce_naklady
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<akce_naklady>("dbModel.FK_akce_naklady_naklady", "akce_naklady");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<akce_naklady>("ebis_dbModel.FK_akce_naklady_naklady", "akce_naklady");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<akce_naklady>("dbModel.FK_akce_naklady_naklady", "akce_naklady", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<akce_naklady>("ebis_dbModel.FK_akce_naklady_naklady", "akce_naklady", value);
                 }
             }
         }
@@ -2086,7 +2086,7 @@ namespace ebis.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="dbModel", Name="nastroje")]
+    [EdmEntityTypeAttribute(NamespaceName="ebis_dbModel", Name="nastroje")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class nastroje : EntityObject
@@ -2198,18 +2198,18 @@ namespace ebis.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("dbModel", "FK_osoby_akce_nastroje", "osoby_akce")]
+        [EdmRelationshipNavigationPropertyAttribute("ebis_dbModel", "FK_osoby_akce_nastroje", "osoby_akce")]
         public EntityCollection<osoby_akce> osoby_akce
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<osoby_akce>("dbModel.FK_osoby_akce_nastroje", "osoby_akce");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<osoby_akce>("ebis_dbModel.FK_osoby_akce_nastroje", "osoby_akce");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<osoby_akce>("dbModel.FK_osoby_akce_nastroje", "osoby_akce", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<osoby_akce>("ebis_dbModel.FK_osoby_akce_nastroje", "osoby_akce", value);
                 }
             }
         }
@@ -2220,18 +2220,18 @@ namespace ebis.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("dbModel", "osoby_nastroje", "osoby")]
+        [EdmRelationshipNavigationPropertyAttribute("ebis_dbModel", "osoby_nastroje", "osoby")]
         public EntityCollection<osoby> osoby
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<osoby>("dbModel.osoby_nastroje", "osoby");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<osoby>("ebis_dbModel.osoby_nastroje", "osoby");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<osoby>("dbModel.osoby_nastroje", "osoby", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<osoby>("ebis_dbModel.osoby_nastroje", "osoby", value);
                 }
             }
         }
@@ -2243,7 +2243,7 @@ namespace ebis.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="dbModel", Name="osoby")]
+    [EdmEntityTypeAttribute(NamespaceName="ebis_dbModel", Name="osoby")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class osoby : EntityObject
@@ -2667,18 +2667,18 @@ namespace ebis.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("dbModel", "FK_osoby_akce_osoby", "osoby_akce")]
+        [EdmRelationshipNavigationPropertyAttribute("ebis_dbModel", "FK_osoby_akce_osoby", "osoby_akce")]
         public EntityCollection<osoby_akce> osoby_akce
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<osoby_akce>("dbModel.FK_osoby_akce_osoby", "osoby_akce");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<osoby_akce>("ebis_dbModel.FK_osoby_akce_osoby", "osoby_akce");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<osoby_akce>("dbModel.FK_osoby_akce_osoby", "osoby_akce", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<osoby_akce>("ebis_dbModel.FK_osoby_akce_osoby", "osoby_akce", value);
                 }
             }
         }
@@ -2689,18 +2689,18 @@ namespace ebis.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("dbModel", "FK_smlouvy_osoby", "smlouvy")]
+        [EdmRelationshipNavigationPropertyAttribute("ebis_dbModel", "FK_smlouvy_osoby", "smlouvy")]
         public EntityCollection<smlouvy> smlouvy
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<smlouvy>("dbModel.FK_smlouvy_osoby", "smlouvy");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<smlouvy>("ebis_dbModel.FK_smlouvy_osoby", "smlouvy");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<smlouvy>("dbModel.FK_smlouvy_osoby", "smlouvy", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<smlouvy>("ebis_dbModel.FK_smlouvy_osoby", "smlouvy", value);
                 }
             }
         }
@@ -2711,18 +2711,18 @@ namespace ebis.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("dbModel", "FK_ubytovani_osoby", "ubytovani")]
+        [EdmRelationshipNavigationPropertyAttribute("ebis_dbModel", "FK_ubytovani_osoby", "ubytovani")]
         public EntityCollection<ubytovani> ubytovani
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ubytovani>("dbModel.FK_ubytovani_osoby", "ubytovani");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ubytovani>("ebis_dbModel.FK_ubytovani_osoby", "ubytovani");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ubytovani>("dbModel.FK_ubytovani_osoby", "ubytovani", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ubytovani>("ebis_dbModel.FK_ubytovani_osoby", "ubytovani", value);
                 }
             }
         }
@@ -2733,18 +2733,18 @@ namespace ebis.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("dbModel", "osoby_nastroje", "nastroje")]
+        [EdmRelationshipNavigationPropertyAttribute("ebis_dbModel", "osoby_nastroje", "nastroje")]
         public EntityCollection<nastroje> nastroje
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<nastroje>("dbModel.osoby_nastroje", "nastroje");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<nastroje>("ebis_dbModel.osoby_nastroje", "nastroje");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<nastroje>("dbModel.osoby_nastroje", "nastroje", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<nastroje>("ebis_dbModel.osoby_nastroje", "nastroje", value);
                 }
             }
         }
@@ -2756,7 +2756,7 @@ namespace ebis.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="dbModel", Name="osoby_akce")]
+    [EdmEntityTypeAttribute(NamespaceName="ebis_dbModel", Name="osoby_akce")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class osoby_akce : EntityObject
@@ -3004,16 +3004,16 @@ namespace ebis.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("dbModel", "FK_osoby_akce_akce", "akce")]
+        [EdmRelationshipNavigationPropertyAttribute("ebis_dbModel", "FK_osoby_akce_akce", "akce")]
         public akce akce
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<akce>("dbModel.FK_osoby_akce_akce", "akce").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<akce>("ebis_dbModel.FK_osoby_akce_akce", "akce").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<akce>("dbModel.FK_osoby_akce_akce", "akce").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<akce>("ebis_dbModel.FK_osoby_akce_akce", "akce").Value = value;
             }
         }
         /// <summary>
@@ -3025,13 +3025,13 @@ namespace ebis.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<akce>("dbModel.FK_osoby_akce_akce", "akce");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<akce>("ebis_dbModel.FK_osoby_akce_akce", "akce");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<akce>("dbModel.FK_osoby_akce_akce", "akce", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<akce>("ebis_dbModel.FK_osoby_akce_akce", "akce", value);
                 }
             }
         }
@@ -3042,16 +3042,16 @@ namespace ebis.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("dbModel", "FK_osoby_akce_nastroje", "nastroje")]
+        [EdmRelationshipNavigationPropertyAttribute("ebis_dbModel", "FK_osoby_akce_nastroje", "nastroje")]
         public nastroje nastroje
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<nastroje>("dbModel.FK_osoby_akce_nastroje", "nastroje").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<nastroje>("ebis_dbModel.FK_osoby_akce_nastroje", "nastroje").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<nastroje>("dbModel.FK_osoby_akce_nastroje", "nastroje").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<nastroje>("ebis_dbModel.FK_osoby_akce_nastroje", "nastroje").Value = value;
             }
         }
         /// <summary>
@@ -3063,13 +3063,13 @@ namespace ebis.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<nastroje>("dbModel.FK_osoby_akce_nastroje", "nastroje");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<nastroje>("ebis_dbModel.FK_osoby_akce_nastroje", "nastroje");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<nastroje>("dbModel.FK_osoby_akce_nastroje", "nastroje", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<nastroje>("ebis_dbModel.FK_osoby_akce_nastroje", "nastroje", value);
                 }
             }
         }
@@ -3080,16 +3080,16 @@ namespace ebis.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("dbModel", "FK_osoby_akce_osoby", "osoby")]
+        [EdmRelationshipNavigationPropertyAttribute("ebis_dbModel", "FK_osoby_akce_osoby", "osoby")]
         public osoby osoby
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<osoby>("dbModel.FK_osoby_akce_osoby", "osoby").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<osoby>("ebis_dbModel.FK_osoby_akce_osoby", "osoby").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<osoby>("dbModel.FK_osoby_akce_osoby", "osoby").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<osoby>("ebis_dbModel.FK_osoby_akce_osoby", "osoby").Value = value;
             }
         }
         /// <summary>
@@ -3101,13 +3101,13 @@ namespace ebis.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<osoby>("dbModel.FK_osoby_akce_osoby", "osoby");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<osoby>("ebis_dbModel.FK_osoby_akce_osoby", "osoby");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<osoby>("dbModel.FK_osoby_akce_osoby", "osoby", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<osoby>("ebis_dbModel.FK_osoby_akce_osoby", "osoby", value);
                 }
             }
         }
@@ -3119,7 +3119,7 @@ namespace ebis.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="dbModel", Name="produkcni_listy")]
+    [EdmEntityTypeAttribute(NamespaceName="ebis_dbModel", Name="produkcni_listy")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class produkcni_listy : EntityObject
@@ -3205,18 +3205,18 @@ namespace ebis.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("dbModel", "FK_akce_produkcni_listy_produkcni_listy", "akce_produkcni_listy")]
+        [EdmRelationshipNavigationPropertyAttribute("ebis_dbModel", "FK_akce_produkcni_listy_produkcni_listy", "akce_produkcni_listy")]
         public EntityCollection<akce_produkcni_listy> akce_produkcni_listy
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<akce_produkcni_listy>("dbModel.FK_akce_produkcni_listy_produkcni_listy", "akce_produkcni_listy");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<akce_produkcni_listy>("ebis_dbModel.FK_akce_produkcni_listy_produkcni_listy", "akce_produkcni_listy");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<akce_produkcni_listy>("dbModel.FK_akce_produkcni_listy_produkcni_listy", "akce_produkcni_listy", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<akce_produkcni_listy>("ebis_dbModel.FK_akce_produkcni_listy_produkcni_listy", "akce_produkcni_listy", value);
                 }
             }
         }
@@ -3228,7 +3228,7 @@ namespace ebis.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="dbModel", Name="smlouvy")]
+    [EdmEntityTypeAttribute(NamespaceName="ebis_dbModel", Name="smlouvy")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class smlouvy : EntityObject
@@ -3652,16 +3652,16 @@ namespace ebis.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("dbModel", "FK_smlouvy_osoby", "osoby")]
+        [EdmRelationshipNavigationPropertyAttribute("ebis_dbModel", "FK_smlouvy_osoby", "osoby")]
         public osoby osoby
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<osoby>("dbModel.FK_smlouvy_osoby", "osoby").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<osoby>("ebis_dbModel.FK_smlouvy_osoby", "osoby").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<osoby>("dbModel.FK_smlouvy_osoby", "osoby").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<osoby>("ebis_dbModel.FK_smlouvy_osoby", "osoby").Value = value;
             }
         }
         /// <summary>
@@ -3673,13 +3673,13 @@ namespace ebis.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<osoby>("dbModel.FK_smlouvy_osoby", "osoby");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<osoby>("ebis_dbModel.FK_smlouvy_osoby", "osoby");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<osoby>("dbModel.FK_smlouvy_osoby", "osoby", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<osoby>("ebis_dbModel.FK_smlouvy_osoby", "osoby", value);
                 }
             }
         }
@@ -3690,16 +3690,16 @@ namespace ebis.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("dbModel", "FK_smlouvy_text_smlouvy", "text_smlouvy")]
+        [EdmRelationshipNavigationPropertyAttribute("ebis_dbModel", "FK_smlouvy_text_smlouvy", "text_smlouvy")]
         public text_smlouvy text_smlouvy
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<text_smlouvy>("dbModel.FK_smlouvy_text_smlouvy", "text_smlouvy").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<text_smlouvy>("ebis_dbModel.FK_smlouvy_text_smlouvy", "text_smlouvy").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<text_smlouvy>("dbModel.FK_smlouvy_text_smlouvy", "text_smlouvy").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<text_smlouvy>("ebis_dbModel.FK_smlouvy_text_smlouvy", "text_smlouvy").Value = value;
             }
         }
         /// <summary>
@@ -3711,13 +3711,13 @@ namespace ebis.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<text_smlouvy>("dbModel.FK_smlouvy_text_smlouvy", "text_smlouvy");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<text_smlouvy>("ebis_dbModel.FK_smlouvy_text_smlouvy", "text_smlouvy");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<text_smlouvy>("dbModel.FK_smlouvy_text_smlouvy", "text_smlouvy", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<text_smlouvy>("ebis_dbModel.FK_smlouvy_text_smlouvy", "text_smlouvy", value);
                 }
             }
         }
@@ -3729,7 +3729,7 @@ namespace ebis.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="dbModel", Name="text_smlouvy")]
+    [EdmEntityTypeAttribute(NamespaceName="ebis_dbModel", Name="text_smlouvy")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class text_smlouvy : EntityObject
@@ -3945,18 +3945,18 @@ namespace ebis.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("dbModel", "FK_smlouvy_text_smlouvy", "smlouvy")]
+        [EdmRelationshipNavigationPropertyAttribute("ebis_dbModel", "FK_smlouvy_text_smlouvy", "smlouvy")]
         public EntityCollection<smlouvy> smlouvy
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<smlouvy>("dbModel.FK_smlouvy_text_smlouvy", "smlouvy");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<smlouvy>("ebis_dbModel.FK_smlouvy_text_smlouvy", "smlouvy");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<smlouvy>("dbModel.FK_smlouvy_text_smlouvy", "smlouvy", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<smlouvy>("ebis_dbModel.FK_smlouvy_text_smlouvy", "smlouvy", value);
                 }
             }
         }
@@ -3968,7 +3968,7 @@ namespace ebis.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="dbModel", Name="titul")]
+    [EdmEntityTypeAttribute(NamespaceName="ebis_dbModel", Name="titul")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class titul : EntityObject
@@ -3979,14 +3979,14 @@ namespace ebis.Models
         /// Create a new titul object.
         /// </summary>
         /// <param name="pk_id">Initial value of the pk_id property.</param>
-        /// <param name="titul1">Initial value of the titul1 property.</param>
+        /// <param name="nazev">Initial value of the nazev property.</param>
         /// <param name="autor">Initial value of the autor property.</param>
         /// <param name="poznamka">Initial value of the poznamka property.</param>
-        public static titul Createtitul(global::System.Int32 pk_id, global::System.String titul1, global::System.String autor, global::System.String poznamka)
+        public static titul Createtitul(global::System.Int32 pk_id, global::System.String nazev, global::System.String autor, global::System.String poznamka)
         {
             titul titul = new titul();
             titul.pk_id = pk_id;
-            titul.titul1 = titul1;
+            titul.nazev = nazev;
             titul.autor = autor;
             titul.poznamka = poznamka;
             return titul;
@@ -4028,24 +4028,24 @@ namespace ebis.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String titul1
+        public global::System.String nazev
         {
             get
             {
-                return _titul1;
+                return _nazev;
             }
             set
             {
-                Ontitul1Changing(value);
-                ReportPropertyChanging("titul1");
-                _titul1 = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("titul1");
-                Ontitul1Changed();
+                OnnazevChanging(value);
+                ReportPropertyChanging("nazev");
+                _nazev = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("nazev");
+                OnnazevChanged();
             }
         }
-        private global::System.String _titul1;
-        partial void Ontitul1Changing(global::System.String value);
-        partial void Ontitul1Changed();
+        private global::System.String _nazev;
+        partial void OnnazevChanging(global::System.String value);
+        partial void OnnazevChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -4106,18 +4106,18 @@ namespace ebis.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("dbModel", "FK_akce_titul", "akce")]
+        [EdmRelationshipNavigationPropertyAttribute("ebis_dbModel", "FK_akce_titul", "akce")]
         public EntityCollection<akce> akce
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<akce>("dbModel.FK_akce_titul", "akce");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<akce>("ebis_dbModel.FK_akce_titul", "akce");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<akce>("dbModel.FK_akce_titul", "akce", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<akce>("ebis_dbModel.FK_akce_titul", "akce", value);
                 }
             }
         }
@@ -4129,7 +4129,7 @@ namespace ebis.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="dbModel", Name="ubytovani")]
+    [EdmEntityTypeAttribute(NamespaceName="ebis_dbModel", Name="ubytovani")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class ubytovani : EntityObject
@@ -4371,16 +4371,16 @@ namespace ebis.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("dbModel", "FK_ubytovani_akce", "akce")]
+        [EdmRelationshipNavigationPropertyAttribute("ebis_dbModel", "FK_ubytovani_akce", "akce")]
         public akce akce
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<akce>("dbModel.FK_ubytovani_akce", "akce").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<akce>("ebis_dbModel.FK_ubytovani_akce", "akce").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<akce>("dbModel.FK_ubytovani_akce", "akce").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<akce>("ebis_dbModel.FK_ubytovani_akce", "akce").Value = value;
             }
         }
         /// <summary>
@@ -4392,13 +4392,13 @@ namespace ebis.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<akce>("dbModel.FK_ubytovani_akce", "akce");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<akce>("ebis_dbModel.FK_ubytovani_akce", "akce");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<akce>("dbModel.FK_ubytovani_akce", "akce", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<akce>("ebis_dbModel.FK_ubytovani_akce", "akce", value);
                 }
             }
         }
@@ -4409,16 +4409,16 @@ namespace ebis.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("dbModel", "FK_ubytovani_lokace", "lokace")]
+        [EdmRelationshipNavigationPropertyAttribute("ebis_dbModel", "FK_ubytovani_lokace", "lokace")]
         public lokace lokace
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lokace>("dbModel.FK_ubytovani_lokace", "lokace").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lokace>("ebis_dbModel.FK_ubytovani_lokace", "lokace").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lokace>("dbModel.FK_ubytovani_lokace", "lokace").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lokace>("ebis_dbModel.FK_ubytovani_lokace", "lokace").Value = value;
             }
         }
         /// <summary>
@@ -4430,13 +4430,13 @@ namespace ebis.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lokace>("dbModel.FK_ubytovani_lokace", "lokace");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<lokace>("ebis_dbModel.FK_ubytovani_lokace", "lokace");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<lokace>("dbModel.FK_ubytovani_lokace", "lokace", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<lokace>("ebis_dbModel.FK_ubytovani_lokace", "lokace", value);
                 }
             }
         }
@@ -4447,16 +4447,16 @@ namespace ebis.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("dbModel", "FK_ubytovani_osoby", "osoby")]
+        [EdmRelationshipNavigationPropertyAttribute("ebis_dbModel", "FK_ubytovani_osoby", "osoby")]
         public osoby osoby
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<osoby>("dbModel.FK_ubytovani_osoby", "osoby").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<osoby>("ebis_dbModel.FK_ubytovani_osoby", "osoby").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<osoby>("dbModel.FK_ubytovani_osoby", "osoby").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<osoby>("ebis_dbModel.FK_ubytovani_osoby", "osoby").Value = value;
             }
         }
         /// <summary>
@@ -4468,13 +4468,13 @@ namespace ebis.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<osoby>("dbModel.FK_ubytovani_osoby", "osoby");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<osoby>("ebis_dbModel.FK_ubytovani_osoby", "osoby");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<osoby>("dbModel.FK_ubytovani_osoby", "osoby", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<osoby>("ebis_dbModel.FK_ubytovani_osoby", "osoby", value);
                 }
             }
         }

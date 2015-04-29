@@ -44,7 +44,17 @@ namespace ebis.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.osoby_id = new SelectList(db.osoby, "pk_id", "jmeno");
+            var osoby = db.osoby
+                .ToList()
+                .Select(s => new
+                {
+                    pk_id = s.pk_id,
+                    fullName = string.Format("{0} {1}", s.jmeno, s.prijmeni)
+                });
+
+            //ViewBag.osoby_id = new SelectList(db.osoby, "pk_id", "jmeno");
+            ViewBag.osoby_id = new SelectList(osoby, "pk_id", "fullName");
+
             ViewBag.text_smlouvy_id = new SelectList(db.text_smlouvy, "pk_id", "text1");
             return View();
         }
@@ -62,7 +72,17 @@ namespace ebis.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.osoby_id = new SelectList(db.osoby, "pk_id", "jmeno", smlouvy.osoby_id);
+            var osoby = db.osoby
+                .Where(s => s.pk_id == smlouvy.osoby_id)
+                .ToList()
+                .Select(s => new
+                {
+                    pk_id = s.pk_id,
+                    fullName = string.Format("{0} {1}", s.jmeno, s.prijmeni)
+                });
+
+            //ViewBag.osoby_id = new SelectList(db.osoby, "pk_id", "jmeno", smlouvy.osoby_id);
+            ViewBag.osoby_id = new SelectList(osoby, "pk_id", "fullName");
             ViewBag.text_smlouvy_id = new SelectList(db.text_smlouvy, "pk_id", "text1", smlouvy.text_smlouvy_id);
             return View(smlouvy);
         }
