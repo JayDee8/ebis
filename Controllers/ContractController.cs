@@ -44,17 +44,8 @@ namespace ebis.Controllers
 
         public ActionResult Create()
         {
-            var osoby = db.osoby
-                .ToList()
-                .Select(s => new
-                {
-                    pk_id = s.pk_id,
-                    fullName = string.Format("{0} {1}", s.jmeno, s.prijmeni)
-                });
-
-            //ViewBag.osoby_id = new SelectList(db.osoby, "pk_id", "jmeno");
-            ViewBag.osoby_id = new SelectList(osoby, "pk_id", "fullName");
-
+        
+            ViewBag.osoby_id = new SelectList(db.osoby, "pk_id", "jmenoPrijmeniId");
             ViewBag.text_smlouvy_id = new SelectList(db.text_smlouvy, "pk_id", "text1");
             return View();
         }

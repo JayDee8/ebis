@@ -1,43 +1,43 @@
 @model ebis.Models.kontakty
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detaily kontaktu";
 }
 
-<h2>Details</h2>
+<h2>@ViewBag.Title</h2>
 
 <fieldset>
     <legend>kontakty</legend>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.jmeno)
+         Jméno
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.jmeno)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.prijmeni)
+         Pøíjmení
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.prijmeni)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.email)
+         E-mail
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.email)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.telefon)
+         Telefon
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.telefon)
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.pk_id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Upravit kontakt", "Edit", new { id = Model.pk_id }) |
+    @Html.ActionLink("Zpìt na seznam", "Index")
 </p>

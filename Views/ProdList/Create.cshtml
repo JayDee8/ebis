@@ -1,10 +1,10 @@
 ﻿@model ebis.Models.produkcni_listy
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Vytvořit produkční listy";
 }
 
-<h2>Create</h2>
+<h2>@ViewBag.Title</h2>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
@@ -13,7 +13,7 @@
         <legend>produkcni_listy</legend>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.jmeno_aktivity)
+            Jméno aktivity
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.jmeno_aktivity)
@@ -21,13 +21,13 @@
         </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Vytvořit" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Zpět na seznam", "Index")
 </div>
 
 @section Scripts {

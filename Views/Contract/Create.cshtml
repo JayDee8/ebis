@@ -1,19 +1,19 @@
 ﻿@model ebis.Models.smlouvy
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Vytvořit smlouvu";
 }
 
-<h2>Create</h2>
+<h2>@ViewBag.Title</h2>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
 
     <fieldset>
         <legend>smlouvy</legend>
-        
+
         <div class="editor-label">
-            @Html.LabelFor(model => model.spolecnost)
+            Společnost
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.spolecnost)
@@ -21,7 +21,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.ic)
+            IČ
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.ic)
@@ -29,7 +29,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.sidlo)
+            Sídlo
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.sidlo)
@@ -37,7 +37,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.zastoupeni)
+            Zastoupení
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.zastoupeni)
@@ -45,7 +45,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.jmeno)
+            Jméno
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.jmeno)
@@ -53,7 +53,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.bytem)
+            Bytem
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.bytem)
@@ -61,7 +61,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.telefon)
+            Telefon
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.telefon)
@@ -69,7 +69,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.email)
+            E-mail
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.email)
@@ -77,7 +77,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.cislo_uctu)
+            Číslo účtu
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.cislo_uctu)
@@ -85,7 +85,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.datum_narozeni)
+            Datum narození
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.datum_narozeni)
@@ -93,7 +93,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.datum_spolecnost)
+            Datum společnost
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.datum_spolecnost)
@@ -101,7 +101,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.datum_osoba)
+            Datum osoba
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.datum_osoba)
@@ -117,7 +117,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.text_smlouvy_id, "text_smlouvy")
+            Text smlouvy
         </div>
         <div class="editor-field">
             @Html.DropDownList("text_smlouvy_id", String.Empty)
@@ -125,13 +125,13 @@
         </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Uložit" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Zpět na list", "Index")
 </div>
 
 @section Scripts {

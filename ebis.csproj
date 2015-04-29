@@ -165,7 +165,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArtController.cs" />
-    <Compile Include="Controllers\ArtistController.cs" />
+    <Compile Include="Controllers\InterpretController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ContractController.cs" />
@@ -324,11 +324,11 @@
     <Content Include="Views\Art\Create.cshtml" />
     <Content Include="Views\Art\Edit.cshtml" />
     <Content Include="Views\Art\Delete.cshtml" />
-    <Content Include="Views\Artist\Index.cshtml" />
-    <Content Include="Views\Artist\Details.cshtml" />
-    <Content Include="Views\Artist\Create.cshtml" />
-    <Content Include="Views\Artist\Edit.cshtml" />
-    <Content Include="Views\Artist\Delete.cshtml" />
+    <Content Include="Views\Interpret\Index.cshtml" />
+    <Content Include="Views\Interpret\Details.cshtml" />
+    <Content Include="Views\Interpret\Create.cshtml" />
+    <Content Include="Views\Interpret\Edit.cshtml" />
+    <Content Include="Views\Interpret\Delete.cshtml" />
     <Content Include="Views\Contract\Index.cshtml" />
     <Content Include="Views\Contract\Details.cshtml" />
     <Content Include="Views\Contract\Create.cshtml" />

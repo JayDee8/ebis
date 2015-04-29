@@ -1,24 +1,24 @@
 ﻿@model ebis.Models.naklady
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Odebrat náklady";
 }
 
-<h2>Delete</h2>
+<h2>@ViewBag.Title</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Opravdu chcete odebrat tyto náklady?</h3>
 <fieldset>
     <legend>naklady</legend>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.jmeno)
+         Název
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.jmeno)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.typ)
+         Type
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.typ)
@@ -26,7 +26,7 @@
 </fieldset>
 @using (Html.BeginForm()) {
     <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
+        <input type="submit" value="Odebrat" /> |
+        @Html.ActionLink("Zpět na seznam", "Index")
     </p>
 }

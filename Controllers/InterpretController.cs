@@ -9,12 +9,12 @@ using ebis.Models;
 
 namespace ebis.Controllers
 {
-    public class ArtistController : Controller
+    public class InterpretController : Controller
     {
         private dbEntities db = new dbEntities();
 
         //
-        // GET: /Artist/
+        // GET: /Interpret/
 
         public ActionResult Index()
         {
@@ -22,7 +22,7 @@ namespace ebis.Controllers
         }
 
         //
-        // GET: /Artist/Details/5
+        // GET: /Interpret/Details/5
 
         public ActionResult Details(int id = 0)
         {
@@ -35,7 +35,7 @@ namespace ebis.Controllers
         }
 
         //
-        // GET: /Artist/Create
+        // GET: /Interpret/Create
 
         public ActionResult Create()
         {
@@ -43,7 +43,7 @@ namespace ebis.Controllers
         }
 
         //
-        // POST: /Artist/Create
+        // POST: /Interpret/Create
 
         [HttpPost]
         public ActionResult Create(osoby osoby)
@@ -59,7 +59,7 @@ namespace ebis.Controllers
         }
 
         //
-        // GET: /Artist/Edit/5
+        // GET: /Interpret/Edit/5
 
         public ActionResult Edit(int id = 0)
         {
@@ -72,7 +72,7 @@ namespace ebis.Controllers
         }
 
         //
-        // POST: /Artist/Edit/5
+        // POST: /Interpret/Edit/5
 
         [HttpPost]
         public ActionResult Edit(osoby osoby)
@@ -88,7 +88,7 @@ namespace ebis.Controllers
         }
 
         //
-        // GET: /Artist/Delete/5
+        // GET: /Interpret/Delete/5
 
         public ActionResult Delete(int id = 0)
         {
@@ -101,7 +101,7 @@ namespace ebis.Controllers
         }
 
         //
-        // POST: /Artist/Delete/5
+        // POST: /Interpret/Delete/5
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)

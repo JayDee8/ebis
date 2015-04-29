@@ -1,10 +1,10 @@
 @model ebis.Models.kontakty
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Upravit kontakt";
 }
 
-<h2>Edit</h2>
+<h2>@ViewBag.Title</h2>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
@@ -15,7 +15,7 @@
         @Html.HiddenFor(model => model.pk_id)
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.jmeno)
+            Jméno
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.jmeno)
@@ -23,7 +23,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.prijmeni)
+            Pøíjmení
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.prijmeni)
@@ -31,7 +31,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.email)
+            E-mail
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.email)
@@ -39,7 +39,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.telefon)
+            Telefon
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.telefon)
@@ -47,13 +47,13 @@
         </div>
 
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Uložit" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Zpìt na seznam", "Index")
 </div>
 
 @section Scripts {

@@ -1,43 +1,43 @@
 ﻿@model ebis.Models.lokace
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detaily lokace";
 }
 
-<h2>Details</h2>
+<h2>@ViewBag.Title</h2>
 
 <fieldset>
     <legend>lokace</legend>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.jmeno)
+         Jméno
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.jmeno)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.adresa)
+         Adresa
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.adresa)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.gps)
+         GPS
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.gps)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.link)
+         Odkaz
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.link)
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.pk_id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Upravit lokaci", "Edit", new { id=Model.pk_id }) |
+    @Html.ActionLink("Zpět na seznam", "Index")
 </p>

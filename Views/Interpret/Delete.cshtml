@@ -1,106 +1,109 @@
 ﻿@model ebis.Models.osoby
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Odebrat osoby";
 }
 
-<h2>Details</h2>
+<h2>@ViewBag.Title</h2>
 
+<h3>Opravdu chcete odebrat tuto osobu?</h3>
 <fieldset>
     <legend>osoby</legend>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.jmeno)
+         Jméno
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.jmeno)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.prijmeni)
+         Příjmení
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.prijmeni)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.telefon)
+         Telefon
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.telefon)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.email)
+         E-mail
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.email)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.mesto)
+         Město
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.mesto)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.psc)
+         PSČ
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.psc)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.narodnost)
+         Národnost
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.narodnost)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.cislo_uctu)
+         Číslo účtu
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.cislo_uctu)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.adresa)
+         Adresa
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.adresa)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.datum_narozeni)
+         Datum narození
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.datum_narozeni)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.misto_narozeni)
+         Místo narození
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.misto_narozeni)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.ic_dic)
+         IČ/DIČ
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.ic_dic)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.poznamka)
+         Poznámka
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.poznamka)
     </div>
 </fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Odebrat" /> |
+        @Html.ActionLink("Zpět na seznam", "Index")
+    </p>
+}

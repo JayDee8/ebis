@@ -1,10 +1,10 @@
 ﻿@model ebis.Models.lokace
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Vytvořit lokaci";
 }
 
-<h2>Create</h2>
+<h2>@ViewBag.Title</h2>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
@@ -13,7 +13,7 @@
         <legend>lokace</legend>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.jmeno)
+            Jméno
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.jmeno)
@@ -21,7 +21,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.adresa)
+            Adresa
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.adresa)
@@ -29,7 +29,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.gps)
+            GPS
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.gps)
@@ -37,7 +37,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.link)
+            Odkaz
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.link)
@@ -45,13 +45,13 @@
         </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Uložit" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Zpět na seznam", "Index")
 </div>
 
 @section Scripts {

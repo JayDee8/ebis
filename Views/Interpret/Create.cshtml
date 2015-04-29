@@ -1,10 +1,10 @@
 ﻿@model ebis.Models.osoby
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Vytvořit umělce";
 }
 
-<h2>Create</h2>
+<h2>@ViewBag.Title</h2>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
@@ -13,14 +13,15 @@
         <legend>osoby</legend>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.id)
+            ID
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.id)
             @Html.ValidationMessageFor(model => model.id)
         </div>
+
         <div class="editor-label">
-            @Html.LabelFor(model => model.jmeno)
+            Jméno
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.jmeno)
@@ -28,7 +29,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.prijmeni)
+            Příjmení
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.prijmeni)
@@ -36,7 +37,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.telefon)
+            Telefon
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.telefon)
@@ -44,7 +45,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.email)
+            E-mail
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.email)
@@ -52,7 +53,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.mesto)
+            Město
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.mesto)
@@ -60,7 +61,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.psc)
+            PSČ
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.psc)
@@ -68,7 +69,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.narodnost)
+            Národnost
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.narodnost)
@@ -76,7 +77,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.cislo_uctu)
+            Číslo účtu
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.cislo_uctu)
@@ -84,7 +85,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.adresa)
+            Adresa
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.adresa)
@@ -92,7 +93,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.datum_narozeni)
+            Datum narození
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.datum_narozeni)
@@ -100,7 +101,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.misto_narozeni)
+            Místo narození
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.misto_narozeni)
@@ -108,7 +109,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.ic_dic)
+            IČ/DIČ
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.ic_dic)
@@ -116,21 +117,21 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.poznamka)
+            Poznámka
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.poznamka)
+            @Html.TextAreaFor(model => model.poznamka)
             @Html.ValidationMessageFor(model => model.poznamka)
         </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Uložit" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Zpět na seznam", "Index")
 </div>
 
 @section Scripts {

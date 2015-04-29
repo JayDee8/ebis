@@ -1,36 +1,36 @@
 ﻿@model ebis.Models.titul
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detaily titulu";
 }
 
-<h2>Details</h2>
+<h2>@ViewBag.Title</h2>
 
 <fieldset>
     <legend>titul</legend>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.nazev)
+         Název
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.nazev)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.autor)
+         Autor
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.autor)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.poznamka)
+         Poznámka
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.poznamka)
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.pk_id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Upravit titul", "Edit", new { id=Model.pk_id }) |
+    @Html.ActionLink("Zpět na seznam", "Index")
 </p>

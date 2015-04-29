@@ -22,7 +22,7 @@
                         string controllerName = ViewContext.RouteData.Values["controller"].ToString();
                         <nav>
                             <ul id="menu">
-                                <li class="@(controllerName == "Artist" ? "active" : "")">@Html.ActionLink("Umělci", "Index", "Artist")</li>
+                                <li class="@(controllerName == "Interpret" ? "active" : "")">@Html.ActionLink("Umělci", "Index", "Interpret")</li>
                                 <li class="@(controllerName == "Event" ? "active" : "")">@Html.ActionLink("Akce", "Index", "Event")</li>
                                 <li class="@(controllerName == "Contact" ? "active" : "")">@Html.ActionLink("Kontakty", "Index", "Contact")</li>
                             </ul>    

@@ -1,22 +1,22 @@
 ﻿@model ebis.Models.produkcni_listy
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detaily produkčních listů";
 }
 
-<h2>Details</h2>
+<h2>@ViewBag.Title</h2>
 
 <fieldset>
     <legend>produkcni_listy</legend>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.jmeno_aktivity)
+         Jméno aktivity
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.jmeno_aktivity)
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.pk_id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Upravit produkční listy", "Edit", new { id=Model.pk_id }) |
+    @Html.ActionLink("Zpět na seznam", "Index")
 </p>
