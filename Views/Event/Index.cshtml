@@ -1,57 +1,23 @@
 ﻿@model IEnumerable<ebis.Models.akce>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Akce";
+    WebGrid grid = new WebGrid(Model);
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Přidat novou akci", "Create")
 </p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.jmeno)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.popis)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.titul.titul1)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.datum)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cas)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.jmeno)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.popis)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.titul.titul1)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.datum)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cas)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.pk_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.pk_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.pk_id })
-        </td>
-    </tr>
-}
-
-</table>
+@grid.GetHtml(columns:
+    grid.Columns
+    (
+        grid.Column("jmeno", "Název"),
+        grid.Column("popis", "Popis"),
+        grid.Column("datum", "Datum"),
+        grid.Column("cas", "Čas"),
+        grid.Column(format: (item) => new HtmlString(Html.ActionLink("Detaily", "Details", new { id = item.pk_id }) + " | " +
+                    Html.ActionLink("Upravit", "Edit", new { id = item.pk_id }) + " | " +
+                    Html.ActionLink("Smazat", "Delete", new { id = item.pk_id })))
+        ))

@@ -314,15 +314,6 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\Contacts.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Home\Locations.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Home\Artists.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Finance\Index.cshtml" />
     <Content Include="Views\Finance\Details.cshtml" />
     <Content Include="Views\Finance\Create.cshtml" />
@@ -352,7 +343,6 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>db.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Views\Home\ProdLists.cshtml" />
     <Content Include="Views\Location\Index.cshtml" />
     <Content Include="Views\Location\Details.cshtml" />
     <Content Include="Views\Location\Create.cshtml" />
@@ -368,12 +358,6 @@
     <Content Include="Views\ProdList\Create.cshtml" />
     <Content Include="Views\ProdList\Edit.cshtml" />
     <Content Include="Views\ProdList\Delete.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Home\Instruments.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Home\Finances.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

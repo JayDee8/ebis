@@ -22,11 +22,18 @@
                         string controllerName = ViewContext.RouteData.Values["controller"].ToString();
                         <nav>
                             <ul id="menu">
+                                <li class="@(controllerName == "Artist" ? "active" : "")">@Html.ActionLink("Umělci", "Index", "Artist")</li>
+                                <li class="@(controllerName == "Event" ? "active" : "")">@Html.ActionLink("Akce", "Index", "Event")</li>
+                                <li class="@(controllerName == "Contact" ? "active" : "")">@Html.ActionLink("Kontakty", "Index", "Contact")</li>
+                            </ul>    
+                        </nav>
+                        <nav>
+                            <ul id="submenu">
                                 <li class="@(controllerName == "Finance" ? "active" : "")">@Html.ActionLink("Náklady", "Index", "Finance")</li>
                                 <li class="@(controllerName == "Location" ? "active" : "")">@Html.ActionLink("Lokace", "Index", "Location")</li>
                                 <li class="@(controllerName == "Instrument" ? "active" : "")">@Html.ActionLink("Nástroje", "Index", "Instrument")</li>
                                 <li class="@(controllerName == "Art" ? "active" : "")">@Html.ActionLink("Tituly", "Index", "Art")</li>
-                                <li class="@(controllerName == "Contact" ? "active" : "")">@Html.ActionLink("Kontakty", "Index", "Contact")</li>
+                                <li class="@(controllerName == "Contract" ? "active" : "")">@Html.ActionLink("Smlouvy", "Index", "Contract")</li>
                                 <li class="@(controllerName == "ProdList" ? "active" : "")">@Html.ActionLink("Produkční listy", "Index", "ProdList")</li>
                             </ul>
                         </nav>

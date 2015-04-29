@@ -1,111 +1,33 @@
 ﻿@model IEnumerable<ebis.Models.smlouvy>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Smlouvy";
+    WebGrid grid = new WebGrid(Model);
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Přidat novou smlouvu", "Create")
 </p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.spolecnost)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ic)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.sidlo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.zastoupeni)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.jmeno)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.bytem)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.telefon)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cislo_uctu)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.datum_narozeni)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.datum_spolecnost)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.datum_osoba)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.osoby.jmeno)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.text_smlouvy.text1)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.spolecnost)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ic)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.sidlo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.zastoupeni)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.jmeno)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.bytem)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.telefon)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cislo_uctu)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.datum_narozeni)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.datum_spolecnost)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.datum_osoba)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.osoby.jmeno)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.text_smlouvy.text1)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.pk_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.pk_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.pk_id })
-        </td>
-    </tr>
-}
-
-</table>
+@grid.GetHtml(columns:
+    grid.Columns
+    (
+        grid.Column("spolecnost", "Společnost"),
+        grid.Column("ic", "IČ"),
+        grid.Column("sidlo", "Sídlo"),
+        grid.Column("zastoupeni", "Zastoupení"),
+        grid.Column("jmeno", "Jméno"),
+        grid.Column("bytem", "Bytem"),
+        grid.Column("telefon", "Telefon"),
+        grid.Column("email", "E-mail"),
+        grid.Column("cislo_uctu", "Číslo účtu"),
+        grid.Column("datum_narozeni", "Datum narození"),
+        grid.Column("datum_spolecnost", "Datum společnost"),
+        grid.Column("datum_osoba", "Datum osoba"),
+        grid.Column("osoby.jmenoPrijmeniId", "Osoba"),
+        grid.Column("text_smlouvy.text1", "Text smlouvy"),   
+        grid.Column(format: (item) => new HtmlString(Html.ActionLink("Detaily", "Details", new { id = item.pk_id }) + " | " +
+                    Html.ActionLink("Upravit", "Edit", new { id = item.pk_id }) + " | " +
+                    Html.ActionLink("Smazat", "Delete", new { id = item.pk_id })))
+        ))

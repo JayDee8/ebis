@@ -14,5 +14,8 @@
 @grid.GetHtml(columns:
     grid.Columns
     (
-        grid.Column("jmeno_aktivity", "Název aktivity")
+        grid.Column("jmeno_aktivity", "Název aktivity"),
+        grid.Column(format: (item) => new HtmlString(Html.ActionLink("Detaily", "Details", new { id = item.pk_id }) + " | " +
+                    Html.ActionLink("Upravit", "Edit", new { id = item.pk_id }) + " | " +
+                    Html.ActionLink("Smazat", "Delete", new { id = item.pk_id })))
     ))

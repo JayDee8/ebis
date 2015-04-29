@@ -2367,7 +2367,15 @@ namespace ebis.Models
         private global::System.String _jmeno;
         partial void OnjmenoChanging(global::System.String value);
         partial void OnjmenoChanged();
-    
+
+                public global::System.String jmenoPrijmeniId
+        {
+            get
+            {
+                return _jmeno + " " + _prijmeni + " id: " + _id;
+            }
+        }
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
