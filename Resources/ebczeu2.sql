@@ -131,7 +131,7 @@ CREATE TABLE "nastroje" (
 
 CREATE TABLE "osoby" (
   "pk_id" int IDENTITY(1,1) NOT NULL UNIQUE,
-  "id" int IDENTITY(1,1) NOT NULL UNIQUE,
+  "id" int NOT NULL,
   "jmeno" varchar(15) NOT NULL,
   "prijmeni" varchar(20) NOT NULL,
   "telefon" varchar(13) NOT NULL,
