@@ -131,7 +131,7 @@ CREATE TABLE "nastroje" (
 
 CREATE TABLE "osoby" (
   "pk_id" int IDENTITY(1,1) NOT NULL UNIQUE,
-  "id" int NOT NULL,
+  "id" int IDENTITY(1,1) NOT NULL UNIQUE,
   "jmeno" varchar(15) NOT NULL,
   "prijmeni" varchar(20) NOT NULL,
   "telefon" varchar(13) NOT NULL,
@@ -190,6 +190,7 @@ CREATE TABLE "osoby_nastroje" (
 CREATE TABLE "produkcni_listy" (
   "pk_id" int IDENTITY(1,1) NOT NULL UNIQUE,
   "jmeno_aktivity" varchar(100) NOT NULL,
+  "typ" int NOT NULL,
 
   CONSTRAINT PK_produkcni_listy_pk_id PRIMARY KEY CLUSTERED (pk_id)
 );
