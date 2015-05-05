@@ -1,0 +1,57 @@
+﻿@model ebis.Models.osoby_akce
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>osoby_akce</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.poznamka)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.poznamka)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.honorar)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.honorar)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.doprava)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.doprava)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.srazkova_dan)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.srazkova_dan)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.vyplaceno)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.vyplaceno)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.stav)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.stav)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

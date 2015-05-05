@@ -1,0 +1,63 @@
+﻿@model ebis.Models.akce_produkcni_listy
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>akce_produkcni_listy</legend>
+
+        @Html.HiddenFor(model => model.akce_id)
+
+        @Html.HiddenFor(model => model.produkcni_listy_id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.poznamka)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.poznamka)
+            @Html.ValidationMessageFor(model => model.poznamka)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.termin)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.termin)
+            @Html.ValidationMessageFor(model => model.termin)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.status)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.status)
+            @Html.ValidationMessageFor(model => model.status)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.zodpovedna_osoba)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.zodpovedna_osoba)
+            @Html.ValidationMessageFor(model => model.zodpovedna_osoba)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

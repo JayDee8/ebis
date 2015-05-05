@@ -1,0 +1,85 @@
+﻿@model ebis.Models.fermany
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>fermany</legend>
+
+        @Html.HiddenFor(model => model.pk_id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.akce_id, "akce")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("akce_id", String.Empty)
+            @Html.ValidationMessageFor(model => model.akce_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.lokace_id, "lokace")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("lokace_id", String.Empty)
+            @Html.ValidationMessageFor(model => model.lokace_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.datum)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.datum)
+            @Html.ValidationMessageFor(model => model.datum)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.cas)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.cas)
+            @Html.ValidationMessageFor(model => model.cas)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.orchestr)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.orchestr)
+            @Html.ValidationMessageFor(model => model.orchestr)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.sbor)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.sbor)
+            @Html.ValidationMessageFor(model => model.sbor)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.solisti)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.solisti)
+            @Html.ValidationMessageFor(model => model.solisti)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

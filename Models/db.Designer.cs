@@ -15,7 +15,6 @@ using System.Data.Objects.DataClasses;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
-using System.ComponentModel.DataAnnotations;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
@@ -2348,7 +2347,6 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [Required]
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String jmeno
@@ -2776,7 +2774,8 @@ namespace ebis.Models
         /// <param name="doprava">Initial value of the doprava property.</param>
         /// <param name="srazkova_dan">Initial value of the srazkova_dan property.</param>
         /// <param name="vyplaceno">Initial value of the vyplaceno property.</param>
-        public static osoby_akce Createosoby_akce(global::System.Int32 osoby_id, global::System.Int32 akce_id, global::System.Int32 nastroje_id, global::System.String poznamka, global::System.Int32 honorar, global::System.Int32 doprava, global::System.Int32 srazkova_dan, global::System.Int32 vyplaceno)
+        /// <param name="stav">Initial value of the stav property.</param>
+        public static osoby_akce Createosoby_akce(global::System.Int32 osoby_id, global::System.Int32 akce_id, global::System.Int32 nastroje_id, global::System.String poznamka, global::System.Int32 honorar, global::System.Int32 doprava, global::System.Int32 srazkova_dan, global::System.Int32 vyplaceno, global::System.Int32 stav)
         {
             osoby_akce osoby_akce = new osoby_akce();
             osoby_akce.osoby_id = osoby_id;
@@ -2787,6 +2786,7 @@ namespace ebis.Models
             osoby_akce.doprava = doprava;
             osoby_akce.srazkova_dan = srazkova_dan;
             osoby_akce.vyplaceno = vyplaceno;
+            osoby_akce.stav = stav;
             return osoby_akce;
         }
 
@@ -2994,6 +2994,30 @@ namespace ebis.Models
         private global::System.Int32 _vyplaceno;
         partial void OnvyplacenoChanging(global::System.Int32 value);
         partial void OnvyplacenoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 stav
+        {
+            get
+            {
+                return _stav;
+            }
+            set
+            {
+                OnstavChanging(value);
+                ReportPropertyChanging("stav");
+                _stav = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("stav");
+                OnstavChanged();
+            }
+        }
+        private global::System.Int32 _stav;
+        partial void OnstavChanging(global::System.Int32 value);
+        partial void OnstavChanged();
 
         #endregion
 

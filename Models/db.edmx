@@ -95,7 +95,7 @@
           <Key>
             <PropertyRef Name="pk_id" />
           </Key>
-          <Property Name="pk_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="pk_id" Type="int" Nullable="false" />
           <Property Name="jmeno" Type="varchar" Nullable="false" MaxLength="40" />
           <Property Name="popis" Type="varchar" Nullable="false" MaxLength="160" />
           <Property Name="titul_id" Type="int" Nullable="false" />
@@ -127,7 +127,7 @@
           <Key>
             <PropertyRef Name="pk_id" />
           </Key>
-          <Property Name="pk_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="pk_id" Type="int" Nullable="false" />
           <Property Name="akce_id" Type="int" Nullable="false" />
           <Property Name="lokace_id" Type="int" Nullable="false" />
           <Property Name="datum" Type="datetime" Nullable="false" />
@@ -140,7 +140,7 @@
           <Key>
             <PropertyRef Name="pk_id" />
           </Key>
-          <Property Name="pk_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="pk_id" Type="int" Nullable="false" />
           <Property Name="jmeno" Type="varchar" Nullable="false" MaxLength="15" />
           <Property Name="prijmeni" Type="varchar" Nullable="false" MaxLength="20" />
           <Property Name="email" Type="varchar" Nullable="false" MaxLength="40" />
@@ -150,7 +150,7 @@
           <Key>
             <PropertyRef Name="pk_id" />
           </Key>
-          <Property Name="pk_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="pk_id" Type="int" Nullable="false" />
           <Property Name="jmeno" Type="varchar" Nullable="false" MaxLength="40" />
           <Property Name="adresa" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="gps" Type="varchar" Nullable="false" MaxLength="40" />
@@ -160,7 +160,7 @@
           <Key>
             <PropertyRef Name="pk_id" />
           </Key>
-          <Property Name="pk_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="pk_id" Type="int" Nullable="false" />
           <Property Name="jmeno" Type="varchar" Nullable="false" MaxLength="40" />
           <Property Name="typ" Type="int" Nullable="false" />
         </EntityType>
@@ -168,7 +168,7 @@
           <Key>
             <PropertyRef Name="pk_id" />
           </Key>
-          <Property Name="pk_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="pk_id" Type="int" Nullable="false" />
           <Property Name="jmeno" Type="varchar" Nullable="false" MaxLength="40" />
           <Property Name="typ" Type="int" Nullable="false" />
         </EntityType>
@@ -176,7 +176,7 @@
           <Key>
             <PropertyRef Name="pk_id" />
           </Key>
-          <Property Name="pk_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="pk_id" Type="int" Nullable="false" />
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="jmeno" Type="varchar" Nullable="false" MaxLength="15" />
           <Property Name="prijmeni" Type="varchar" Nullable="false" MaxLength="20" />
@@ -206,6 +206,7 @@
           <Property Name="doprava" Type="int" Nullable="false" />
           <Property Name="srazkova_dan" Type="int" Nullable="false" />
           <Property Name="vyplaceno" Type="int" Nullable="false" />
+          <Property Name="stav" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="osoby_nastroje">
           <Key>
@@ -219,7 +220,7 @@
           <Key>
             <PropertyRef Name="pk_id" />
           </Key>
-          <Property Name="pk_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="pk_id" Type="int" Nullable="false" />
           <Property Name="jmeno_aktivity" Type="varchar" Nullable="false" MaxLength="100" />
           <Property Name="typ" Type="int" Nullable="false" />
         </EntityType>
@@ -227,7 +228,7 @@
           <Key>
             <PropertyRef Name="pk_id" />
           </Key>
-          <Property Name="pk_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="pk_id" Type="int" Nullable="false" />
           <Property Name="spolecnost" Type="varchar" Nullable="false" MaxLength="40" />
           <Property Name="ic" Type="varchar" Nullable="false" MaxLength="60" />
           <Property Name="sidlo" Type="varchar" Nullable="false" MaxLength="60" />
@@ -247,7 +248,7 @@
           <Key>
             <PropertyRef Name="pk_id" />
           </Key>
-          <Property Name="pk_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="pk_id" Type="int" Nullable="false" />
           <Property Name="text1" Type="varchar" Nullable="false" MaxLength="450" />
           <Property Name="text2" Type="varchar" Nullable="false" MaxLength="2000" />
           <Property Name="text3" Type="varchar" Nullable="false" MaxLength="1000" />
@@ -259,7 +260,7 @@
           <Key>
             <PropertyRef Name="pk_id" />
           </Key>
-          <Property Name="pk_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="pk_id" Type="int" Nullable="false" />
           <Property Name="nazev" Type="varchar" Nullable="false" MaxLength="40" />
           <Property Name="autor" Type="varchar" Nullable="false" MaxLength="35" />
           <Property Name="poznamka" Type="varchar" Nullable="false" MaxLength="160" />
@@ -268,7 +269,7 @@
           <Key>
             <PropertyRef Name="pk_id" />
           </Key>
-          <Property Name="pk_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="pk_id" Type="int" Nullable="false" />
           <Property Name="osoby_id" Type="int" Nullable="false" />
           <Property Name="lokace_id" Type="int" Nullable="false" />
           <Property Name="akce_id" Type="int" Nullable="false" />
@@ -739,6 +740,7 @@
           <NavigationProperty Name="akce" Relationship="ebis_dbModel.FK_osoby_akce_akce" FromRole="osoby_akce" ToRole="akce" />
           <NavigationProperty Name="nastroje" Relationship="ebis_dbModel.FK_osoby_akce_nastroje" FromRole="osoby_akce" ToRole="nastroje" />
           <NavigationProperty Name="osoby" Relationship="ebis_dbModel.FK_osoby_akce_osoby" FromRole="osoby_akce" ToRole="osoby" />
+          <Property Type="Int32" Name="stav" Nullable="false" />
         </EntityType>
         <EntityType Name="produkcni_listy">
           <Key>
@@ -1141,6 +1143,7 @@
           <EntitySetMapping Name="osoby_akce">
             <EntityTypeMapping TypeName="ebis_dbModel.osoby_akce">
               <MappingFragment StoreEntitySet="osoby_akce">
+                <ScalarProperty Name="stav" ColumnName="stav" />
                 <ScalarProperty Name="osoby_id" ColumnName="osoby_id" />
                 <ScalarProperty Name="akce_id" ColumnName="akce_id" />
                 <ScalarProperty Name="nastroje_id" ColumnName="nastroje_id" />

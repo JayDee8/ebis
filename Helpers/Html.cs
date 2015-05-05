@@ -54,5 +54,11 @@ namespace ebis.Helpers
                 return MvcHtmlString.Create(builder.ToString());
             }
         }
+
+        public static MvcHtmlString SumValues(this HtmlHelper htmlHelper, int value1, int value2, int value3)
+        {
+            int res = value1 + value2 + value3;
+            return MvcHtmlString.Create(res.ToString());
+        }
     }
 }

@@ -112,11 +112,8 @@
     <Reference Include="System.Web.Optimization">
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
-    <Reference Include="T4MVCExtensions">
-      <HintPath>..\packages\T4MVCExtensions.3.15.0\lib\net40\T4MVCExtensions.dll</HintPath>
-    </Reference>
     <Reference Include="TwitterBootstrapMVC4">
-      <HintPath>..\..\TwitterBootstrapMVC4.dll</HintPath>
+      <HintPath>Resources\TwitterBootstrapMVC4.dll</HintPath>
     </Reference>
     <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -169,8 +166,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccommodationController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArtController.cs" />
+    <Compile Include="Controllers\FinanceItemController.cs" />
     <Compile Include="Controllers\InterpretController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
@@ -179,8 +178,11 @@
     <Compile Include="Controllers\FinanceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InstrumentController.cs" />
+    <Compile Include="Controllers\InviteController.cs" />
     <Compile Include="Controllers\LocationController.cs" />
     <Compile Include="Controllers\ProdListController.cs" />
+    <Compile Include="Controllers\ProdListItemController.cs" />
+    <Compile Include="Controllers\ScheduleController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -192,7 +194,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>db.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\EventModel.cs" />
     <Compile Include="Models\InterpretInstrumentModel.cs" />
+    <Compile Include="Models\InviteModel.cs" />
+    <Compile Include="Models\ModelHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -383,6 +388,21 @@
     <None Include="fonts\glyphicons-halflings-regular.woff" />
     <None Include="fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-1.9.1.min.map" />
+    <Content Include="Views\Invite\Delete.cshtml" />
+    <Content Include="Views\Invite\Details.cshtml" />
+    <Content Include="Views\Invite\Index.cshtml" />
+    <Content Include="Views\ProdListItem\Create.cshtml" />
+    <Content Include="Views\ProdListItem\Delete.cshtml" />
+    <Content Include="Views\ProdListItem\Edit.cshtml" />
+    <Content Include="Views\Schedule\Create.cshtml" />
+    <Content Include="Views\Schedule\Delete.cshtml" />
+    <Content Include="Views\Schedule\Edit.cshtml" />
+    <Content Include="Views\FinanceItem\Create.cshtml" />
+    <Content Include="Views\FinanceItem\Delete.cshtml" />
+    <Content Include="Views\FinanceItem\Edit.cshtml" />
+    <Content Include="Views\Accommodation\Create.cshtml" />
+    <Content Include="Views\Accommodation\Delete.cshtml" />
+    <Content Include="Views\Accommodation\Edit.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
