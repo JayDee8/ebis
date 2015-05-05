@@ -8,19 +8,13 @@
 
 <fieldset>
     <legend>naklady</legend>
-
-    <div class="display-label">
-         Jméno
+    <div class="form-group row">
+        <label class="col-md-2 control-label">Jméno</label>
+        <div class="col-md-10">@Html.DisplayFor(model => model.jmeno)</div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.jmeno)
-    </div>
-
-    <div class="display-label">
-         Typ
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.typ)
+    <div class="form-group row">
+        <label class="col-md-2 control-label">Typ</label>
+        <div class="col-md-10">@Html.DisplayFor(model => model.typ)</div>
     </div>
 </fieldset>
 <p>

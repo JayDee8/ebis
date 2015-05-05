@@ -4,29 +4,11 @@
     ViewBag.Title = "Odebrat náklady";
 }
 
-<h2>@ViewBag.Title</h2>
+<h3>Opravdu chcete odebrat náklady @Model.jmeno?</h3>
 
-<h3>Opravdu chcete odebrat tyto náklady?</h3>
-<fieldset>
-    <legend>naklady</legend>
-
-    <div class="display-label">
-         Název
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.jmeno)
-    </div>
-
-    <div class="display-label">
-         Type
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.typ)
-    </div>
-</fieldset>
 @using (Html.BeginForm()) {
     <p>
-        <input type="submit" value="Odebrat" /> |
+        @Html.Bootstrap().SubmitButton().Style(ButtonStyle.Danger).Text("Odebrat") |
         @Html.ActionLink("Zpět na seznam", "Index")
     </p>
 }

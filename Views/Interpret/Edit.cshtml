@@ -1,143 +1,53 @@
-﻿@model ebis.Models.osoby
-
+﻿@model ebis.Models.InterpretInstrumentModel
 @{
-    ViewBag.Title = "Upravit umělce";
+    ViewBag.Title = "Upravit umělce"; 
 }
 
-<h2>@ViewBag.Title</h2>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#instrumentListBox').multiselect();
+    });
+</script>
 
-@using (Html.BeginForm()) {
+<h2>@ViewBag.Title</h2>
+@{
+    Alert a = new Alert();
+}
+
+@using (Html.BeginForm())
+{
     @Html.ValidationSummary(true)
 
+    @Html.HiddenFor(model => model.Interpret.pk_id)
+    @Html.HiddenFor(model => model.Interpret.id)
+    
     <fieldset>
         <legend>osoby</legend>
-
-        @Html.HiddenFor(model => model.pk_id)
-
-        @Html.HiddenFor(model => model.id)
-
-        <div class="editor-label">
-            ID
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.id)
-            @Html.ValidationMessageFor(model => model.id)
-        </div>
-
-        <div class="editor-label">
-            Jméno
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.jmeno)
-            @Html.ValidationMessageFor(model => model.jmeno)
-        </div>
-
-        <div class="editor-label">
-            Příjmení
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.prijmeni)
-            @Html.ValidationMessageFor(model => model.prijmeni)
-        </div>
-
-        <div class="editor-label">
-            Telefon
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.telefon)
-            @Html.ValidationMessageFor(model => model.telefon)
-        </div>
-
-        <div class="editor-label">
-            E-mail
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.email)
-            @Html.ValidationMessageFor(model => model.email)
-        </div>
-
-        <div class="editor-label">
-            Město
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.mesto)
-            @Html.ValidationMessageFor(model => model.mesto)
-        </div>
-
-        <div class="editor-label">
-            PSČ
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.psc)
-            @Html.ValidationMessageFor(model => model.psc)
-        </div>
-
-        <div class="editor-label">
-            Národnost
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.narodnost)
-            @Html.ValidationMessageFor(model => model.narodnost)
-        </div>
-
-        <div class="editor-label">
-            Číslo účtu
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.cislo_uctu)
-            @Html.ValidationMessageFor(model => model.cislo_uctu)
-        </div>
-
-        <div class="editor-label">
-            Adresa
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.adresa)
-            @Html.ValidationMessageFor(model => model.adresa)
-        </div>
-
-        <div class="editor-label">
-            Datum narození
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.datum_narozeni)
-            @Html.ValidationMessageFor(model => model.datum_narozeni)
-        </div>
-
-        <div class="editor-label">
-            Místo narození
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.misto_narozeni)
-            @Html.ValidationMessageFor(model => model.misto_narozeni)
-        </div>
-
-        <div class="editor-label">
-            IČ/DIČ
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ic_dic)
-            @Html.ValidationMessageFor(model => model.ic_dic)
-        </div>
-
-        <div class="editor-label">
-            Poznámka
-        </div>
-        <div class="editor-field">
-            @Html.TextAreaFor(model => model.poznamka)
-            @Html.ValidationMessageFor(model => model.poznamka)
-        </div>
-
-        <p>
-            <input type="submit" value="Uložit" />
-        </p>
+        @using (var f = Html.Bootstrap().Begin(new Form().Type(FormType.Horizontal)))
+        {
+            @f.ControlGroup().TextBoxFor(m => m.Interpret.jmeno).Label().LabelText("Jméno")
+            @f.ControlGroup().TextBoxFor(m => m.Interpret.prijmeni).Label().LabelText("Příjmení")
+            @f.ControlGroup().TextBoxFor(m => m.Interpret.telefon).Label().LabelText("Telefon")
+            @f.ControlGroup().TextBoxFor(m => m.Interpret.email).Label().LabelText("E-mail")
+            @f.ControlGroup().TextBoxFor(m => m.Interpret.adresa).Label().LabelText("Adresa")
+            @f.ControlGroup().TextBoxFor(m => m.Interpret.mesto).Label().LabelText("Město")
+            @f.ControlGroup().TextBoxFor(m => m.Interpret.psc).Label().LabelText("PSC")
+            @f.ControlGroup().TextBoxFor(m => m.Interpret.cislo_uctu).Label().LabelText("Číslo účtu")
+            @f.ControlGroup().TextBoxFor(m => m.Interpret.narodnost).Label().LabelText("Národnost")
+            @f.ControlGroup().TextBoxFor(m => m.Interpret.ic_dic).Label().LabelText("IČ/DIČ")
+            @f.ControlGroup().TextBoxFor(m => m.Interpret.datum_narozeni).Label().LabelText("Datum narození")
+            @f.ControlGroup().TextBoxFor(m => m.Interpret.misto_narozeni).Label().LabelText("Místo narození")
+            @f.ControlGroup().ListBoxFor(model => model.SelectedItemIds, new MultiSelectList(Model.AvailableItems, "pk_id", "jmeno", Model.SelectedItemIds)).Id("instrumentListBox").Label().LabelText("Nástroje")
+            @f.ControlGroup().TextAreaFor(m => m.Interpret.poznamka).Label().LabelText("Poznámka")
+            @f.ControlGroup().CustomControls(Html.Bootstrap().SubmitButton().Text("Upravit"))
+        }
     </fieldset>
 }
 
 <div>
     @Html.ActionLink("Zpět na seznam", "Index")
 </div>
-
+@*
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-}
+}*@

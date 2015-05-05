@@ -4,22 +4,12 @@
     ViewBag.Title = "Odebrat produkční listy";
 }
 
-<h2>@ViewBag.Title</h2>
+<h3>Opravdu chcete odebrat produkční listy @Model.jmeno_aktivity?</h3>
 
-<h3>Opravdu chcete odebrat tyto produkční listy?</h3>
-<fieldset>
-    <legend>produkcni_listy</legend>
-
-    <div class="display-label">
-         Jméno aktivity
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.jmeno_aktivity)
-    </div>
-</fieldset>
 @using (Html.BeginForm()) {
     <p>
-        <input type="submit" value="Odebrat" /> |
+        @Html.Bootstrap().SubmitButton().Style(ButtonStyle.Danger).Text("Odebrat") |
         @Html.ActionLink("Zpět na seznam", "Index")
     </p>
+    
 }

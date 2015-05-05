@@ -12,33 +12,13 @@
     <fieldset>
         <legend>titul</legend>
 
-        <div class="editor-label">
-            Název
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.nazev)
-            @Html.ValidationMessageFor(model => model.nazev)
-        </div>
-
-        <div class="editor-label">
-            Autor
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.autor)
-            @Html.ValidationMessageFor(model => model.autor)
-        </div>
-
-        <div class="editor-label">
-            Poznámka
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.poznamka)
-            @Html.ValidationMessageFor(model => model.poznamka)
-        </div>
-
-        <p>
-            <input type="submit" value="Přidat" />
-        </p>
+        @using (var f = Html.Bootstrap().Begin(new Form().Type(FormType.Horizontal)))
+        {
+            @f.ControlGroup().TextBoxFor(m => m.nazev).Label().LabelText("Název")
+            @f.ControlGroup().TextBoxFor(m => m.autor).Label().LabelText("Autor")
+            @f.ControlGroup().TextBoxFor(m => m.poznamka).Label().LabelText("Poznámka")
+            @f.ControlGroup().CustomControls(Html.Bootstrap().SubmitButton().Text("Přidat"))
+        }
     </fieldset>
 }
 

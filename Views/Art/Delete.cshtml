@@ -4,36 +4,11 @@
     ViewBag.Title = "Vymazat titul";
 }
 
-<h2>@ViewBag.Title</h2>
+<h3>Opravdu chcete vymazat titul @Model.nazev?</h3>
 
-<h3>Opravdu chcete vymazat tento titul?</h3>
-<fieldset>
-    <legend>titul</legend>
-
-    <div class="display-label">
-         Název
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.nazev)
-    </div>
-
-    <div class="display-label">
-         Autor
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.autor)
-    </div>
-
-    <div class="display-label">
-         Poznámka
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.poznamka)
-    </div>
-</fieldset>
 @using (Html.BeginForm()) {
     <p>
-        <input type="submit" value="Vymazat" /> |
+        @Html.Bootstrap().SubmitButton().Style(ButtonStyle.Danger).Text("Odebrat") |
         @Html.ActionLink("Zpět na seznam", "Index")
     </p>
 }

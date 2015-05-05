@@ -9,25 +9,17 @@
 <fieldset>
     <legend>titul</legend>
 
-    <div class="display-label">
-         Název
+    <div class="form-group row">
+        <label class="col-md-2 control-label">Název</label>
+        <div class="col-md-10">@Html.DisplayFor(model => model.nazev)</div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.nazev)
+    <div class="form-group row">
+        <label class="col-md-2 control-label">Autor</label>
+        <div class="col-md-10">@Html.DisplayFor(model => model.autor)</div>
     </div>
-
-    <div class="display-label">
-         Autor
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.autor)
-    </div>
-
-    <div class="display-label">
-         Poznámka
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.poznamka)
+    <div class="form-group row">
+        <label class="col-md-2 control-label">Poznámka</label>
+        <div class="col-md-10">@Html.DisplayFor(model => model.poznamka)</div>
     </div>
 </fieldset>
 <p>

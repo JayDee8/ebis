@@ -4,43 +4,11 @@
     ViewBag.Title = "Odebrat lokaci";
 }
 
-<h2>@ViewBag.Title</h2>
+<h3>Opravdu chcete odebrat lokaci @Model.jmeno?</h3>
 
-<h3>Opravdu chcete odebrat tuto lokaci?</h3>
-<fieldset>
-    <legend>lokace</legend>
-
-    <div class="display-label">
-         Jméno
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.jmeno)
-    </div>
-
-    <div class="display-label">
-         Adresa
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.adresa)
-    </div>
-
-    <div class="display-label">
-         GPS
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.gps)
-    </div>
-
-    <div class="display-label">
-         Odkaz
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.link)
-    </div>
-</fieldset>
 @using (Html.BeginForm()) {
     <p>
-        <input type="submit" value="Odebrat" /> |
+        @Html.Bootstrap().SubmitButton().Style(ButtonStyle.Danger).Text("Odebrat") |
         @Html.ActionLink("Zpět na seznam", "Index")
     </p>
 }

@@ -9,33 +9,23 @@
 <fieldset>
     <legend>kontakty</legend>
 
-    <div class="display-label">
-         Jméno
+    <div class="form-group row">
+        <label class="col-md-2 control-label">Jméno</label>
+        <div class="col-md-10">@Html.DisplayFor(model => model.jmeno)</div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.jmeno)
+    <div class="form-group row">
+        <label class="col-md-2 control-label">Pøíjmení</label>
+        <div class="col-md-10">@Html.DisplayFor(model => model.prijmeni)</div>
     </div>
-
-    <div class="display-label">
-         Pøíjmení
+    <div class="form-group row">
+        <label class="col-md-2 control-label">E-mail</label>
+        <div class="col-md-10">@Html.DisplayFor(model => model.email)</div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.prijmeni)
+    <div class="form-group row">
+        <label class="col-md-2 control-label">Telefon</label>
+        <div class="col-md-10">@Html.DisplayFor(model => model.telefon)</div>
     </div>
-
-    <div class="display-label">
-         E-mail
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.email)
-    </div>
-
-    <div class="display-label">
-         Telefon
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.telefon)
-    </div>
+    
 </fieldset>
 <p>
     @Html.ActionLink("Upravit kontakt", "Edit", new { id = Model.pk_id }) |

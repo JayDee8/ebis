@@ -8,33 +8,22 @@
 
 <fieldset>
     <legend>lokace</legend>
-
-    <div class="display-label">
-         Jméno
+    
+    <div class="form-group row">
+        <label class="col-md-2 control-label">Jméno</label>
+        <div class="col-md-10">@Html.DisplayFor(model => model.jmeno)</div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.jmeno)
+    <div class="form-group row">
+        <label class="col-md-2 control-label">Adresa</label>
+        <div class="col-md-10">@Html.DisplayFor(model => model.adresa)</div>
     </div>
-
-    <div class="display-label">
-         Adresa
+    <div class="form-group row">
+        <label class="col-md-2 control-label">GPS</label>
+        <div class="col-md-10">@Html.DisplayFor(model => model.gps)</div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.adresa)
-    </div>
-
-    <div class="display-label">
-         GPS
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.gps)
-    </div>
-
-    <div class="display-label">
-         Odkaz
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.link)
+    <div class="form-group row">
+        <label class="col-md-2 control-label">Odkaz</label>
+        <div class="col-md-10"><a href=@Html.DisplayFor(model => model.link) target="_blank">Odkaz na mapu</a></div>
     </div>
 </fieldset>
 <p>

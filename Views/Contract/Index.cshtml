@@ -10,7 +10,9 @@
 <p>
     @Html.ActionLink("Přidat novou smlouvu", "Create")
 </p>
-@grid.GetHtml(columns:
+@grid.GetHtml(
+    tableStyle: "table table-striped table-hover",
+    columns:
     grid.Columns
     (
         grid.Column("spolecnost", "Společnost"),
@@ -26,8 +28,8 @@
         grid.Column("datum_spolecnost", "Datum společnost"),
         grid.Column("datum_osoba", "Datum osoba"),
         grid.Column("osoby.jmenoPrijmeniId", "Osoba"),
-        grid.Column("text_smlouvy.text1", "Text smlouvy"),   
-        grid.Column(format: (item) => new HtmlString(Html.ActionLink("Detaily", "Details", new { id = item.pk_id }) + " | " +
-                    Html.ActionLink("Upravit", "Edit", new { id = item.pk_id }) + " | " +
-                    Html.ActionLink("Smazat", "Delete", new { id = item.pk_id })))
+        grid.Column("text_smlouvy.text1", "Text smlouvy"),
+        grid.Column(format: (item) => new HtmlString("" + Html.ActionLink("  ", "Details", new { id = item.pk_id }, new { @class = "glyphicon glyphicon-search", @title = "Detaily" }) +
+                                                    Html.ActionLink("  ", "Edit", new { id = item.pk_id }, new { @class = "glyphicon glyphicon-edit", @title = "Upravit" }) +
+                                                    Html.ActionLink("  ", "Delete", new { id = item.pk_id }, new { @class = "glyphicon glyphicon-trash", @title = "Vymazat" })))
         ))

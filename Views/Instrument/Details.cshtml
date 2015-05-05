@@ -8,19 +8,23 @@
 
 <fieldset>
     <legend>nastroje</legend>
-
-    <div class="display-label">
-         Název
+    <div class="form-group row">
+        <label class="col-md-2 control-label">Jméno</label>
+        <div class="col-md-10">@Html.DisplayFor(model => model.jmeno)</div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.jmeno)
+    <div class="form-group row">
+        <label class="col-md-2 control-label">IČ/DIČ</label>
+        <div class="col-md-10">@Html.DisplayFor(model => model.typ)</div>
     </div>
-
-    <div class="display-label">
-         Typ
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.typ)
+    <div class="form-group row">
+        <label class="col-md-2 control-label">Seznam umělců</label>
+        <div class="col-md-10">
+               @foreach(var interpret in @Model.osoby)
+                   {
+                      @String.Format("{0} {1} {2}\n", interpret.jmeno, interpret.prijmeni, interpret.id)<br/>
+                   }
+               
+        </div>
     </div>
 </fieldset>
 <p>

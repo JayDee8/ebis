@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ebis_dbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="ebis_dbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="ebis_dbModelStoreContainer">
           <EntitySet Name="akce" EntityType="ebis_dbModel.Store.akce" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="akce_naklady" EntityType="ebis_dbModel.Store.akce_naklady" store:Type="Tables" Schema="dbo" />
@@ -221,6 +221,7 @@
           </Key>
           <Property Name="pk_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="jmeno_aktivity" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="typ" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="smlouvy">
           <Key>
@@ -514,8 +515,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ebis_dbModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -747,6 +747,7 @@
           <Property Name="pk_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="jmeno_aktivity" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="akce_produkcni_listy" Relationship="ebis_dbModel.FK_akce_produkcni_listy_produkcni_listy" FromRole="produkcni_listy" ToRole="akce_produkcni_listy" />
+          <Property Type="Int32" Name="typ" Nullable="false" />
         </EntityType>
         <EntityType Name="smlouvy">
           <Key>
@@ -1154,6 +1155,7 @@
           <EntitySetMapping Name="produkcni_listy">
             <EntityTypeMapping TypeName="ebis_dbModel.produkcni_listy">
               <MappingFragment StoreEntitySet="produkcni_listy">
+                <ScalarProperty Name="typ" ColumnName="typ" />
                 <ScalarProperty Name="pk_id" ColumnName="pk_id" />
                 <ScalarProperty Name="jmeno_aktivity" ColumnName="jmeno_aktivity" />
               </MappingFragment>

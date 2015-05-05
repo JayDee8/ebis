@@ -4,44 +4,12 @@
     ViewBag.Title = "Vymazat kontakt";
 }
 
-<h2>@ViewBag.Title</h2>
+<h3>Chcete opravdu vymazat kontakt @Model.jmeno @Model.prijmeni?</h3>
 
-<h3>Chcete opravdu vymazat tento kontakt?</h3>
-<fieldset>
-    <legend>kontakty</legend>
-
-    <div class="display-label">
-         Jméno
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.jmeno)
-    </div>
-
-    <div class="display-label">
-         Pøíjmení
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.prijmeni)
-    </div>
-
-    <div class="display-label">
-         E-mail
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.email)
-    </div>
-
-    <div class="display-label">
-         Telefon
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.telefon)
-    </div>
-</fieldset>
 @using (Html.BeginForm())
 {
     <p>
-        <input type="submit" value="Vymazat" /> |
+        @Html.Bootstrap().SubmitButton().Style(ButtonStyle.Danger).Text("Odebrat") |
         @Html.ActionLink("Zpìt na seznam", "Index")
     </p>
 }

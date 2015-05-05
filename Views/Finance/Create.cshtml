@@ -12,25 +12,12 @@
     <fieldset>
         <legend>naklady</legend>
 
-        <div class="editor-label">
-            Jméno
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.jmeno)
-            @Html.ValidationMessageFor(model => model.jmeno)
-        </div>
-
-        <div class="editor-label">
-            Typ
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.typ)
-            @Html.ValidationMessageFor(model => model.typ)
-        </div>
-
-        <p>
-            <input type="submit" value="Vytvořit" />
-        </p>
+        @using (var f = Html.Bootstrap().Begin(new Form().Type(FormType.Horizontal)))
+        {
+            @f.ControlGroup().TextBoxFor(m => m.jmeno).Label().LabelText("Název")
+            @f.ControlGroup().TextBoxFor(m => m.typ).Label().LabelText("Typ")
+            @f.ControlGroup().CustomControls(Html.Bootstrap().SubmitButton().Text("Přidat"))
+        }
     </fieldset>
 }
 

@@ -6,9 +6,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ebis.Models;
+using System.Dynamic;
+using System.Data.Objects.DataClasses;
+using System.Data.Objects;
 
 namespace ebis.Controllers
 {
+
     public class InterpretController : Controller
     {
         private dbEntities db = new dbEntities();
@@ -39,23 +43,41 @@ namespace ebis.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            InterpretInstrumentModel model = new InterpretInstrumentModel();
+
+            model.AvailableItems = db.nastroje;
+            List<int> selIds = new List<int>();
+            selIds.Add(-1);
+            model.SelectedItemIds = selIds;
+                
+                
+            return View(model);
         }
 
         //
         // POST: /Interpret/Create
 
         [HttpPost]
-        public ActionResult Create(osoby osoby)
+        public ActionResult Create(InterpretInstrumentModel model)
         {
             if (ModelState.IsValid)
             {
-                db.osoby.AddObject(osoby);
+                
+                int id = db.osoby.Max(o => o.id) + 1;
+                model.Interpret.id = id;
+
+                if (model.SelectedItemIds != null)
+                {
+                    foreach (var i in model.SelectedItemIds)
+                        model.Interpret.nastroje.Add(db.nastroje.Single(n => n.pk_id == i));
+                }
+                    db.osoby.AddObject(model.Interpret);
+                
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(osoby);
+            return View(model);
         }
 
         //
@@ -68,23 +90,40 @@ namespace ebis.Controllers
             {
                 return HttpNotFound();
             }
-            return View(osoby);
+            InterpretInstrumentModel model = new InterpretInstrumentModel();
+            model.AvailableItems = db.nastroje;
+            model.Interpret = osoby;
+
+            List<int> selectedInstruments = new List<int>();
+
+            foreach(var i in osoby.nastroje)
+                selectedInstruments.Add(i.pk_id);
+
+            model.SelectedItemIds = selectedInstruments;
+            //ViewBag.vn = db.nastroje;
+            //ViewBag.nastroje = new MultiSelectList(db.nastroje, "pk_id", "jmeno", osoby.nastroje);
+            return View(model);
         }
 
         //
         // POST: /Interpret/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(osoby osoby)
+        public ActionResult Edit(InterpretInstrumentModel model)
         {
             if (ModelState.IsValid)
             {
-                db.osoby.Attach(osoby);
-                db.ObjectStateManager.ChangeObjectState(osoby, EntityState.Modified);
+                db.osoby.Attach(model.Interpret);
+                
+                model.Interpret.nastroje.Clear();
+
+                foreach (var i in model.SelectedItemIds)
+                    model.Interpret.nastroje.Add(db.nastroje.Single(n => n.pk_id == i));
+                
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(osoby);
+            return View(model);
         }
 
         //

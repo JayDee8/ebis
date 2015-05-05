@@ -10,41 +10,14 @@
 {
     @Html.ValidationSummary(true)
     <fieldset>
-        <div class="editor-label">
-            Jméno
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.jmeno)
-            @Html.ValidationMessageFor(model => model.jmeno)
-        </div>
-
-        <div class="editor-label">
-            Pøíjmení
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.prijmeni)
-            @Html.ValidationMessageFor(model => model.prijmeni)
-        </div>
-
-        <div class="editor-label">
-            E-mail
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.email)
-            @Html.ValidationMessageFor(model => model.email)
-        </div>
-
-        <div class="editor-label">
-            Telefon
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.telefon)
-            @Html.ValidationMessageFor(model => model.telefon)
-        </div>
-
-        <p>
-            <input type="submit" value="Uložit" />
-        </p>
+        @using (var f = Html.Bootstrap().Begin(new Form().Type(FormType.Horizontal)))
+        {
+            @f.ControlGroup().TextBoxFor(m => m.jmeno).Label().LabelText("Jméno")
+            @f.ControlGroup().TextBoxFor(m => m.prijmeni).Label().LabelText("Pøíjmení")
+            @f.ControlGroup().TextBoxFor(m => m.email).Label().LabelText("E-mail")
+            @f.ControlGroup().TextBoxFor(m => m.telefon).Label().LabelText("Telefon")
+            @f.ControlGroup().CustomControls(Html.Bootstrap().SubmitButton().Text("Pøidat"))
+        }
     </fieldset>
 }
 

@@ -12,17 +12,13 @@
     <fieldset>
         <legend>produkcni_listy</legend>
 
-        <div class="editor-label">
-            Jméno aktivity
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.jmeno_aktivity)
-            @Html.ValidationMessageFor(model => model.jmeno_aktivity)
-        </div>
+        @using (var f = Html.Bootstrap().Begin(new Form().Type(FormType.Horizontal)))
+        {
+            @f.ControlGroup().TextBoxFor(m => m.jmeno_aktivity).Label().LabelText("Název aktivity")
+            @f.ControlGroup().TextBoxFor(m => m.typ).Label().LabelText("Typ")
+            @f.ControlGroup().CustomControls(Html.Bootstrap().SubmitButton().Text("Vytvořit"))
+        }
 
-        <p>
-            <input type="submit" value="Vytvořit" />
-        </p>
     </fieldset>
 }
 

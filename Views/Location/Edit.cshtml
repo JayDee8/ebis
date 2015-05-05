@@ -14,41 +14,15 @@
 
         @Html.HiddenFor(model => model.pk_id)
 
-        <div class="editor-label">
-            Jméno
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.jmeno)
-            @Html.ValidationMessageFor(model => model.jmeno)
-        </div>
+        @using (var f = Html.Bootstrap().Begin(new Form().Type(FormType.Horizontal)))
+        {
+            @f.ControlGroup().TextBoxFor(m => m.jmeno).Label().LabelText("Jméno")
+            @f.ControlGroup().TextBoxFor(m => m.adresa).Label().LabelText("Adresa")
+            @f.ControlGroup().TextBoxFor(m => m.gps).Label().LabelText("GPS")
+            @f.ControlGroup().TextBoxFor(m => m.link).Label().LabelText("Odkaz")
+            @f.ControlGroup().CustomControls(Html.Bootstrap().SubmitButton().Text("Upravit"))
+        }
 
-        <div class="editor-label">
-            Adresa
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.adresa)
-            @Html.ValidationMessageFor(model => model.adresa)
-        </div>
-
-        <div class="editor-label">
-            GPS
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.gps)
-            @Html.ValidationMessageFor(model => model.gps)
-        </div>
-
-        <div class="editor-label">
-            Odkaz
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.link)
-            @Html.ValidationMessageFor(model => model.link)
-        </div>
-
-        <p>
-            <input type="submit" value="Uložit" />
-        </p>
     </fieldset>
 }
 

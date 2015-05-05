@@ -8,97 +8,74 @@
 
 <fieldset>
     <legend>osoby</legend>
+    
+    <div class="form-group row">
+        <label class="col-md-2 control-label">Jméno</label>
+        <div class="col-md-10">@Html.DisplayFor(model => model.jmeno)</div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-2 control-label">Příjmení</label>
+        <div class="col-md-10">@Html.DisplayFor(model => model.prijmeni)</div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-2 control-label">Telefon</label>
+        <div class="col-md-10">@Html.DisplayFor(model => model.telefon)</div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-2 control-label">E-mail</label>
+        <div class="col-md-10">@Html.DisplayFor(model => model.email)</div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-2 control-label">Adresa</label>
+        <div class="col-md-10">@Html.DisplayFor(model => model.adresa)</div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-2 control-label">Město</label>
+        <div class="col-md-10">@Html.DisplayFor(model => model.mesto)</div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-2 control-label">PSČ</label>
+        <div class="col-md-10">@Html.DisplayFor(model => model.psc)</div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-2 control-label">Národnost</label>
+        <div class="col-md-10">@Html.DisplayFor(model => model.narodnost)</div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-2 control-label">Číslo účtu</label>
+        <div class="col-md-10">@Html.DisplayFor(model => model.cislo_uctu)</div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-2 control-label">Datum narození</label>
+        <div class="col-md-10">@Model.datum_narozeni.ToString("dd. MM. yyyy")</div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-2 control-label">Místo narození</label>
+        <div class="col-md-10">@Html.DisplayFor(model => model.misto_narozeni)</div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-2 control-label">IČ/DIČ</label>
+        <div class="col-md-10">@Html.DisplayFor(model => model.ic_dic)</div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-2 control-label">Nástroje</label>
+        <div class="col-md-10">
+            @{
+                var nastroje = "";
 
-    <div class="display-label">
-         Jméno
+                foreach (var nastroj in Model.nastroje.ToList())
+                {
+                    nastroje += nastroj.jmeno + "\n";
+                }
+            }
+            @Html.Nl2Br(nastroje)
+        </div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.jmeno)
-    </div>
-
-    <div class="display-label">
-         Příjmení
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.prijmeni)
-    </div>
-
-    <div class="display-label">
-         Telefon
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.telefon)
-    </div>
-
-    <div class="display-label">
-         E-mail
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.email)
-    </div>
-
-    <div class="display-label">
-         Město
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.mesto)
-    </div>
-
-    <div class="display-label">
-         PSČ
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.psc)
-    </div>
-
-    <div class="display-label">
-         Národnost
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.narodnost)
-    </div>
-
-    <div class="display-label">
-         Číslo účtu
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.cislo_uctu)
-    </div>
-
-    <div class="display-label">
-         Adresa
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.adresa)
-    </div>
-
-    <div class="display-label">
-         Datum narození
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.datum_narozeni)
+    <div class="form-group row">
+        <label class="col-md-2 control-label">Poznámka</label>
+        <div class="col-md-10">@Html.DisplayFor(model => model.poznamka)</div>
     </div>
 
-    <div class="display-label">
-         Místo narození
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.misto_narozeni)
-    </div>
-
-    <div class="display-label">
-         IČ/DIČ
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ic_dic)
-    </div>
-
-    <div class="display-label">
-         Poznámka
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.poznamka)
-    </div>
 </fieldset>
 <p>
     @Html.ActionLink("Upravit osobu", "Edit", new { id = Model.pk_id }) |

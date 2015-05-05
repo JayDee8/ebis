@@ -11,12 +11,14 @@
     @Html.ActionLink("Přidat nový náklad", "Create")
 </p>
 
-@grid.GetHtml(columns:
+@grid.GetHtml(
+    tableStyle: "table table-striped table-hover",
+    columns:
     grid.Columns
     (
         grid.Column("jmeno", "Jméno"),
         grid.Column("typ", "Typ"),
-        grid.Column(format: (item) => new HtmlString(Html.ActionLink("Detaily", "Details", new { id = item.pk_id }) + " | " +
-                    Html.ActionLink("Upravit", "Edit", new { id = item.pk_id }) + " | " +
-                    Html.ActionLink("Smazat", "Delete", new { id = item.pk_id })))
+        grid.Column(format: (item) => new HtmlString("" + Html.ActionLink("  ", "Details", new { id = item.pk_id }, new { @class = "glyphicon glyphicon-search", @title = "Detaily" }) +
+                                                        Html.ActionLink("  ", "Edit", new { id = item.pk_id }, new { @class = "glyphicon glyphicon-edit", @title = "Upravit" }) +
+                                                        Html.ActionLink("  ", "Delete", new { id = item.pk_id }, new { @class = "glyphicon glyphicon-trash", @title = "Vymazat" })))
     ))

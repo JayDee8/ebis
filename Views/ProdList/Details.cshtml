@@ -9,12 +9,16 @@
 <fieldset>
     <legend>produkcni_listy</legend>
 
-    <div class="display-label">
-         Jméno aktivity
+    <div class="form-group row">
+        <label class="col-md-2 control-label">Jméno aktivity</label>
+        <div class="col-md-10">@Html.DisplayFor(model => model.jmeno_aktivity)</div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.jmeno_aktivity)
+    <div class="form-group row">
+        <label class="col-md-2 control-label">Typ aktivity</label>
+        <div class="col-md-10">@Html.DisplayFor(model => model.typ)</div>
     </div>
+
+    
 </fieldset>
 <p>
     @Html.ActionLink("Upravit produkční listy", "Edit", new { id=Model.pk_id }) |

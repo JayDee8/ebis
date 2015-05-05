@@ -15,6 +15,7 @@ using System.Data.Objects.DataClasses;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
+using System.ComponentModel.DataAnnotations;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
@@ -2347,6 +2348,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        [Required]
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String jmeno
@@ -2367,15 +2369,7 @@ namespace ebis.Models
         private global::System.String _jmeno;
         partial void OnjmenoChanging(global::System.String value);
         partial void OnjmenoChanged();
-
-                public global::System.String jmenoPrijmeniId
-        {
-            get
-            {
-                return _jmeno + " " + _prijmeni + " id: " + _id;
-            }
-        }
-
+    
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -3139,11 +3133,13 @@ namespace ebis.Models
         /// </summary>
         /// <param name="pk_id">Initial value of the pk_id property.</param>
         /// <param name="jmeno_aktivity">Initial value of the jmeno_aktivity property.</param>
-        public static produkcni_listy Createprodukcni_listy(global::System.Int32 pk_id, global::System.String jmeno_aktivity)
+        /// <param name="typ">Initial value of the typ property.</param>
+        public static produkcni_listy Createprodukcni_listy(global::System.Int32 pk_id, global::System.String jmeno_aktivity, global::System.Int32 typ)
         {
             produkcni_listy produkcni_listy = new produkcni_listy();
             produkcni_listy.pk_id = pk_id;
             produkcni_listy.jmeno_aktivity = jmeno_aktivity;
+            produkcni_listy.typ = typ;
             return produkcni_listy;
         }
 
@@ -3201,6 +3197,30 @@ namespace ebis.Models
         private global::System.String _jmeno_aktivity;
         partial void Onjmeno_aktivityChanging(global::System.String value);
         partial void Onjmeno_aktivityChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 typ
+        {
+            get
+            {
+                return _typ;
+            }
+            set
+            {
+                OntypChanging(value);
+                ReportPropertyChanging("typ");
+                _typ = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("typ");
+                OntypChanged();
+            }
+        }
+        private global::System.Int32 _typ;
+        partial void OntypChanging(global::System.Int32 value);
+        partial void OntypChanged();
 
         #endregion
 
