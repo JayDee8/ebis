@@ -27,7 +27,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Zpět na detail akce", "Details", "Event", new RouteValueDictionary(new { id = @ViewBag.akce_id_link }), null)
 </div>
 
 @section Scripts {

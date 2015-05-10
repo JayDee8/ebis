@@ -16,11 +16,12 @@ namespace ebis.Controllers
         //
         // GET: /ProdListItem/Create
 
-        public ActionResult Create()
+        public ActionResult Create(int id = 0)
         {
             TempData["referrer"] = Request.UrlReferrer.AbsoluteUri.ToString();
             ViewBag.akce_id = new SelectList(db.akce, "pk_id", "jmeno");
             ViewBag.produkcni_listy_id = new SelectList(db.produkcni_listy, "pk_id", "jmeno_aktivity");
+            ViewBag.akce_id_link = id;
             return View();
         }
 
@@ -45,10 +46,10 @@ namespace ebis.Controllers
         //
         // GET: /ProdListItem/Edit/5
 
-        public ActionResult Edit(int id = 0)
+        public ActionResult Edit(int akce_id = 0, int prod_id = 0)
         {
             TempData["referrer"] = Request.UrlReferrer.AbsoluteUri.ToString();
-            akce_produkcni_listy akce_produkcni_listy = db.akce_produkcni_listy.Single(a => a.akce_id == id);
+            akce_produkcni_listy akce_produkcni_listy = db.akce_produkcni_listy.Single(a => a.akce_id == akce_id && a.produkcni_listy_id == prod_id);
             if (akce_produkcni_listy == null)
             {
                 return HttpNotFound();
@@ -79,10 +80,10 @@ namespace ebis.Controllers
         //
         // GET: /ProdListItem/Delete/5
 
-        public ActionResult Delete(int id = 0)
+        public ActionResult Delete(int akce_id = 0, int prod_id = 0)
         {
             TempData["referrer"] = Request.UrlReferrer.AbsoluteUri.ToString();
-            akce_produkcni_listy akce_produkcni_listy = db.akce_produkcni_listy.Single(a => a.akce_id == id);
+            akce_produkcni_listy akce_produkcni_listy = db.akce_produkcni_listy.Single(a => a.akce_id == akce_id && a.produkcni_listy_id == prod_id);
             if (akce_produkcni_listy == null)
             {
                 return HttpNotFound();
@@ -94,9 +95,9 @@ namespace ebis.Controllers
         // POST: /ProdListItem/Delete/5
 
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int akce_id = 0, int prod_id = 0)
         {
-            akce_produkcni_listy akce_produkcni_listy = db.akce_produkcni_listy.Single(a => a.akce_id == id);
+            akce_produkcni_listy akce_produkcni_listy = db.akce_produkcni_listy.Single(a => a.akce_id == akce_id && a.produkcni_listy_id == prod_id);
             db.akce_produkcni_listy.DeleteObject(akce_produkcni_listy);
             db.SaveChanges();
             return Redirect(TempData["referrer"].ToString());

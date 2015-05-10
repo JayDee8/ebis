@@ -60,5 +60,20 @@ namespace ebis.Helpers
             int res = value1 + value2 + value3;
             return MvcHtmlString.Create(res.ToString());
         }
+
+        public static MvcHtmlString StavString(this HtmlHelper htmlHelper, int value)
+        {
+            switch (value)
+            {
+                case 1:
+                    return MvcHtmlString.Create("potvrzeno");
+                case 2:
+                    return MvcHtmlString.Create("odmítnuto");
+                case 3:
+                    return MvcHtmlString.Create("časový problém");
+                default:
+                    return MvcHtmlString.Create("bez odpovědi");
+            }
+        }
     }
 }

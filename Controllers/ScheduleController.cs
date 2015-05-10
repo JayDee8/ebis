@@ -16,11 +16,12 @@ namespace ebis.Controllers
         //
         // GET: /Schedule/Create
 
-        public ActionResult Create()
+        public ActionResult Create(int id = 0)
         {
             TempData["referrer"] = Request.UrlReferrer.AbsoluteUri.ToString();
             ViewBag.akce_id = new SelectList(db.akce, "pk_id", "jmeno");
             ViewBag.lokace_id = new SelectList(db.lokace, "pk_id", "jmeno");
+            ViewBag.akce_id_link = id;
             return View();
         }
 

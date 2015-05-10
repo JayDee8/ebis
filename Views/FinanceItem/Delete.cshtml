@@ -20,6 +20,6 @@
 @using (Html.BeginForm()) {
     <p>
         <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Zpět na detail akce", "Details", "Event", new RouteValueDictionary(new { id = @Model.akce_id }), null)
     </p>
 }

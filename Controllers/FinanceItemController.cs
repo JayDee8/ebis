@@ -16,8 +16,9 @@ namespace ebis.Controllers
         //
         // GET: /FinanceItem/Create
 
-        public ActionResult Create()
+        public ActionResult Create(int id = 0)
         {
+            ViewBag.akce_id_link = id;
             TempData["referrer"] = Request.UrlReferrer.AbsoluteUri.ToString();
             ViewBag.akce_id = new SelectList(db.akce, "pk_id", "jmeno");
             ViewBag.naklady_id = new SelectList(db.naklady, "pk_id", "jmeno");
@@ -45,10 +46,10 @@ namespace ebis.Controllers
         //
         // GET: /FinanceItem/Edit/5
 
-        public ActionResult Edit(int id = 0)
+        public ActionResult Edit(int akce_id = 0, int naklady_id = 0)
         {
             TempData["referrer"] = Request.UrlReferrer.AbsoluteUri.ToString();
-            akce_naklady akce_naklady = db.akce_naklady.Single(a => a.akce_id == id);
+            akce_naklady akce_naklady = db.akce_naklady.Single(a => a.akce_id == akce_id && a.naklady_id == a.naklady_id);
             if (akce_naklady == null)
             {
                 return HttpNotFound();
@@ -79,10 +80,10 @@ namespace ebis.Controllers
         //
         // GET: /FinanceItem/Delete/5
 
-        public ActionResult Delete(int id = 0)
+        public ActionResult Delete(int akce_id = 0, int naklady_id = 0)
         {
             TempData["referrer"] = Request.UrlReferrer.AbsoluteUri.ToString();
-            akce_naklady akce_naklady = db.akce_naklady.Single(a => a.akce_id == id);
+            akce_naklady akce_naklady = db.akce_naklady.Single(a => a.akce_id == akce_id && a.naklady_id == naklady_id);
             if (akce_naklady == null)
             {
                 return HttpNotFound();
@@ -94,9 +95,9 @@ namespace ebis.Controllers
         // POST: /FinanceItem/Delete/5
 
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int akce_id = 0, int naklady_id = 0)
         {
-            akce_naklady akce_naklady = db.akce_naklady.Single(a => a.akce_id == id);
+            akce_naklady akce_naklady = db.akce_naklady.Single(a => a.akce_id == akce_id && a.naklady_id == naklady_id);
             db.akce_naklady.DeleteObject(akce_naklady);
             db.SaveChanges();
             return Redirect(TempData["referrer"].ToString());

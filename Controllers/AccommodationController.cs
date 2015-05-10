@@ -16,8 +16,9 @@ namespace ebis.Controllers
         //
         // GET: /Accommodation/Create
 
-        public ActionResult Create()
+        public ActionResult Create(int id = 0)
         {
+            ViewBag.akce_id_link = id;
             TempData["referrer"] = Request.UrlReferrer.AbsoluteUri.ToString();
             ViewBag.akce_id = new SelectList(db.akce, "pk_id", "jmeno");
             ViewBag.lokace_id = new SelectList(db.lokace, "pk_id", "jmeno");

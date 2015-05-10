@@ -34,7 +34,7 @@ namespace ebis.Controllers
         //
         // GET: /Invite/
 
-        public ActionResult Index(int eventId)
+        public ActionResult Index(int id)
         {
             InviteModel invModel = new InviteModel();
 
@@ -43,14 +43,14 @@ namespace ebis.Controllers
             List<osoby> usersWithoutEv = new List<osoby>();
             foreach (osoby o in usersWithInst)
             {
-                if (o.osoby_akce.SingleOrDefault(t => t.osoby_id == o.pk_id && t.akce_id == eventId) == null)
+                if (o.osoby_akce.SingleOrDefault(t => t.osoby_id == o.pk_id && t.akce_id == id) == null)
                     usersWithoutEv.Add(o); 
             }
 
 
             invModel.m_osoby = usersWithoutEv;
-            
-            invModel.event_id = eventId;
+
+            invModel.event_id = id;
             //invModel.m_nastroje = db.nastroje.Where(n => n.osoby.Any(o => o.pk_id == 1));
             //invModel.m_nastroje = db.nastroje.SingleOrDefault(x => x.pk_id == pk_id));
             
@@ -67,6 +67,7 @@ namespace ebis.Controllers
                 nastroje_arr.Add(na_item);
             }
             invModel.m_nastroje = nastroje_arr;
+            ViewBag.akce_id_link = id;
             return View(invModel);
         }
 

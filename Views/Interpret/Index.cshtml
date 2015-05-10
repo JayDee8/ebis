@@ -26,6 +26,6 @@
         grid.Column("narodnost", "Národnost"),
         grid.Column(format: (item) => Html.ActionLink("Smlouvy", "Index", "Contract", new RouteValueDictionary(new { id = item.pk_id }), null)),
         grid.Column(format: (item) => new HtmlString("" + Html.ActionLink("  ", "Details", new { id = item.pk_id }, new { @class = "glyphicon glyphicon-search", @title = "Detaily" }) +
-                                                    Html.ActionLink("  ", "Edit", new { id = item.pk_id }, new { @class = "glyphicon glyphicon-edit", @title = "Upravit" }) +
-                                                    Html.ActionLink("  ", "Delete", new { id = item.pk_id }, new { @class = "glyphicon glyphicon-trash", @title = "Vymazat" })))
+        Html.ActionLink("  ", "Edit", new { id = item.pk_id }, new { @class = "glyphicon glyphicon-edit", @title = "Upravit" }) +
+        Html.ActionLink("  ", "Delete", new { id = item.pk_id }, new { @class = "glyphicon glyphicon-trash", @title = "Vymazat" })))
     ))
