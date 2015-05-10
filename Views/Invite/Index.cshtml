@@ -3,25 +3,28 @@
 @{
     ViewBag.Title = "Pozvat umělce na akci";
     WebGrid grid = new WebGrid(@Model.m_osoby);
+    
 }
 
 <h2>@ViewBag.Title</h2>
 @using (Html.BeginForm())
 {
+    <input style="display:none;" id="eventId" name="eventId" value="@Model.event_id" />
     int rowVal = -1; 
     @grid.GetHtml(columns:
         grid.Columns
         (
-            grid.Column("id", "ID"),
+        grid.Column("id", "ID", format: @<text><input style="display:none;" id="usId" name="usId" value="@item.id" />@item.id</text>),
             grid.Column("jmeno", "Jméno   " + Html.SortDirection(ref grid, "jmeno")),
             grid.Column("prijmeni", "Příjmení"),
             grid.Column("telefon", "Telefon"),
             grid.Column("email", "E-mail"),
             grid.Column("mesto", "Město"),
             grid.Column("narodnost", "Národnost"),
-            grid.Column(header: "Assign?", format: @<text><input class="check-box"  id="assignChkBx" name="assignChkBx" type="checkbox" value="@item.id"/></text>),
-            grid.Column(header: "nastroj", format: Html.ListBoxFor(item => item.nastroje_id, new SelectList(Model.m_nastroje.ElementAt(rowVal = rowVal + 1)), 0))
-            //grid.Column(header: "nastroj", format: item => Html.DropDownList("nastroj", new SelectList(Model.m_nastroje.ElementAt(rowVal = rowVal + 1)), 0))
-            ))
+            grid.Column(header: "Vybrat", format: @<text><input class="check-box"  id="ucast" name="ucast" type="checkbox" value="@rowVal"/></text>),
+        //grid.Column(header: "nastroj", format: item => Html.ListBoxFor(item => item.nastroje_id, new SelectList(Model.m_nastroje.ElementAt(rowVal = rowVal + 1),0)))
+        //grid.Column(header: "nastroj", format: item => Html.DropDownList("nastroje_id", new SelectList(Model.m_nastroje.ElementAt(rowVal = rowVal + 1)), 0))
+                grid.Column(header: "nastroj", format: item => Html.DropDownList("nastroj", new SelectList(Model.m_nastroje.ElementAt(rowVal = rowVal + 1), "pk_id", "jmeno")))
+                ))
     <input type ="submit" value ="Send" />
 }

@@ -34,21 +34,35 @@ namespace ebis.Controllers
         //
         // GET: /Invite/
 
-        public ActionResult Index()
+        public ActionResult Index(int eventId)
         {
             InviteModel invModel = new InviteModel();
 
-            invModel.m_osoby = db.osoby.ToList();
+            var usersWithInst = db.osoby.Where(i => i.nastroje.Count != 0).ToList();
+            
+            List<osoby> usersWithoutEv = new List<osoby>();
+            foreach (osoby o in usersWithInst)
+            {
+                if (o.osoby_akce.SingleOrDefault(t => t.osoby_id == o.pk_id && t.akce_id == eventId) == null)
+                    usersWithoutEv.Add(o); 
+            }
+
+
+            invModel.m_osoby = usersWithoutEv;
+            
+            invModel.event_id = eventId;
             //invModel.m_nastroje = db.nastroje.Where(n => n.osoby.Any(o => o.pk_id == 1));
             //invModel.m_nastroje = db.nastroje.SingleOrDefault(x => x.pk_id == pk_id));
-            var osoby_nastroje = db.osoby.Include("nastroje");
-            List<List<string>> nastroje_arr = new List<List<string>>();
-            foreach(var osoba_i in osoby_nastroje)
+            
+            //var osoby_nastroje = db.osoby.Include("nastroje").Where(i=>i.nastroje.Count != 0);
+
+            List<List<nastroje>> nastroje_arr = new List<List<nastroje>>();
+            foreach(var osoba_i in usersWithoutEv)
             {
-                List<string> na_item = new List<string>();
+                List<nastroje> na_item = new List<nastroje>();
                 foreach (var nastroj_i in osoba_i.nastroje)
                 {
-                    na_item.Add(nastroj_i.jmeno);
+                    na_item.Add(nastroj_i);
                 }
                 nastroje_arr.Add(na_item);
             }
@@ -59,11 +73,45 @@ namespace ebis.Controllers
         [HttpPost]
         public ViewResult Index(FormCollection form)
         {
-            var ids = form.GetValues("ids");
-            if (ModelState.IsValid)
+            List<string> rowsUsers = new List<string>(form.GetValues("ucast"));
+            List<string> rowsInstruments = new List<string>(form.GetValues("nastroj"));
+            List<string> usersIds = new List<string>(form.GetValues("usId"));
+
+            List<osoby> users = new List<osoby>();
+            List<nastroje> instruments = new List<nastroje>();
+            foreach (string row in rowsUsers)
+            {
+                int wgRowId = Convert.ToInt32(row) + 2;
+                int instrId = Convert.ToInt32(rowsInstruments.ElementAt(wgRowId));
+                int userId = Convert.ToInt32(usersIds.ElementAt(wgRowId));
+
+                nastroje instrument = db.nastroje.Single(n => n.pk_id == instrId);
+                osoby user = db.osoby.Single(o => o.id == userId);
+
+                instruments.Add(instrument);
+                users.Add(user);
+
+                osoby_akce oa = new osoby_akce();
+                oa.akce_id = Convert.ToInt32(form.GetValue("eventId").AttemptedValue);
+                oa.nastroje_id = instrument.pk_id;
+                oa.osoby_id = user.pk_id;
+                oa.poznamka = "poznamka";
+                oa.honorar = 0;
+                oa.doprava = 0;
+                oa.srazkova_dan = 0;
+                oa.vyplaceno = 0;
+                oa.stav = 0;
+
+                db.osoby_akce.AddObject(oa);
+                db.SaveChanges();
+            
+            }
+
+
+            /*if (ModelState.IsValid)
             {
                 
-                /*MailMessage mail = new MailMessage();
+                MailMessage mail = new MailMessage();
                 mail.To.Add(_objModelMail.em_mail.To);
                 mail.From = new MailAddress(_objModelMail.em_mail.From);
                 mail.Subject = _objModelMail.em_mail.Subject;
@@ -77,14 +125,15 @@ namespace ebis.Controllers
                 smtp.Credentials = new System.Net.NetworkCredential("xpodsednikm@gmail.com", "Sephael024");
                 smtp.EnableSsl = true;
                 smtp.Send(mail);
-                return View("Details", _objModelMail);*/
+                return View("Details", _objModelMail);
                 return null;
 
             }
             else
             {
                 return View();
-            }
+            }*/
+            return View();
         }
 
         //

@@ -47,7 +47,7 @@
     @Html.ActionLink("Přidat novou položku", "Create", "Schedule")
 </p>
 
-@fermany_grid.GetHtml(columns:
+@fermany_grid.GetHtml(tableStyle: "table table-striped table-hover", columns:
     fermany_grid.Columns
     (
         fermany_grid.Column("datum", "Datum"),
@@ -62,10 +62,10 @@
 
 <h3>Pozvaní umělci</h3>
 <p>
-    @Html.ActionLink("Oslovit nové umělce", "Index", "Invite")
+    @Html.ActionLink("Oslovit nové umělce", "Index", "Invite", new { eventId = Model.em_akce.pk_id }, null)
 </p>
 <h3>Orchestr</h3>
-@osoby_akce0_grid.GetHtml(columns:
+@osoby_akce0_grid.GetHtml(tableStyle: "table table-striped table-hover", columns:
     osoby_akce0_grid.Columns
     (
         osoby_akce0_grid.Column("osoby.id", "ID"),
@@ -75,14 +75,13 @@
         osoby_akce0_grid.Column("doprava", "Doprava"),
         osoby_akce0_grid.Column("srazkova_dan", "Srážková Daň"),
         osoby_akce0_grid.Column("vyplaceno", "Vyplaceno"),
-        osoby_akce0_grid.Column("poznamka", "Poznámka")
-        @*osoby_akce_grid.Column(format: (item) => new HtmlString(Html.ActionLink("Detaily", "Details", new { id = item.pk_id }) + " | " +
-                Html.ActionLink("Upravit", "Edit", new { id = item.pk_id }) + " | " +
-                Html.ActionLink("Smazat", "Delete", new { id = item.pk_id })))*@ @*opravit*@
+        osoby_akce0_grid.Column("poznamka", "Poznámka"),
+                    osoby_akce0_grid.Column(format: (item) => new HtmlString(Html.ActionLink("Upravit", "Edit", "UserEvent", new RouteValueDictionary(new { akce_id = item.akce_id, osoby_id = item.osoby_id }), null) + " | " +
+                            Html.ActionLink("Smazat", "Delete", "UserEvent", new RouteValueDictionary(new { akce_id = item.akce_id, osoby_id = item.osoby_id }), null)))
 ))
 
 <h3>Sbor</h3>
-@osoby_akce1_grid.GetHtml(columns:
+@osoby_akce1_grid.GetHtml(tableStyle: "table table-striped table-hover", columns:
     osoby_akce1_grid.Columns
     (
         osoby_akce1_grid.Column("osoby.id", "ID"),
@@ -92,14 +91,13 @@
         osoby_akce1_grid.Column("doprava", "Doprava"),
         osoby_akce1_grid.Column("srazkova_dan", "Srážková Daň"),
         osoby_akce1_grid.Column("vyplaceno", "Vyplaceno"),
-        osoby_akce1_grid.Column("poznamka", "Poznámka")
-        @*osoby_akce_grid.Column(format: (item) => new HtmlString(Html.ActionLink("Detaily", "Details", new { id = item.pk_id }) + " | " +
-                Html.ActionLink("Upravit", "Edit", new { id = item.pk_id }) + " | " +
-                Html.ActionLink("Smazat", "Delete", new { id = item.pk_id })))*@ @*opravit*@
+        osoby_akce1_grid.Column("poznamka", "Poznámka"),
+                    osoby_akce1_grid.Column(format: (item) => new HtmlString(Html.ActionLink("Upravit", "Edit", "UserEvent", new RouteValueDictionary(new { akce_id = item.akce_id, osoby_id = item.osoby_id }), null) + " | " +
+                            Html.ActionLink("Smazat", "Delete", "UserEvent", new RouteValueDictionary(new { akce_id = item.akce_id, osoby_id = item.osoby_id }), null)))
 ))
 
 <h3>Solisti</h3>
-@osoby_akce2_grid.GetHtml(columns:
+@osoby_akce2_grid.GetHtml(tableStyle: "table table-striped table-hover", columns:
     osoby_akce2_grid.Columns
     (
         osoby_akce2_grid.Column("osoby.id", "ID"),
@@ -109,17 +107,16 @@
         osoby_akce2_grid.Column("doprava", "Doprava"),
         osoby_akce2_grid.Column("srazkova_dan", "Srážková Daň"),
         osoby_akce2_grid.Column("vyplaceno", "Vyplaceno"),
-        osoby_akce2_grid.Column("poznamka", "Poznámka")
-        @*osoby_akce_grid.Column(format: (item) => new HtmlString(Html.ActionLink("Detaily", "Details", new { id = item.pk_id }) + " | " +
-                Html.ActionLink("Upravit", "Edit", new { id = item.pk_id }) + " | " +
-                Html.ActionLink("Smazat", "Delete", new { id = item.pk_id })))*@ @*opravit*@
+        osoby_akce2_grid.Column("poznamka", "Poznámka"),
+                    osoby_akce2_grid.Column(format: (item) => new HtmlString(Html.ActionLink("Upravit", "Edit", "UserEvent", new RouteValueDictionary(new { akce_id = item.akce_id, osoby_id = item.osoby_id }), null) + " | " +
+                            Html.ActionLink("Smazat", "Delete", "UserEvent", new RouteValueDictionary(new { akce_id = item.akce_id, osoby_id = item.osoby_id }), null)))
 ))
 
 <h3>Ubytování pro účastníky</h3>
 <p>
     @Html.ActionLink("Přidat novou položku", "Create", "Accommodation")
 </p>
-@ubytovani_grid.GetHtml(columns:
+@ubytovani_grid.GetHtml(tableStyle: "table table-striped table-hover", columns:
     ubytovani_grid.Columns
     (
             ubytovani_grid.Column("osoby.id", "ID"),
@@ -139,7 +136,7 @@
     @Html.ActionLink("Přidat novou položku", "Create", "ProdListItem")
 </p>
 <h3>Přípravná fáze - před projektem</h3>
-@produkcni_listy0_grid.GetHtml(columns:
+@produkcni_listy0_grid.GetHtml(tableStyle: "table table-striped table-hover", columns:
     produkcni_listy0_grid.Columns
     (
             produkcni_listy0_grid.Column("produkcni_listy.jmeno_aktivity", "Úkol/aktivita"),
@@ -152,7 +149,7 @@
 ))
 
 <h3>Výkonná fáze - při projektu</h3>
-@produkcni_listy1_grid.GetHtml(columns:
+@produkcni_listy1_grid.GetHtml(tableStyle: "table table-striped table-hover", columns:
     produkcni_listy1_grid.Columns
     (
             produkcni_listy1_grid.Column("produkcni_listy.jmeno_aktivity", "Úkol/aktivita"),
@@ -165,7 +162,7 @@
 ))
 
 <h3>Post produkční fáze</h3>
-@produkcni_listy2_grid.GetHtml(columns:
+@produkcni_listy2_grid.GetHtml(tableStyle: "table table-striped table-hover", columns:
     produkcni_listy2_grid.Columns
     (
             produkcni_listy2_grid.Column("produkcni_listy.jmeno_aktivity", "Úkol/aktivita"),
@@ -182,7 +179,7 @@
     @Html.ActionLink("Přidat novou položku", "Create", "FinanceItem")
 </p>
 <h3>Honorářové náklady</h3>
-@naklady0_grid.GetHtml(columns:
+@naklady0_grid.GetHtml(tableStyle: "table table-striped table-hover", columns:
         naklady0_grid.Columns
     (
             naklady0_grid.Column("naklady.jmeno", "Náklad"),
@@ -192,7 +189,7 @@
 ))
 
 <h3>materiální náklady</h3>
-@naklady1_grid.GetHtml(columns:
+@naklady1_grid.GetHtml(tableStyle: "table table-striped table-hover", columns:
         naklady1_grid.Columns
     (
             naklady1_grid.Column("naklady.jmeno", "Náklad"),
@@ -202,7 +199,7 @@
 ))
 
 <h3>nemateriální náklady</h3>
-@naklady2_grid.GetHtml(columns:
+@naklady2_grid.GetHtml(tableStyle: "table table-striped table-hover", columns:
         naklady2_grid.Columns
     (
             naklady2_grid.Column("naklady.jmeno", "Náklad"),
@@ -212,7 +209,7 @@
 ))
 
 <h3>produkční náklady</h3>
-@naklady3_grid.GetHtml(columns:
+@naklady3_grid.GetHtml(tableStyle: "table table-striped table-hover", columns:
         naklady3_grid.Columns
     (
             naklady3_grid.Column("naklady.jmeno", "Náklad"),
@@ -222,7 +219,7 @@
 ))
 
 <h3>pronájmy</h3>
-@naklady4_grid.GetHtml(columns:
+@naklady4_grid.GetHtml(tableStyle: "table table-striped table-hover", columns:
         naklady4_grid.Columns
     (
             naklady4_grid.Column("naklady.jmeno", "Náklad"),
@@ -232,7 +229,7 @@
 ))
 
 <h3>PR</h3>
-@naklady5_grid.GetHtml(columns:
+@naklady5_grid.GetHtml(tableStyle: "table table-striped table-hover", columns:
         naklady0_grid.Columns
     (
             naklady5_grid.Column("naklady.jmeno", "Náklad"),
