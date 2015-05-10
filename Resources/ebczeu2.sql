@@ -164,6 +164,7 @@ CREATE TABLE "osoby_akce" (
   "doprava" int NOT NULL,
   "srazkova_dan" int NOT NULL,
   "vyplaceno" int NOT NULL,
+  "stav" int NOT NULL,
 
   CONSTRAINT PK_osoby_akce_pk_id PRIMARY KEY CLUSTERED (osoby_id, akce_id, nastroje_id)
 );
@@ -247,7 +248,7 @@ CREATE TABLE "text_smlouvy" (
 
 CREATE TABLE "titul" (
   "pk_id" int IDENTITY(1,1) NOT NULL UNIQUE,
-  "titul" varchar(40) NOT NULL,
+  "nazev" varchar(40) NOT NULL,
   "autor" varchar(35) NOT NULL,
   "poznamka" varchar(160) NOT NULL,
 
