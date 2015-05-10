@@ -7,7 +7,8 @@
 
 <h2>@ViewBag.Title</h2>
 @using (Html.BeginForm())
-{ 
+{
+    int rowVal = -1; 
     @grid.GetHtml(columns:
         grid.Columns
         (
@@ -17,27 +18,10 @@
             grid.Column("telefon", "Telefon"),
             grid.Column("email", "E-mail"),
             grid.Column("mesto", "Město"),
-            grid.Column("narodnost", "Národnost")
-            @*grid.Column("nastroje_id", header: "le", format: @<text> @Html.DropDownList("", new SelectList(@Model.m_osoby.Single().nastroje))</text>, style: "ds", canSort: false)*@
-            @*grid.Column(format: @Html.CheckBox(item.id))*@
-        ))
+            grid.Column("narodnost", "Národnost"),
+            grid.Column(header: "Assign?", format: @<text><input class="check-box"  id="assignChkBx" name="assignChkBx" type="checkbox" value="@item.id"/></text>),
+            grid.Column(header: "nastroj", format: Html.ListBoxFor(item => item.nastroje_id, new SelectList(Model.m_nastroje.ElementAt(rowVal = rowVal + 1)), 0))
+            //grid.Column(header: "nastroj", format: item => Html.DropDownList("nastroj", new SelectList(Model.m_nastroje.ElementAt(rowVal = rowVal + 1)), 0))
+            ))
     <input type ="submit" value ="Send" />
 }
-<fieldset>
-<legend>
-Send Email
-</legend>
-@using (Html.BeginForm())
-{
-@Html.ValidationSummary()
-<p>From: </p>
-<p>@Html.TextBox("em_mail.From")</p>
- <p>To: </p>
-<p>@Html.TextBox("em_mail.To")</p>
-<p>Subject: </p>
-<p>@Html.TextBox("em_mail.Subject")</p>
- <p>Body: </p>
-<p>@Html.TextBox("em_mail.Body")</p>
-<input type ="submit" value ="Send" />
-} 
-</fieldset>

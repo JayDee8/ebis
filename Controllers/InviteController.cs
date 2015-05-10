@@ -39,6 +39,20 @@ namespace ebis.Controllers
             InviteModel invModel = new InviteModel();
 
             invModel.m_osoby = db.osoby.ToList();
+            //invModel.m_nastroje = db.nastroje.Where(n => n.osoby.Any(o => o.pk_id == 1));
+            //invModel.m_nastroje = db.nastroje.SingleOrDefault(x => x.pk_id == pk_id));
+            var osoby_nastroje = db.osoby.Include("nastroje");
+            List<List<string>> nastroje_arr = new List<List<string>>();
+            foreach(var osoba_i in osoby_nastroje)
+            {
+                List<string> na_item = new List<string>();
+                foreach (var nastroj_i in osoba_i.nastroje)
+                {
+                    na_item.Add(nastroj_i.jmeno);
+                }
+                nastroje_arr.Add(na_item);
+            }
+            invModel.m_nastroje = nastroje_arr;
             return View(invModel);
         }
 
