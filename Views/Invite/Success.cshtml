@@ -1,0 +1,20 @@
+﻿@model ebis.Models.SuccessModel
+
+@{
+    ViewBag.Title = "Success";
+}
+
+<h2>Pozvánky byly úspěšně odeslány na následující e-mailové adresy:</h2>
+
+<p>
+@{
+    foreach(string mail in @Model.emails)
+    {
+        <span>@mail</span><br>
+    }
+}
+</p>
+
+<div>
+    @Html.ActionLink("Zpět na detail akce", "Details", "Event", new RouteValueDictionary(new { id = @ViewBag.akce_id_link }), null)
+</div>

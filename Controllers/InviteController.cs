@@ -31,6 +31,17 @@ namespace ebis.Controllers
             return null;
         }
 
+        public ActionResult Success(SuccessModel s_model)
+        {
+            return View(s_model);
+        }
+
+        public ActionResult Response(string command)
+        {
+            string str = Decrypt(command);
+            return View();
+        }
+
         //
         // GET: /Invite/
 
@@ -72,17 +83,25 @@ namespace ebis.Controllers
         }
 
         [HttpPost]
-        public ViewResult Index(FormCollection form)
+        public ActionResult Index(FormCollection form)
         {
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new System.Net.NetworkCredential("xpodsednikm@gmail.com", "Sephael024");
+            smtp.EnableSsl = true;
+
             List<string> rowsUsers = new List<string>(form.GetValues("ucast"));
             List<string> rowsInstruments = new List<string>(form.GetValues("nastroj"));
             List<string> usersIds = new List<string>(form.GetValues("usId"));
 
             List<osoby> users = new List<osoby>();
             List<nastroje> instruments = new List<nastroje>();
+            List<string> emails = new List<string>();
             foreach (string row in rowsUsers)
             {
-                int wgRowId = Convert.ToInt32(row) + 2;
+                int wgRowId = Convert.ToInt32(row) + 1;
                 int instrId = Convert.ToInt32(rowsInstruments.ElementAt(wgRowId));
                 int userId = Convert.ToInt32(usersIds.ElementAt(wgRowId));
 
@@ -105,7 +124,17 @@ namespace ebis.Controllers
 
                 db.osoby_akce.AddObject(oa);
                 db.SaveChanges();
-            
+
+                MailMessage mail = new MailMessage();
+                mail.To.Add(user.email);
+                emails.Add(user.email);
+                mail.From = new MailAddress("xpodsednikm@gmail.com");
+                mail.Subject = "test";
+                string content = oa.akce_id.ToString() + "-" + oa.nastroje_id.ToString() + "-" + oa.osoby_id.ToString() + "-1";
+                string Body = "http://localhost:52663/Invite/Response/" + Encrypt(content);
+                mail.Body = Body;
+                mail.IsBodyHtml = true;
+                smtp.Send(mail);
             }
 
 
@@ -134,7 +163,10 @@ namespace ebis.Controllers
             {
                 return View();
             }*/
-            return View();
+            SuccessModel s_model = new SuccessModel();
+            s_model.id = Convert.ToInt32(form.GetValue("eventId").AttemptedValue);
+            s_model.emails = emails;
+            return View("Success", s_model);
         }
 
         //
