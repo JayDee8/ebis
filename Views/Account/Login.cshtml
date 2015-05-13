@@ -17,12 +17,12 @@
         <legend>Přihlašovací formulář</legend>
         <ol>
             <li>
-                @Html.LabelFor(m => m.UserName)
+                @Html.LabelFor(m => m.UserName)<br />
                 @Html.TextBoxFor(m => m.UserName)
                 @Html.ValidationMessageFor(m => m.UserName)
             </li>
             <li>
-                @Html.LabelFor(m => m.Password)
+                @Html.LabelFor(m => m.Password)<br />
                 @Html.PasswordFor(m => m.Password)
                 @Html.ValidationMessageFor(m => m.Password)
             </li>
@@ -34,7 +34,7 @@
         <input type="submit" value="Přihlásit se" />
     </fieldset>
     <p>
-        @Html.ActionLink("Registrovat", "Register") pokud nemáte účet.
+        @Html.Bootstrap().ActionLinkButton("Registrovat", "Register","Account") pokud nemáte účet.
     </p>
 }
 </section>

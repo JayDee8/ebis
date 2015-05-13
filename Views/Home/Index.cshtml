@@ -12,7 +12,7 @@
                 }
                 else
                 {
-                    <h2>@ViewBag.Message</h2> <button>@Html.ActionLink("Přihlásit se", "Login", "Account", routeValues: null, htmlAttributes: new { id = "mainLoginLink" })</button>
+                    <div class="row"><h2 class="col-md-8 noMarNoPad">@ViewBag.Message</h2> @Html.ActionLink("Přihlásit se", "Login", "Account", routeValues: null, htmlAttributes: new { id = "mainLoginLink", @class = "btn btn-default col-md-2" })<div class="col-md-2"></div></div>
                 }
             </hgroup>
         </div>

@@ -473,19 +473,13 @@ namespace ebis.Models
         /// </summary>
         /// <param name="pk_id">Initial value of the pk_id property.</param>
         /// <param name="jmeno">Initial value of the jmeno property.</param>
-        /// <param name="popis">Initial value of the popis property.</param>
         /// <param name="titul_id">Initial value of the titul_id property.</param>
-        /// <param name="datum">Initial value of the datum property.</param>
-        /// <param name="cas">Initial value of the cas property.</param>
-        public static akce Createakce(global::System.Int32 pk_id, global::System.String jmeno, global::System.String popis, global::System.Int32 titul_id, global::System.DateTime datum, global::System.String cas)
+        public static akce Createakce(global::System.Int32 pk_id, global::System.String jmeno, global::System.Int32 titul_id)
         {
             akce akce = new akce();
             akce.pk_id = pk_id;
             akce.jmeno = jmeno;
-            akce.popis = popis;
             akce.titul_id = titul_id;
-            akce.datum = datum;
-            akce.cas = cas;
             return akce;
         }
 
@@ -547,7 +541,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String popis
         {
@@ -559,7 +553,7 @@ namespace ebis.Models
             {
                 OnpopisChanging(value);
                 ReportPropertyChanging("popis");
-                _popis = StructuralObject.SetValidValue(value, false);
+                _popis = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("popis");
                 OnpopisChanged();
             }
@@ -595,9 +589,9 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.DateTime datum
+        public Nullable<global::System.DateTime> datum
         {
             get
             {
@@ -612,14 +606,14 @@ namespace ebis.Models
                 OndatumChanged();
             }
         }
-        private global::System.DateTime _datum;
-        partial void OndatumChanging(global::System.DateTime value);
+        private Nullable<global::System.DateTime> _datum;
+        partial void OndatumChanging(Nullable<global::System.DateTime> value);
         partial void OndatumChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String cas
         {
@@ -631,7 +625,7 @@ namespace ebis.Models
             {
                 OncasChanging(value);
                 ReportPropertyChanging("cas");
-                _cas = StructuralObject.SetValidValue(value, false);
+                _cas = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("cas");
                 OncasChanged();
             }
@@ -1004,19 +998,11 @@ namespace ebis.Models
         /// </summary>
         /// <param name="akce_id">Initial value of the akce_id property.</param>
         /// <param name="produkcni_listy_id">Initial value of the produkcni_listy_id property.</param>
-        /// <param name="poznamka">Initial value of the poznamka property.</param>
-        /// <param name="termin">Initial value of the termin property.</param>
-        /// <param name="status">Initial value of the status property.</param>
-        /// <param name="zodpovedna_osoba">Initial value of the zodpovedna_osoba property.</param>
-        public static akce_produkcni_listy Createakce_produkcni_listy(global::System.Int32 akce_id, global::System.Int32 produkcni_listy_id, global::System.String poznamka, global::System.String termin, global::System.Int32 status, global::System.String zodpovedna_osoba)
+        public static akce_produkcni_listy Createakce_produkcni_listy(global::System.Int32 akce_id, global::System.Int32 produkcni_listy_id)
         {
             akce_produkcni_listy akce_produkcni_listy = new akce_produkcni_listy();
             akce_produkcni_listy.akce_id = akce_id;
             akce_produkcni_listy.produkcni_listy_id = produkcni_listy_id;
-            akce_produkcni_listy.poznamka = poznamka;
-            akce_produkcni_listy.termin = termin;
-            akce_produkcni_listy.status = status;
-            akce_produkcni_listy.zodpovedna_osoba = zodpovedna_osoba;
             return akce_produkcni_listy;
         }
 
@@ -1081,7 +1067,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String poznamka
         {
@@ -1093,7 +1079,7 @@ namespace ebis.Models
             {
                 OnpoznamkaChanging(value);
                 ReportPropertyChanging("poznamka");
-                _poznamka = StructuralObject.SetValidValue(value, false);
+                _poznamka = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("poznamka");
                 OnpoznamkaChanged();
             }
@@ -1105,7 +1091,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String termin
         {
@@ -1117,7 +1103,7 @@ namespace ebis.Models
             {
                 OnterminChanging(value);
                 ReportPropertyChanging("termin");
-                _termin = StructuralObject.SetValidValue(value, false);
+                _termin = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("termin");
                 OnterminChanged();
             }
@@ -1129,9 +1115,9 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Int32 status
+        public Nullable<global::System.Int32> status
         {
             get
             {
@@ -1146,14 +1132,14 @@ namespace ebis.Models
                 OnstatusChanged();
             }
         }
-        private global::System.Int32 _status;
-        partial void OnstatusChanging(global::System.Int32 value);
+        private Nullable<global::System.Int32> _status;
+        partial void OnstatusChanging(Nullable<global::System.Int32> value);
         partial void OnstatusChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String zodpovedna_osoba
         {
@@ -1165,7 +1151,7 @@ namespace ebis.Models
             {
                 Onzodpovedna_osobaChanging(value);
                 ReportPropertyChanging("zodpovedna_osoba");
-                _zodpovedna_osoba = StructuralObject.SetValidValue(value, false);
+                _zodpovedna_osoba = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("zodpovedna_osoba");
                 Onzodpovedna_osobaChanged();
             }
@@ -1275,22 +1261,12 @@ namespace ebis.Models
         /// <param name="pk_id">Initial value of the pk_id property.</param>
         /// <param name="akce_id">Initial value of the akce_id property.</param>
         /// <param name="lokace_id">Initial value of the lokace_id property.</param>
-        /// <param name="datum">Initial value of the datum property.</param>
-        /// <param name="cas">Initial value of the cas property.</param>
-        /// <param name="orchestr">Initial value of the orchestr property.</param>
-        /// <param name="sbor">Initial value of the sbor property.</param>
-        /// <param name="solisti">Initial value of the solisti property.</param>
-        public static fermany Createfermany(global::System.Int32 pk_id, global::System.Int32 akce_id, global::System.Int32 lokace_id, global::System.DateTime datum, global::System.String cas, global::System.String orchestr, global::System.String sbor, global::System.String solisti)
+        public static fermany Createfermany(global::System.Int32 pk_id, global::System.Int32 akce_id, global::System.Int32 lokace_id)
         {
             fermany fermany = new fermany();
             fermany.pk_id = pk_id;
             fermany.akce_id = akce_id;
             fermany.lokace_id = lokace_id;
-            fermany.datum = datum;
-            fermany.cas = cas;
-            fermany.orchestr = orchestr;
-            fermany.sbor = sbor;
-            fermany.solisti = solisti;
             return fermany;
         }
 
@@ -1376,9 +1352,9 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.DateTime datum
+        public Nullable<global::System.DateTime> datum
         {
             get
             {
@@ -1393,14 +1369,14 @@ namespace ebis.Models
                 OndatumChanged();
             }
         }
-        private global::System.DateTime _datum;
-        partial void OndatumChanging(global::System.DateTime value);
+        private Nullable<global::System.DateTime> _datum;
+        partial void OndatumChanging(Nullable<global::System.DateTime> value);
         partial void OndatumChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String cas
         {
@@ -1412,7 +1388,7 @@ namespace ebis.Models
             {
                 OncasChanging(value);
                 ReportPropertyChanging("cas");
-                _cas = StructuralObject.SetValidValue(value, false);
+                _cas = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("cas");
                 OncasChanged();
             }
@@ -1424,7 +1400,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String orchestr
         {
@@ -1436,7 +1412,7 @@ namespace ebis.Models
             {
                 OnorchestrChanging(value);
                 ReportPropertyChanging("orchestr");
-                _orchestr = StructuralObject.SetValidValue(value, false);
+                _orchestr = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("orchestr");
                 OnorchestrChanged();
             }
@@ -1448,7 +1424,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String sbor
         {
@@ -1460,7 +1436,7 @@ namespace ebis.Models
             {
                 OnsborChanging(value);
                 ReportPropertyChanging("sbor");
-                _sbor = StructuralObject.SetValidValue(value, false);
+                _sbor = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("sbor");
                 OnsborChanged();
             }
@@ -1472,7 +1448,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String solisti
         {
@@ -1484,7 +1460,7 @@ namespace ebis.Models
             {
                 OnsolistiChanging(value);
                 ReportPropertyChanging("solisti");
-                _solisti = StructuralObject.SetValidValue(value, false);
+                _solisti = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("solisti");
                 OnsolistiChanged();
             }
@@ -1594,16 +1570,12 @@ namespace ebis.Models
         /// <param name="pk_id">Initial value of the pk_id property.</param>
         /// <param name="jmeno">Initial value of the jmeno property.</param>
         /// <param name="prijmeni">Initial value of the prijmeni property.</param>
-        /// <param name="email">Initial value of the email property.</param>
-        /// <param name="telefon">Initial value of the telefon property.</param>
-        public static kontakty Createkontakty(global::System.Int32 pk_id, global::System.String jmeno, global::System.String prijmeni, global::System.String email, global::System.String telefon)
+        public static kontakty Createkontakty(global::System.Int32 pk_id, global::System.String jmeno, global::System.String prijmeni)
         {
             kontakty kontakty = new kontakty();
             kontakty.pk_id = pk_id;
             kontakty.jmeno = jmeno;
             kontakty.prijmeni = prijmeni;
-            kontakty.email = email;
-            kontakty.telefon = telefon;
             return kontakty;
         }
 
@@ -1689,7 +1661,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String email
         {
@@ -1701,7 +1673,7 @@ namespace ebis.Models
             {
                 OnemailChanging(value);
                 ReportPropertyChanging("email");
-                _email = StructuralObject.SetValidValue(value, false);
+                _email = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("email");
                 OnemailChanged();
             }
@@ -1713,7 +1685,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String telefon
         {
@@ -1725,7 +1697,7 @@ namespace ebis.Models
             {
                 OntelefonChanging(value);
                 ReportPropertyChanging("telefon");
-                _telefon = StructuralObject.SetValidValue(value, false);
+                _telefon = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("telefon");
                 OntelefonChanged();
             }
@@ -1754,17 +1726,11 @@ namespace ebis.Models
         /// </summary>
         /// <param name="pk_id">Initial value of the pk_id property.</param>
         /// <param name="jmeno">Initial value of the jmeno property.</param>
-        /// <param name="adresa">Initial value of the adresa property.</param>
-        /// <param name="gps">Initial value of the gps property.</param>
-        /// <param name="link">Initial value of the link property.</param>
-        public static lokace Createlokace(global::System.Int32 pk_id, global::System.String jmeno, global::System.String adresa, global::System.String gps, global::System.String link)
+        public static lokace Createlokace(global::System.Int32 pk_id, global::System.String jmeno)
         {
             lokace lokace = new lokace();
             lokace.pk_id = pk_id;
             lokace.jmeno = jmeno;
-            lokace.adresa = adresa;
-            lokace.gps = gps;
-            lokace.link = link;
             return lokace;
         }
 
@@ -1826,7 +1792,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String adresa
         {
@@ -1838,7 +1804,7 @@ namespace ebis.Models
             {
                 OnadresaChanging(value);
                 ReportPropertyChanging("adresa");
-                _adresa = StructuralObject.SetValidValue(value, false);
+                _adresa = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("adresa");
                 OnadresaChanged();
             }
@@ -1850,7 +1816,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String gps
         {
@@ -1862,7 +1828,7 @@ namespace ebis.Models
             {
                 OngpsChanging(value);
                 ReportPropertyChanging("gps");
-                _gps = StructuralObject.SetValidValue(value, false);
+                _gps = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("gps");
                 OngpsChanged();
             }
@@ -1874,7 +1840,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String link
         {
@@ -1886,7 +1852,7 @@ namespace ebis.Models
             {
                 OnlinkChanging(value);
                 ReportPropertyChanging("link");
-                _link = StructuralObject.SetValidValue(value, false);
+                _link = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("link");
                 OnlinkChanged();
             }
@@ -2257,35 +2223,13 @@ namespace ebis.Models
         /// <param name="id">Initial value of the id property.</param>
         /// <param name="jmeno">Initial value of the jmeno property.</param>
         /// <param name="prijmeni">Initial value of the prijmeni property.</param>
-        /// <param name="telefon">Initial value of the telefon property.</param>
-        /// <param name="email">Initial value of the email property.</param>
-        /// <param name="mesto">Initial value of the mesto property.</param>
-        /// <param name="psc">Initial value of the psc property.</param>
-        /// <param name="narodnost">Initial value of the narodnost property.</param>
-        /// <param name="cislo_uctu">Initial value of the cislo_uctu property.</param>
-        /// <param name="adresa">Initial value of the adresa property.</param>
-        /// <param name="datum_narozeni">Initial value of the datum_narozeni property.</param>
-        /// <param name="misto_narozeni">Initial value of the misto_narozeni property.</param>
-        /// <param name="ic_dic">Initial value of the ic_dic property.</param>
-        /// <param name="poznamka">Initial value of the poznamka property.</param>
-        public static osoby Createosoby(global::System.Int32 pk_id, global::System.Int32 id, global::System.String jmeno, global::System.String prijmeni, global::System.String telefon, global::System.String email, global::System.String mesto, global::System.String psc, global::System.String narodnost, global::System.String cislo_uctu, global::System.String adresa, global::System.DateTime datum_narozeni, global::System.String misto_narozeni, global::System.Int32 ic_dic, global::System.String poznamka)
+        public static osoby Createosoby(global::System.Int32 pk_id, global::System.Int32 id, global::System.String jmeno, global::System.String prijmeni)
         {
             osoby osoby = new osoby();
             osoby.pk_id = pk_id;
             osoby.id = id;
             osoby.jmeno = jmeno;
             osoby.prijmeni = prijmeni;
-            osoby.telefon = telefon;
-            osoby.email = email;
-            osoby.mesto = mesto;
-            osoby.psc = psc;
-            osoby.narodnost = narodnost;
-            osoby.cislo_uctu = cislo_uctu;
-            osoby.adresa = adresa;
-            osoby.datum_narozeni = datum_narozeni;
-            osoby.misto_narozeni = misto_narozeni;
-            osoby.ic_dic = ic_dic;
-            osoby.poznamka = poznamka;
             return osoby;
         }
 
@@ -2395,7 +2339,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String telefon
         {
@@ -2407,7 +2351,7 @@ namespace ebis.Models
             {
                 OntelefonChanging(value);
                 ReportPropertyChanging("telefon");
-                _telefon = StructuralObject.SetValidValue(value, false);
+                _telefon = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("telefon");
                 OntelefonChanged();
             }
@@ -2419,7 +2363,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String email
         {
@@ -2431,7 +2375,7 @@ namespace ebis.Models
             {
                 OnemailChanging(value);
                 ReportPropertyChanging("email");
-                _email = StructuralObject.SetValidValue(value, false);
+                _email = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("email");
                 OnemailChanged();
             }
@@ -2443,7 +2387,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String mesto
         {
@@ -2455,7 +2399,7 @@ namespace ebis.Models
             {
                 OnmestoChanging(value);
                 ReportPropertyChanging("mesto");
-                _mesto = StructuralObject.SetValidValue(value, false);
+                _mesto = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("mesto");
                 OnmestoChanged();
             }
@@ -2467,7 +2411,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String psc
         {
@@ -2479,7 +2423,7 @@ namespace ebis.Models
             {
                 OnpscChanging(value);
                 ReportPropertyChanging("psc");
-                _psc = StructuralObject.SetValidValue(value, false);
+                _psc = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("psc");
                 OnpscChanged();
             }
@@ -2491,7 +2435,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String narodnost
         {
@@ -2503,7 +2447,7 @@ namespace ebis.Models
             {
                 OnnarodnostChanging(value);
                 ReportPropertyChanging("narodnost");
-                _narodnost = StructuralObject.SetValidValue(value, false);
+                _narodnost = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("narodnost");
                 OnnarodnostChanged();
             }
@@ -2515,7 +2459,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String cislo_uctu
         {
@@ -2527,7 +2471,7 @@ namespace ebis.Models
             {
                 Oncislo_uctuChanging(value);
                 ReportPropertyChanging("cislo_uctu");
-                _cislo_uctu = StructuralObject.SetValidValue(value, false);
+                _cislo_uctu = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("cislo_uctu");
                 Oncislo_uctuChanged();
             }
@@ -2539,7 +2483,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String adresa
         {
@@ -2551,7 +2495,7 @@ namespace ebis.Models
             {
                 OnadresaChanging(value);
                 ReportPropertyChanging("adresa");
-                _adresa = StructuralObject.SetValidValue(value, false);
+                _adresa = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("adresa");
                 OnadresaChanged();
             }
@@ -2563,9 +2507,9 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.DateTime datum_narozeni
+        public Nullable<global::System.DateTime> datum_narozeni
         {
             get
             {
@@ -2580,14 +2524,14 @@ namespace ebis.Models
                 Ondatum_narozeniChanged();
             }
         }
-        private global::System.DateTime _datum_narozeni;
-        partial void Ondatum_narozeniChanging(global::System.DateTime value);
+        private Nullable<global::System.DateTime> _datum_narozeni;
+        partial void Ondatum_narozeniChanging(Nullable<global::System.DateTime> value);
         partial void Ondatum_narozeniChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String misto_narozeni
         {
@@ -2599,7 +2543,7 @@ namespace ebis.Models
             {
                 Onmisto_narozeniChanging(value);
                 ReportPropertyChanging("misto_narozeni");
-                _misto_narozeni = StructuralObject.SetValidValue(value, false);
+                _misto_narozeni = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("misto_narozeni");
                 Onmisto_narozeniChanged();
             }
@@ -2611,9 +2555,9 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Int32 ic_dic
+        public Nullable<global::System.Int32> ic_dic
         {
             get
             {
@@ -2628,14 +2572,14 @@ namespace ebis.Models
                 Onic_dicChanged();
             }
         }
-        private global::System.Int32 _ic_dic;
-        partial void Onic_dicChanging(global::System.Int32 value);
+        private Nullable<global::System.Int32> _ic_dic;
+        partial void Onic_dicChanging(Nullable<global::System.Int32> value);
         partial void Onic_dicChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String poznamka
         {
@@ -2647,7 +2591,7 @@ namespace ebis.Models
             {
                 OnpoznamkaChanging(value);
                 ReportPropertyChanging("poznamka");
-                _poznamka = StructuralObject.SetValidValue(value, false);
+                _poznamka = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("poznamka");
                 OnpoznamkaChanged();
             }
@@ -2769,19 +2713,17 @@ namespace ebis.Models
         /// <param name="osoby_id">Initial value of the osoby_id property.</param>
         /// <param name="akce_id">Initial value of the akce_id property.</param>
         /// <param name="nastroje_id">Initial value of the nastroje_id property.</param>
-        /// <param name="poznamka">Initial value of the poznamka property.</param>
         /// <param name="honorar">Initial value of the honorar property.</param>
         /// <param name="doprava">Initial value of the doprava property.</param>
         /// <param name="srazkova_dan">Initial value of the srazkova_dan property.</param>
         /// <param name="vyplaceno">Initial value of the vyplaceno property.</param>
         /// <param name="stav">Initial value of the stav property.</param>
-        public static osoby_akce Createosoby_akce(global::System.Int32 osoby_id, global::System.Int32 akce_id, global::System.Int32 nastroje_id, global::System.String poznamka, global::System.Int32 honorar, global::System.Int32 doprava, global::System.Int32 srazkova_dan, global::System.Int32 vyplaceno, global::System.Int32 stav)
+        public static osoby_akce Createosoby_akce(global::System.Int32 osoby_id, global::System.Int32 akce_id, global::System.Int32 nastroje_id, global::System.Int32 honorar, global::System.Int32 doprava, global::System.Int32 srazkova_dan, global::System.Int32 vyplaceno, global::System.Int32 stav)
         {
             osoby_akce osoby_akce = new osoby_akce();
             osoby_akce.osoby_id = osoby_id;
             osoby_akce.akce_id = akce_id;
             osoby_akce.nastroje_id = nastroje_id;
-            osoby_akce.poznamka = poznamka;
             osoby_akce.honorar = honorar;
             osoby_akce.doprava = doprava;
             osoby_akce.srazkova_dan = srazkova_dan;
@@ -2878,7 +2820,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String poznamka
         {
@@ -2890,7 +2832,7 @@ namespace ebis.Models
             {
                 OnpoznamkaChanging(value);
                 ReportPropertyChanging("poznamka");
-                _poznamka = StructuralObject.SetValidValue(value, false);
+                _poznamka = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("poznamka");
                 OnpoznamkaChanged();
             }
@@ -4032,15 +3974,11 @@ namespace ebis.Models
         /// </summary>
         /// <param name="pk_id">Initial value of the pk_id property.</param>
         /// <param name="nazev">Initial value of the nazev property.</param>
-        /// <param name="autor">Initial value of the autor property.</param>
-        /// <param name="poznamka">Initial value of the poznamka property.</param>
-        public static titul Createtitul(global::System.Int32 pk_id, global::System.String nazev, global::System.String autor, global::System.String poznamka)
+        public static titul Createtitul(global::System.Int32 pk_id, global::System.String nazev)
         {
             titul titul = new titul();
             titul.pk_id = pk_id;
             titul.nazev = nazev;
-            titul.autor = autor;
-            titul.poznamka = poznamka;
             return titul;
         }
 
@@ -4102,7 +4040,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String autor
         {
@@ -4114,7 +4052,7 @@ namespace ebis.Models
             {
                 OnautorChanging(value);
                 ReportPropertyChanging("autor");
-                _autor = StructuralObject.SetValidValue(value, false);
+                _autor = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("autor");
                 OnautorChanged();
             }
@@ -4126,7 +4064,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String poznamka
         {
@@ -4138,7 +4076,7 @@ namespace ebis.Models
             {
                 OnpoznamkaChanging(value);
                 ReportPropertyChanging("poznamka");
-                _poznamka = StructuralObject.SetValidValue(value, false);
+                _poznamka = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("poznamka");
                 OnpoznamkaChanged();
             }
@@ -4195,18 +4133,16 @@ namespace ebis.Models
         /// <param name="osoby_id">Initial value of the osoby_id property.</param>
         /// <param name="lokace_id">Initial value of the lokace_id property.</param>
         /// <param name="akce_id">Initial value of the akce_id property.</param>
-        /// <param name="pokoj">Initial value of the pokoj property.</param>
         /// <param name="cena1">Initial value of the cena1 property.</param>
         /// <param name="cena2">Initial value of the cena2 property.</param>
         /// <param name="cena3">Initial value of the cena3 property.</param>
-        public static ubytovani Createubytovani(global::System.Int32 pk_id, global::System.Int32 osoby_id, global::System.Int32 lokace_id, global::System.Int32 akce_id, global::System.Int32 pokoj, global::System.Int32 cena1, global::System.Int32 cena2, global::System.Int32 cena3)
+        public static ubytovani Createubytovani(global::System.Int32 pk_id, global::System.Int32 osoby_id, global::System.Int32 lokace_id, global::System.Int32 akce_id, global::System.Int32 cena1, global::System.Int32 cena2, global::System.Int32 cena3)
         {
             ubytovani ubytovani = new ubytovani();
             ubytovani.pk_id = pk_id;
             ubytovani.osoby_id = osoby_id;
             ubytovani.lokace_id = lokace_id;
             ubytovani.akce_id = akce_id;
-            ubytovani.pokoj = pokoj;
             ubytovani.cena1 = cena1;
             ubytovani.cena2 = cena2;
             ubytovani.cena3 = cena3;
@@ -4319,9 +4255,9 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Int32 pokoj
+        public Nullable<global::System.Int32> pokoj
         {
             get
             {
@@ -4336,8 +4272,8 @@ namespace ebis.Models
                 OnpokojChanged();
             }
         }
-        private global::System.Int32 _pokoj;
-        partial void OnpokojChanging(global::System.Int32 value);
+        private Nullable<global::System.Int32> _pokoj;
+        partial void OnpokojChanging(Nullable<global::System.Int32> value);
         partial void OnpokojChanged();
     
         /// <summary>
