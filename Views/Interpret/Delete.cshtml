@@ -4,106 +4,12 @@
     ViewBag.Title = "Odebrat osoby";
 }
 
-<h2>@ViewBag.Title</h2>
 
-<h3>Opravdu chcete odebrat tuto osobu?</h3>
-<fieldset>
-    <legend>osoby</legend>
+<h3>Opravdu chcete odebrat tuto umělce @Model.jmeno @Model.prijmeni?</h3>
 
-    <div class="display-label">
-         Jméno
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.jmeno)
-    </div>
-
-    <div class="display-label">
-         Příjmení
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.prijmeni)
-    </div>
-
-    <div class="display-label">
-         Telefon
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.telefon)
-    </div>
-
-    <div class="display-label">
-         E-mail
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.email)
-    </div>
-
-    <div class="display-label">
-         Město
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.mesto)
-    </div>
-
-    <div class="display-label">
-         PSČ
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.psc)
-    </div>
-
-    <div class="display-label">
-         Národnost
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.narodnost)
-    </div>
-
-    <div class="display-label">
-         Číslo účtu
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.cislo_uctu)
-    </div>
-
-    <div class="display-label">
-         Adresa
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.adresa)
-    </div>
-
-    <div class="display-label">
-         Datum narození
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.datum_narozeni)
-    </div>
-
-    <div class="display-label">
-         Místo narození
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.misto_narozeni)
-    </div>
-
-    <div class="display-label">
-         IČ/DIČ
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ic_dic)
-    </div>
-
-    <div class="display-label">
-         Poznámka
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.poznamka)
-    </div>
-</fieldset>
 @using (Html.BeginForm()) {
     <p>
-        <input type="submit" value="Odebrat" /> |
+        <button class="btn btn-danger" type="submit">Odebrat</button> |
         @Html.ActionLink("Zpět na seznam", "Index")
     </p>
 }

@@ -42,7 +42,11 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.em_akce.pk_id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
-<h3>Harmonogram</h3>
+
+@using (var a = Html.Bootstrap().Begin(new Accordion("myAccordion")))
+{
+    using (a.BeginPanel("Harmonogram"))
+    {
 <p>
     @Html.ActionLink("Přidat novou položku", "Create", "Schedule", new { id = Model.em_akce.pk_id }, null)
 </p>
@@ -59,8 +63,9 @@
         fermany_grid.Column(format: (item) => new HtmlString(Html.ActionLink("Upravit", "Edit", "Schedule", new RouteValueDictionary(new { id = item.pk_id }), null) + " | " +
         Html.ActionLink("Smazat", "Delete", "Schedule", new RouteValueDictionary(new { id = item.pk_id }), null)))
 ))
-
-<h3>Pozvaní umělci</h3>
+    }
+    using (a.BeginPanel("Pozvaní umělci"))
+    {
 <p>
     @Html.ActionLink("Oslovit nové umělce", "Index", "Invite", new { id = Model.em_akce.pk_id }, null)
 </p>
@@ -114,8 +119,9 @@
                     osoby_akce2_grid.Column(format: (item) => new HtmlString(Html.ActionLink("Upravit", "Edit", "UserEvent", new RouteValueDictionary(new { akce_id = item.akce_id, osoby_id = item.osoby_id }), null) + " | " +
                             Html.ActionLink("Smazat", "Delete", "UserEvent", new RouteValueDictionary(new { akce_id = item.akce_id, osoby_id = item.osoby_id }), null)))
 ))
-
-<h3>Ubytování pro účastníky</h3>
+    }
+    using (a.BeginPanel("Ubytování pro účastníky"))
+    {
 <p>
     @Html.ActionLink("Přidat novou položku", "Create", "Accommodation", new { id = Model.em_akce.pk_id }, null)
 </p>
@@ -133,8 +139,9 @@
             ubytovani_grid.Column(format: (item) => new HtmlString(Html.ActionLink("Upravit", "Edit", "Accommodation", new RouteValueDictionary(new { id = item.pk_id }), null) + " | " +
             Html.ActionLink("Smazat", "Delete", "Accommodation", new RouteValueDictionary(new { id = item.pk_id }), null)))
 ))
-
-<h3>Produkce</h3>
+    }
+    using (a.BeginPanel("Produkce"))
+    {
 <p>
     @Html.ActionLink("Přidat novou položku", "Create", "ProdListItem", new { id = Model.em_akce.pk_id }, null)
 </p>
@@ -150,7 +157,7 @@
             produkcni_listy0_grid.Column(format: (item) => new HtmlString(Html.ActionLink("Upravit", "Edit", "ProdListItem", new RouteValueDictionary(new { akce_id = item.akce_id, prod_id = item.produkcni_listy_id }), null) + " | " +
             Html.ActionLink("Smazat", "Delete", "ProdListItem", new RouteValueDictionary(new { akce_id = item.akce_id, prod_id = item.produkcni_listy_id }), null)))
 ))
-
+    
 <h3>Výkonná fáze - při projektu</h3>
 @produkcni_listy1_grid.GetHtml(tableStyle: "table table-striped table-hover", columns:
     produkcni_listy1_grid.Columns
@@ -176,8 +183,9 @@
             produkcni_listy2_grid.Column(format: (item) => new HtmlString(Html.ActionLink("Upravit", "Edit", "ProdListItem", new RouteValueDictionary(new { akce_id = item.akce_id, prod_id = item.produkcni_listy_id }), null) + " | " +
             Html.ActionLink("Smazat", "Delete", "ProdListItem", new RouteValueDictionary(new { akce_id = item.akce_id, prod_id = item.produkcni_listy_id }), null)))
 ))
-
-<h3>Náklady</h3>
+    }
+    using (a.BeginPanel("Náklady"))
+    {
 <p>
     @Html.ActionLink("Přidat novou položku", "Create", "FinanceItem", new { id = Model.em_akce.pk_id }, null)
 </p>
@@ -220,8 +228,9 @@
             naklady3_grid.Column(format: (item) => new HtmlString(Html.ActionLink("Upravit", "Edit", "FinanceItem", new RouteValueDictionary(new { akce_id = item.akce_id, naklady_id = item.naklady_id }), null) + " | " +
             Html.ActionLink("Smazat", "Delete", "FinanceItem", new RouteValueDictionary(new { akce_id = item.akce_id, naklady_id = item.naklady_id }), null)))
 ))
-
-<h3>Pronájmy</h3>
+    }
+    using (a.BeginPanel("Pronájmy"))
+    {
 @naklady4_grid.GetHtml(tableStyle: "table table-striped table-hover", columns:
         naklady4_grid.Columns
     (
@@ -230,8 +239,9 @@
             naklady4_grid.Column(format: (item) => new HtmlString(Html.ActionLink("Upravit", "Edit", "FinanceItem", new RouteValueDictionary(new { akce_id = item.akce_id, naklady_id = item.naklady_id }), null) + " | " +
             Html.ActionLink("Smazat", "Delete", "FinanceItem", new RouteValueDictionary(new { akce_id = item.akce_id, naklady_id = item.naklady_id }), null)))
 ))
-
-<h3>PR</h3>
+    }
+    using (a.BeginPanel("PR"))
+    {
 @naklady5_grid.GetHtml(tableStyle: "table table-striped table-hover", columns:
         naklady0_grid.Columns
     (
@@ -240,3 +250,5 @@
             naklady5_grid.Column(format: (item) => new HtmlString(Html.ActionLink("Upravit", "Edit", "FinanceItem", new RouteValueDictionary(new { akce_id = item.akce_id, naklady_id = item.naklady_id }), null) + " | " +
             Html.ActionLink("Smazat", "Delete", "FinanceItem", new RouteValueDictionary(new { akce_id = item.akce_id, naklady_id = item.naklady_id }), null)))
 ))
+    }
+}
