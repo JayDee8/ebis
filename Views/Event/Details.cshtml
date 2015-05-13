@@ -228,9 +228,8 @@
             naklady3_grid.Column(format: (item) => new HtmlString(Html.ActionLink("Upravit", "Edit", "FinanceItem", new RouteValueDictionary(new { akce_id = item.akce_id, naklady_id = item.naklady_id }), null) + " | " +
             Html.ActionLink("Smazat", "Delete", "FinanceItem", new RouteValueDictionary(new { akce_id = item.akce_id, naklady_id = item.naklady_id }), null)))
 ))
-    }
-    using (a.BeginPanel("Pronájmy"))
-    {
+
+<h3>Pronájmy</h3>
 @naklady4_grid.GetHtml(tableStyle: "table table-striped table-hover", columns:
         naklady4_grid.Columns
     (
@@ -239,9 +238,8 @@
             naklady4_grid.Column(format: (item) => new HtmlString(Html.ActionLink("Upravit", "Edit", "FinanceItem", new RouteValueDictionary(new { akce_id = item.akce_id, naklady_id = item.naklady_id }), null) + " | " +
             Html.ActionLink("Smazat", "Delete", "FinanceItem", new RouteValueDictionary(new { akce_id = item.akce_id, naklady_id = item.naklady_id }), null)))
 ))
-    }
-    using (a.BeginPanel("PR"))
-    {
+
+<h3>PR</h3>
 @naklady5_grid.GetHtml(tableStyle: "table table-striped table-hover", columns:
         naklady0_grid.Columns
     (

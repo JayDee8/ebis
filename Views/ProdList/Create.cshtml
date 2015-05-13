@@ -11,7 +11,7 @@
 
     <fieldset>
         <legend>produkcni_listy</legend>
-
+        <span>(Typ = 0 - Přípravná fáze (před projektem), 1 - Výkonná fáze (při projektu), 2 - Post produkční fáze)</span>
         @using (var f = Html.Bootstrap().Begin(new Form().Type(FormType.Horizontal)))
         {
             @f.ControlGroup().TextBoxFor(m => m.jmeno_aktivity).Label().LabelText("Název aktivity")

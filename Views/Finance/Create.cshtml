@@ -11,7 +11,7 @@
 
     <fieldset>
         <legend>naklady</legend>
-
+        <span>(Typ = 0 - Honorářové náklady, 1 - Materiální náklady, 2 - Nemateriální náklady, 3 - Produkční náklady, 4 - Pronájmy, 5 - PR)</span>
         @using (var f = Html.Bootstrap().Begin(new Form().Type(FormType.Horizontal)))
         {
             @f.ControlGroup().TextBoxFor(m => m.jmeno).Label().LabelText("Název")

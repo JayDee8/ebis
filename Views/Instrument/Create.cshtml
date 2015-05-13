@@ -11,7 +11,7 @@
 
     <fieldset>
         <legend>nastroje</legend>
-
+        <span>(Typ = 0 - Orchestr, 1 - Sbor, 2 - Solisti)</span>
         @using (var f = Html.Bootstrap().Begin(new Form().Type(FormType.Horizontal)))
         {
             @f.ControlGroup().TextBoxFor(m => m.jmeno).Label().LabelText("Název")
