@@ -62,8 +62,8 @@ namespace ebis.Controllers
         {
             if (ModelState.IsValid)
             {
-                
-                int id = db.osoby.Max(o => o.id) + 1;
+                var res = db.osoby.DefaultIfEmpty(0).Max(o => o.id);
+                int id = res + 1;
                 model.Interpret.id = id;
 
                 if (model.SelectedItemIds != null)
