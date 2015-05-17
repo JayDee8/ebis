@@ -40,7 +40,7 @@ namespace ebis.Controllers
         public ActionResult Response(string command)
         {
             string str = Decrypt(command);
-            str = "4-2-13-1";
+            // str = "4-2-13-1";
             if (str != null)
             {
                 string[] args;
@@ -104,10 +104,11 @@ namespace ebis.Controllers
         public ActionResult Index(FormCollection form)
         {
             SmtpClient smtp = new SmtpClient();
-            smtp.Host = "smtp.gmail.com";
-            smtp.Port = 587;
+            smtp.Host = "mail.eb-is.cz"; // smtp.gmail.com
+            smtp.Port = 465; // 587
             smtp.UseDefaultCredentials = false;
-            smtp.Credentials = new System.Net.NetworkCredential("xpodsednikm@gmail.com", "Sephael024");
+            smtp.Credentials = new System.Net.NetworkCredential("office@eb-is.cz", "1a2b3c4d");
+            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtp.EnableSsl = true;
 
             List<string> rowsUsers = new List<string>(form.GetValues("ucast"));
@@ -146,41 +147,17 @@ namespace ebis.Controllers
                 MailMessage mail = new MailMessage();
                 mail.To.Add(user.email);
                 emails.Add(user.email);
-                mail.From = new MailAddress("xpodsednikm@gmail.com");
+                mail.From = new MailAddress("office@eb-is.cz");
                 mail.Subject = "test";
-                string content = oa.akce_id.ToString() + "-" + oa.nastroje_id.ToString() + "-" + oa.osoby_id.ToString() + "-1";
-                string Body = "http://localhost:52663/Invite/Response/" + Encrypt(content);
+                string content = oa.akce_id.ToString() + "-" + oa.nastroje_id.ToString() + "-" + oa.osoby_id.ToString();
+                string Body = 
+                    "http://localhost:52663/Invite/Response/?command=" + Encrypt(content + "-1") + "<br>" +
+                    "http://localhost:52663/Invite/Response/?command=" + Encrypt(content + "-2") + "<br>" +
+                    "http://localhost:52663/Invite/Response/?command=" + Encrypt(content + "-3") + "<br>";
                 mail.Body = Body;
                 mail.IsBodyHtml = true;
                 smtp.Send(mail);
             }
-
-
-            /*if (ModelState.IsValid)
-            {
-                
-                MailMessage mail = new MailMessage();
-                mail.To.Add(_objModelMail.em_mail.To);
-                mail.From = new MailAddress(_objModelMail.em_mail.From);
-                mail.Subject = _objModelMail.em_mail.Subject;
-                string Body = _objModelMail.em_mail.Body;
-                mail.Body = Body;
-                mail.IsBodyHtml = true;
-                SmtpClient smtp = new SmtpClient();
-                smtp.Host = "smtp.gmail.com";
-                smtp.Port = 587;
-                smtp.UseDefaultCredentials = false;
-                smtp.Credentials = new System.Net.NetworkCredential("xpodsednikm@gmail.com", "Sephael024");
-                smtp.EnableSsl = true;
-                smtp.Send(mail);
-                return View("Details", _objModelMail);
-                return null;
-
-            }
-            else
-            {
-                return View();
-            }*/
             SuccessModel s_model = new SuccessModel();
             s_model.id = Convert.ToInt32(form.GetValue("eventId").AttemptedValue);
             s_model.emails = emails;

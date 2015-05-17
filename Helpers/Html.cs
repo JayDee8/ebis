@@ -75,5 +75,15 @@ namespace ebis.Helpers
                     return MvcHtmlString.Create("bez odpovědi");
             }
         }
+
+        public static MvcHtmlString GetNastroje(this HtmlHelper htmlHelper, ebis.Models.osoby values)
+        {
+            var nastroje = "";
+            foreach (var nastroj in values.nastroje.ToList())
+            {
+                nastroje += nastroj.zkratka + " ";
+            }
+            return MvcHtmlString.Create(nastroje);
+        }
     }
 }

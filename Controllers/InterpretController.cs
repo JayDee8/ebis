@@ -49,7 +49,11 @@ namespace ebis.Controllers
             List<int> selIds = new List<int>();
             selIds.Add(-1);
             model.SelectedItemIds = selIds;
-                
+            var res = db.osoby.Any() ? db.osoby.Max(o => o.id) : 0;
+
+            int id = res + 1;
+            model.Interpret = new osoby();
+            model.Interpret.id = id;    
                 
             return View(model);
         }
@@ -62,11 +66,6 @@ namespace ebis.Controllers
         {
             if (ModelState.IsValid)
             {
-                var res = db.osoby.Any()? db.osoby.Max(o=>o.id):0;
-
-                int id = res + 1;
-                model.Interpret.id = id;
-
                 if (model.SelectedItemIds != null)
                 {
                     foreach (var i in model.SelectedItemIds)

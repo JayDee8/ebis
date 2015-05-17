@@ -21,6 +21,7 @@
 
         @using (var f = Html.Bootstrap().Begin(new Form().Type(FormType.Horizontal)))
         {
+            @f.ControlGroup().TextBoxFor(m => m.Interpret.id).Label().LabelText("ID")
             @f.ControlGroup().TextBoxFor(m => m.Interpret.jmeno).Label().LabelText("Jméno")
             @f.ControlGroup().TextBoxFor(m => m.Interpret.prijmeni).Label().LabelText("Příjmení")
             @f.ControlGroup().TextBoxFor(m => m.Interpret.telefon).Label().LabelText("Telefon")
