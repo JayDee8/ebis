@@ -17,18 +17,19 @@ namespace ebis.Controllers
 
         private static string Encrypt(string content)
         {
-            return FormsAuthentication.Encrypt(new FormsAuthenticationTicket(1,
-                /*HttpContext.Current.Request.UserHostAddress*/"encstring",
-                DateTime.Now, DateTime.MaxValue, false, content));
+            /*return FormsAuthentication.Encrypt(new FormsAuthenticationTicket(1, "f",
+                DateTime.Now, DateTime.MaxValue, false, content));*/
+            return content;
         }
 
         private static string Decrypt(string encryptedContent)
         {
-            FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(encryptedContent);
+            /*FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(encryptedContent);
             if (!ticket.Expired)
                 return ticket.UserData;
 
-            return null;
+            return null;*/
+            return encryptedContent;
         }
 
         public ActionResult Success(SuccessModel s_model)
@@ -39,6 +40,23 @@ namespace ebis.Controllers
         public ActionResult Response(string command)
         {
             string str = Decrypt(command);
+            str = "4-2-13-1";
+            if (str != null)
+            {
+                string[] args;
+                args = str.Split(new string[] {"-"}, StringSplitOptions.None);
+                int akce_id = Convert.ToInt32(args[0]);
+                int nastroje_id = Convert.ToInt32(args[1]);
+                int osoby_id = Convert.ToInt32(args[2]);
+                osoby_akce oa = db.osoby_akce.Single(a => a.akce_id == akce_id &&
+                    a.nastroje_id == nastroje_id && a.osoby_id == osoby_id);
+                if (oa == null)
+                {
+                    return HttpNotFound();
+                }
+                oa.stav = Convert.ToInt32(args[3]);
+                db.SaveChanges();
+            }
             return View();
         }
 
