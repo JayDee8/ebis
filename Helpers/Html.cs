@@ -76,10 +76,10 @@ namespace ebis.Helpers
             }
         }
 
-        public static MvcHtmlString GetNastroje(this HtmlHelper htmlHelper, ebis.Models.osoby values)
+        public static MvcHtmlString GetNastroje(this HtmlHelper htmlHelper, IEnumerable<ebis.Models.nastroje> values)
         {
             var nastroje = "";
-            foreach (var nastroj in values.nastroje.ToList())
+            foreach (var nastroj in values.ToList())
             {
                 nastroje += nastroj.zkratka + " ";
             }

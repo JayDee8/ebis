@@ -104,10 +104,10 @@ namespace ebis.Controllers
         public ActionResult Index(FormCollection form)
         {
             SmtpClient smtp = new SmtpClient();
-            smtp.Host = "mail.eb-is.cz"; // smtp.gmail.com
-            smtp.Port = 465; // 587
+            smtp.Host = "smtp.gmail.com"; // mail.eb-is.cz
+            smtp.Port = 587; // 465
             smtp.UseDefaultCredentials = false;
-            smtp.Credentials = new System.Net.NetworkCredential("office@eb-is.cz", "1a2b3c4d");
+            smtp.Credentials = new System.Net.NetworkCredential("ebis.office@gmail.com", "awsedr1526"); // office@eb-is.cz 1a2b3c4d
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtp.EnableSsl = true;
 
@@ -134,7 +134,7 @@ namespace ebis.Controllers
                 oa.akce_id = Convert.ToInt32(form.GetValue("eventId").AttemptedValue);
                 oa.nastroje_id = instrument.pk_id;
                 oa.osoby_id = user.pk_id;
-                oa.poznamka = "poznamka";
+                oa.poznamka = "";
                 oa.honorar = 0;
                 oa.doprava = 0;
                 oa.srazkova_dan = 0;
@@ -147,13 +147,13 @@ namespace ebis.Controllers
                 MailMessage mail = new MailMessage();
                 mail.To.Add(user.email);
                 emails.Add(user.email);
-                mail.From = new MailAddress("office@eb-is.cz");
-                mail.Subject = "test";
-                string content = oa.akce_id.ToString() + "-" + oa.nastroje_id.ToString() + "-" + oa.osoby_id.ToString();
+                mail.From = new MailAddress("ebis.office@gmail.com"); // office@eb-is.cz
+                mail.Subject = "Pozvánka";
+                string content = oa.akce_id.ToString() + "-" + oa.nastroje_id.ToString() + "-" + oa.osoby_id.ToString(); // localhost:52663
                 string Body = 
-                    "http://localhost:52663/Invite/Response/?command=" + Encrypt(content + "-1") + "<br>" +
-                    "http://localhost:52663/Invite/Response/?command=" + Encrypt(content + "-2") + "<br>" +
-                    "http://localhost:52663/Invite/Response/?command=" + Encrypt(content + "-3") + "<br>";
+                    "Přijmout: http://www.eb-is.cz/Invite/Response/?command=" + Encrypt(content + "-1") + "<br>" +
+                    "Odmítnout: http://www.eb-is.cz/Invite/Response/?command=" + Encrypt(content + "-2") + "<br>" +
+                    "Přijmout, ale mám časový problém: http://www.eb-is.cz/Invite/Response/?command=" + Encrypt(content + "-3") + "<br>";
                 mail.Body = Body;
                 mail.IsBodyHtml = true;
                 smtp.Send(mail);
