@@ -47,7 +47,7 @@
     </div>
     <div class="form-group row">
         <label class="col-md-2 control-label">Datum narození</label>
-        <div class="col-md-10">@Model.datum_narozeni.ToString("dd. MM. yyyy")</div>
+        <div class="col-md-10">@String.Format("{0:dd.MM.yyyy}",@Model.datum_narozeni)</div>
     </div>
     <div class="form-group row">
         <label class="col-md-2 control-label">Místo narození</label>
@@ -65,7 +65,7 @@
 
                 foreach (var nastroj in Model.nastroje.ToList())
                 {
-                    nastroje += nastroj.jmeno + "\n";
+                    nastroje += nastroj.zkratka + "\n";
                 }
             }
             @Html.Nl2Br(nastroje)

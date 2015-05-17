@@ -2152,6 +2152,30 @@ namespace ebis.Models
         private global::System.Int32 _typ;
         partial void OntypChanging(global::System.Int32 value);
         partial void OntypChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String zkratka
+        {
+            get
+            {
+                return _zkratka;
+            }
+            set
+            {
+                OnzkratkaChanging(value);
+                ReportPropertyChanging("zkratka");
+                _zkratka = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("zkratka");
+                OnzkratkaChanged();
+            }
+        }
+        private global::System.String _zkratka;
+        partial void OnzkratkaChanging(global::System.String value);
+        partial void OnzkratkaChanged();
 
         #endregion
 
@@ -2557,7 +2581,7 @@ namespace ebis.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> ic_dic
+        public global::System.String ic_dic
         {
             get
             {
@@ -2567,13 +2591,13 @@ namespace ebis.Models
             {
                 Onic_dicChanging(value);
                 ReportPropertyChanging("ic_dic");
-                _ic_dic = StructuralObject.SetValidValue(value);
+                _ic_dic = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("ic_dic");
                 Onic_dicChanged();
             }
         }
-        private Nullable<global::System.Int32> _ic_dic;
-        partial void Onic_dicChanging(Nullable<global::System.Int32> value);
+        private global::System.String _ic_dic;
+        partial void Onic_dicChanging(global::System.String value);
         partial void Onic_dicChanged();
     
         /// <summary>

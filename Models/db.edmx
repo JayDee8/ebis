@@ -171,6 +171,7 @@
           <Property Name="pk_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="jmeno" Type="varchar" Nullable="false" MaxLength="40" />
           <Property Name="typ" Type="int" Nullable="false" />
+          <Property Name="zkratka" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="osoby">
           <Key>
@@ -189,7 +190,7 @@
           <Property Name="adresa" Type="varchar" MaxLength="30" />
           <Property Name="datum_narozeni" Type="datetime" />
           <Property Name="misto_narozeni" Type="varchar" MaxLength="20" />
-          <Property Name="ic_dic" Type="int" />
+          <Property Name="ic_dic" Type="varchar" MaxLength="25" />
           <Property Name="poznamka" Type="varchar" MaxLength="160" />
         </EntityType>
         <EntityType Name="osoby_akce">
@@ -697,6 +698,7 @@
           <Property Name="pk_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="jmeno" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
           <Property Name="typ" Type="Int32" Nullable="false" />
+          <Property Name="zkratka" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="osoby_akce" Relationship="dbModel.FK_osoby_akce_nastroje" FromRole="nastroje" ToRole="osoby_akce" />
           <NavigationProperty Name="osoby" Relationship="dbModel.osoby_nastroje" FromRole="nastroje" ToRole="osoby" />
         </EntityType>
@@ -717,7 +719,7 @@
           <Property Name="adresa" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
           <Property Name="datum_narozeni" Type="DateTime" />
           <Property Name="misto_narozeni" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
-          <Property Name="ic_dic" Type="Int32" />
+          <Property Name="ic_dic" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
           <Property Name="poznamka" Type="String" MaxLength="160" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="osoby_akce" Relationship="dbModel.FK_osoby_akce_osoby" FromRole="osoby" ToRole="osoby_akce" />
           <NavigationProperty Name="smlouvy" Relationship="dbModel.FK_smlouvy_osoby" FromRole="osoby" ToRole="smlouvy" />
@@ -1117,6 +1119,7 @@
                 <ScalarProperty Name="pk_id" ColumnName="pk_id" />
                 <ScalarProperty Name="jmeno" ColumnName="jmeno" />
                 <ScalarProperty Name="typ" ColumnName="typ" />
+                <ScalarProperty Name="zkratka" ColumnName="zkratka" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1259,7 +1262,7 @@
         <EntityTypeShape EntityType="dbModel.kontakty" Width="1.5" PointX="0.75" PointY="0.75" Height="1.9802864583333317" IsExpanded="true" />
         <EntityTypeShape EntityType="dbModel.lokace" Width="1.5" PointX="6" PointY="2.25" Height="2.3648893229166674" IsExpanded="true" />
         <EntityTypeShape EntityType="dbModel.naklady" Width="1.5" PointX="3" PointY="13.25" Height="1.7879850260416674" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbModel.nastroje" Width="1.5" PointX="3.75" PointY="18.75" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbModel.nastroje" Width="1.5" PointX="3.75" PointY="18.625" Height="2.172587890624996" IsExpanded="true" />
         <EntityTypeShape EntityType="dbModel.osoby" Width="1.5" PointX="6" PointY="17.375" Height="4.6725065104166674" IsExpanded="true" />
         <EntityTypeShape EntityType="dbModel.osoby_akce" Width="1.5" PointX="5.25" PointY="12.5" Height="3.3263964843750031" IsExpanded="true" />
         <EntityTypeShape EntityType="dbModel.produkcni_listy" Width="1.5" PointX="3" PointY="5.25" Height="1.787985026041671" IsExpanded="true" />
@@ -1337,7 +1340,7 @@
           <ConnectorPoint PointX="9" PointY="4.625" />
         </AssociationConnector>
         <AssociationConnector Association="dbModel.FK_osoby_akce_nastroje" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.75" PointY="18.75" />
+          <ConnectorPoint PointX="4.75" PointY="18.625" />
           <ConnectorPoint PointX="4.75" PointY="15.463440755208335" />
           <ConnectorPoint PointX="5.25" PointY="15.463440755208335" />
         </AssociationConnector>
@@ -1360,8 +1363,8 @@
           <ConnectorPoint PointX="9" PointY="21.787903645833332" />
         </AssociationConnector>
         <AssociationConnector Association="dbModel.osoby_nastroje" ManuallyRouted="false">
-          <ConnectorPoint PointX="5.25" PointY="19.740143229166666" />
-          <ConnectorPoint PointX="6" PointY="19.740143229166666" />
+          <ConnectorPoint PointX="5.25" PointY="19.711293945312498" />
+          <ConnectorPoint PointX="6" PointY="19.711293945312498" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

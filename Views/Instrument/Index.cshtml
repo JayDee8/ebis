@@ -18,6 +18,7 @@
     (
         grid.Column("jmeno", "Název"),
         grid.Column("typ", "Typ"),
+        grid.Column("zkratka", "Zkratka"),
         grid.Column(format: (item) => new HtmlString("" + Html.ActionLink("  ", "Details", new { id = item.pk_id }, new { @class = "glyphicon glyphicon-search", @title = "Detaily" }) +
                                                     Html.ActionLink("  ", "Edit", new { id = item.pk_id }, new { @class = "glyphicon glyphicon-edit", @title = "Upravit" }) +
                                                     Html.ActionLink("  ", "Delete", new { id = item.pk_id }, new { @class = "glyphicon glyphicon-trash", @title = "Vymazat" })))

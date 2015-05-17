@@ -18,6 +18,7 @@
         {
             @f.ControlGroup().TextBoxFor(m => m.jmeno).Label().LabelText("Název")
             @f.ControlGroup().TextBoxFor(m => m.typ).Label().LabelText("Typ")
+            @f.ControlGroup().TextBoxFor(m => m.zkratka).Label().LabelText("Zkratka")
             @f.ControlGroup().CustomControls(Html.Bootstrap().SubmitButton().Text("Upravit"))
         }
     </fieldset>

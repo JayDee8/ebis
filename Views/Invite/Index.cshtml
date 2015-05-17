@@ -24,7 +24,7 @@
             grid.Column(header: "Vybrat", format: @<text><input class="check-box"  id="ucast" name="ucast" type="checkbox" value="@rowVal"/></text>),
         //grid.Column(header: "nastroj", format: item => Html.ListBoxFor(item => item.nastroje_id, new SelectList(Model.m_nastroje.ElementAt(rowVal = rowVal + 1),0)))
         //grid.Column(header: "nastroj", format: item => Html.DropDownList("nastroje_id", new SelectList(Model.m_nastroje.ElementAt(rowVal = rowVal + 1)), 0))
-                grid.Column(header: "nastroj", format: item => Html.DropDownList("nastroj", new SelectList(Model.m_nastroje.ElementAt(rowVal = rowVal + 1), "pk_id", "jmeno")))
+                grid.Column(header: "nastroj", format: item => Html.DropDownList("nastroj", new SelectList(Model.m_nastroje.ElementAt(rowVal = rowVal + 1), "pk_id", "zkratka")))
                 ))
     <p>
     <input type ="submit" value ="Send" />

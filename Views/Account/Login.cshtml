@@ -31,11 +31,13 @@
                 @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
             </li>
         </ol>
-        <input type="submit" value="Přihlásit se" />
+        <p>
+            <button type="submit" class="btn btn-default">Přihlásit se</button>
+        </p>
     </fieldset>
-    <p>
-        @Html.Bootstrap().ActionLinkButton("Registrovat", "Register","Account") pokud nemáte účet.
-    </p>
+    <!--<p>
+        @Html.ActionLink("Registrovat", "Register","Account",null, new { style="text-decoration:underline;" }) pokud nemáte účet.
+    </p>-->
 }
 </section>
 
