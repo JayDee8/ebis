@@ -12,7 +12,16 @@
     <fieldset>
         <legend>smlouvy</legend>
 
-        <div class="editor-label">
+        @using (var f = Html.Bootstrap().Begin(new Form().Type(FormType.Horizontal)))
+        {
+            @f.ControlGroup().TextBoxFor(m => m.id).Label().LabelText("ID smlouvy")
+            @f.ControlGroup().DropDownListFor(m=> m.osoby_id,new SelectList(ViewBag.osoby,"pk_id", "jmenoPrijmeniId",String.Empty)).Label().LabelText("Osoba")
+            <p>
+            @f.ControlGroup().CustomControls(Html.Bootstrap().SubmitButton().Text("Přidat"))
+            </p>
+        }
+
+ @*       <div class="editor-label">
             Společnost
         </div>
         <div class="editor-field">
@@ -123,7 +132,7 @@
             @Html.DropDownList("text_smlouvy_id", String.Empty)
             @Html.ValidationMessageFor(model => model.text_smlouvy_id)
         </div>
-
+        *@
         <p>
             <input type="submit" value="Uložit" />
         </p>

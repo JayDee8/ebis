@@ -5,9 +5,9 @@
 @{
     ViewBag.Title = "Details";
     WebGrid fermany_grid = new WebGrid(@Model.em_akce.fermany, canSort: false);
-    WebGrid osoby_akce0_grid = new WebGrid(@Model.em_osoby_akce0, canSort: false);
-    WebGrid osoby_akce1_grid = new WebGrid(@Model.em_osoby_akce1, canSort: false);
-    WebGrid osoby_akce2_grid = new WebGrid(@Model.em_osoby_akce2, canSort: false);
+    WebGrid osoby_akce0_grid = new WebGrid(@Model.em_osoby_akce0, canSort: false,canPage: false);
+    WebGrid osoby_akce1_grid = new WebGrid(@Model.em_osoby_akce1, canSort: false, canPage: false);
+    WebGrid osoby_akce2_grid = new WebGrid(@Model.em_osoby_akce2, canSort: false, canPage: false);
     WebGrid ubytovani_grid = new WebGrid(@Model.em_akce.ubytovani, canSort: false);
     WebGrid produkcni_listy0_grid = new WebGrid(@Model.em_akce_produkcni_listy0, canSort: false);
     WebGrid produkcni_listy1_grid = new WebGrid(@Model.em_akce_produkcni_listy1, canSort: false);

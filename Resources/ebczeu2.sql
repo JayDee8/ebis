@@ -110,7 +110,7 @@ CREATE TABLE "osoby" (
   "adresa" varchar(30),
   "datum_narozeni" datetime,
   "misto_narozeni" varchar(20),
-  "ic_dic" int,
+  "ic_dic" varchar(25),
   "poznamka" varchar(160),
   CONSTRAINT PK_osoby_pk_id PRIMARY KEY CLUSTERED (pk_id)
 );

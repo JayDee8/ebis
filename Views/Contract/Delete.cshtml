@@ -6,11 +6,12 @@
 
 <h2>@ViewBag.Title</h2>
 
-<h3>Opravdu chcete vymazat tuto smlouvu?</h3>
+<h3>Opravdu chcete vymazat smlouvu s id @Model.id pro osobu @Model.osoby.jmenoPrijmeniId?</h3>
 <fieldset>
     <legend>smlouvy</legend>
 
-    <div class="display-label">
+</fieldset>
+   @* <div class="display-label">
          Společnost
     </div>
     <div class="display-field">
@@ -113,4 +114,4 @@
         <input type="submit" value="Vymazat" /> |
         @Html.ActionLink("Zpět na seznam", "Index")
     </p>
-}
+}*@

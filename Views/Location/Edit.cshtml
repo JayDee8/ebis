@@ -20,7 +20,9 @@
             @f.ControlGroup().TextBoxFor(m => m.adresa).Label().LabelText("Adresa")
             @f.ControlGroup().TextBoxFor(m => m.gps).Label().LabelText("GPS")
             @f.ControlGroup().TextBoxFor(m => m.link).Label().LabelText("Odkaz")
+            <p>
             @f.ControlGroup().CustomControls(Html.Bootstrap().SubmitButton().Text("Upravit"))
+            </p>
         }
 
     </fieldset>

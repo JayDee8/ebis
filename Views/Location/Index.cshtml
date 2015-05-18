@@ -21,7 +21,8 @@
         grid.Column("jmeno", "Název   " + Html.SortDirection(ref grid, "jmeno")),
         grid.Column("adresa", "Adresa"),
         grid.Column("gps", "GPS souřadnice"),
-        grid.Column(format: @<a href=@item.link target="_blank">Odkaz na mapu</a>),
+        grid.Column(format: @<a href='http://maps.google.com/?q=@item.gps' target="_blank">Odkaz na mapě</a>),
+        grid.Column(format: @<a href=@item.link target="_blank">Odkaz</a>),
         grid.Column(format: (item) => new HtmlString("" + Html.ActionLink("  ", "Details", new { id = item.pk_id }, new { @class = "glyphicon glyphicon-search", @title = "Detaily" }) +
                                                     Html.ActionLink("  ", "Edit", new { id = item.pk_id }, new { @class = "glyphicon glyphicon-edit", @title = "Upravit" }) +
                                                     Html.ActionLink("  ", "Delete", new { id = item.pk_id }, new { @class = "glyphicon glyphicon-trash", @title = "Vymazat" })))

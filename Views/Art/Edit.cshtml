@@ -19,7 +19,9 @@
             @f.ControlGroup().TextBoxFor(m => m.nazev).Label().LabelText("Název")
             @f.ControlGroup().TextBoxFor(m => m.autor).Label().LabelText("Autor")
             @f.ControlGroup().TextBoxFor(m => m.poznamka).Label().LabelText("Poznámka")
+            <p>
             @f.ControlGroup().CustomControls(Html.Bootstrap().SubmitButton().Text("Upravit"))
+            </p>
         }
 
     </fieldset>

@@ -20,7 +20,9 @@
             @f.ControlGroup().TextBoxFor(m => m.prijmeni).Label().LabelText("Pøíjmení")
             @f.ControlGroup().TextBoxFor(m => m.email).Label().LabelText("E-mail")
             @f.ControlGroup().TextBoxFor(m => m.telefon).Label().LabelText("Telefon")
+            <p>
             @f.ControlGroup().CustomControls(Html.Bootstrap().SubmitButton().Text("Upravit"))
+            </p>
         }
 
     </fieldset>

@@ -11,9 +11,20 @@
         @Scripts.Render("~/bundles/modernizr")
                
         <link rel="stylesheet" href="~/Content/css/bootstrap.min.css" type="text/css"/>
+        <link rel="stylesheet" href="~/Content/css/jquery-ui.min.css" type="text/css"/>
         <script type="text/javascript" src="~/Content/scripts/jquery.min.js"></script>
+        <script type="text/javascript" src="~/Content/scripts/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="~/Content/scripts/datepicker-cs.js"></script>
         <script type="text/javascript" src="~/Content/scripts/bootstrap.min.js"></script>
                
+
+        <script type="text/javascript">
+            $(function () { // will trigger when the document is ready
+                $.datepicker.setDefaults($.datepicker.regional['cs']);
+                $('.datepicker').datepicker(); //Initialise any date pickers
+            });
+        </script>
+
         <link rel="stylesheet" href="~/Content/css/bootstrap-multiselect.css" type="text/css"/>
         <script type="text/javascript" src="~/Content/scripts/bootstrap-multiselect.js"></script>
     </head>

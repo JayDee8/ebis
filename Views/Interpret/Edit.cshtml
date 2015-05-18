@@ -36,11 +36,13 @@
             @f.ControlGroup().TextBoxFor(m => m.Interpret.cislo_uctu).Label().LabelText("Číslo účtu")
             @f.ControlGroup().TextBoxFor(m => m.Interpret.narodnost).Label().LabelText("Národnost")
             @f.ControlGroup().TextBoxFor(m => m.Interpret.ic_dic).Label().LabelText("IČ/DIČ")
-            @f.ControlGroup().TextBoxFor(m => m.Interpret.datum_narozeni).Label().LabelText("Datum narození")
+            @f.ControlGroup().TextBoxFor(m => m.Interpret.datum_narozeni).HtmlAttributes(new { @class = "datepicker" }).Label().LabelText("Datum narození")
             @f.ControlGroup().TextBoxFor(m => m.Interpret.misto_narozeni).Label().LabelText("Místo narození")
             @f.ControlGroup().ListBoxFor(model => model.SelectedItemIds, new MultiSelectList(Model.AvailableItems, "pk_id", "zkratka", Model.SelectedItemIds)).Id("instrumentListBox").Label().LabelText("Nástroje")
             @f.ControlGroup().TextAreaFor(m => m.Interpret.poznamka).Label().LabelText("Poznámka")
+            <p>
             @f.ControlGroup().CustomControls(Html.Bootstrap().SubmitButton().Text("Upravit"))
+            </p>
         }
     </fieldset>
 }

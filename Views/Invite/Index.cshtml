@@ -27,7 +27,7 @@
                 grid.Column(header: "nastroj", format: item => Html.DropDownList("nastroj", new SelectList(Model.m_nastroje.ElementAt(rowVal = rowVal + 1), "pk_id", "zkratka")))
                 ))
     <p>
-    <input type ="submit" value ="Send" />
+    <button class="btn btn-default" type ="submit">Poslat</button>
     @Html.ActionLink("Zpět na detail akce", "Details", "Event", new RouteValueDictionary(new { id = @ViewBag.akce_id_link }), null)
     </p>
 }

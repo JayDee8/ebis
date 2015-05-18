@@ -116,9 +116,11 @@ namespace ebis.Controllers
                 db.osoby.Attach(model.Interpret);
                 
                 model.Interpret.nastroje.Clear();
-
-                foreach (var i in model.SelectedItemIds)
-                    model.Interpret.nastroje.Add(db.nastroje.Single(n => n.pk_id == i));
+                if (model.SelectedItemIds != null)
+                {
+                    foreach (var i in model.SelectedItemIds)
+                        model.Interpret.nastroje.Add(db.nastroje.Single(n => n.pk_id == i));
+                }
                 db.ObjectStateManager.ChangeObjectState(model.Interpret, EntityState.Modified);
                 db.SaveChanges();
                 return RedirectToAction("Index");

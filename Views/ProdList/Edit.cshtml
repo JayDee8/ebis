@@ -18,7 +18,9 @@
         {
             @f.ControlGroup().TextBoxFor(m => m.jmeno_aktivity).Label().LabelText("Název aktivity")
             @f.ControlGroup().TextBoxFor(m => m.typ).Label().LabelText("Typ")
+            <p>
             @f.ControlGroup().CustomControls(Html.Bootstrap().SubmitButton().Text("Vytvořit"))
+            </p>
         }
     </fieldset>
 }

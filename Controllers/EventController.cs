@@ -52,7 +52,7 @@ namespace ebis.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.titul_id = new SelectList(db.titul, "pk_id", "nazev");
+            ViewBag.tituly = db.titul;
             return View();
         }
 
@@ -68,8 +68,8 @@ namespace ebis.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            ViewBag.titul_id = new SelectList(db.titul, "pk_id", "nazev", akce.titul_id);
+            ViewBag.tituly = db.titul;
+            //ViewBag.titul_id = new SelectList(db.titul, "pk_id", "nazev", akce.titul_id);
             return View(akce);
         }
 
@@ -83,7 +83,8 @@ namespace ebis.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.titul_id = new SelectList(db.titul, "pk_id", "nazev", akce.titul_id);
+            ViewBag.tituly = db.titul;
+            ViewBag.titul_id = akce.titul_id;
             return View(akce);
         }
 
@@ -100,7 +101,8 @@ namespace ebis.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.titul_id = new SelectList(db.titul, "pk_id", "nazev", akce.titul_id);
+            ViewBag.tituly = db.titul;
+            ViewBag.titul_id = akce.titul_id;
             return View(akce);
         }
 

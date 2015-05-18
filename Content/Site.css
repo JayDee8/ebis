@@ -1,3 +1,7 @@
+.ui-widget-header .ui-icon {
+  background-image: url("css/images/ui-icons_999999_256x240.png") !important;
+  }
+
 .accordion-group{
        margin-bottom: 2px;
   border: 1px solid #C4C4C4;

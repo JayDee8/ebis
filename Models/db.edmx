@@ -74,10 +74,6 @@
             <End Role="osoby" EntitySet="osoby" />
             <End Role="smlouvy" EntitySet="smlouvy" />
           </AssociationSet>
-          <AssociationSet Name="FK_smlouvy_text_smlouvy" Association="dbModel.Store.FK_smlouvy_text_smlouvy">
-            <End Role="text_smlouvy" EntitySet="text_smlouvy" />
-            <End Role="smlouvy" EntitySet="smlouvy" />
-          </AssociationSet>
           <AssociationSet Name="FK_ubytovani_akce" Association="dbModel.Store.FK_ubytovani_akce">
             <End Role="akce" EntitySet="akce" />
             <End Role="ubytovani" EntitySet="ubytovani" />
@@ -96,9 +92,9 @@
             <PropertyRef Name="pk_id" />
           </Key>
           <Property Name="pk_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="jmeno" Type="varchar" Nullable="false" MaxLength="40" />
-          <Property Name="popis" Type="varchar" MaxLength="160" />
           <Property Name="titul_id" Type="int" Nullable="false" />
+          <Property Name="popis" Type="varchar" MaxLength="160" />
+          <Property Name="program" Type="varchar" Nullable="false" MaxLength="500" />
           <Property Name="datum" Type="datetime" />
           <Property Name="cas" Type="varchar" MaxLength="13" />
         </EntityType>
@@ -179,8 +175,8 @@
           </Key>
           <Property Name="pk_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="jmeno" Type="varchar" Nullable="false" MaxLength="15" />
-          <Property Name="prijmeni" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="jmeno" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="prijmeni" Type="varchar" Nullable="false" MaxLength="40" />
           <Property Name="telefon" Type="varchar" MaxLength="13" />
           <Property Name="email" Type="varchar" MaxLength="40" />
           <Property Name="mesto" Type="varchar" MaxLength="20" />
@@ -230,20 +226,21 @@
             <PropertyRef Name="pk_id" />
           </Key>
           <Property Name="pk_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="spolecnost" Type="varchar" Nullable="false" MaxLength="40" />
-          <Property Name="ic" Type="varchar" Nullable="false" MaxLength="60" />
-          <Property Name="sidlo" Type="varchar" Nullable="false" MaxLength="60" />
-          <Property Name="zastoupeni" Type="varchar" Nullable="false" MaxLength="110" />
-          <Property Name="jmeno" Type="varchar" Nullable="false" MaxLength="35" />
-          <Property Name="bytem" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="telefon" Type="varchar" Nullable="false" MaxLength="13" />
-          <Property Name="email" Type="varchar" Nullable="false" MaxLength="40" />
-          <Property Name="cislo_uctu" Type="varchar" Nullable="false" MaxLength="22" />
-          <Property Name="datum_narozeni" Type="datetime" Nullable="false" />
-          <Property Name="datum_spolecnost" Type="datetime" Nullable="false" />
-          <Property Name="datum_osoba" Type="datetime" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="spolecnost" Type="varchar" MaxLength="40" />
+          <Property Name="ic" Type="varchar" MaxLength="60" />
+          <Property Name="sidlo" Type="varchar" MaxLength="60" />
+          <Property Name="zastoupeni" Type="varchar" MaxLength="110" />
+          <Property Name="jmeno" Type="varchar" MaxLength="35" />
+          <Property Name="bytem" Type="varchar" MaxLength="50" />
+          <Property Name="telefon" Type="varchar" MaxLength="13" />
+          <Property Name="email" Type="varchar" MaxLength="40" />
+          <Property Name="cislo_uctu" Type="varchar" MaxLength="22" />
+          <Property Name="datum_narozeni" Type="datetime" />
+          <Property Name="datum_spolecnost" Type="datetime" />
+          <Property Name="datum_osoba" Type="datetime" />
           <Property Name="osoby_id" Type="int" Nullable="false" />
-          <Property Name="text_smlouvy_id" Type="int" Nullable="false" />
+          <Property Name="text_smlouvy_id" Type="int" />
         </EntityType>
         <EntityType Name="text_smlouvy">
           <Key>
@@ -461,20 +458,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_smlouvy_text_smlouvy">
-          <End Role="text_smlouvy" Type="dbModel.Store.text_smlouvy" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="smlouvy" Type="dbModel.Store.smlouvy" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="text_smlouvy">
-              <PropertyRef Name="pk_id" />
-            </Principal>
-            <Dependent Role="smlouvy">
-              <PropertyRef Name="text_smlouvy_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ubytovani_akce">
           <End Role="akce" Type="dbModel.Store.akce" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -594,10 +577,6 @@
             <End Role="osoby" EntitySet="osoby" />
             <End Role="ubytovani" EntitySet="ubytovani" />
           </AssociationSet>
-          <AssociationSet Name="FK_smlouvy_text_smlouvy" Association="dbModel.FK_smlouvy_text_smlouvy">
-            <End Role="text_smlouvy" EntitySet="text_smlouvy" />
-            <End Role="smlouvy" EntitySet="smlouvy" />
-          </AssociationSet>
           <AssociationSet Name="osoby_nastroje" Association="dbModel.osoby_nastroje">
             <End Role="nastroje" EntitySet="nastroje" />
             <End Role="osoby" EntitySet="osoby" />
@@ -608,9 +587,9 @@
             <PropertyRef Name="pk_id" />
           </Key>
           <Property Name="pk_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="jmeno" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
-          <Property Name="popis" Type="String" MaxLength="160" Unicode="false" FixedLength="false" />
           <Property Name="titul_id" Type="Int32" Nullable="false" />
+          <Property Name="popis" Type="String" MaxLength="160" Unicode="false" FixedLength="false" />
+          <Property Name="program" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
           <Property Name="datum" Type="DateTime" />
           <Property Name="cas" Type="String" MaxLength="13" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="akce_naklady" Relationship="dbModel.FK_akce_naklady_akce" FromRole="akce" ToRole="akce_naklady" />
@@ -708,8 +687,8 @@
           </Key>
           <Property Name="pk_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="jmeno" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
-          <Property Name="prijmeni" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="jmeno" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="prijmeni" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
           <Property Name="telefon" Type="String" MaxLength="13" Unicode="false" FixedLength="false" />
           <Property Name="email" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
           <Property Name="mesto" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
@@ -759,22 +738,22 @@
             <PropertyRef Name="pk_id" />
           </Key>
           <Property Name="pk_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="spolecnost" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
-          <Property Name="ic" Type="String" Nullable="false" MaxLength="60" Unicode="false" FixedLength="false" />
-          <Property Name="sidlo" Type="String" Nullable="false" MaxLength="60" Unicode="false" FixedLength="false" />
-          <Property Name="zastoupeni" Type="String" Nullable="false" MaxLength="110" Unicode="false" FixedLength="false" />
-          <Property Name="jmeno" Type="String" Nullable="false" MaxLength="35" Unicode="false" FixedLength="false" />
-          <Property Name="bytem" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="telefon" Type="String" Nullable="false" MaxLength="13" Unicode="false" FixedLength="false" />
-          <Property Name="email" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
-          <Property Name="cislo_uctu" Type="String" Nullable="false" MaxLength="22" Unicode="false" FixedLength="false" />
-          <Property Name="datum_narozeni" Type="DateTime" Nullable="false" />
-          <Property Name="datum_spolecnost" Type="DateTime" Nullable="false" />
-          <Property Name="datum_osoba" Type="DateTime" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="spolecnost" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="ic" Type="String" MaxLength="60" Unicode="false" FixedLength="false" />
+          <Property Name="sidlo" Type="String" MaxLength="60" Unicode="false" FixedLength="false" />
+          <Property Name="zastoupeni" Type="String" MaxLength="110" Unicode="false" FixedLength="false" />
+          <Property Name="jmeno" Type="String" MaxLength="35" Unicode="false" FixedLength="false" />
+          <Property Name="bytem" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="telefon" Type="String" MaxLength="13" Unicode="false" FixedLength="false" />
+          <Property Name="email" Type="String" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="cislo_uctu" Type="String" MaxLength="22" Unicode="false" FixedLength="false" />
+          <Property Name="datum_narozeni" Type="DateTime" />
+          <Property Name="datum_spolecnost" Type="DateTime" />
+          <Property Name="datum_osoba" Type="DateTime" />
           <Property Name="osoby_id" Type="Int32" Nullable="false" />
-          <Property Name="text_smlouvy_id" Type="Int32" Nullable="false" />
+          <Property Name="text_smlouvy_id" Type="Int32" />
           <NavigationProperty Name="osoby" Relationship="dbModel.FK_smlouvy_osoby" FromRole="smlouvy" ToRole="osoby" />
-          <NavigationProperty Name="text_smlouvy" Relationship="dbModel.FK_smlouvy_text_smlouvy" FromRole="smlouvy" ToRole="text_smlouvy" />
         </EntityType>
         <EntityType Name="text_smlouvy">
           <Key>
@@ -787,7 +766,6 @@
           <Property Name="text4" Type="String" Nullable="false" MaxLength="1000" Unicode="false" FixedLength="false" />
           <Property Name="text5" Type="String" Nullable="false" MaxLength="3000" Unicode="false" FixedLength="false" />
           <Property Name="text6" Type="String" Nullable="false" MaxLength="2000" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="smlouvy" Relationship="dbModel.FK_smlouvy_text_smlouvy" FromRole="text_smlouvy" ToRole="smlouvy" />
         </EntityType>
         <EntityType Name="titul">
           <Key>
@@ -1011,20 +989,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_smlouvy_text_smlouvy">
-          <End Role="text_smlouvy" Type="dbModel.text_smlouvy" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="smlouvy" Type="dbModel.smlouvy" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="text_smlouvy">
-              <PropertyRef Name="pk_id" />
-            </Principal>
-            <Dependent Role="smlouvy">
-              <PropertyRef Name="text_smlouvy_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="osoby_nastroje">
           <End Role="nastroje" Type="dbModel.nastroje" Multiplicity="*" />
           <End Role="osoby" Type="dbModel.osoby" Multiplicity="*" />
@@ -1039,9 +1003,9 @@
             <EntityTypeMapping TypeName="dbModel.akce">
               <MappingFragment StoreEntitySet="akce">
                 <ScalarProperty Name="pk_id" ColumnName="pk_id" />
-                <ScalarProperty Name="jmeno" ColumnName="jmeno" />
-                <ScalarProperty Name="popis" ColumnName="popis" />
                 <ScalarProperty Name="titul_id" ColumnName="titul_id" />
+                <ScalarProperty Name="popis" ColumnName="popis" />
+                <ScalarProperty Name="program" ColumnName="program" />
                 <ScalarProperty Name="datum" ColumnName="datum" />
                 <ScalarProperty Name="cas" ColumnName="cas" />
               </MappingFragment>
@@ -1172,6 +1136,7 @@
             <EntityTypeMapping TypeName="dbModel.smlouvy">
               <MappingFragment StoreEntitySet="smlouvy">
                 <ScalarProperty Name="pk_id" ColumnName="pk_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="spolecnost" ColumnName="spolecnost" />
                 <ScalarProperty Name="ic" ColumnName="ic" />
                 <ScalarProperty Name="sidlo" ColumnName="sidlo" />
@@ -1267,7 +1232,7 @@
         <EntityTypeShape EntityType="dbModel.osoby_akce" Width="1.5" PointX="5.25" PointY="12.5" Height="3.3263964843750031" IsExpanded="true" />
         <EntityTypeShape EntityType="dbModel.produkcni_listy" Width="1.5" PointX="3" PointY="5.25" Height="1.787985026041671" IsExpanded="true" />
         <EntityTypeShape EntityType="dbModel.smlouvy" Width="1.5" PointX="8.25" PointY="17.5" Height="4.2879036458333317" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbModel.text_smlouvy" Width="1.5" PointX="6" PointY="23.375" Height="2.5571907552083388" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbModel.text_smlouvy" Width="1.5" PointX="2.75" PointY="0.75" Height="2.3648893229166674" IsExpanded="true" />
         <EntityTypeShape EntityType="dbModel.titul" Width="1.5" PointX="0.75" PointY="9.125" Height="1.9802864583333388" IsExpanded="true" />
         <EntityTypeShape EntityType="dbModel.ubytovani" Width="1.5" PointX="8.25" PointY="4.625" Height="3.1340950520833388" IsExpanded="true" />
         <AssociationConnector Association="dbModel.FK_akce_naklady_akce" ManuallyRouted="false">
@@ -1356,11 +1321,6 @@
           <ConnectorPoint PointX="7.328125" PointY="17.375" />
           <ConnectorPoint PointX="7.328125" PointY="5.21875" />
           <ConnectorPoint PointX="8.25" PointY="5.21875" />
-        </AssociationConnector>
-        <AssociationConnector Association="dbModel.FK_smlouvy_text_smlouvy" ManuallyRouted="false">
-          <ConnectorPoint PointX="7.5" PointY="24.653595377604169" />
-          <ConnectorPoint PointX="9" PointY="24.653595377604169" />
-          <ConnectorPoint PointX="9" PointY="21.787903645833332" />
         </AssociationConnector>
         <AssociationConnector Association="dbModel.osoby_nastroje" ManuallyRouted="false">
           <ConnectorPoint PointX="5.25" PointY="19.711293945312498" />

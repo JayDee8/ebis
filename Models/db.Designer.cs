@@ -15,6 +15,7 @@ using System.Data.Objects.DataClasses;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
+using System.ComponentModel.DataAnnotations;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
@@ -33,7 +34,6 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("dbModel", "FK_osoby_akce_osoby", "osoby", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ebis.Models.osoby), "osoby_akce", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.osoby_akce), true)]
 [assembly: EdmRelationshipAttribute("dbModel", "FK_smlouvy_osoby", "osoby", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ebis.Models.osoby), "smlouvy", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.smlouvy), true)]
 [assembly: EdmRelationshipAttribute("dbModel", "FK_ubytovani_osoby", "osoby", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ebis.Models.osoby), "ubytovani", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.ubytovani), true)]
-[assembly: EdmRelationshipAttribute("dbModel", "FK_smlouvy_text_smlouvy", "text_smlouvy", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ebis.Models.text_smlouvy), "smlouvy", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.smlouvy), true)]
 [assembly: EdmRelationshipAttribute("dbModel", "osoby_nastroje", "nastroje", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.nastroje), "osoby", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ebis.Models.osoby))]
 
 #endregion
@@ -472,14 +472,14 @@ namespace ebis.Models
         /// Create a new akce object.
         /// </summary>
         /// <param name="pk_id">Initial value of the pk_id property.</param>
-        /// <param name="jmeno">Initial value of the jmeno property.</param>
         /// <param name="titul_id">Initial value of the titul_id property.</param>
-        public static akce Createakce(global::System.Int32 pk_id, global::System.String jmeno, global::System.Int32 titul_id)
+        /// <param name="program">Initial value of the program property.</param>
+        public static akce Createakce(global::System.Int32 pk_id, global::System.Int32 titul_id, global::System.String program)
         {
             akce akce = new akce();
             akce.pk_id = pk_id;
-            akce.jmeno = jmeno;
             akce.titul_id = titul_id;
+            akce.program = program;
             return akce;
         }
 
@@ -519,24 +519,24 @@ namespace ebis.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String jmeno
+        public global::System.Int32 titul_id
         {
             get
             {
-                return _jmeno;
+                return _titul_id;
             }
             set
             {
-                OnjmenoChanging(value);
-                ReportPropertyChanging("jmeno");
-                _jmeno = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("jmeno");
-                OnjmenoChanged();
+                Ontitul_idChanging(value);
+                ReportPropertyChanging("titul_id");
+                _titul_id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("titul_id");
+                Ontitul_idChanged();
             }
         }
-        private global::System.String _jmeno;
-        partial void OnjmenoChanging(global::System.String value);
-        partial void OnjmenoChanged();
+        private global::System.Int32 _titul_id;
+        partial void Ontitul_idChanging(global::System.Int32 value);
+        partial void Ontitul_idChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -565,26 +565,26 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [Required][EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 titul_id
+        public global::System.String program
         {
             get
             {
-                return _titul_id;
+                return _program;
             }
             set
             {
-                Ontitul_idChanging(value);
-                ReportPropertyChanging("titul_id");
-                _titul_id = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("titul_id");
-                Ontitul_idChanged();
+                OnprogramChanging(value);
+                ReportPropertyChanging("program");
+                _program = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("program");
+                OnprogramChanged();
             }
         }
-        private global::System.Int32 _titul_id;
-        partial void Ontitul_idChanging(global::System.Int32 value);
-        partial void Ontitul_idChanged();
+        private global::System.String _program;
+        partial void OnprogramChanging(global::System.String value);
+        partial void OnprogramChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -877,7 +877,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [Required][EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 cena
         {
@@ -1304,7 +1304,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [Required][EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 akce_id
         {
@@ -1328,7 +1328,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [Required][EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 lokace_id
         {
@@ -1613,7 +1613,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [Required][EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String jmeno
         {
@@ -1637,7 +1637,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [Required][EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String prijmeni
         {
@@ -1768,7 +1768,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [Required][EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String jmeno
         {
@@ -1973,7 +1973,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [Required][EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String jmeno
         {
@@ -1997,7 +1997,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [Required][EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 typ
         {
@@ -2108,7 +2108,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [Required][EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String jmeno
         {
@@ -2132,7 +2132,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [Required][EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 typ
         {
@@ -2291,7 +2291,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [Required][EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 id
         {
@@ -2315,7 +2315,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [Required][EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String jmeno
         {
@@ -2339,7 +2339,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [Required][EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String prijmeni
         {
@@ -2868,7 +2868,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [Required][EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 honorar
         {
@@ -2892,7 +2892,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [Required][EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 doprava
         {
@@ -2916,7 +2916,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [Required][EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 srazkova_dan
         {
@@ -2940,7 +2940,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [Required][EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 vyplaceno
         {
@@ -2964,7 +2964,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [Required][EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 stav
         {
@@ -3167,7 +3167,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [Required][EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String jmeno_aktivity
         {
@@ -3191,7 +3191,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [Required][EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 typ
         {
@@ -3257,38 +3257,14 @@ namespace ebis.Models
         /// Create a new smlouvy object.
         /// </summary>
         /// <param name="pk_id">Initial value of the pk_id property.</param>
-        /// <param name="spolecnost">Initial value of the spolecnost property.</param>
-        /// <param name="ic">Initial value of the ic property.</param>
-        /// <param name="sidlo">Initial value of the sidlo property.</param>
-        /// <param name="zastoupeni">Initial value of the zastoupeni property.</param>
-        /// <param name="jmeno">Initial value of the jmeno property.</param>
-        /// <param name="bytem">Initial value of the bytem property.</param>
-        /// <param name="telefon">Initial value of the telefon property.</param>
-        /// <param name="email">Initial value of the email property.</param>
-        /// <param name="cislo_uctu">Initial value of the cislo_uctu property.</param>
-        /// <param name="datum_narozeni">Initial value of the datum_narozeni property.</param>
-        /// <param name="datum_spolecnost">Initial value of the datum_spolecnost property.</param>
-        /// <param name="datum_osoba">Initial value of the datum_osoba property.</param>
+        /// <param name="id">Initial value of the id property.</param>
         /// <param name="osoby_id">Initial value of the osoby_id property.</param>
-        /// <param name="text_smlouvy_id">Initial value of the text_smlouvy_id property.</param>
-        public static smlouvy Createsmlouvy(global::System.Int32 pk_id, global::System.String spolecnost, global::System.String ic, global::System.String sidlo, global::System.String zastoupeni, global::System.String jmeno, global::System.String bytem, global::System.String telefon, global::System.String email, global::System.String cislo_uctu, global::System.DateTime datum_narozeni, global::System.DateTime datum_spolecnost, global::System.DateTime datum_osoba, global::System.Int32 osoby_id, global::System.Int32 text_smlouvy_id)
+        public static smlouvy Createsmlouvy(global::System.Int32 pk_id, global::System.Int32 id, global::System.Int32 osoby_id)
         {
             smlouvy smlouvy = new smlouvy();
             smlouvy.pk_id = pk_id;
-            smlouvy.spolecnost = spolecnost;
-            smlouvy.ic = ic;
-            smlouvy.sidlo = sidlo;
-            smlouvy.zastoupeni = zastoupeni;
-            smlouvy.jmeno = jmeno;
-            smlouvy.bytem = bytem;
-            smlouvy.telefon = telefon;
-            smlouvy.email = email;
-            smlouvy.cislo_uctu = cislo_uctu;
-            smlouvy.datum_narozeni = datum_narozeni;
-            smlouvy.datum_spolecnost = datum_spolecnost;
-            smlouvy.datum_osoba = datum_osoba;
+            smlouvy.id = id;
             smlouvy.osoby_id = osoby_id;
-            smlouvy.text_smlouvy_id = text_smlouvy_id;
             return smlouvy;
         }
 
@@ -3326,7 +3302,31 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [Required][EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                OnidChanging(value);
+                ReportPropertyChanging("id");
+                _id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("id");
+                OnidChanged();
+            }
+        }
+        private global::System.Int32 _id;
+        partial void OnidChanging(global::System.Int32 value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String spolecnost
         {
@@ -3338,7 +3338,7 @@ namespace ebis.Models
             {
                 OnspolecnostChanging(value);
                 ReportPropertyChanging("spolecnost");
-                _spolecnost = StructuralObject.SetValidValue(value, false);
+                _spolecnost = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("spolecnost");
                 OnspolecnostChanged();
             }
@@ -3350,7 +3350,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String ic
         {
@@ -3362,7 +3362,7 @@ namespace ebis.Models
             {
                 OnicChanging(value);
                 ReportPropertyChanging("ic");
-                _ic = StructuralObject.SetValidValue(value, false);
+                _ic = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("ic");
                 OnicChanged();
             }
@@ -3374,7 +3374,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String sidlo
         {
@@ -3386,7 +3386,7 @@ namespace ebis.Models
             {
                 OnsidloChanging(value);
                 ReportPropertyChanging("sidlo");
-                _sidlo = StructuralObject.SetValidValue(value, false);
+                _sidlo = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("sidlo");
                 OnsidloChanged();
             }
@@ -3398,7 +3398,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String zastoupeni
         {
@@ -3410,7 +3410,7 @@ namespace ebis.Models
             {
                 OnzastoupeniChanging(value);
                 ReportPropertyChanging("zastoupeni");
-                _zastoupeni = StructuralObject.SetValidValue(value, false);
+                _zastoupeni = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("zastoupeni");
                 OnzastoupeniChanged();
             }
@@ -3422,7 +3422,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String jmeno
         {
@@ -3434,7 +3434,7 @@ namespace ebis.Models
             {
                 OnjmenoChanging(value);
                 ReportPropertyChanging("jmeno");
-                _jmeno = StructuralObject.SetValidValue(value, false);
+                _jmeno = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("jmeno");
                 OnjmenoChanged();
             }
@@ -3446,7 +3446,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String bytem
         {
@@ -3458,7 +3458,7 @@ namespace ebis.Models
             {
                 OnbytemChanging(value);
                 ReportPropertyChanging("bytem");
-                _bytem = StructuralObject.SetValidValue(value, false);
+                _bytem = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("bytem");
                 OnbytemChanged();
             }
@@ -3470,7 +3470,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String telefon
         {
@@ -3482,7 +3482,7 @@ namespace ebis.Models
             {
                 OntelefonChanging(value);
                 ReportPropertyChanging("telefon");
-                _telefon = StructuralObject.SetValidValue(value, false);
+                _telefon = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("telefon");
                 OntelefonChanged();
             }
@@ -3494,7 +3494,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String email
         {
@@ -3506,7 +3506,7 @@ namespace ebis.Models
             {
                 OnemailChanging(value);
                 ReportPropertyChanging("email");
-                _email = StructuralObject.SetValidValue(value, false);
+                _email = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("email");
                 OnemailChanged();
             }
@@ -3518,7 +3518,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String cislo_uctu
         {
@@ -3530,7 +3530,7 @@ namespace ebis.Models
             {
                 Oncislo_uctuChanging(value);
                 ReportPropertyChanging("cislo_uctu");
-                _cislo_uctu = StructuralObject.SetValidValue(value, false);
+                _cislo_uctu = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("cislo_uctu");
                 Oncislo_uctuChanged();
             }
@@ -3542,9 +3542,9 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.DateTime datum_narozeni
+        public Nullable<global::System.DateTime> datum_narozeni
         {
             get
             {
@@ -3559,16 +3559,16 @@ namespace ebis.Models
                 Ondatum_narozeniChanged();
             }
         }
-        private global::System.DateTime _datum_narozeni;
-        partial void Ondatum_narozeniChanging(global::System.DateTime value);
+        private Nullable<global::System.DateTime> _datum_narozeni;
+        partial void Ondatum_narozeniChanging(Nullable<global::System.DateTime> value);
         partial void Ondatum_narozeniChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.DateTime datum_spolecnost
+        public Nullable<global::System.DateTime> datum_spolecnost
         {
             get
             {
@@ -3583,16 +3583,16 @@ namespace ebis.Models
                 Ondatum_spolecnostChanged();
             }
         }
-        private global::System.DateTime _datum_spolecnost;
-        partial void Ondatum_spolecnostChanging(global::System.DateTime value);
+        private Nullable<global::System.DateTime> _datum_spolecnost;
+        partial void Ondatum_spolecnostChanging(Nullable<global::System.DateTime> value);
         partial void Ondatum_spolecnostChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.DateTime datum_osoba
+        public Nullable<global::System.DateTime> datum_osoba
         {
             get
             {
@@ -3607,14 +3607,14 @@ namespace ebis.Models
                 Ondatum_osobaChanged();
             }
         }
-        private global::System.DateTime _datum_osoba;
-        partial void Ondatum_osobaChanging(global::System.DateTime value);
+        private Nullable<global::System.DateTime> _datum_osoba;
+        partial void Ondatum_osobaChanging(Nullable<global::System.DateTime> value);
         partial void Ondatum_osobaChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [Required][EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 osoby_id
         {
@@ -3638,9 +3638,9 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.Int32 text_smlouvy_id
+        public Nullable<global::System.Int32> text_smlouvy_id
         {
             get
             {
@@ -3655,8 +3655,8 @@ namespace ebis.Models
                 Ontext_smlouvy_idChanged();
             }
         }
-        private global::System.Int32 _text_smlouvy_id;
-        partial void Ontext_smlouvy_idChanging(global::System.Int32 value);
+        private Nullable<global::System.Int32> _text_smlouvy_id;
+        partial void Ontext_smlouvy_idChanging(Nullable<global::System.Int32> value);
         partial void Ontext_smlouvy_idChanged();
 
         #endregion
@@ -3698,44 +3698,6 @@ namespace ebis.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<osoby>("dbModel.FK_smlouvy_osoby", "osoby", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("dbModel", "FK_smlouvy_text_smlouvy", "text_smlouvy")]
-        public text_smlouvy text_smlouvy
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<text_smlouvy>("dbModel.FK_smlouvy_text_smlouvy", "text_smlouvy").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<text_smlouvy>("dbModel.FK_smlouvy_text_smlouvy", "text_smlouvy").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<text_smlouvy> text_smlouvyReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<text_smlouvy>("dbModel.FK_smlouvy_text_smlouvy", "text_smlouvy");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<text_smlouvy>("dbModel.FK_smlouvy_text_smlouvy", "text_smlouvy", value);
                 }
             }
         }
@@ -3811,7 +3773,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [Required][EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String text1
         {
@@ -3835,7 +3797,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [Required][EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String text2
         {
@@ -3859,7 +3821,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [Required][EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String text3
         {
@@ -3883,7 +3845,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [Required][EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String text4
         {
@@ -3907,7 +3869,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [Required][EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String text5
         {
@@ -3931,7 +3893,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [Required][EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String text6
         {
@@ -3955,32 +3917,6 @@ namespace ebis.Models
         #endregion
 
     
-        #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("dbModel", "FK_smlouvy_text_smlouvy", "smlouvy")]
-        public EntityCollection<smlouvy> smlouvy
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<smlouvy>("dbModel.FK_smlouvy_text_smlouvy", "smlouvy");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<smlouvy>("dbModel.FK_smlouvy_text_smlouvy", "smlouvy", value);
-                }
-            }
-        }
-
-        #endregion
-
     }
     
     /// <summary>
@@ -4040,7 +3976,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [Required][EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String nazev
         {
@@ -4207,7 +4143,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [Required][EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 osoby_id
         {
@@ -4231,7 +4167,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [Required][EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 lokace_id
         {
@@ -4255,7 +4191,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [Required][EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 akce_id
         {
@@ -4303,7 +4239,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [Required][EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 cena1
         {
@@ -4327,7 +4263,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [Required][EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 cena2
         {
@@ -4351,7 +4287,7 @@ namespace ebis.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [Required][EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 cena3
         {
