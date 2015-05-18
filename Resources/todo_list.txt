@@ -1,0 +1,25 @@
+ebis TO-DO list:
+datepicker pro zadavani datumu
+dropdownlist pro vyber typu u nastroju, prod. listu a nakladu
+po odeslani pozvanky - zpet na detail akce = error
+ (akceModel.em_akce = db.akce.Single(a => a.pk_id == id); Posloupnost neobsahuje žádné prvky.)
+helper pro stav u delete umelce z akci
+odstranit pagination u tabulek
+prodlouzit misto na cislo
+Interpret - chyba v nastrojich (zadny)
+autovyplnovat produkci a naklady
+posunout tlacitka
+poupravit anglicke texty
+pridat chybejici bootstrap formatovani
+opravit nepridavani produkcnich listu/nakladu
+pridat moznost hrat na 2 nastroje na akci
+vyresit refreshovani stranky pri pridavani vice polozek
+pridat castku za dopravu k odpovedi
+smlouva ze sablony (zachovat stavajici ID)
+pridat automaticky vypocet dane: netto: rounddown(castka/0.85)
+pridat fermany do mailu
+odstranit tituly a pridat je primo do akci jako seznam a prejmenovat na Programy
+vygenerovat odkaz na mapu ze souradnic
+pridat nepovinny odkaz k lokacim
+fermany - akce napevno (nevybirat t dropdownu)
+zkontrolovat razeni osob podle nastroje (zkratek)
