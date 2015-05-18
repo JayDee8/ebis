@@ -105,7 +105,7 @@ namespace ebis.Controllers
         {
             SmtpClient smtp = new SmtpClient();
             smtp.Host = "smtp.gmail.com"; // mail.eb-is.cz
-            smtp.Port = 587; // 465
+            smtp.Port = 25; // 465 587
             smtp.UseDefaultCredentials = false;
             smtp.Credentials = new System.Net.NetworkCredential("ebis.office@gmail.com", "awsedr1526"); // office@eb-is.cz 1a2b3c4d
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
