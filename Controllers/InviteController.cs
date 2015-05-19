@@ -40,9 +40,9 @@ namespace ebis.Controllers
         public ActionResult Response(string command)
         {
             string str = Decrypt(command);
-            // str = "4-2-13-1";
             if (str != null)
             {
+                TempData["command"] = str;
                 string[] args;
                 args = str.Split(new string[] {"-"}, StringSplitOptions.None);
                 int akce_id = Convert.ToInt32(args[0]);
@@ -56,7 +56,39 @@ namespace ebis.Controllers
                 }
                 oa.stav = Convert.ToInt32(args[3]);
                 db.SaveChanges();
+                ViewBag.Response = str.Substring(str.Length - 1, 1);
             }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Response(FormCollection form)
+        {
+            ViewBag.Response = "9";
+            List<string> resp_type = new List<string>(form.GetValues("resp_type"));
+            List<string> resp_text = new List<string>(form.GetValues("resp_text"));
+            string[] args;
+            args = TempData["command"].ToString().Split(new string[] { "-" }, StringSplitOptions.None);
+            int akce_id = Convert.ToInt32(args[0]);
+            int nastroje_id = Convert.ToInt32(args[1]);
+            int osoby_id = Convert.ToInt32(args[2]);
+            osoby_akce oa = db.osoby_akce.Single(a => a.akce_id == akce_id &&
+                a.nastroje_id == nastroje_id && a.osoby_id == osoby_id);
+            if (oa == null)
+            {
+                return HttpNotFound();
+            }
+            oa.stav = Convert.ToInt32(args[3]);
+            if (resp_type.ElementAt(0) == "1")
+            {
+                oa.doprava = Convert.ToInt32(resp_text.ElementAt(0));
+            }
+            else
+            if (resp_type.ElementAt(0) == "3")
+            {
+                oa.poznamka = resp_text.ElementAt(0);
+            }
+            db.SaveChanges();
             return View();
         }
 
@@ -114,6 +146,7 @@ namespace ebis.Controllers
             List<string> rowsUsers = new List<string>(form.GetValues("ucast"));
             List<string> rowsInstruments = new List<string>(form.GetValues("nastroj"));
             List<string> usersIds = new List<string>(form.GetValues("usId"));
+            List<string> rowsPayments = new List<string>(form.GetValues("honorar"));
 
             List<osoby> users = new List<osoby>();
             List<nastroje> instruments = new List<nastroje>();
@@ -135,7 +168,7 @@ namespace ebis.Controllers
                 oa.nastroje_id = instrument.pk_id;
                 oa.osoby_id = user.pk_id;
                 oa.poznamka = "";
-                oa.honorar = 0;
+                oa.honorar = Convert.ToInt32(rowsPayments.ElementAt(wgRowId));
                 oa.doprava = 0;
                 oa.srazkova_dan = 0;
                 oa.vyplaceno = 0;
@@ -151,9 +184,9 @@ namespace ebis.Controllers
                 mail.Subject = "Pozvánka";
                 string content = oa.akce_id.ToString() + "-" + oa.nastroje_id.ToString() + "-" + oa.osoby_id.ToString(); // localhost:52663
                 string Body = 
-                    "Přijmout: http://www.eb-is.cz/Invite/Response/?command=" + Encrypt(content + "-1") + "<br>" +
-                    "Odmítnout: http://www.eb-is.cz/Invite/Response/?command=" + Encrypt(content + "-2") + "<br>" +
-                    "Přijmout, ale mám časový problém: http://www.eb-is.cz/Invite/Response/?command=" + Encrypt(content + "-3") + "<br>";
+                    "<div><a href=\"http://www.eb-is.cz/Invite/Response/?command=" + Encrypt(content + "-1") + "\"><img src=\"http://www.eb-is.cz/Images/accept.png\"></a>" +
+                    "<a href=\"http://www.eb-is.cz/Invite/Response/?command=" + Encrypt(content + "-2") + "\"><img src=\"http://www.eb-is.cz/Images/decline.png\"></a>" +
+                    "<a href=\"http://www.eb-is.cz/Invite/Response/?command=" + Encrypt(content + "-3") + "\"><img src=\"http://www.eb-is.cz/Images/accept2.png\"></a></div>";
                 mail.Body = Body;
                 mail.IsBodyHtml = true;
                 smtp.Send(mail);

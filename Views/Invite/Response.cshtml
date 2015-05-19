@@ -1,5 +1,31 @@
 ﻿@{
-    ViewBag.Title = "Response";
+    ViewBag.Title = "Odpověď";
 }
 
-<h2>Response</h2>
+<h2>Odpověď</h2>
+
+@if (ViewBag.Response == "1")
+{
+    using (Html.BeginForm())
+    {
+        <span>Prosím, zadejte náklady na dopravu:</span>
+        <input type="text" id="resp_text" name="resp_text" />
+        <input type="hidden" id="resp_type" name="resp_type" value="1" />
+        <button class="btn btn-default" type ="submit">Odeslat</button>
+    }
+}
+else
+if (ViewBag.Response == "3")
+{
+    using (Html.BeginForm())
+    {
+        <span>Prosím, uveďte váš časový problém:</span>
+        <input type="text" id="resp_text" name="resp_text" />
+        <input type="hidden" id="resp_type" name="resp_type" value="3" />
+        <button class="btn btn-default" type ="submit">Odeslat</button>
+    }
+}
+else
+{
+    <span>Děkujeme za odpověď. Nyní můžete stránku zavřít.</span>
+}
