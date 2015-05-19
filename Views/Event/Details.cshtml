@@ -20,7 +20,7 @@
     WebGrid naklady5_grid = new WebGrid(@Model.em_akce_naklady5, canSort: false);
 }
 
-<h2>@Model.em_akce.jmeno</h2>
+<h2>@Model.em_akce.titul.nazev</h2>
 
 <fieldset>
     <legend>akce</legend>
@@ -28,8 +28,11 @@
     <div class="display-field">
         <b>Popis: </b>@Model.em_akce.popis
     </div>
-    <div class="display-field">
+    @*<div class="display-field">
         <b>Titul: </b>@Model.em_akce.titul.autor - @Model.em_akce.titul.nazev
+    </div>*@
+    <div class="display-field">
+        <b>Program: </b>@Model.em_akce.program
     </div>
     <div class="display-field">
         <b>Datum: </b>@Model.em_akce.datum

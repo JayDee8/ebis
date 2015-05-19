@@ -15,7 +15,5 @@ smlouva ze sablony (zachovat stavajici ID)
 pridat automaticky vypocet dane: netto: rounddown(castka/0.85)
 pridat fermany do mailu
 odstranit tituly a pridat je primo do akci jako seznam a prejmenovat na Programy
-vygenerovat odkaz na mapu ze souradnic
-pridat nepovinny odkaz k lokacim
 fermany - akce napevno (nevybirat t dropdownu)
 zkontrolovat razeni osob podle nastroje (zkratek)
