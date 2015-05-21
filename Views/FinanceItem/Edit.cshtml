@@ -17,6 +17,13 @@
         @Html.HiddenFor(model => model.naklady_id)
 
         <div class="editor-label">
+            @Html.LabelFor(model => model.naklady)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.naklady_id, (SelectList)ViewBag.naklady_id)
+        </div>
+
+        <div class="editor-label">
             @Html.LabelFor(model => model.cena)
         </div>
         <div class="editor-field">

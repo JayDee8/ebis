@@ -13,6 +13,13 @@
         <legend>akce_produkcni_listy</legend>
 
         <div class="editor-label">
+            @Html.LabelFor(model => model.produkcni_listy)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.produkcni_listy_id, (SelectList)ViewBag.produkcni_listy_id)
+        </div>
+
+        <div class="editor-label">
             @Html.LabelFor(model => model.poznamka)
         </div>
         <div class="editor-field">

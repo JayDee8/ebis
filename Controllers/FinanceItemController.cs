@@ -12,15 +12,14 @@ namespace ebis.Controllers
     public class FinanceItemController : Controller
     {
         private dbEntities db = new dbEntities();
-
         //
         // GET: /FinanceItem/Create
 
         public ActionResult Create(int id = 0)
         {
-            ViewBag.akce_id_link = id;
             TempData["referrer"] = Request.UrlReferrer.AbsoluteUri.ToString();
-            ViewBag.akce_id = new SelectList(db.akce, "pk_id", "jmeno");
+            TempData["ev_id"] = id.ToString();
+            ViewBag.akce_id_link = id;
             ViewBag.naklady_id = new SelectList(db.naklady, "pk_id", "jmeno");
             return View();
         }
@@ -33,13 +32,12 @@ namespace ebis.Controllers
         {
             if (ModelState.IsValid)
             {
+                akce_naklady.akce_id = Convert.ToInt32(TempData["ev_id"].ToString());
                 db.akce_naklady.AddObject(akce_naklady);
                 db.SaveChanges();
                 return Redirect(TempData["referrer"].ToString());
             }
-
-            ViewBag.akce_id = new SelectList(db.akce, "pk_id", "jmeno", akce_naklady.akce_id);
-            ViewBag.naklady_id = new SelectList(db.naklady, "pk_id", "jmeno", akce_naklady.naklady_id);
+            ViewBag.naklady_id = new SelectList(db.naklady, "pk_id", "jmeno");
             return View(akce_naklady);
         }
 
@@ -49,12 +47,11 @@ namespace ebis.Controllers
         public ActionResult Edit(int akce_id = 0, int naklady_id = 0)
         {
             TempData["referrer"] = Request.UrlReferrer.AbsoluteUri.ToString();
-            akce_naklady akce_naklady = db.akce_naklady.Single(a => a.akce_id == akce_id && a.naklady_id == a.naklady_id);
+            akce_naklady akce_naklady = db.akce_naklady.Single(a => a.akce_id == akce_id && a.naklady_id == naklady_id);
             if (akce_naklady == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.akce_id = new SelectList(db.akce, "pk_id", "jmeno", akce_naklady.akce_id);
             ViewBag.naklady_id = new SelectList(db.naklady, "pk_id", "jmeno", akce_naklady.naklady_id);
             return View(akce_naklady);
         }
@@ -72,7 +69,6 @@ namespace ebis.Controllers
                 db.SaveChanges();
                 return Redirect(TempData["referrer"].ToString());
             }
-            ViewBag.akce_id = new SelectList(db.akce, "pk_id", "jmeno", akce_naklady.akce_id);
             ViewBag.naklady_id = new SelectList(db.naklady, "pk_id", "jmeno", akce_naklady.naklady_id);
             return View(akce_naklady);
         }

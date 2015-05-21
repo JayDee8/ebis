@@ -5,15 +5,19 @@ po odeslani pozvanky - zpet na detail akce = error
 helper pro stav u delete umelce z akci
 prodlouzit misto na cislo
 autovyplnovat produkci a naklady
-poupravit anglicke texty
+odstranit anglicke texty
 pridat chybejici bootstrap formatovani  ---> zkontrolovat events ale mělo by to být všude
-opravit nepridavani produkcnich listu/nakladu
 pridat moznost hrat na 2 nastroje na akci
 vyresit refreshovani stranky pri pridavani vice polozek
-pridat castku za dopravu k odpovedi
 smlouva ze sablony (zachovat stavajici ID)
 pridat automaticky vypocet dane: netto: rounddown(castka/0.85)
 pridat fermany do mailu
 odstranit tituly a pridat je primo do akci jako seznam a prejmenovat na Programy
 fermany - akce napevno (nevybirat t dropdownu)
 zkontrolovat razeni osob podle nastroje (zkratek)
+pridavani - error (zkontrolovat)
+(ID nejde opravit/ přepsat na č. roční smlouvy - potřebuji lidi dle ročních smluv, jak jsme řešili v telefonu)
+(prosím  přepsat Titul/y na "název akce")
+(u úpravy některých lidí mi to pořád háže hlášku system error)
+prod. listy/naklady - Edit/Delete - opravit
+prod. listy - Edit - zobrazuje se spatna polozka v listu

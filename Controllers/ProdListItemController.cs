@@ -19,9 +19,9 @@ namespace ebis.Controllers
         public ActionResult Create(int id = 0)
         {
             TempData["referrer"] = Request.UrlReferrer.AbsoluteUri.ToString();
-            ViewBag.akce_id = new SelectList(db.akce, "pk_id", "jmeno");
-            ViewBag.produkcni_listy_id = new SelectList(db.produkcni_listy, "pk_id", "jmeno_aktivity");
+            TempData["ev_id"] = id.ToString();
             ViewBag.akce_id_link = id;
+            ViewBag.produkcni_listy_id = new SelectList(db.produkcni_listy, "pk_id", "jmeno_aktivity");
             return View();
         }
 
@@ -33,12 +33,11 @@ namespace ebis.Controllers
         {
             if (ModelState.IsValid)
             {
+                akce_produkcni_listy.akce_id = Convert.ToInt32(TempData["ev_id"].ToString());
                 db.akce_produkcni_listy.AddObject(akce_produkcni_listy);
                 db.SaveChanges();
                 return Redirect(TempData["referrer"].ToString());
             }
-
-            ViewBag.akce_id = new SelectList(db.akce, "pk_id", "jmeno", akce_produkcni_listy.akce_id);
             ViewBag.produkcni_listy_id = new SelectList(db.produkcni_listy, "pk_id", "jmeno_aktivity", akce_produkcni_listy.produkcni_listy_id);
             return View(akce_produkcni_listy);
         }
@@ -54,7 +53,6 @@ namespace ebis.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.akce_id = new SelectList(db.akce, "pk_id", "jmeno", akce_produkcni_listy.akce_id);
             ViewBag.produkcni_listy_id = new SelectList(db.produkcni_listy, "pk_id", "jmeno_aktivity", akce_produkcni_listy.produkcni_listy_id);
             return View(akce_produkcni_listy);
         }
@@ -72,7 +70,6 @@ namespace ebis.Controllers
                 db.SaveChanges();
                 return Redirect(TempData["referrer"].ToString());
             }
-            ViewBag.akce_id = new SelectList(db.akce, "pk_id", "jmeno", akce_produkcni_listy.akce_id);
             ViewBag.produkcni_listy_id = new SelectList(db.produkcni_listy, "pk_id", "jmeno_aktivity", akce_produkcni_listy.produkcni_listy_id);
             return View(akce_produkcni_listy);
         }

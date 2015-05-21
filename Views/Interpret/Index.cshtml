@@ -22,7 +22,6 @@
         grid.Column("prijmeni", "Příjmení"),
         grid.Column("telefon", "Telefon"),
         grid.Column("email", "E-mail"),
-        grid.Column("mesto", "Město"),
         grid.Column("narodnost", "Nástroje", @<div>@Html.GetNastroje((IEnumerable<ebis.Models.nastroje>)@item.nastroje)</div>),
         grid.Column(format: (item) => Html.ActionLink("Smlouvy", "Index", "Contract", new RouteValueDictionary(new { id = item.pk_id }), null)),
         grid.Column(format: (item) => new HtmlString("" + Html.ActionLink("  ", "Details", new { id = item.pk_id }, new { @class = "glyphicon glyphicon-search", @title = "Detaily" }) +
