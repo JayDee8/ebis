@@ -185,7 +185,7 @@ namespace ebis.Controllers
                 string content = oa.akce_id.ToString() + "-" + oa.nastroje_id.ToString() + "-" + oa.osoby_id.ToString(); // localhost:52663
                 var cislo_smlouvy = oa.osoby.smlouvy.Any() ? oa.osoby.smlouvy.Last().id : 0;
                 string nazev_akce = oa.akce.popis;
-                string Body = "<h1>NÁBÍDKA a POTVRZENÍ ÚČASTI NA PROJEKTU na základě smlouvy č." + cislo_smlouvy.ToString() + "</h1><br>" +
+                string Body = "<h1>NABÍDKA a POTVRZENÍ ÚČASTI NA PROJEKTU na základě smlouvy č." + cislo_smlouvy.ToString() + "</h1><br>" +
                     "Já, " + oa.osoby.jmeno + " " + oa.osoby.prijmeni + ", narozen: " + oa.osoby.datum_narozeni.ToString() + "<br>" +
                     "Potvrzuji tímto svoji účast na projektu:<br>" +
                     nazev_akce + "<br>" +
