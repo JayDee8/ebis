@@ -21,7 +21,11 @@
         <script type="text/javascript">
             $(function () { // will trigger when the document is ready
                 $.datepicker.setDefaults($.datepicker.regional['cs']);
-                $('.datepicker').datepicker(); //Initialise any date pickers
+                $('.datepicker').datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    yearRange: "-100:+100",
+                }); //Initialise any date pickers
             });
         </script>
 
@@ -50,7 +54,7 @@
                         <nav>
                             <ul id="submenu">
                                 <li class="@(controllerName == "Instrument" ? "active" : "")">@Html.ActionLink("Nástroje", "Index", "Instrument")</li>
-                                <li class="@(controllerName == "Art" ? "active" : "")">@Html.ActionLink("Tituly", "Index", "Art")</li>
+                                <li class="@(controllerName == "Art" ? "active" : "")">@Html.ActionLink("Názvy akcí", "Index", "Art")</li>
                                 <li class="@(controllerName == "Location" ? "active" : "")">@Html.ActionLink("Lokace", "Index", "Location")</li>
                                 <li class="@(controllerName == "Contract" ? "active" : "")">@Html.ActionLink("Smlouvy", "Index", "Contract")</li>
                                 <li class="@(controllerName == "Finance" ? "active" : "")">@Html.ActionLink("Položky nákladů", "Index", "Finance")</li>

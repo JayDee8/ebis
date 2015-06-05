@@ -29,7 +29,6 @@
         grid.Column("datum_narozeni", "Datum narození"),
         grid.Column("datum_spolecnost", "Datum společnost"),
         grid.Column("datum_osoba", "Datum osoba"),
-        grid.Column("osoby.jmenoPrijmeniId", "Osoba"),
         grid.Column("text_smlouvy.text1", "Text smlouvy"),*/
         grid.Column(format: (item) => new HtmlString("" + /*Html.ActionLink("  ", "Details", new { id = item.pk_id }, new { @class = "glyphicon glyphicon-search", @title = "Detaily" }) +*/
                                                     Html.ActionLink(" ", "Edit", new { id = item.pk_id }, new { @class = "glyphicon glyphicon-edit", @title = "Upravit" }) + " " +

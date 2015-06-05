@@ -45,9 +45,13 @@ namespace ebis.Controllers
         public ActionResult Create()
         {
             ViewBag.osoby = db.osoby.OrderBy(i=>i.prijmeni);
-            //ViewBag.osoby_id = new SelectList(db.osoby, "pk_id", "jmenoPrijmeniId");
-            //ViewBag.text_smlouvy_id = new SelectList(db.text_smlouvy, "pk_id", "text1");
-            return View();
+
+            var res = db.smlouvy.Any() ? db.smlouvy.Max(o => o.id) : 0;
+            int id = res + 1; 
+            smlouvy model = new smlouvy();
+            model.id = id;
+
+            return View(model);
         }
 
         //

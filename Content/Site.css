@@ -1,3 +1,7 @@
+.interpret-rows tbody td{
+  line-height: 10px !important;
+}
+
 .ui-widget-header .ui-icon {
   background-image: url("css/images/ui-icons_999999_256x240.png") !important;
   }

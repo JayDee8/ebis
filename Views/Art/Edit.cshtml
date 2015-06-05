@@ -1,7 +1,7 @@
 ﻿@model ebis.Models.titul
 
 @{
-    ViewBag.Title = "Upravit titul";
+    ViewBag.Title = "Upravit název";
 }
 
 <h2>@ViewBag.Title</h2>
@@ -10,7 +10,7 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>titul</legend>
+        <legend>název</legend>
 
         @Html.HiddenFor(model => model.pk_id)
 

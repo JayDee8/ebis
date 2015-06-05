@@ -1,9 +1,8 @@
-﻿ebis TO-DO list:
+ebis TO-DO list:
 dropdownlist pro vyber typu u nastroju, prod. listu a nakladu
 po odeslani pozvanky - zpet na detail akce = error
  (akceModel.em_akce = db.akce.Single(a => a.pk_id == id); Posloupnost neobsahuje žádné prvky.)
 helper pro stav u delete umelce z akci
-prodlouzit misto na cislo
 autovyplnovat produkci a naklady
 odstranit anglicke texty
 pridat chybejici bootstrap formatovani  ---> zkontrolovat events ale mělo by to být všude
@@ -14,7 +13,6 @@ pridat automaticky vypocet dane: netto: rounddown(castka/0.85)
 pridat fermany do mailu
 fermany - akce napevno (nevybirat z dropdownu)
 zkontrolovat razeni osob podle nastroje (zkratek)
-(prosím  přepsat Titul/y na "název akce")
 (u úpravy některých lidí mi to pořád háže hlášku system error)
 prod. listy/naklady - Edit/Delete - opravit
 prod. listy - Edit - zobrazuje se spatna polozka v listu
@@ -29,3 +27,4 @@ pridat tlacitka na pridani novych polozek + korespondujici tlacitka "zpet"
 zkontrolovat nastroje
 zkontrolovat db (aktualnost zaznamu)
 pozvani umelcu az nakonec
+lepší generování max ID osoby+smlouvy

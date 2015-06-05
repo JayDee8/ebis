@@ -74,6 +74,8 @@ namespace ebis.Controllers
                     db.osoby.AddObject(model.Interpret);
                 
                 db.SaveChanges();
+                if (Request.Form["sub_n_stay"] != null)
+                    return RedirectToAction("Create");
                 return RedirectToAction("Index");
             }
 

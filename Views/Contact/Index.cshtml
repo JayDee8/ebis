@@ -2,13 +2,13 @@
 
 @{
     ViewBag.Title = "Kontakty";
-    WebGrid grid = new WebGrid(Model);
+    WebGrid grid = new WebGrid(Model, canPage: false);
 }
 
 <h2>@ViewBag.Title</h2>
 
 <p>
-    @Html.ActionLink("Přidat nový kontakt", "Create", canPage: false)
+    @Html.ActionLink("Přidat nový kontakt", "Create")
 </p>
 
 @grid.GetHtml(

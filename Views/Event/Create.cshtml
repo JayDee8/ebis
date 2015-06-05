@@ -1,10 +1,10 @@
 ﻿@model ebis.Models.akce
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Vytvořit smlouvu";
 }
 
-<h2>Create</h2>
+<h2>@ViewBag.Title</h2>
 
 @using (var f = Html.Bootstrap().Begin(new Form().Type(FormType.Horizontal)))
 {
@@ -12,7 +12,7 @@
     @f.ControlGroup().DropDownListFor(m => m.titul_id, new SelectList(ViewBag.tituly, "pk_id", "nazev")).Label().LabelText("Název akce")
     @f.ControlGroup().TextBoxFor(m => m.popis).Label().LabelText("Popis")
     @f.ControlGroup().TextBoxFor(m => m.program).Label().LabelText("Program")
-    @f.ControlGroup().TextBoxFor(m => m.datum).HtmlAttributes(new { @class = "datepicker" }).Label().LabelText("Datum")
+    @f.ControlGroup().TextBoxFor(m => m.datum).Format("{0:dd.MM.yyyy}").HtmlAttributes(new { @class = "datepicker" }).Label().LabelText("Datum")
     @f.ControlGroup().TextBoxFor(m => m.cas).Label().LabelText("Čas")
     <p>
     @f.ControlGroup().CustomControls(Html.Bootstrap().SubmitButton().Text("Přidat"))
@@ -20,7 +20,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Zpět na seznam", "Index")
 </div>
 
 @section Scripts {

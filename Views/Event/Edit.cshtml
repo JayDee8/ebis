@@ -13,7 +13,7 @@
     @f.ControlGroup().DropDownListFor(m => m.titul_id, new SelectList(ViewBag.tituly, "pk_id", "nazev", ViewBag.titul_id)).Label().LabelText("Název akce")
     @f.ControlGroup().TextBoxFor(m => m.popis).Label().LabelText("Popis")
     @f.ControlGroup().TextBoxFor(m => m.program).Label().LabelText("Program")
-    @f.ControlGroup().TextBoxFor(m => m.datum).HtmlAttributes(new { @class = "datepicker" }).Label().LabelText("Datum")
+    @f.ControlGroup().TextBoxFor(m => m.datum).Format("{0:dd.MM.yyyy}").HtmlAttributes(new { @class = "datepicker" }).Label().LabelText("Datum")
     @f.ControlGroup().TextBoxFor(m => m.cas).Label().LabelText("Čas")
     <p>
     @f.ControlGroup().CustomControls(Html.Bootstrap().SubmitButton().Text("Upravit"))

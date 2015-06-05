@@ -15,7 +15,7 @@
     (
         grid.Column("titul.nazev", "Titul"),
         grid.Column("popis", "Popis"),
-        grid.Column("datum", "Datum"),
+        grid.Column("datum", "Datum",format: (item) => item.datum != null ? string.Format("{0:dd.MM.yyyy}",item.datum) : ""),
         grid.Column("cas", "Čas"),
         grid.Column(format: (item) => new HtmlString("" + Html.ActionLink("  ", "Details", new { id = item.pk_id }, new { @class = "glyphicon glyphicon-search", @title = "Detaily" }) +
                     Html.ActionLink("  ", "Edit", new { id = item.pk_id }, new { @class = "glyphicon glyphicon-edit", @title = "Upravit" }) +

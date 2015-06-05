@@ -34,16 +34,21 @@
     <div class="display-field">
         <b>Program: </b>@Model.em_akce.program
     </div>
-    <div class="display-field">
-        <b>Datum: </b>@Model.em_akce.datum
-    </div>
+    @{if (Model.em_akce.datum != null)
+    {
+        <div class="display-field">
+            <b>Datum: </b>
+            <text>@Html.ValueFor(model => model.em_akce.datum, "{0:dd.MM.yyyy}")</text>            
+        </div>
+    }
+    }
     <div class="display-field">
         <b>Čas: </b>@Model.em_akce.cas
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.em_akce.pk_id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editovat", "Edit", new { id = Model.em_akce.pk_id }) |
+    @Html.ActionLink("Zpět na seznam", "Index")
 </p>
 
 @using (var a = Html.Bootstrap().Begin(new Accordion("myAccordion")))

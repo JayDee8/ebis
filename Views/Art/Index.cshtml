@@ -1,14 +1,14 @@
 ﻿@model IEnumerable<ebis.Models.titul>
 
 @{
-    ViewBag.Title = "Tituly";
+    ViewBag.Title = "Názvy akcí";
     WebGrid grid = new WebGrid(Model);
 }
 
 <h2>@ViewBag.Title</h2>
 
 <p>
-    @Html.ActionLink("Přidat nový titul", "Create")
+    @Html.ActionLink("Přidat nový název", "Create")
 </p>
 
 @grid.GetHtml(

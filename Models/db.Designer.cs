@@ -2260,7 +2260,14 @@ namespace ebis.Models
         #endregion
 
         #region Primitive Properties
-    
+
+        public string prijmeniJmenoId
+        {
+            get{
+                return prijmeni + " " + jmeno + " " + pk_id;
+            }
+        }
+
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
