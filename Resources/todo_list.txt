@@ -1,4 +1,4 @@
-ebis TO-DO list:
+﻿ebis TO-DO list:
 dropdownlist pro vyber typu u nastroju, prod. listu a nakladu
 po odeslani pozvanky - zpet na detail akce = error
  (akceModel.em_akce = db.akce.Single(a => a.pk_id == id); Posloupnost neobsahuje žádné prvky.)
@@ -12,12 +12,20 @@ vyresit refreshovani stranky pri pridavani vice polozek
 smlouva ze sablony (zachovat stavajici ID)
 pridat automaticky vypocet dane: netto: rounddown(castka/0.85)
 pridat fermany do mailu
-odstranit tituly a pridat je primo do akci jako seznam a prejmenovat na Programy
-fermany - akce napevno (nevybirat t dropdownu)
+fermany - akce napevno (nevybirat z dropdownu)
 zkontrolovat razeni osob podle nastroje (zkratek)
-pridavani - error (zkontrolovat)
-(ID nejde opravit/ přepsat na č. roční smlouvy - potřebuji lidi dle ročních smluv, jak jsme řešili v telefonu)
 (prosím  přepsat Titul/y na "název akce")
 (u úpravy některých lidí mi to pořád háže hlášku system error)
 prod. listy/naklady - Edit/Delete - opravit
 prod. listy - Edit - zobrazuje se spatna polozka v listu
+
+pridat poznamku a zvlastni podminky k akci, ktera se bude posilat v nabidce (e-mail)
+akce - neulozi se honorar a naklady (pravdepodobne jenom poskozeny zaznam)
+nabidka - pouze jedna odpoved na nabidku
+zuzit radky u umelcu
+auto-vyplnovani naklady - ochestr, soli, sbor, doprava, ubytovani a dan
+upominky - prod. list - akce (8 m. pred akci ...)
+pridat tlacitka na pridani novych polozek + korespondujici tlacitka "zpet"
+zkontrolovat nastroje
+zkontrolovat db (aktualnost zaznamu)
+pozvani umelcu az nakonec
