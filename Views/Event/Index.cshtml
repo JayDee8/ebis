@@ -13,7 +13,7 @@
 @grid.GetHtml(tableStyle: "table table-striped table-hover", columns:
     grid.Columns
     (
-        grid.Column("titul.nazev", "Titul"),
+        grid.Column("titul.nazev", "Název akce"),
         grid.Column("popis", "Popis"),
         grid.Column("datum", "Datum",format: (item) => item.datum != null ? string.Format("{0:dd.MM.yyyy}",item.datum) : ""),
         grid.Column("cas", "Čas"),

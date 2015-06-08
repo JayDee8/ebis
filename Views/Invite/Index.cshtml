@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Pozvat umělce na akci";
-    WebGrid grid = new WebGrid(@Model.m_osoby);
+    WebGrid grid = new WebGrid(@Model.m_osoby, canPage: false);
     
 }
 
@@ -19,8 +19,6 @@
             grid.Column("prijmeni", "Příjmení"),
             grid.Column("telefon", "Telefon"),
             grid.Column("email", "E-mail"),
-            grid.Column("mesto", "Město"),
-            grid.Column("narodnost", "Národnost"),
             grid.Column(header: "Vybrat", format: @<text><input class="check-box"  id="ucast" name="ucast" type="checkbox" value="@rowVal"/></text>),
             grid.Column(header: "Honorář", format: @<text><input id="honorar" name="honorar" type="text"/></text>),
         //grid.Column(header: "nastroj", format: item => Html.ListBoxFor(item => item.nastroje_id, new SelectList(Model.m_nastroje.ElementAt(rowVal = rowVal + 1),0)))

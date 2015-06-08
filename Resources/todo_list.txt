@@ -5,26 +5,27 @@ po odeslani pozvanky - zpet na detail akce = error
 helper pro stav u delete umelce z akci
 autovyplnovat produkci a naklady
 odstranit anglicke texty
-pridat chybejici bootstrap formatovani  ---> zkontrolovat events ale mělo by to být všude
+pridat chybejici bootstrap formatovani ---> zkontrolovat events ale mělo by to být všude
 pridat moznost hrat na 2 nastroje na akci
 vyresit refreshovani stranky pri pridavani vice polozek
 smlouva ze sablony (zachovat stavajici ID)
 pridat automaticky vypocet dane: netto: rounddown(castka/0.85)
-pridat fermany do mailu
 fermany - akce napevno (nevybirat z dropdownu)
 zkontrolovat razeni osob podle nastroje (zkratek)
-(u úpravy některých lidí mi to pořád háže hlášku system error)
 prod. listy/naklady - Edit/Delete - opravit
 prod. listy - Edit - zobrazuje se spatna polozka v listu
 
 pridat poznamku a zvlastni podminky k akci, ktera se bude posilat v nabidce (e-mail)
 akce - neulozi se honorar a naklady (pravdepodobne jenom poskozeny zaznam)
 nabidka - pouze jedna odpoved na nabidku
-zuzit radky u umelcu
 auto-vyplnovani naklady - ochestr, soli, sbor, doprava, ubytovani a dan
 upominky - prod. list - akce (8 m. pred akci ...)
 pridat tlacitka na pridani novych polozek + korespondujici tlacitka "zpet"
 zkontrolovat nastroje
 zkontrolovat db (aktualnost zaznamu)
-pozvani umelcu az nakonec
-lepší generování max ID osoby+smlouvy
+lepší generování max ID osoby + smlouvy
+u smluv predvyplnit osobu
+
+? opravit zpetne linky u success
+pridat fermany do mailu
+pridat maximalni sirku sloupce pro e-mail a tel. u osob

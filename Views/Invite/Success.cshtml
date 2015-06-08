@@ -16,5 +16,5 @@
 </p>
 
 <div>
-    @Html.ActionLink("Zpět na detail akce", "Details", "Event", new RouteValueDictionary(new { id = @ViewBag.akce_id_link }), null)
+    @Html.ActionLink("Zpět na detail akce", "Details", "Event", new RouteValueDictionary(new { id = @Model.id }), null)
 </div>
