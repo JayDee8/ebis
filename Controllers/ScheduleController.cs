@@ -19,7 +19,7 @@ namespace ebis.Controllers
         public ActionResult Create(int id = 0)
         {
             TempData["referrer"] = Request.UrlReferrer.AbsoluteUri.ToString();
-            ViewBag.akce_id = new SelectList(db.akce, "pk_id", "jmeno");
+            ViewBag.akce_id = new SelectList(db.akce, "pk_id", "popis");
             ViewBag.lokace_id = new SelectList(db.lokace, "pk_id", "jmeno");
             ViewBag.akce_id_link = id;
             return View();
@@ -38,7 +38,7 @@ namespace ebis.Controllers
                 return Redirect(TempData["referrer"].ToString());
             }
 
-            ViewBag.akce_id = new SelectList(db.akce, "pk_id", "jmeno", fermany.akce_id);
+            ViewBag.akce_id = new SelectList(db.akce, "pk_id", "popis", fermany.akce_id);
             ViewBag.lokace_id = new SelectList(db.lokace, "pk_id", "jmeno", fermany.lokace_id);
             return View(fermany);
         }
@@ -54,7 +54,7 @@ namespace ebis.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.akce_id = new SelectList(db.akce, "pk_id", "jmeno", fermany.akce_id);
+            ViewBag.akce_id = new SelectList(db.akce, "pk_id", "popis", fermany.akce_id);
             ViewBag.lokace_id = new SelectList(db.lokace, "pk_id", "jmeno", fermany.lokace_id);
             return View(fermany);
         }
@@ -72,7 +72,7 @@ namespace ebis.Controllers
                 db.SaveChanges();
                 return Redirect(TempData["referrer"].ToString());
             }
-            ViewBag.akce_id = new SelectList(db.akce, "pk_id", "jmeno", fermany.akce_id);
+            ViewBag.akce_id = new SelectList(db.akce, "pk_id", "popis", fermany.akce_id);
             ViewBag.lokace_id = new SelectList(db.lokace, "pk_id", "jmeno", fermany.lokace_id);
             return View(fermany);
         }

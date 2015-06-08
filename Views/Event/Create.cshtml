@@ -1,7 +1,7 @@
 ﻿@model ebis.Models.akce
 
 @{
-    ViewBag.Title = "Vytvořit smlouvu";
+    ViewBag.Title = "Přidat novou akci";
 }
 
 <h2>@ViewBag.Title</h2>
@@ -14,6 +14,8 @@
     @f.ControlGroup().TextBoxFor(m => m.program).Label().LabelText("Program")
     @f.ControlGroup().TextBoxFor(m => m.datum).Format("{0:dd.MM.yyyy}").HtmlAttributes(new { @class = "datepicker" }).Label().LabelText("Datum")
     @f.ControlGroup().TextBoxFor(m => m.cas).Label().LabelText("Čas")
+    @f.ControlGroup().TextBoxFor(m => m.poznamka).Label().LabelText("Poznámka")
+    @f.ControlGroup().TextBoxFor(m => m.podminky).Label().LabelText("Zvláštní podmínky")
     <p>
     @f.ControlGroup().CustomControls(Html.Bootstrap().SubmitButton().Text("Přidat"))
     </p>

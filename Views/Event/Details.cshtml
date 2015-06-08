@@ -4,20 +4,20 @@
 
 @{
     ViewBag.Title = "Details";
-    WebGrid fermany_grid = new WebGrid(@Model.em_akce.fermany, canSort: false);
-    WebGrid osoby_akce0_grid = new WebGrid(@Model.em_osoby_akce0, canSort: false,canPage: false);
+    WebGrid fermany_grid = new WebGrid(@Model.em_akce.fermany, canSort: false, canPage: false);
+    WebGrid osoby_akce0_grid = new WebGrid(@Model.em_osoby_akce0, canSort: false, canPage: false);
     WebGrid osoby_akce1_grid = new WebGrid(@Model.em_osoby_akce1, canSort: false, canPage: false);
     WebGrid osoby_akce2_grid = new WebGrid(@Model.em_osoby_akce2, canSort: false, canPage: false);
     WebGrid ubytovani_grid = new WebGrid(@Model.em_akce.ubytovani, canSort: false);
-    WebGrid produkcni_listy0_grid = new WebGrid(@Model.em_akce_produkcni_listy0, canSort: false);
-    WebGrid produkcni_listy1_grid = new WebGrid(@Model.em_akce_produkcni_listy1, canSort: false);
-    WebGrid produkcni_listy2_grid = new WebGrid(@Model.em_akce_produkcni_listy2, canSort: false);
-    WebGrid naklady0_grid = new WebGrid(@Model.em_akce_naklady0, canSort: false);
-    WebGrid naklady1_grid = new WebGrid(@Model.em_akce_naklady1, canSort: false);
-    WebGrid naklady2_grid = new WebGrid(@Model.em_akce_naklady2, canSort: false);
-    WebGrid naklady3_grid = new WebGrid(@Model.em_akce_naklady3, canSort: false);
-    WebGrid naklady4_grid = new WebGrid(@Model.em_akce_naklady4, canSort: false);
-    WebGrid naklady5_grid = new WebGrid(@Model.em_akce_naklady5, canSort: false);
+    WebGrid produkcni_listy0_grid = new WebGrid(@Model.em_akce_produkcni_listy0, canSort: false, canPage: false);
+    WebGrid produkcni_listy1_grid = new WebGrid(@Model.em_akce_produkcni_listy1, canSort: false, canPage: false);
+    WebGrid produkcni_listy2_grid = new WebGrid(@Model.em_akce_produkcni_listy2, canSort: false, canPage: false);
+    WebGrid naklady0_grid = new WebGrid(@Model.em_akce_naklady0, canSort: false, canPage: false);
+    WebGrid naklady1_grid = new WebGrid(@Model.em_akce_naklady1, canSort: false, canPage: false);
+    WebGrid naklady2_grid = new WebGrid(@Model.em_akce_naklady2, canSort: false, canPage: false);
+    WebGrid naklady3_grid = new WebGrid(@Model.em_akce_naklady3, canSort: false, canPage: false);
+    WebGrid naklady4_grid = new WebGrid(@Model.em_akce_naklady4, canSort: false, canPage: false);
+    WebGrid naklady5_grid = new WebGrid(@Model.em_akce_naklady5, canSort: false, canPage: false);
 }
 
 <h2>@Model.em_akce.titul.nazev</h2>
@@ -44,6 +44,13 @@
     }
     <div class="display-field">
         <b>Čas: </b>@Model.em_akce.cas
+    </div>
+
+    <div class="display-field">
+        <b>Poznámka: </b>@Model.em_akce.poznamka
+    </div>
+    <div class="display-field">
+        <b>Zvláštní podmínky: </b>@Model.em_akce.podminky
     </div>
 </fieldset>
 <p>

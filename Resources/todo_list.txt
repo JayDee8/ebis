@@ -3,7 +3,6 @@ dropdownlist pro vyber typu u nastroju, prod. listu a nakladu
 po odeslani pozvanky - zpet na detail akce = error
  (akceModel.em_akce = db.akce.Single(a => a.pk_id == id); Posloupnost neobsahuje žádné prvky.)
 helper pro stav u delete umelce z akci
-autovyplnovat produkci a naklady
 odstranit anglicke texty
 pridat chybejici bootstrap formatovani ---> zkontrolovat events ale mělo by to být všude
 pridat moznost hrat na 2 nastroje na akci
@@ -14,9 +13,8 @@ fermany - akce napevno (nevybirat z dropdownu)
 zkontrolovat razeni osob podle nastroje (zkratek)
 prod. listy/naklady - Edit/Delete - opravit
 prod. listy - Edit - zobrazuje se spatna polozka v listu
+error pri vraceni zpet na delete po odstraneni zaznamu
 
-pridat poznamku a zvlastni podminky k akci, ktera se bude posilat v nabidce (e-mail)
-akce - neulozi se honorar a naklady (pravdepodobne jenom poskozeny zaznam)
 nabidka - pouze jedna odpoved na nabidku
 auto-vyplnovani naklady - ochestr, soli, sbor, doprava, ubytovani a dan
 upominky - prod. list - akce (8 m. pred akci ...)
@@ -24,8 +22,8 @@ pridat tlacitka na pridani novych polozek + korespondujici tlacitka "zpet"
 zkontrolovat nastroje
 zkontrolovat db (aktualnost zaznamu)
 lepší generování max ID osoby + smlouvy
-u smluv predvyplnit osobu
+u smluv predvyplnit osobu (+ dalsi stranky, kde je zbytecne dropdown)
 
-? opravit zpetne linky u success
-pridat fermany do mailu
 pridat maximalni sirku sloupce pro e-mail a tel. u osob
+u ubytovani zobrazovat cele jmeno a id ve vyberu
+interpretovat status u produkce (pridat helper)

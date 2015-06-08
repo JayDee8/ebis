@@ -20,7 +20,7 @@
         grid.Column("id", "ID"),
         grid.Column("jmeno", "Jméno   " + Html.SortDirection(ref grid, "jmeno")),
         grid.Column("prijmeni", "Příjmení"),
-        grid.Column("telefon", "Telefon"),
+        @*grid.Column("telefon", "Telefon"),*@
         grid.Column("email", "E-mail"),
         grid.Column("narodnost", "Nástroje", @<div>@Html.GetNastroje((IEnumerable<ebis.Models.nastroje>)@item.nastroje)</div>),
         grid.Column(format: (item) => Html.ActionLink("Smlouvy", "Index", "Contract", new RouteValueDictionary(new { id = item.pk_id }), null)),

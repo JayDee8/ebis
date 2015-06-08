@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="dbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="dbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="dbModelStoreContainer">
           <EntitySet Name="akce" EntityType="dbModel.Store.akce" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="akce_naklady" EntityType="dbModel.Store.akce_naklady" store:Type="Tables" Schema="dbo" />
@@ -97,6 +97,8 @@
           <Property Name="program" Type="varchar" Nullable="false" MaxLength="500" />
           <Property Name="datum" Type="datetime" />
           <Property Name="cas" Type="varchar" MaxLength="13" />
+          <Property Name="poznamka" Type="varchar" MaxLength="200" />
+          <Property Name="podminky" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="akce_naklady">
           <Key>
@@ -177,7 +179,7 @@
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="jmeno" Type="varchar" Nullable="false" MaxLength="30" />
           <Property Name="prijmeni" Type="varchar" Nullable="false" MaxLength="40" />
-          <Property Name="telefon" Type="varchar" MaxLength="13" />
+          <Property Name="telefon" Type="varchar" MaxLength="35" />
           <Property Name="email" Type="varchar" MaxLength="40" />
           <Property Name="mesto" Type="varchar" MaxLength="20" />
           <Property Name="psc" Type="varchar" MaxLength="10" />
@@ -500,8 +502,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="dbModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -598,6 +599,8 @@
           <NavigationProperty Name="fermany" Relationship="dbModel.FK_fermany_akce" FromRole="akce" ToRole="fermany" />
           <NavigationProperty Name="osoby_akce" Relationship="dbModel.FK_osoby_akce_akce" FromRole="akce" ToRole="osoby_akce" />
           <NavigationProperty Name="ubytovani" Relationship="dbModel.FK_ubytovani_akce" FromRole="akce" ToRole="ubytovani" />
+          <Property Type="String" Name="poznamka" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="podminky" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="akce_naklady">
           <Key>
@@ -1002,6 +1005,8 @@
           <EntitySetMapping Name="akce">
             <EntityTypeMapping TypeName="dbModel.akce">
               <MappingFragment StoreEntitySet="akce">
+                <ScalarProperty Name="podminky" ColumnName="podminky" />
+                <ScalarProperty Name="poznamka" ColumnName="poznamka" />
                 <ScalarProperty Name="pk_id" ColumnName="pk_id" />
                 <ScalarProperty Name="titul_id" ColumnName="titul_id" />
                 <ScalarProperty Name="popis" ColumnName="popis" />
@@ -1236,10 +1241,10 @@
         <EntityTypeShape EntityType="dbModel.titul" Width="1.5" PointX="0.75" PointY="9.125" Height="1.9802864583333388" IsExpanded="true" />
         <EntityTypeShape EntityType="dbModel.ubytovani" Width="1.5" PointX="8.25" PointY="4.625" Height="3.1340950520833388" IsExpanded="true" />
         <AssociationConnector Association="dbModel.FK_akce_naklady_akce" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="10.115143229166666" />
-          <ConnectorPoint PointX="4.854166666666667" PointY="10.115143229166666" />
-          <ConnectorPoint PointX="5.083333333333333" PointY="10.115143229166666" />
-          <ConnectorPoint PointX="5.25" PointY="10.115143229166666" />
+          <ConnectorPoint PointX="4.5" PointY="10.279794735677083" />
+          <ConnectorPoint PointX="4.854166666666667" PointY="10.279794735677083" />
+          <ConnectorPoint PointX="5.083333333333333" PointY="10.279794735677083" />
+          <ConnectorPoint PointX="5.25" PointY="10.279794735677083" />
         </AssociationConnector>
         <AssociationConnector Association="dbModel.FK_akce_produkcni_listy_akce" ManuallyRouted="false">
           <ConnectorPoint PointX="4.5" PointY="8.5011528461538468" />
@@ -1252,32 +1257,32 @@
           <ConnectorPoint PointX="3" PointY="10.115143229166669" />
         </AssociationConnector>
         <AssociationConnector Association="dbModel.FK_fermany_akce" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="8.84375" />
-          <ConnectorPoint PointX="7.072916666666667" PointY="8.84375" />
-          <ConnectorPoint PointX="7.239583333333333" PointY="8.84375" />
-          <ConnectorPoint PointX="7.244791666666667" PointY="8.84375" />
-          <ConnectorPoint PointX="7.411458333333333" PointY="8.84375" />
-          <ConnectorPoint PointX="7.916666666666667" PointY="8.84375" />
-          <ConnectorPoint PointX="8.0833333333333339" PointY="8.84375" />
-          <ConnectorPoint PointX="8.25" PointY="8.84375" />
+          <ConnectorPoint PointX="4.5" PointY="8.75" />
+          <ConnectorPoint PointX="7.072916666666667" PointY="8.75" />
+          <ConnectorPoint PointX="7.239583333333333" PointY="8.75" />
+          <ConnectorPoint PointX="7.244791666666667" PointY="8.75" />
+          <ConnectorPoint PointX="7.411458333333333" PointY="8.75" />
+          <ConnectorPoint PointX="7.916666666666667" PointY="8.75" />
+          <ConnectorPoint PointX="8.0833333333333339" PointY="8.75" />
+          <ConnectorPoint PointX="8.25" PointY="8.75" />
         </AssociationConnector>
         <AssociationConnector Association="dbModel.FK_osoby_akce_akce" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="11.826396484375" />
-          <ConnectorPoint PointX="4.875" PointY="12.201396484375" />
-          <ConnectorPoint PointX="4.875" PointY="12.123847153846153" />
-          <ConnectorPoint PointX="4.8785744349011217" PointY="12.127421588747273" />
-          <ConnectorPoint PointX="4.9964255650988791" PointY="12.245272718945031" />
+          <ConnectorPoint PointX="4.5000000000000018" PointY="12.210999348958334" />
+          <ConnectorPoint PointX="4.8785744349011217" PointY="12.589573783859452" />
+          <ConnectorPoint PointX="4.9964255650988791" PointY="12.70742491405721" />
+          <ConnectorPoint PointX="5.125" PointY="12.835999348958332" />
+          <ConnectorPoint PointX="5.125" PointY="12.373847153846153" />
           <ConnectorPoint PointX="5.2511528461538459" PointY="12.5" />
         </AssociationConnector>
         <AssociationConnector Association="dbModel.FK_ubytovani_akce" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="10.970769856770833" />
-          <ConnectorPoint PointX="5" PointY="10.970769856770833" />
-          <ConnectorPoint PointX="5" PointY="9" />
-          <ConnectorPoint PointX="7.072916666666667" PointY="9" />
-          <ConnectorPoint PointX="7.239583333333333" PointY="9" />
-          <ConnectorPoint PointX="7.244791666666667" PointY="9" />
-          <ConnectorPoint PointX="7.411458333333333" PointY="9" />
-          <ConnectorPoint PointX="8" PointY="9" />
+          <ConnectorPoint PointX="4.5" PointY="11.245397042317709" />
+          <ConnectorPoint PointX="5" PointY="11.245397042317709" />
+          <ConnectorPoint PointX="5" PointY="8.875" />
+          <ConnectorPoint PointX="7.072916666666667" PointY="8.875" />
+          <ConnectorPoint PointX="7.239583333333333" PointY="8.875" />
+          <ConnectorPoint PointX="7.244791666666667" PointY="8.875" />
+          <ConnectorPoint PointX="7.411458333333333" PointY="8.875" />
+          <ConnectorPoint PointX="8" PointY="8.875" />
           <ConnectorPoint PointX="8" PointY="8.375" />
           <ConnectorPoint PointX="9" PointY="8.375" />
           <ConnectorPoint PointX="9" PointY="7.7590950520833388" />
@@ -1326,7 +1331,7 @@
           <ConnectorPoint PointX="5.25" PointY="19.711293945312498" />
           <ConnectorPoint PointX="6" PointY="19.711293945312498" />
         </AssociationConnector>
-      </Diagram>
+        </Diagram>
     </Diagrams>
   </Designer>
 </edmx:Edmx>

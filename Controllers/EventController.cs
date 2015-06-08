@@ -58,7 +58,7 @@ namespace ebis.Controllers
         {
             SmtpClient smtp = new SmtpClient();
             smtp.Host = "smtp.gmail.com"; // mail.eb-is.cz
-            smtp.Port = 587; // 465 587 25
+            smtp.Port = 25; // 465 587 25
             smtp.UseDefaultCredentials = false;
             smtp.Credentials = new System.Net.NetworkCredential("ebis.office@gmail.com", "awsedr1526"); // office@eb-is.cz 1a2b3c4d
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
@@ -66,11 +66,20 @@ namespace ebis.Controllers
 
             List<string> emails = new List<string>();
 
+            var fer_list = db.fermany.Where(o => o.akce_id == id);
+            string fer_html = "<table><tr><th>Datum</th><th>Čas</th><th>Orchestr</th><th>Sbor</th><th>Solisti</th><th>Lokace</th></tr>";
+            foreach (fermany fer in fer_list)
+            {
+                string date_part = fer.datum.ToString().Replace(" 0:00:00", "");
+                fer_html += "<tr><td>" + date_part + "</td><td>" + fer.cas + "</td><td>" + fer.orchestr + "</td><td>" + fer.sbor + "</td><td>" + fer.solisti + "</td><td>" + "<a href=\"" + fer.lokace.link + "\">" + fer.lokace.jmeno + "</a></td></tr>";
+            }
+            fer_html += "</table>";
+
             var oa_list = db.osoby_akce.Where(o => o.akce_id == id && o.stav == 0);
             foreach (osoby_akce oa in oa_list)
             {
                 osoby user = db.osoby.Single(o => o.pk_id == oa.osoby_id);
-
+                
                 MailMessage mail = new MailMessage();
                 mail.To.Add(user.email);
                 emails.Add(user.email);
@@ -89,12 +98,12 @@ namespace ebis.Controllers
                     "<li>Výše honoráře: " + oa.honorar.ToString() + " Kč plus náklady na dopravu, které se zavazuji doplnit do 7 dnů od přijetí této nabídky, jinak na proplacení mohu ztratit nárok." + "</li>" +
                     "<li>Funkce: " + oa.nastroje.jmeno + "</li>" +
                     "<li>Obsazení projektu: ..." + "</li>" +
-                    "<li>Zvláštní podmínky: ..." + "</li>" +
-                    "<li>Poznámka: ..." + "</li>" +
+                    "<li>Zvláštní podmínky: " + oa.akce.podminky + "</li>" +
+                    "<li>Poznámka: " + oa.akce.poznamka + "</li>" +
                     "<li>Předběžný harmonogram projektu:</li>" +
                     "</ul>" +
                     "<div>" +
-
+                    fer_html +
                     "</div>" +
                     "<p>Beru na vědomí, že předpokládaný ferman se může vlivem nepředvídatelných událostí změnit a že na základě své Smlouvy nebudu v uvedeném termínu plánovat žádné další aktivity, které by mi neumožnili zúčastnit se zkoušek a vystoupení.</p>" +
                     "Prosíme, zareagujte včas na naši nabídku a obratem zašlete svou odpověď, zda máte, nebo nemáte o projekt zájem. V případě, že se můžete projektu v celém rozsahu zúčastnit, klikněte na zelené tlačítko a pokračujte dle instrukcí na webové stránce, na kterou budete přesměrováni. " +
@@ -131,6 +140,27 @@ namespace ebis.Controllers
             if (ModelState.IsValid)
             {
                 db.akce.AddObject(akce);
+                db.SaveChanges();
+                for (int i = 7; i < 36; i++)
+                {
+                    akce_naklady an = new akce_naklady();
+                    an.akce_id = akce.pk_id;
+                    an.naklady_id = i;
+                    an.cena = 0;
+                    db.akce_naklady.AddObject(an);
+                }
+                db.SaveChanges();
+                for (int i = 7; i < 64; i++)
+                {
+                    akce_produkcni_listy ap = new akce_produkcni_listy();
+                    ap.akce_id = akce.pk_id;
+                    ap.produkcni_listy_id = i;
+                    ap.poznamka = "";
+                    ap.termin = "";
+                    ap.status = 0;
+                    ap.zodpovedna_osoba = "";
+                    db.akce_produkcni_listy.AddObject(ap);
+                }
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

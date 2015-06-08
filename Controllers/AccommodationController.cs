@@ -20,7 +20,7 @@ namespace ebis.Controllers
         {
             ViewBag.akce_id_link = id;
             TempData["referrer"] = Request.UrlReferrer.AbsoluteUri.ToString();
-            ViewBag.akce_id = new SelectList(db.akce, "pk_id", "jmeno");
+            ViewBag.akce_id = new SelectList(db.akce, "pk_id", "popis");
             ViewBag.lokace_id = new SelectList(db.lokace, "pk_id", "jmeno");
             ViewBag.osoby_id = new SelectList(db.osoby, "pk_id", "jmeno");
             return View();
@@ -39,7 +39,7 @@ namespace ebis.Controllers
                 return Redirect(TempData["referrer"].ToString());
             }
 
-            ViewBag.akce_id = new SelectList(db.akce, "pk_id", "jmeno", ubytovani.akce_id);
+            ViewBag.akce_id = new SelectList(db.akce, "pk_id", "popis", ubytovani.akce_id);
             ViewBag.lokace_id = new SelectList(db.lokace, "pk_id", "jmeno", ubytovani.lokace_id);
             ViewBag.osoby_id = new SelectList(db.osoby, "pk_id", "jmeno", ubytovani.osoby_id);
             return View(ubytovani);
@@ -56,7 +56,7 @@ namespace ebis.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.akce_id = new SelectList(db.akce, "pk_id", "jmeno", ubytovani.akce_id);
+            ViewBag.akce_id = new SelectList(db.akce, "pk_id", "popis", ubytovani.akce_id);
             ViewBag.lokace_id = new SelectList(db.lokace, "pk_id", "jmeno", ubytovani.lokace_id);
             ViewBag.osoby_id = new SelectList(db.osoby, "pk_id", "jmeno", ubytovani.osoby_id);
             return View(ubytovani);
@@ -75,7 +75,7 @@ namespace ebis.Controllers
                 db.SaveChanges();
                 return Redirect(TempData["referrer"].ToString());
             }
-            ViewBag.akce_id = new SelectList(db.akce, "pk_id", "jmeno", ubytovani.akce_id);
+            ViewBag.akce_id = new SelectList(db.akce, "pk_id", "popis", ubytovani.akce_id);
             ViewBag.lokace_id = new SelectList(db.lokace, "pk_id", "jmeno", ubytovani.lokace_id);
             ViewBag.osoby_id = new SelectList(db.osoby, "pk_id", "jmeno", ubytovani.osoby_id);
             return View(ubytovani);
