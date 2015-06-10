@@ -14,17 +14,17 @@
     Alert a = new Alert();
 }
 
-@using (Html.BeginForm())
-{
-    @Html.ValidationSummary(true)
 
-    @Html.HiddenFor(model => model.Interpret.pk_id)
-    @Html.HiddenFor(model => model.Interpret.id)
+    
     
     <fieldset>
         <legend>osoby</legend>
         @using (var f = Html.Bootstrap().Begin(new Form().Type(FormType.Horizontal)))
         {
+            @Html.ValidationSummary(true)
+            @Html.HiddenFor(model => model.Interpret.pk_id)
+            
+
             @f.ControlGroup().TextBoxFor(m => m.Interpret.id).Label().LabelText("ID")
             @f.ControlGroup().TextBoxFor(m => m.Interpret.jmeno).Label().LabelText("Jméno")
             @f.ControlGroup().TextBoxFor(m => m.Interpret.prijmeni).Label().LabelText("Příjmení")
@@ -45,7 +45,7 @@
             </p>
         }
     </fieldset>
-}
+
 
 <div>
     @Html.ActionLink("Zpět na seznam", "Index")
