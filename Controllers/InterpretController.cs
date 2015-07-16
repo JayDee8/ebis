@@ -12,7 +12,7 @@ using System.Data.Objects;
 
 namespace ebis.Controllers
 {
-
+    
     public class InterpretController : Controller
     {
         private dbEntities db = new dbEntities();
@@ -22,7 +22,23 @@ namespace ebis.Controllers
 
         public ActionResult Index()
         {
+            /*InterpretsInstrumentsModel model = new InterpretsInstrumentsModel();
+
+            IEnumerable<osoby> interprets = db.osoby.ToList();
+            
             return View(db.osoby.ToList());
+            */
+            return View();
+            //return Json(db.osoby, JsonRequestBehavior.AllowGet); 
+        }
+
+        public ActionResult GridPartial()
+        {
+            InterpretsInstrumentsModel model = new InterpretsInstrumentsModel();
+
+            IEnumerable<osoby> interprets = db.osoby.ToList();
+
+            return PartialView("_refreshInterpretGrid",db.osoby.ToList());
         }
 
         //
@@ -82,12 +98,58 @@ namespace ebis.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public JsonResult QuickInsert(osoby inOsoba)
+        {
+            String[] result = {String.Empty,String.Empty};
+
+            osoby o = db.osoby.SingleOrDefault(p => p.id == inOsoba.id);
+            int id = -1;
+            if (o == null)
+            {
+                var res = db.osoby.Any() ? db.osoby.Max(i => i.id) : 0;
+
+                id = res + 1;
+                inOsoba.id = id;
+                
+                db.osoby.AddObject(inOsoba);
+                db.SaveChanges();
+                result[0] = "1";
+                result[1] = id.ToString();
+            }
+            else
+            {
+                result[0] = "0";
+            }
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult QuickDelete(osoby inOsoba)
+        {
+            String result = String.Empty;
+
+            osoby o = db.osoby.SingleOrDefault(p => p.id == inOsoba.id);
+            
+            if (o != null)
+            {
+                db.osoby.DeleteObject(o);
+                db.SaveChanges();
+                result = "1";
+            }
+            else
+                result = "0";
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
         //
         // GET: /Interpret/Edit/5
 
         public ActionResult Edit(int id = 0)
         {
-            osoby osoby = db.osoby.Single(o => o.pk_id == id);
+            osoby osoby = db.osoby.SingleOrDefault(o => o.pk_id == id);
             if (osoby == null)
             {
                 return HttpNotFound();

@@ -1,0 +1,193 @@
+﻿@model IEnumerable<ebis.Models.osoby>
+
+
+<div id="ajaxgrid">
+@{
+    var grid = new WebGrid(Model, ajaxUpdateContainerId: "ajaxgrid",canPage: false,canSort: true);
+
+
+    IEnumerable<WebGridColumn> cols =
+            new List<WebGridColumn> {
+                new WebGridColumn{
+                    CanSort=true,
+                    Header="ID", 
+                    Format = @<text>
+                                <span class="display">
+                                        <label id="lblId" class="normalText">@item.id</label>
+                                </span>
+                                <input type="text" id="inId" value="@item.id" class="edit" readonly="true"/>
+                            </text>
+                },
+                new WebGridColumn{
+                    Header="Jméno", 
+                    Format = @<text>
+                                <span class="display">
+                                        <label id="lblJmeno" class="normalText">@item.jmeno</label>
+                                </span>
+                                <input type="text" id="inJmeno" value="@item.jmeno" class="edit" />
+                                </text>
+                },
+                new WebGridColumn{
+                    Header="Příjmení", 
+                    Format = @<text>
+                                <span class="display">
+                                    <label id="lblPrijmeni" class="normalText">@item.prijmeni</label>
+                                </span>
+                                <input type="text" id="inPrijmeni" value="@item.prijmeni" class="edit" />
+                                </text>
+                },
+                new WebGridColumn{
+                    Header="E-mail", 
+                    Format = @<text>
+                                <span class="display">
+                                    <label id="lblEmail" class="normalText">@item.email</label>
+                                </span>
+                                <input type="text" id="inEmail" value="@item.email" class="edit" />
+                                </text>
+                },
+              @*  new WebGridColumn{
+                    Header="Nástroje", 
+                    Format = @<text>
+                                <span class="display">
+                                    <label id="lblNastroje" class="normalText">@Html.GetNastroje((IEnumerable<ebis.Models.nastroje>)@item.nastroje)</label>
+                                </span>
+                                <input type="text" id="inNastroje" value="" class="edit" />
+                                </text>
+                },*@
+                new WebGridColumn{
+                    Format = @<text>
+                                <a href='javascript:void(0);' class="display" onclick="javascript:toggleVisible(this)">Rychlá editace</a>
+                                <a href="javascript:void(0);" class="edit" onclick="javascript:quickUpdate(this)">Uložit</a>
+                                <a href="javascript:void(0);" class="edit" onclick="javascript:toggleVisible(this)">Zrušit</a>
+                                <a href="javascript:void(0);" class="display" onclick="javascript:quickRemove(this)">Rychle vymazat</a>
+                            </text>
+                },
+                new WebGridColumn{
+                    Format = item => @Html.ActionLink("  ", "Edit", new { id = @item.pk_id }, new { @class = "glyphicon glyphicon-edit", @title = "Upravit" })
+                }
+            };
+}
+</div>
+
+
+@grid.GetHtml(columns:cols, tableStyle: "table table-striped table-hover interpret-rows")
+
+
+<script type="text/javascript">
+    function toggleVisible(a) {
+        var tr = $(a).parent().parent();
+        tr.find('.edit, .display').toggle();
+    };
+
+    function quickRemove(a) {
+        var tr = $(a).parent().parent();
+        var id = tr.find("#inId").val();
+        var jmeno = tr.find("#inJmeno").val();
+        var prijmeni = tr.find("#inPrijmeni").val();
+        var email = tr.find("#inEmail").val();
+        var isSuccess = -1;
+
+        var Osoba =
+            {
+                "id": id,
+                "jmeno": jmeno,
+                "prijmeni": prijmeni,
+                "email": email
+            };
+
+        $.ajax({
+
+            url: '/Interpret/QuickDelete/',
+
+            data: JSON.stringify(Osoba),
+
+            type: 'POST',
+
+            contentType: 'application/json; charset=utf-8',
+
+            success: function (result) {
+                isSuccess = result;
+                tr.remove();
+            },
+            error: function (result) {
+                isSuccess = result;
+            }
+
+        }).done(function () {
+            if (isSuccess == "1") {           // Successfully Deleted
+                alert("Úspěšně smazáno");
+            }
+            else {                      // Data Error
+                alert("Chyba. Prosím zkontrolujte data!");
+            }
+
+        });
+        return false;
+    }
+
+    $(function () {
+
+        $('.edit').hide();
+
+        $('#quickInsertBtn').on("click", function () {
+            var row = $("#insertRow");
+            var jmeno = row.find("#inJmeno").val();
+            var prijmeni = row.find("#inPrijmeni").val();
+            var email = row.find("#inEmail").val();
+            var isSuccess = -1;
+
+            
+
+            var Osoba =
+            {
+                "id": -1,
+                "jmeno": jmeno,
+                "prijmeni": prijmeni,
+                "email": email
+            };
+
+            $.ajax({
+                url: '/Interpret/QuickInsert/',
+                data: JSON.stringify(Osoba),
+                type: 'POST',
+                contentType: 'application/json; charset=utf-8',
+                success: function (result) {
+                    isSuccess = result[0];
+                    Osoba.id = result[1];
+
+                    id = ""; jmeno = ""; prijmeni = ""; email = "";
+                    $("table tbody tr:first").clone().prependTo("table tbody");
+                    var newTr = $("table tbody tr:first");
+                    newTr.find("#inJmeno").val(Osoba.jmeno);
+                    newTr.find("#inPrijmeni").val(Osoba.prijmeni);
+                    newTr.find("#inId").val(Osoba.id);
+                    newTr.find("#inEmail").val(Osoba.email);
+
+                    newTr.find("#lblJmeno")[0].innerHTML = Osoba.jmeno;
+                    newTr.find("#lblPrijmeni")[0].innerHTML = Osoba.prijmeni;
+                    newTr.find("#lblId")[0].innerHTML = Osoba.id;
+                    newTr.find("#lblEmail")[0].innerHTML = Osoba.email;
+                },
+                error: function (result) {
+                    isSuccess = result[0];
+                }
+
+            }).done(function () {
+                if (isSuccess == "1") {           // Successfully saved
+
+                    alert("Successfully Saved");
+
+
+                    //reloadGrid();
+
+                }
+                else {                      // Data Error
+                    alert("Error. Please, check the data");
+                }
+                return false;
+            });
+        });
+
+    });
+</script>
+

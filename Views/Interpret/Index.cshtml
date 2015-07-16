@@ -1,11 +1,11 @@
-﻿@model IEnumerable<ebis.Models.osoby>
+﻿@*model IEnumerable<ebis.Models.osoby>*@
 @using ebis.Helpers
 @{
     ViewBag.Title = "Umělci";
-    WebGrid grid = new WebGrid(Model,canPage:false);
+    //WebGrid grid = new WebGrid(Model,canPage:false,ajaxUpdateContainerId: "gridContent");
+    //var grid = new WebGrid(Model, canPage: false);
     
 }
-
 
 <h2>@ViewBag.Title</h2>
 
@@ -13,18 +13,44 @@
     @Html.ActionLink("Přidat nového umělce", "Create")
 </p>
 
-@grid.GetHtml(
-    tableStyle: "table table-striped table-hover interpret-rows",
-    columns: grid.Columns
-    (
-        grid.Column("id", "ID"),
-        grid.Column("jmeno", "Jméno   " + Html.SortDirection(ref grid, "jmeno")),
-        grid.Column("prijmeni", "Příjmení"),
-        @*grid.Column("telefon", "Telefon"),*@
-        grid.Column("email", "E-mail"),
-        grid.Column("narodnost", "Nástroje", @<div>@Html.GetNastroje((IEnumerable<ebis.Models.nastroje>)@item.nastroje)</div>),
-        grid.Column(format: (item) => Html.ActionLink("Smlouvy", "Index", "Contract", new RouteValueDictionary(new { id = item.pk_id }), null)),
-        grid.Column(format: (item) => new HtmlString("" + Html.ActionLink("  ", "Details", new { id = item.pk_id }, new { @class = "glyphicon glyphicon-search", @title = "Detaily" }) +
-        Html.ActionLink("  ", "Edit", new { id = item.pk_id }, new { @class = "glyphicon glyphicon-edit", @title = "Upravit" }) +
-        Html.ActionLink("  ", "Delete", new { id = item.pk_id }, new { @class = "glyphicon glyphicon-trash", @title = "Vymazat" })))
-    ))
+<div id="insertRow" class="row">
+    <input type='text' id='inJmeno' placeholder="Jméno" value='' />
+    <input type='text' id='inPrijmeni' placeholder="Příjmení" value=''/>
+    <input type='text' id='inEmail' placeholder="E-mail" value='' />
+    <!--<input type='text' id='inNastroje' value='' class = 'edit'/>-->
+    <a href='#' id="quickInsertBtn" class='btn btn-default'>Vložit</a>
+    </div>
+
+<script type="text/javascript" >
+    $(function () {
+
+        //var target = document.getElementById('partialDiv')
+        //var spinner = new Spinner(opts).spin(target);
+        var partialDiv = $("#partialDiv");
+        //$.get("Url.Action("GridPartial", "Interpret")", function (data) { $('#partialDiv').replaceWith(data); });
+
+
+        reloadGrid();
+    });
+
+    function reloadGrid() {
+        var target = document.getElementById('partialDiv')
+        var spinner = new Spinner(opts).spin(target);
+
+        $.ajax({
+             url: "@(Url.Action("GridPartial", "Interpret"))",
+             type: 'GET',
+             cache: false,
+             async: true,
+             success: function(result){
+                $("#partialDiv").html(result);
+             }
+         });
+ 
+    }
+  </script>
+
+
+
+<div id="partialDiv" data-url="@Url.Action("GridPartial", "Interpret")"></div>
+

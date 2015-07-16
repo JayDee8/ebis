@@ -12,4 +12,10 @@ namespace ebis.Models
         public IEnumerable<nastroje> AvailableItems { get; set; }
         public osoby Interpret { get; set; }
     }
+
+    public class InterpretsInstrumentsModel
+    {
+        public IEnumerable<String> Instruments { get; set; }
+        public IEnumerable<osoby> Interprets { get; set; }
+    }
 }
