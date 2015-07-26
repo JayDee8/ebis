@@ -15,6 +15,7 @@ namespace ebis.Controllers
     {
         private dbEntities db = new dbEntities();
 
+        
         private static string Encrypt(string content)
         {
             /*return FormsAuthentication.Encrypt(new FormsAuthenticationTicket(1, "f",

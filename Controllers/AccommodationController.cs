@@ -12,6 +12,84 @@ namespace ebis.Controllers
     public class AccommodationController : Controller
     {
         private dbEntities db = new dbEntities();
+        
+        public ActionResult AccommodationGridPartial(string akceId)
+        {
+            IEnumerable<ubytovani> ubytovani = db.ubytovani.ToList().Where(i => i.akce_id == Convert.ToInt32(akceId));
+            ViewBag.lokace = db.lokace;
+            ViewBag.osoby = db.osoby;
+            ViewBag.idAkce = akceId;
+            return PartialView("_accommodationGrid", ubytovani.ToList());
+        }
+
+        [HttpPost]
+        public JsonResult QuickInsert(ubytovani inUbytovani)
+        {
+            int[] result = { 0, -1 };
+
+            ubytovani u = db.ubytovani.SingleOrDefault(p => p.pk_id == inUbytovani.pk_id);
+
+            if (u == null)
+            {
+                db.ubytovani.AddObject(inUbytovani);
+                db.SaveChanges();
+                result[0] = 1;
+                result[1] = inUbytovani.pk_id;
+            }
+            else
+            {
+                result[0] = 0;
+                result[1] = -1;
+            }
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult QuickDelete(ubytovani inUbytovani)
+        {
+            String result = String.Empty;
+
+            ubytovani u = db.ubytovani.SingleOrDefault(p => p.pk_id == inUbytovani.pk_id);
+
+            if (u != null)
+            {
+                db.ubytovani.DeleteObject(u);
+                db.SaveChanges();
+                result = "1";
+            }
+            else
+            {
+                result = "0";
+            }
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult QuickUpdate(ubytovani inUbytovani)
+        {
+            String result = String.Empty;
+            ubytovani u = db.ubytovani.SingleOrDefault(p => p.pk_id == inUbytovani.pk_id);
+            if (u != null)
+            {
+                db.ubytovani.Attach(u);
+
+                u.osoby_id = inUbytovani.osoby_id;
+                u.lokace_id = inUbytovani.lokace_id;
+                u.pokoj = inUbytovani.pokoj;
+                u.cena1 = inUbytovani.cena1;
+                u.cena2 = inUbytovani.cena2;
+                u.cena3 = inUbytovani.cena3;
+                
+                db.ObjectStateManager.ChangeObjectState(u, EntityState.Modified);
+                db.SaveChanges();
+                result = "1";
+                return Json(result, JsonRequestBehavior.AllowGet);
+            }
+            result = "0";
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
 
         //
         // GET: /Accommodation/Create

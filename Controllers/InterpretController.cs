@@ -144,6 +144,28 @@ namespace ebis.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpPost]
+        public JsonResult QuickUpdate(osoby inOsoba)
+        {
+            String result = String.Empty;
+            osoby o = db.osoby.SingleOrDefault(p => p.id == inOsoba.id);
+            if (o != null)
+            {               
+                db.osoby.Attach(o);
+
+                o.jmeno = inOsoba.jmeno;
+                o.prijmeni = inOsoba.prijmeni;
+                o.email = inOsoba.email;
+
+                db.ObjectStateManager.ChangeObjectState(o, EntityState.Modified);
+                db.SaveChanges();
+                result = "1";
+                return Json(result, JsonRequestBehavior.AllowGet);
+            }
+            result = "0";
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
         //
         // GET: /Interpret/Edit/5
 

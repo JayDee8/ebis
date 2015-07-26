@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ebis.Models.fermany>
+﻿@model IEnumerable<ebis.Models.osoby>
 
 
 <div id="ajaxgrid">
@@ -68,6 +68,48 @@
             };
 }
 </div>
+
+<p>
+    @Html.ActionLink("Přidat novou položku", "Create", "ProdListItem", new { id = Model.em_akce.pk_id }, null)
+</p>
+<h3>Přípravná fáze - před projektem</h3>
+@produkcni_listy0_grid.GetHtml(tableStyle: "table table-striped table-hover", columns:
+    produkcni_listy0_grid.Columns
+    (
+            produkcni_listy0_grid.Column("produkcni_listy.jmeno_aktivity", "Úkol/aktivita"),
+            produkcni_listy0_grid.Column("poznamka", "Poznámka"),
+            produkcni_listy0_grid.Column("termin", "Termín"),
+            produkcni_listy0_grid.Column("status", "Status"),
+            produkcni_listy0_grid.Column("zodpovedna_osoba", "Kdo"),
+            produkcni_listy0_grid.Column(format: (item) => new HtmlString(Html.ActionLink("Upravit", "Edit", "ProdListItem", new RouteValueDictionary(new { akce_id = item.akce_id, prod_id = item.produkcni_listy_id }), null) + " | " +
+            Html.ActionLink("Smazat", "Delete", "ProdListItem", new RouteValueDictionary(new { akce_id = item.akce_id, prod_id = item.produkcni_listy_id }), null)))
+))
+    
+<h3>Výkonná fáze - při projektu</h3>
+@produkcni_listy1_grid.GetHtml(tableStyle: "table table-striped table-hover", columns:
+    produkcni_listy1_grid.Columns
+    (
+            produkcni_listy1_grid.Column("produkcni_listy.jmeno_aktivity", "Úkol/aktivita"),
+            produkcni_listy1_grid.Column("poznamka", "Poznámka"),
+            produkcni_listy1_grid.Column("termin", "Termín"),
+            produkcni_listy1_grid.Column("status", "Status"),
+            produkcni_listy1_grid.Column("zodpovedna_osoba", "Kdo"),
+            produkcni_listy1_grid.Column(format: (item) => new HtmlString(Html.ActionLink("Upravit", "Edit", "ProdListItem", new RouteValueDictionary(new { akce_id = item.akce_id, prod_id = item.produkcni_listy_id }), null) + " | " +
+            Html.ActionLink("Smazat", "Delete", "ProdListItem", new RouteValueDictionary(new { akce_id = item.akce_id, prod_id = item.produkcni_listy_id }), null)))
+))
+
+<h3>Post produkční fáze</h3>
+@produkcni_listy2_grid.GetHtml(tableStyle: "table table-striped table-hover", columns:
+    produkcni_listy2_grid.Columns
+    (
+            produkcni_listy2_grid.Column("produkcni_listy.jmeno_aktivity", "Úkol/aktivita"),
+            produkcni_listy2_grid.Column("poznamka", "Poznámka"),
+            produkcni_listy2_grid.Column("termin", "Termín"),
+            produkcni_listy2_grid.Column("status", "Status"),
+            produkcni_listy2_grid.Column("zodpovedna_osoba", "Kdo"),
+            produkcni_listy2_grid.Column(format: (item) => new HtmlString(Html.ActionLink("Upravit", "Edit", "ProdListItem", new RouteValueDictionary(new { akce_id = item.akce_id, prod_id = item.produkcni_listy_id }), null) + " | " +
+            Html.ActionLink("Smazat", "Delete", "ProdListItem", new RouteValueDictionary(new { akce_id = item.akce_id, prod_id = item.produkcni_listy_id }), null)))
+))
 
 
 @grid.GetHtml(columns:cols, tableStyle: "table table-striped table-hover interpret-rows")

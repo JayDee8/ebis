@@ -1,0 +1,309 @@
+﻿@model IEnumerable<ebis.Models.ubytovani>
+
+@{
+    var grid = new WebGrid(Model, ajaxUpdateContainerId: "accommodationDiv", canPage: false, canSort: true);
+   
+    IEnumerable<WebGridColumn> cols =
+            new List<WebGridColumn> {
+                new WebGridColumn{
+                    CanSort=true,
+                    Header="Osoba",
+                    Format = @<text> 
+                                <input type="hidden" id="inId_@item.pk_id" value="@item.pk_id" />
+                                @{var idInt = "osoby_id_"+@item.pk_id;}
+                                @Html.DropDownList("dd", new SelectList(ViewBag.osoby, "pk_id", "prijmeniJmenoId", @item.osoby_id), new { @id = idInt }) 
+                                </text>
+                },
+                new WebGridColumn{
+                    Header="Lokace", 
+                    Format = @<text> 
+                                @{var idLoc = "lokace_id_"+@item.pk_id;}
+                                @Html.DropDownList("dd1", new SelectList(ViewBag.lokace, "pk_id", "jmeno", @item.lokace_id),new {@id=idLoc}) 
+                                </text>
+                },
+                new WebGridColumn{
+                    Header="Pokoj", 
+                    Format = @<text>
+                                <input type="text" id="inPokoj_@item.pk_id" value="@item.pokoj" placeholder="pokoj"  />
+                                </text>
+                },
+                new WebGridColumn{
+                    Header="z/na cena", 
+                    Format = @<text>
+                                <input type="text" id="inCena1_@item.pk_id" value="@item.cena1" placeholder="z/na cena" />
+                                </text>
+                },
+                new WebGridColumn{
+                    Header="z/na cena", 
+                    Format = @<text>
+                                <input type="text" id="inCena2_@item.pk_id" value="@item.cena2" placeholder="z/na cena" />
+                                </text>
+                },
+                new WebGridColumn{
+                    Header="z/na cena", 
+                    Format = @<text>
+                                <input type="text" id="inCena3_@item.pk_id" value="@item.cena3" placeholder="z/na cena" />
+                                </text>
+                },
+                new WebGridColumn{
+                    Header="Celkem", 
+                    Format = @<text>
+                                <label id="inCenaSum_@item.pk_id" >@Html.SumValues((int)@item.cena1, (int)@item.cena2, (int)@item.cena3)</label>
+                                </text>
+                },
+                new WebGridColumn{
+                    Format = @<text>
+                                <a href="javascript:void(0);" title="uložit tento řádek" class="glyphicon glyphicon-edit" onclick="javascript:quickUpdateAcc(this)"></a>&nbsp;
+                                <a href="javascript:void(0);" title="vymazat tento řádek" class="glyphicon glyphicon-remove" onclick="javascript:quickRemoveAcc(this)"></a>
+                            </text>
+                }
+            };
+
+
+           
+}
+
+@grid.GetHtml(columns: cols, tableStyle: "table table-striped table-hover interpret-rows", htmlAttributes: new { id = "accommodationGrid" })
+
+
+<script type="text/javascript">
+    //---- pro zobrazení v debuggeru, šikovné
+    //# sourceURL=_accommodationGrid.cshtml 
+    function toggleVisible(a) {
+        var tr = $(a).parent().parent();
+        tr.find('.edit, .display').toggle();
+    };
+
+    function test(){
+        console.log("test");
+    }
+
+    $(function () {
+     
+        var newRow = $('<tr id="newRow" class="newRow"><td>'+`@Html.DropDownList("osoby_id", new SelectList(ViewBag.osoby, "pk_id", "prijmeniJmenoId"))`+'</td><td>'+`@Html.DropDownList("lokace_id", new SelectList(ViewBag.lokace, "pk_id", "jmeno"))`+'</td><td><input type="text" id="inPokoj" placeholder="Pokoj"/></td><td><input type="text" id="inCena1" name="inCena1" placeholder="z/na cena" required/></td><td><input type="text" id="inCena2" placeholder="z/na cena"/></td><td><input type="text" id="inCena3" placeholder="z/na cena"/></td><td></td><td><button class="btn-sm btn btn-success" onclick="javascript:quickInsertAcc(this);">Přidat</button></td></tr>');
+        
+        var sumRow = $('<tr id="sumRow" class="sumRow"><td></td><td></td><td></td><td><label id="sumCena1" /></td><td><label id="sumCena2" /></td><td><label id="sumCena3" /></td><td><label id="sumAll" /></td><td></td></tr>');
+        
+        $("#accommodationGrid tbody").append(sumRow);
+
+        var ceny1 = $("input[id*='inCena1_']");
+        var ceny2 = $("input[id*='inCena2_']");
+        var ceny3 = $("input[id*='inCena3_']");
+        var cenySum = $("label[id*='inCenaSum_']");
+
+        $("#sumCena1")[0].innerHTML = 0;
+        $("#sumCena2")[0].innerHTML = 0;
+        $("#sumCena3")[0].innerHTML = 0;
+        $("#sumAll")[0].innerHTML = 0;
+
+        for(i=0;i<ceny1.length;i++)
+        {
+            $("#sumCena1")[0].innerHTML = parseFloat(ceny1[i].value)+parseFloat($("#sumCena1")[0].innerHTML);
+            $("#sumCena2")[0].innerHTML = parseFloat(ceny2[i].value)+parseFloat($("#sumCena2")[0].innerHTML);
+            $("#sumCena3")[0].innerHTML = parseFloat(ceny3[i].value)+parseFloat($("#sumCena3")[0].innerHTML);
+            $("#sumAll")[0].innerHTML = parseFloat(cenySum[i].innerHTML)+parseFloat($("#sumAll")[0].innerHTML);
+        }
+
+        $("#accommodationGrid tbody").append(newRow);
+
+
+    });
+
+    function quickRemoveAcc(element) {
+        if (!confirmDelete()) return false;
+        var tr = $(element).parent().parent();
+        var id = tr.find("input[id^='inId']").val();
+        var isSuccess = -1;
+
+        var Ubytovani =
+            {
+                "pk_id": id
+            };
+
+        $.ajax({
+
+            url: '/Accommodation/QuickDelete/',
+
+            data: JSON.stringify(Ubytovani),
+
+            type: 'POST',
+
+            contentType: 'application/json; charset=utf-8',
+
+            success: function (result) {
+                isSuccess = result;
+                tr.remove();
+            },
+            error: function (result) {
+                isSuccess = result;
+            }
+
+        }).done(function () {
+            if (isSuccess == "1") {           // Successfully Deleted
+                window.setTimeout(function () {
+                    addAlert("Úspěšně odebráno...","alert-success");
+                }, 1);
+                $("#sumCena1")[0].innerHTML = parseFloat(Ubytovani.cena1)-parseFloat(element.parentNode.parentNode.querySelector("input[id^='inCena1']").innerHTML);
+                $("#sumCena2")[0].innerHTML = parseFloat(Ubytovani.cena2)-parseFloat(element.parentNode.parentNode.querySelector("input[id^='inCena2']").innerHTML);
+                $("#sumCena3")[0].innerHTML = parseFloat(Ubytovani.cena3)-parseFloat(element.parentNode.parentNode.querySelector("input[id^='inCena3']").innerHTML);
+                $("#sumAll")[0].innerHTML = parseFloat($("#sumCena1")[0].innerHTML)+parseFloat($("#sumCena2")[0].innerHTML)+parseFloat($("#sumCena3")[0].innerHTML);
+            }
+            else {                      // Data Error
+                window.setTimeout(function () {
+                    addAlert("Chyba, zkontrolujte databázi a kontaktujte správce...","alert-danger");
+                }, 1);
+            }
+
+        });
+        return false;
+    }
+
+    function quickUpdateAcc(element) {
+        var osoba = element.parentNode.parentNode.querySelector("select[id^='osoby_id']").value;
+        var lokace = element.parentNode.parentNode.querySelector("select[id^='lokace_id']").value;
+        var pokoj = element.parentNode.parentNode.querySelector("input[id^='inPokoj']").value;
+        var cena1 = element.parentNode.parentNode.querySelector("input[id^='inCena1']").value;
+        var cena2 = element.parentNode.parentNode.querySelector("input[id^='inCena2']").value;
+        var cena3 = element.parentNode.parentNode.querySelector("input[id^='inCena3']").value;
+        var isSuccess = -1;
+            
+        var Ubytovani =
+        {
+            "pk_id": -1,
+            "akce_id": @ViewBag.idAkce,
+            "osoby_id": osoba,
+            "pokoj": pokoj,
+            "cena1": cena1,
+            "cena2": cena2,
+            "cena3": cena3,
+            "lokace_id":lokace
+        };
+
+        $.ajax({
+            url: '/Accommodation/QuickUpdate/',
+            data: JSON.stringify(Ubytovani),
+            type: 'POST',
+            contentType: 'application/json; charset=utf-8',
+            success: function (result) {
+                isSuccess = result[0];
+            },
+            error: function (result) {
+                isSuccess = result[0];
+            }
+
+        }).done(function () {
+            if (isSuccess == "1") {           // Successfully saved
+
+                window.setTimeout(function () {
+                    addAlert("Úspěšně uloženo...","alert-success");
+                }, 1);
+
+            }
+            else {                      // Data Error
+                window.setTimeout(function () {
+                    addAlert("Chyba, zkontrolujte databázi a kontaktujte správce...","alert-danger");
+                }, 1);
+            }
+            return false;
+        });
+    }
+
+    function quickInsertAcc(element)
+    {
+            var osoba = element.parentNode.parentNode.querySelector("select[id^='osoby_id']").value;
+            var lokace = element.parentNode.parentNode.querySelector("select[id^='lokace_id']").value;
+            var pokoj = element.parentNode.parentNode.querySelector("input[id^='inPokoj']").value;
+            var cena1 = element.parentNode.parentNode.querySelector("input[id^='inCena1']").value;
+            var cena2 = element.parentNode.parentNode.querySelector("input[id^='inCena2']").value;
+            var cena3 = element.parentNode.parentNode.querySelector("input[id^='inCena3']").value;
+            var isSuccess = -1;
+            
+            
+            var Ubytovani =
+            {
+                "pk_id": -1,
+                "akce_id": @ViewBag.idAkce,
+                "osoby_id": osoba,
+                "pokoj": pokoj,
+                "cena1": cena1,
+                "cena2": cena2,
+                "cena3": cena3,
+                "lokace_id":lokace
+            };
+
+            $.ajax({
+                url: '/Accommodation/QuickInsert/',
+                data: JSON.stringify(Ubytovani),
+                type: 'POST',
+                contentType: 'application/json; charset=utf-8',
+                success: function (result) {
+                    isSuccess = result[0];
+                    
+
+                    ddLoc = $(`@Html.DropDownList("ddLoc", new SelectList(ViewBag.lokace,"pk_id","jmeno"))`)[0];
+                    ddLoc.id = "lokace_id_"+result[1]; ddLoc.value = Ubytovani.lokace_id;
+
+                    ddInt = $(`@Html.DropDownList("ddInt", new SelectList(ViewBag.osoby,"pk_id","prijmeniJmenoId"))`)[0];
+                    ddInt.id = "osoby_id_"+result[1]; ddInt.value = Ubytovani.osoby_id;
+
+                    var sum = parseFloat(Ubytovani.cena1)+parseFloat(Ubytovani.cena2)+parseFloat(Ubytovani.cena3);
+
+                    var insertTr = $('<tr>'+
+                        '<td><input type="hidden" id="inId_"'+result[1]+' value="'+result[1]+'">' + ddInt.outerHTML + '</td>'+
+                        '<td>' + ddLoc.outerHTML + '</td>'+
+                        '<td><input type="text" id="inPokoj_'+result[1]+'" placeholder="Pokoj" value="' + Ubytovani.pokoj + '"/></td>'+
+                        '<td><input type="text" id="inCena1_'+result[1]+'" placeholder="z/na cena"  value="' + Ubytovani.cena1 + '"/></td>'+
+                        '<td><input type="text" id="inCena2_'+result[1]+'" placeholder="z/na cena"  value="' + Ubytovani.cena2 + '"/></td>' + 
+                        '<td><input type="text" id="inCena3_'+result[1]+'" placeholder="z/na cena"  value="' + Ubytovani.cena3 + '"/></td>' +
+                        '<td><label id="inCenaSum_'+result[1]+'">' + sum + '</label></td>' +
+                        '<td><a href="javascript:void(0);" title="uložit tento řádek" class="glyphicon glyphicon-edit" onclick="javascript:quickUpdateSch(this)"></a>&nbsp;'+
+                        '<a href="javascript:void(0);" title="vymazat tento řádek" class="glyphicon glyphicon-remove" onclick="javascript:quickRemoveSch(this)"></a></td>'+
+                        '</tr>');
+
+
+                    $("#sumCena1")[0].innerHTML = parseFloat(Ubytovani.cena1)+parseFloat($("#sumCena1")[0].innerHTML);
+                    $("#sumCena2")[0].innerHTML = parseFloat(Ubytovani.cena2)+parseFloat($("#sumCena2")[0].innerHTML);
+                    $("#sumCena3")[0].innerHTML = parseFloat(Ubytovani.cena3)+parseFloat($("#sumCena3")[0].innerHTML);
+                    $("#sumAll")[0].innerHTML = parseFloat($("#sumCena1")[0].innerHTML)+parseFloat($("#sumCena2")[0].innerHTML)+parseFloat($("#sumCena3")[0].innerHTML);
+                    var newRow = element.parentElement.parentElement;
+
+                    $(newRow).prev().before(insertTr);
+
+                    newRow.querySelector("input[id^='inPokoj']").value = "";
+                    newRow.querySelector("input[id^='inCena1']").value = "";
+                    newRow.querySelector("input[id^='inCena2']").value = "";
+                    newRow.querySelector("input[id^='inCena3']").value = "";
+                    newRow.querySelector("select[id^='osoby_id']").value = 1;
+                    newRow.querySelector("select[id^='lokace_id']").value = 1;
+                    
+                },
+                error: function (result) {
+                    isSuccess = result[0];
+                }
+
+            }).done(function () {
+                if (isSuccess == 1) {           // Successfully saved
+                    window.setTimeout(function () {
+                        addAlert("Úspěšně přidáno...","alert-success");
+                    }, 1);
+                }
+                else {                      // Data Error
+                    window.setTimeout(function () {
+                        addAlert("Chyba, zkontrolujte databázi a kontaktujte správce...","alert-danger");
+                    }, 1);
+                }
+                return false;
+            });
+    }
+
+    $(function () {
+
+        $('.edit').hide();
+
+       /* $('#quickInsertBtn').on("click", function () {
+            quickInsert();
+        });*/
+
+    });
+</script>
+

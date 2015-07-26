@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ebis.Models.fermany>
+﻿@model IEnumerable<ebis.Models.osoby>
 
 
 <div id="ajaxgrid">
@@ -68,6 +68,77 @@
             };
 }
 </div>
+
+
+
+
+
+
+
+
+
+<p>
+    @Html.ActionLink("Oslovit nové umělce", "Index", "Invite", new { id = Model.em_akce.pk_id }, null)
+</p>
+<h3>Orchestr</h3>
+@osoby_akce0_grid.GetHtml(tableStyle: "table table-striped table-hover", columns:
+    osoby_akce0_grid.Columns
+    (
+        osoby_akce0_grid.Column("osoby.id", "ID"),
+        osoby_akce0_grid.Column("nastroje.zkratka", "Nástroj"),
+        osoby_akce0_grid.Column("osoby.jmeno", "Jméno", @<div><a href="../../Interpret/Details/@item.osoby.pk_id">@item.osoby.jmeno @item.osoby.prijmeni</a></div>),
+        osoby_akce0_grid.Column("honorar", "Honorář"),
+        osoby_akce0_grid.Column("doprava", "Doprava"),
+        osoby_akce0_grid.Column("srazkova_dan", "Srážková Daň"),
+        osoby_akce0_grid.Column("vyplaceno", "Vyplaceno"),
+        osoby_akce0_grid.Column("poznamka", "Poznámka"),
+        osoby_akce0_grid.Column("stav", "Stav", @<div>@Html.StavString((int)@item.stav)</div>),
+                    osoby_akce0_grid.Column(format: (item) => new HtmlString(Html.ActionLink("Upravit", "Edit", "UserEvent", new RouteValueDictionary(new { akce_id = item.akce_id, osoby_id = item.osoby_id }), null) + " | " +
+                            Html.ActionLink("Smazat", "Delete", "UserEvent", new RouteValueDictionary(new { akce_id = item.akce_id, osoby_id = item.osoby_id }), null)))
+))
+
+<h3>Sbor</h3>
+@osoby_akce1_grid.GetHtml(tableStyle: "table table-striped table-hover", columns:
+    osoby_akce1_grid.Columns
+    (
+        osoby_akce1_grid.Column("osoby.id", "ID"),
+        osoby_akce1_grid.Column("nastroje.zkratka", "Nástroj"),
+        osoby_akce1_grid.Column("osoby.jmeno", "Jméno", @<div><a href="../../Interpret/Details/@item.osoby.pk_id">@item.osoby.jmeno @item.osoby.prijmeni</a></div>),
+        osoby_akce1_grid.Column("honorar", "Honorář"),
+        osoby_akce1_grid.Column("doprava", "Doprava"),
+        osoby_akce1_grid.Column("srazkova_dan", "Srážková Daň"),
+        osoby_akce1_grid.Column("vyplaceno", "Vyplaceno"),
+        osoby_akce1_grid.Column("poznamka", "Poznámka"),
+        osoby_akce1_grid.Column("stav", "Stav", @<div>@Html.StavString((int)@item.stav)</div>),
+                    osoby_akce1_grid.Column(format: (item) => new HtmlString(Html.ActionLink("Upravit", "Edit", "UserEvent", new RouteValueDictionary(new { akce_id = item.akce_id, osoby_id = item.osoby_id }), null) + " | " +
+                            Html.ActionLink("Smazat", "Delete", "UserEvent", new RouteValueDictionary(new { akce_id = item.akce_id, osoby_id = item.osoby_id }), null)))
+))
+
+<h3>Solisti</h3>
+@osoby_akce2_grid.GetHtml(tableStyle: "table table-striped table-hover", columns:
+    osoby_akce2_grid.Columns
+    (
+        osoby_akce2_grid.Column("osoby.id", "ID"),
+        osoby_akce2_grid.Column("nastroje.zkratka", "Nástroj"),
+        osoby_akce2_grid.Column("osoby.jmeno", "Jméno", @<div><a href="../../Interpret/Details/@item.osoby.pk_id">@item.osoby.jmeno @item.osoby.prijmeni</a></div>),
+        osoby_akce2_grid.Column("honorar", "Honorář"),
+        osoby_akce2_grid.Column("doprava", "Doprava"),
+        osoby_akce2_grid.Column("srazkova_dan", "Srážková Daň"),
+        osoby_akce2_grid.Column("vyplaceno", "Vyplaceno"),
+        osoby_akce2_grid.Column("poznamka", "Poznámka"),
+        osoby_akce2_grid.Column("stav", "Stav", @<div>@Html.StavString((int)@item.stav)</div>),
+                    osoby_akce2_grid.Column(format: (item) => new HtmlString(Html.ActionLink("Upravit", "Edit", "UserEvent", new RouteValueDictionary(new { akce_id = item.akce_id, osoby_id = item.osoby_id }), null) + " | " +
+                            Html.ActionLink("Smazat", "Delete", "UserEvent", new RouteValueDictionary(new { akce_id = item.akce_id, osoby_id = item.osoby_id }), null)))
+))
+
+<p>
+    @Html.ActionLink("Pozvat umělce", "SendMails", "Event", new { id = Model.em_akce.pk_id }, null)
+</p>
+
+
+
+
+
 
 
 @grid.GetHtml(columns:cols, tableStyle: "table table-striped table-hover interpret-rows")

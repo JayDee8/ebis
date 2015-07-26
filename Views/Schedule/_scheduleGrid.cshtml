@@ -1,0 +1,260 @@
+﻿@model IEnumerable<ebis.Models.fermany>
+
+@{
+    /*var db = Database.Open("DefaultConnection");
+
+    var loc = db.Query("SELECT pk_id, jmeno FROM lokace").Select(lokace => new SelectListItem { Value = lokace.pk_id.ToString(), Text = lokace.jmeno });
+    */
+    var grid = new WebGrid(Model, ajaxUpdateContainerId: "scheduleDiv", canPage: false, canSort: true);
+   
+    IEnumerable<WebGridColumn> cols =
+            new List<WebGridColumn> {
+                new WebGridColumn{
+                    CanSort=true,
+                    Header="Datum", 
+                    Format = @<text>
+                                <input type="hidden" id="inId_@item.pk_id" value="@item.pk_id" />
+                                
+                                <input type="text" id="inDatum_@item.pk_id" class = "datepicker" onchange="test();" value="@String.Format("{0:dd.MM.yyyy}",item.datum ?? String.Empty)" placeholder="Datum"/>
+                            </text>
+                },
+                new WebGridColumn{
+                    Header="Čas", 
+                    Format = @<text>
+                                <input type="text" id="inCas_@item.pk_id" value="@item.cas" onchange="test();" placeholder="Čas"/>
+                                </text>
+                },
+                new WebGridColumn{
+                    Header="Orchestr", 
+                    Format = @<text>
+                                <input type="text" id="inOrchestr_@item.pk_id" value="@item.orchestr" placeholder="Orchestr"/>
+                                </text>
+                },
+                new WebGridColumn{
+                    Header="Sbor", 
+                    Format = @<text>
+                                <input type="text" id="inSbor_@item.pk_id" value="@item.sbor" placeholder="Sbor"/>
+                                </text>
+                },
+                new WebGridColumn{
+                    Header="Sólisti", 
+                    Format = @<text>
+                                <input type="text" id="inSolisti_@item.pk_id" value="@item.solisti" placeholder="Sólisti"/>
+                                </text>
+                },
+                new WebGridColumn{
+                    Header="Lokace", 
+                    Format = @<text> 
+                                @{var idLoc = "lokace_id_"+@item.pk_id;}
+                                @Html.DropDownList("dd", new SelectList(ViewBag.lokace, "pk_id", "jmeno", @item.lokace_id),new {@id=idLoc}) 
+                                </text>
+                },
+                new WebGridColumn{
+                    Format = @<text>
+                                <a href="javascript:void(0);" title="uložit tento řádek" class="glyphicon glyphicon-edit" onclick="javascript:quickUpdateSch(this)"></a>&nbsp;
+                                <a href="javascript:void(0);" title="vymazat tento řádek" class="glyphicon glyphicon-remove" onclick="javascript:quickRemoveSch(this)"></a>
+                            </text>
+                }
+            };
+}
+
+@grid.GetHtml(columns: cols, tableStyle: "table table-striped table-hover interpret-rows", htmlAttributes: new { id = "scheduleGrid" })
+
+
+<script type="text/javascript">
+    //---- pro zobrazení v debuggeru, šikovné
+    //# sourceURL=_scheduleGrid.cshtml 
+    function toggleVisible(a) {
+        var tr = $(a).parent().parent();
+        tr.find('.edit, .display').toggle();
+    };
+
+    function test(){
+        console.log("test");
+    }
+
+    $(function () {
+     
+        var newRow = $('<tr id="newRow" class="newRow"><td><input type="text" id="inDatum" class = "datepicker" placeholder="Datum"/></td><td><input type="text" id="inCas" placeholder="Čas"/></td><td><input type="text" id="inOrchestr" placeholder="Orchestr"/></td><td><input type="text" id="inSbor" placeholder="Sbor"/></td><td><input type="text" id="inSolisti" placeholder="Sólisti"/></td><td>'+`@Html.DropDownList("lokace_id", new SelectList(ViewBag.lokace,"pk_id","jmeno"))`+'</td><td><button class="btn-sm btn btn-success" onclick="javascript:quickInsertSch(this);">Přidat</button></td></tr>');
+        $("#scheduleGrid tbody").append(newRow);
+    });
+
+    function quickRemoveSch(a) {
+        if (!confirmDelete()) return false;
+        var tr = $(a).parent().parent();
+        var id = tr.find("input[id^='inId']").val();
+        var isSuccess = -1;
+
+        var Ferman =
+            {
+                "pk_id": id
+            };
+
+        $.ajax({
+
+            url: '/Schedule/QuickDelete/',
+
+            data: JSON.stringify(Ferman),
+
+            type: 'POST',
+
+            contentType: 'application/json; charset=utf-8',
+
+            success: function (result) {
+                isSuccess = result;
+                tr.remove();
+            },
+            error: function (result) {
+                isSuccess = result;
+            }
+
+        }).done(function () {
+            if (isSuccess == "1") {           // Successfully Deleted
+                window.setTimeout(function () {
+                    addAlert("Úspěšně odebráno...","alert-success");
+                }, 1);
+            }
+            else {                      // Data Error
+                window.setTimeout(function () {
+                    addAlert("Chyba, zkontrolujte databázi a kontaktujte správce...","alert-danger");
+                }, 1);
+            }
+
+        });
+        return false;
+    }
+
+    function quickUpdateSch(element) {
+        var id = element.parentNode.parentNode.querySelector("input[id^='inId']").value;
+        var sbor = element.parentNode.parentNode.querySelector("input[id^='inSbor']").value;
+        var cas = element.parentNode.parentNode.querySelector("input[id^='inCas']").value;
+        var datum = element.parentNode.parentNode.querySelector("input[id^='inDatum']").value;
+        var orchestr = element.parentNode.parentNode.querySelector("input[id^='inOrchestr']").value;
+        var solisti = element.parentNode.parentNode.querySelector("input[id^='inSolisti']").value;
+        var lokace = element.parentNode.parentNode.querySelector("select[id^='lokace_id']").value;
+        var isSuccess = -1;
+            
+        var Ferman =
+        {
+            "pk_id": id,
+            "akce_id": @ViewBag.idAkce,
+            "datum": datum,
+            "sbor": sbor,
+            "cas": cas,
+            "solisti": solisti,
+            "lokace_id":lokace,
+            "orchestr":orchestr
+        };
+
+        $.ajax({
+            url: '/Schedule/QuickUpdate/',
+            data: JSON.stringify(Ferman),
+            type: 'POST',
+            contentType: 'application/json; charset=utf-8',
+            success: function (result) {
+                isSuccess = result[0];
+            },
+            error: function (result) {
+                isSuccess = result[0];
+            }
+
+        }).done(function () {
+            if (isSuccess == "1") {           // Successfully saved
+
+                window.setTimeout(function () {
+                    addAlert("Úspěšně uloženo...","alert-success");
+                }, 1);
+
+            }
+            else {                      // Data Error
+                window.setTimeout(function () {
+                    addAlert("Chyba, zkontrolujte databázi a kontaktujte správce...","alert-danger");
+                }, 1);
+            }
+            return false;
+        });
+    }
+
+    function quickInsertSch(element)
+    {
+            var sbor = element.parentNode.parentNode.querySelector("input[id^='inSbor']").value;
+            var cas = element.parentNode.parentNode.querySelector("input[id^='inCas']").value;
+            var datum = element.parentNode.parentNode.querySelector("input[id^='inDatum']").value;
+            var orchestr = element.parentNode.parentNode.querySelector("input[id^='inOrchestr']").value;
+            var solisti = element.parentNode.parentNode.querySelector("input[id^='inSolisti']").value;
+            var lokace = element.parentNode.parentNode.querySelector("select[id^='lokace_id']").value;
+            var isSuccess = -1;
+            
+            var Ferman =
+            {
+                "pk_id": -1,
+                "akce_id": @ViewBag.idAkce,
+                "datum": datum,
+                "sbor": sbor,
+                "cas": cas,
+                "solisti": solisti,
+                "lokace_id":lokace,
+                "orchestr":orchestr
+            };
+
+            $.ajax({
+                url: '/Schedule/QuickInsert/',
+                data: JSON.stringify(Ferman),
+                type: 'POST',
+                contentType: 'application/json; charset=utf-8',
+                success: function (result) {
+                    isSuccess = result[0];
+                   
+                    dd = $(`@Html.DropDownList("dd", new SelectList(ViewBag.lokace,"pk_id","jmeno"))`)[0];
+                    dd.id = "lokace_id_"+result[1]; dd.value = Ferman.lokace_id;
+
+                    var insertTr = $('<tr>'+
+                            '<td>'+
+                                '<input type="hidden" id="inId_"'+result[1]+' value="'+result[1]+'">'+
+                                '<input type="text" id="inDatum_'+result[1]+'" class = "datepicker" placeholder="Datum" value="' + Ferman.datum + '"/>'+
+                            '</td><td>'+
+                                '<input type="text" id="inCas_'+result[1]+'" placeholder="Čas" value="' + Ferman.cas + '"/>'+
+                            '</td><td>'+
+                                '<input type="text" id="inOrchestr_'+result[1]+'" placeholder="Orchestr" value="' + Ferman.orchestr + '"/>'+
+                            '</td><td>'+
+                                '<input type="text" id="inSbor_'+result[1]+'" placeholder="Sbor" value="' + Ferman.sbor + '"/>'+
+                            '</td><td>'+
+                                '<input type="text" id="inSolisti_'+result[1]+'" placeholder="Sólisti" value="' + Ferman.solisti + '"/>'+
+                            '</td><td>'+dd.outerHTML+'</td><td>'+
+                                '<a href="javascript:void(0);" title="uložit tento řádek" class="glyphicon glyphicon-edit" onclick="javascript:quickUpdateSch(this)"></a>&nbsp;'+
+                                '<a href="javascript:void(0);" title="vymazat tento řádek" class="glyphicon glyphicon-remove" onclick="javascript:quickRemoveSch(this)"></a>'+
+                            '</td>'+
+                        '</tr>');
+
+                    var newRow = element.parentElement.parentElement;
+
+                    $(newRow).before(insertTr);
+                    newRow.querySelector("input[id*='inDatum']").value = "";
+                    newRow.querySelector("input[id*='inCas']").value = "";
+                    newRow.querySelector("input[id*='inSbor']").value = "";
+                    newRow.querySelector("input[id*='inSolisti']").value = "";
+                    newRow.querySelector("input[id*='inOrchestr']").value = "";
+                    newRow.querySelector("select[id*='lokace_id']").value = 1;
+                    
+                },
+                error: function (result) {
+                    isSuccess = result[0];
+                }
+
+            }).done(function () {
+                if (isSuccess == 1) {           // Successfully saved
+                    window.setTimeout(function () {
+                        addAlert("Úspěšně přidáno...","alert-success");
+                    }, 1);
+                }
+                else {                      // Data Error
+                    window.setTimeout(function () {
+                        addAlert("Chyba, zkontrolujte databázi a kontaktujte správce...","alert-danger");
+                    }, 1);
+                }
+                return false;
+            });
+    }
+
+</script>
+

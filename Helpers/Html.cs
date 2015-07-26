@@ -78,12 +78,46 @@ namespace ebis.Helpers
 
         public static MvcHtmlString GetNastroje(this HtmlHelper htmlHelper, IEnumerable<ebis.Models.nastroje> values)
         {
-            var nastroje = "";
+            StringBuilder nastroje = new StringBuilder("");
+            //var nastroje = "";
             foreach (var nastroj in values.ToList())
             {
-                nastroje += nastroj.zkratka + " ";
+                nastroje.Append(nastroj.zkratka);
+                nastroje.Append(" ");
+                //nastroje += nastroj.zkratka + " ";
             }
-            return MvcHtmlString.Create(nastroje);
+            return MvcHtmlString.Create(nastroje.ToString()); // MvcHtmlString.Create(nastroje);
         }
+
+        public static MvcHtmlString GetNastroje2(this HtmlHelper htmlHelper, IEnumerable<ebis.Models.nastroje> values, IEnumerable<ebis.Models.osoby> v, double id)
+        {
+            
+            StringBuilder nastroje = new StringBuilder("");
+            //var nastroje = "";
+            foreach (var nastroj in values.ToList())
+            {
+                nastroje.Append(nastroj.zkratka);
+                nastroje.Append(" ");
+                //nastroje += nastroj.zkratka + " ";
+            }
+            return MvcHtmlString.Create(nastroje.ToString()); // MvcHtmlString.Create(nastroje);
+        }
+
+    }
+    public class Alert
+    {
+        public const string TempDataKey = "TempDataAlerts";
+
+        public string AlertStyle { get; set; }
+        public string Message { get; set; }
+        public bool Dismissable { get; set; }
+    }
+
+    public static class AlertStyles
+    {
+        public const string Success = "success";
+        public const string Information = "info";
+        public const string Warning = "warning";
+        public const string Danger = "danger";
     }
 }

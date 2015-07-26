@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ebis.Models.fermany>
+﻿@model IEnumerable<ebis.Models.osoby>
 
 
 <div id="ajaxgrid">
@@ -69,6 +69,68 @@
 }
 </div>
 
+<p>
+    @Html.ActionLink("Přidat novou položku", "Create", "FinanceItem", new { id = Model.em_akce.pk_id }, null)
+</p>
+<h3>Honorářové náklady</h3>
+@naklady0_grid.GetHtml(tableStyle: "table table-striped table-hover", columns:
+        naklady0_grid.Columns
+    (
+            naklady0_grid.Column("naklady.jmeno", "Náklad"),
+            naklady0_grid.Column("cena", "Částka"),
+            naklady0_grid.Column(format: (item) => new HtmlString(Html.ActionLink("Upravit", "Edit", "FinanceItem", new RouteValueDictionary(new { akce_id = item.akce_id, naklady_id = item.naklady_id }), null) + " | " +
+            Html.ActionLink("Smazat", "Delete", "FinanceItem", new RouteValueDictionary(new { akce_id = item.akce_id, naklady_id = item.naklady_id }), null)))
+))
+
+<h3>Materiální náklady</h3>
+@naklady1_grid.GetHtml(tableStyle: "table table-striped table-hover", columns:
+        naklady1_grid.Columns
+    (
+            naklady1_grid.Column("naklady.jmeno", "Náklad"),
+            naklady1_grid.Column("cena", "Částka"),
+            naklady1_grid.Column(format: (item) => new HtmlString(Html.ActionLink("Upravit", "Edit", "FinanceItem", new RouteValueDictionary(new { akce_id = item.akce_id, naklady_id = item.naklady_id }), null) + " | " +
+            Html.ActionLink("Smazat", "Delete", "FinanceItem", new RouteValueDictionary(new { akce_id = item.akce_id, naklady_id = item.naklady_id }), null)))
+))
+
+<h3>Nemateriální náklady</h3>
+@naklady2_grid.GetHtml(tableStyle: "table table-striped table-hover", columns:
+        naklady2_grid.Columns
+    (
+            naklady2_grid.Column("naklady.jmeno", "Náklad"),
+            naklady2_grid.Column("cena", "Částka"),
+            naklady2_grid.Column(format: (item) => new HtmlString(Html.ActionLink("Upravit", "Edit", "FinanceItem", new RouteValueDictionary(new { akce_id = item.akce_id, naklady_id = item.naklady_id }), null) + " | " +
+            Html.ActionLink("Smazat", "Delete", "FinanceItem", new RouteValueDictionary(new { akce_id = item.akce_id, naklady_id = item.naklady_id }), null)))
+))
+
+<h3>Produkční náklady</h3>
+@naklady3_grid.GetHtml(tableStyle: "table table-striped table-hover", columns:
+        naklady3_grid.Columns
+    (
+            naklady3_grid.Column("naklady.jmeno", "Náklad"),
+            naklady3_grid.Column("cena", "Částka"),
+            naklady3_grid.Column(format: (item) => new HtmlString(Html.ActionLink("Upravit", "Edit", "FinanceItem", new RouteValueDictionary(new { akce_id = item.akce_id, naklady_id = item.naklady_id }), null) + " | " +
+            Html.ActionLink("Smazat", "Delete", "FinanceItem", new RouteValueDictionary(new { akce_id = item.akce_id, naklady_id = item.naklady_id }), null)))
+))
+
+<h3>Pronájmy</h3>
+@naklady4_grid.GetHtml(tableStyle: "table table-striped table-hover", columns:
+        naklady4_grid.Columns
+    (
+            naklady4_grid.Column("naklady.jmeno", "Náklad"),
+            naklady4_grid.Column("cena", "Částka"),
+            naklady4_grid.Column(format: (item) => new HtmlString(Html.ActionLink("Upravit", "Edit", "FinanceItem", new RouteValueDictionary(new { akce_id = item.akce_id, naklady_id = item.naklady_id }), null) + " | " +
+            Html.ActionLink("Smazat", "Delete", "FinanceItem", new RouteValueDictionary(new { akce_id = item.akce_id, naklady_id = item.naklady_id }), null)))
+))
+
+<h3>PR</h3>
+@naklady5_grid.GetHtml(tableStyle: "table table-striped table-hover", columns:
+        naklady0_grid.Columns
+    (
+            naklady5_grid.Column("naklady.jmeno", "Náklad"),
+            naklady5_grid.Column("cena", "Částka"),
+            naklady5_grid.Column(format: (item) => new HtmlString(Html.ActionLink("Upravit", "Edit", "FinanceItem", new RouteValueDictionary(new { akce_id = item.akce_id, naklady_id = item.naklady_id }), null) + " | " +
+            Html.ActionLink("Smazat", "Delete", "FinanceItem", new RouteValueDictionary(new { akce_id = item.akce_id, naklady_id = item.naklady_id }), null)))
+))
 
 @grid.GetHtml(columns:cols, tableStyle: "table table-striped table-hover interpret-rows")
 

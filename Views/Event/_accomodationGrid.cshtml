@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ebis.Models.fermany>
+﻿@model IEnumerable<ebis.Models.osoby>
 
 
 <div id="ajaxgrid">
@@ -68,6 +68,30 @@
             };
 }
 </div>
+
+
+
+
+<p>
+    @Html.ActionLink("Přidat novou položku", "Create", "Accommodation", new { id = Model.em_akce.pk_id }, null)
+</p>
+@ubytovani_grid.GetHtml(tableStyle: "table table-striped table-hover", columns:
+    ubytovani_grid.Columns
+    (
+            ubytovani_grid.Column("osoby.id", "ID"),
+            ubytovani_grid.Column("osoby.jmeno", "Jméno", @<div><a href="../../Interpret/Details/@item.osoby.pk_id">@item.osoby.jmeno @item.osoby.prijmeni</a></div>),
+            ubytovani_grid.Column("lokace.jmeno", "Lokace", @<div><a href="../../Location/Details/@item.lokace.pk_id">@item.lokace.jmeno</a></div>),
+            ubytovani_grid.Column("pokoj", "Pokoj"),
+            ubytovani_grid.Column("cena1", "z/na cena"),
+            ubytovani_grid.Column("cena2", "z/na cena"),
+            ubytovani_grid.Column("cena3", "z/na cena"),
+            ubytovani_grid.Column("cena1", "Celkem", @<div>@Html.SumValues((int)@item.cena1, (int)@item.cena2, (int)@item.cena3)</div>),
+            ubytovani_grid.Column(format: (item) => new HtmlString(Html.ActionLink("Upravit", "Edit", "Accommodation", new RouteValueDictionary(new { id = item.pk_id }), null) + " | " +
+            Html.ActionLink("Smazat", "Delete", "Accommodation", new RouteValueDictionary(new { id = item.pk_id }), null)))
+))
+
+
+
 
 
 @grid.GetHtml(columns:cols, tableStyle: "table table-striped table-hover interpret-rows")
