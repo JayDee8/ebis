@@ -1,26 +1,24 @@
-﻿@model IEnumerable<ebis.Models.ubytovani>
+﻿@model IEnumerable<ebis.Models.akce_naklady>
 
 @{
-    var grid = new WebGrid(Model, ajaxUpdateContainerId: "accommodationDiv", canPage: false, canSort: true);
+    var grid = new WebGrid(Model, ajaxUpdateContainerId: "financeDiv", canPage: false, canSort: true);
    
     IEnumerable<WebGridColumn> cols =
             new List<WebGridColumn> {
                 new WebGridColumn{
                     CanSort=true,
-                    Header="Osoba",
+                    Header="Druh",
                     Format = @<text> 
                                 <input type="hidden" id="inId_@item.pk_id" value="@item.pk_id" />
-                                @{var idInt = "osoby_id_"+@item.pk_id;}
-                                @Html.DropDownList("dd", new SelectList(ViewBag.osoby, "pk_id", "prijmeniJmenoId", @item.osoby_id), new { @id = idInt }) 
+                                <label id="inNaklad_@item.pk_id" >@item.jmeno</label>
                                 </text>
                 },
                 new WebGridColumn{
-                    Header="Lokace", 
+                    Header="Cena", 
                     Format = @<text> 
-                                @{var idLoc = "lokace_id_"+@item.pk_id;}
-                                @Html.DropDownList("dd1", new SelectList(ViewBag.lokace, "pk_id", "jmeno", @item.lokace_id),new {@id=idLoc}) 
+                                <input type="number" id="inCena_@item.pk_id" value="@item.cena" placeholder="cena"  />
                                 </text>
-                },
+                }/*,
                 new WebGridColumn{
                     Header="Pokoj", 
                     Format = @<text>
@@ -56,14 +54,14 @@
                                 <a href="javascript:void(0);" title="uložit tento řádek" class="glyphicon glyphicon-edit" onclick="javascript:quickUpdateAcc(this)"></a>&nbsp;
                                 <a href="javascript:void(0);" title="vymazat tento řádek" class="glyphicon glyphicon-remove" onclick="javascript:quickRemoveAcc(this)"></a>
                             </text>
-                }
+                }*/
             };
 
 
            
 }
 
-@grid.GetHtml(columns: cols, tableStyle: "table table-striped table-hover interpret-rows", htmlAttributes: new { id = "accommodationGrid" })
+@grid.GetHtml(columns: cols, tableStyle: "table table-striped table-hover interpret-rows", htmlAttributes: new { id = "financeGrid" })
 
 
 <script type="text/javascript">
@@ -118,8 +116,8 @@
     }
 
     $(function () {
-     
-        var newRow = $('<tr id="newRow" class="newRow"><td>'+`@Html.DropDownList("osoby_id", new SelectList(ViewBag.osoby, "pk_id", "prijmeniJmenoId"))`+'</td><td>'+`@Html.DropDownList("lokace_id", new SelectList(ViewBag.lokace, "pk_id", "jmeno"))`+'</td><td><input type="text" id="inPokoj" placeholder="Pokoj"/></td><td><input type="text" id="inCena1" name="inCena1" placeholder="z/na cena" required/></td><td><input type="text" id="inCena2" placeholder="z/na cena"/></td><td><input type="text" id="inCena3" placeholder="z/na cena"/></td><td></td><td><button class="btn-sm btn btn-success" onclick="javascript:quickInsertAcc(this);">Přidat</button></td></tr>');
+     //dopsat @
+        /*var newRow = $('<tr id="newRow" class="newRow"><td>'+`Html.DropDownList("osoby_id", new SelectList(ViewBag.osoby, "pk_id", "prijmeniJmenoId"))`+'</td><td>'+`Html.DropDownList("lokace_id", new SelectList(ViewBag.lokace, "pk_id", "jmeno"))`+'</td><td><input type="text" id="inPokoj" placeholder="Pokoj"/></td><td><input type="text" id="inCena1" name="inCena1" placeholder="z/na cena" required/></td><td><input type="text" id="inCena2" placeholder="z/na cena"/></td><td><input type="text" id="inCena3" placeholder="z/na cena"/></td><td></td><td><button class="btn-sm btn btn-success" onclick="javascript:quickInsertAcc(this);">Přidat</button></td></tr>');
         
         var sumRow = $('<tr id="sumRow" class="sumRow"><td></td><td></td><td></td><td><label id="sumCena1" /></td><td><label id="sumCena2" /></td><td><label id="sumCena3" /></td><td><label id="sumAll" /></td><td></td></tr>');
         
@@ -145,7 +143,7 @@
 
         $("#accommodationGrid tbody").append(newRow);
 
-
+        */
     });
 
     function quickRemoveAcc(element) {

@@ -13,16 +13,46 @@ namespace ebis.Controllers
     {
         private dbEntities db = new dbEntities();
 
+        public ActionResult FinanceGridPartial(string akceId)
+        {
+            var naklady = db.akce_naklady.Where(i => i.akce_id == Convert.ToInt32(akceId));
+            
+            return PartialView("_financeGrid", naklady.ToList());
+        }
+
         [HttpPost]
-        public JsonResult QuickInsert(akce_naklady inFinance)
+        public JsonResult QuickInsert(ubytovani inUbytovani)
+        {
+            int[] result = { 0, -1 };
+
+            ubytovani u = db.ubytovani.SingleOrDefault(p => p.pk_id == inUbytovani.pk_id);
+
+            if (u == null)
+            {
+                db.ubytovani.AddObject(inUbytovani);
+                db.SaveChanges();
+                result[0] = 1;
+                result[1] = inUbytovani.pk_id;
+            }
+            else
+            {
+                result[0] = 0;
+                result[1] = -1;
+            }
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult QuickDelete(ubytovani inUbytovani)
         {
             String result = String.Empty;
 
-            akce_naklady f = db.akce_naklady.SingleOrDefault(p => p.naklady_id == inFinance.naklady_id && p.akce_id == inFinance.akce_id);
+            ubytovani u = db.ubytovani.SingleOrDefault(p => p.pk_id == inUbytovani.pk_id);
 
-            if (f == null)
+            if (u != null)
             {
-                db.akce_naklady.AddObject(inFinance);
+                db.ubytovani.DeleteObject(u);
                 db.SaveChanges();
                 result = "1";
             }
@@ -35,39 +65,22 @@ namespace ebis.Controllers
         }
 
         [HttpPost]
-        public JsonResult QuickDelete(int akce_id = 0, int naklady_id = 0)
+        public JsonResult QuickUpdate(ubytovani inUbytovani)
         {
             String result = String.Empty;
-
-            akce_naklady naklady = db.akce_naklady.SingleOrDefault(a => a.akce_id == akce_id && a.naklady_id == naklady_id);
-
-            if (naklady != null)
+            ubytovani u = db.ubytovani.SingleOrDefault(p => p.pk_id == inUbytovani.pk_id);
+            if (u != null)
             {
-                db.akce_naklady.DeleteObject(naklady);
-                db.SaveChanges();
-                result = "1";
-            }
-            else
-            {
-                result = "0";
-            }
+                db.ubytovani.Attach(u);
 
-            return Json(result, JsonRequestBehavior.AllowGet);
-        }
+                u.osoby_id = inUbytovani.osoby_id;
+                u.lokace_id = inUbytovani.lokace_id;
+                u.pokoj = inUbytovani.pokoj;
+                u.cena1 = inUbytovani.cena1;
+                u.cena2 = inUbytovani.cena2;
+                u.cena3 = inUbytovani.cena3;
 
-        [HttpPost]
-        public JsonResult QuickUpdate(akce_naklady inFinance)
-        {
-            String result = String.Empty;
-            akce_naklady f = db.akce_naklady.SingleOrDefault(p => p.naklady_id == inFinance.naklady_id && p.akce_id == inFinance.akce_id);
-
-            if (f != null)
-            {
-                db.akce_naklady.Attach(f);
-
-                f.cena = inFinance.cena;
-
-                db.ObjectStateManager.ChangeObjectState(f, EntityState.Modified);
+                db.ObjectStateManager.ChangeObjectState(u, EntityState.Modified);
                 db.SaveChanges();
                 result = "1";
                 return Json(result, JsonRequestBehavior.AllowGet);
@@ -75,8 +88,9 @@ namespace ebis.Controllers
             result = "0";
             return Json(result, JsonRequestBehavior.AllowGet);
         }
-        
-        
+
+
+               
         
         //
         // GET: /FinanceItem/Create
