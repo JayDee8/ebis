@@ -85,7 +85,7 @@
     }
     using (a.BeginPanel())
     {
-        <div id="financesDiv" data-url="@Url.Action("GridPartial", "Interpret")"></div>
+        <div id="financeDiv" data-url="@Url.Action("FinanceGridPartial", "FinanceItem")"></div>
     }
 }
 
@@ -102,7 +102,7 @@
         /*inviteGrid();*/
         accomodationGrid();
         /*productListGrid();
-        financesGrid();*/
+        */financeGrid();
 
 
         $('#myTab a').click(function (e) {
@@ -185,17 +185,18 @@
          });
     }
 
-    function financesGrid() {
-        var target = document.getElementById('scheduleDiv')
+    function financeGrid() {
+        var target = document.getElementById('financeDiv')
         var spinner = new Spinner(opts).spin(target);
 
         $.ajax({
-             url: "@(Url.Action("ScheduleGridPartial", "Interpret"))",
+             url: "@(Url.Action("FinanceGridPartial", "FinanceItem"))",
              type: 'GET',
              cache: false,
+             data: {akceId: $("#akceId").val()},
              async: true,
              success: function(result){
-                $("#scheduleDiv").html(result);
+                $("#financeDiv").html(result);
              }
          });
     }
