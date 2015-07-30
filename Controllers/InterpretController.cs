@@ -34,10 +34,7 @@ namespace ebis.Controllers
 
         public ActionResult GridPartial()
         {
-            InterpretsInstrumentsModel model = new InterpretsInstrumentsModel();
-
-            IEnumerable<osoby> interprets = db.osoby.ToList();
-
+            
             return PartialView("_refreshInterpretGrid",db.osoby.ToList());
         }
 

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ebis.Models.fermany>
+﻿@model IEnumerable<ebis.Models.osoby>
 
 
 <div id="ajaxgrid">
@@ -74,6 +74,7 @@
 
 
 <script type="text/javascript">
+    //# sourceURL=_interpretGrid.cshtml
     function toggleVisible(a) {
         var tr = $(a).parent().parent();
         tr.find('.edit, .display').toggle();
@@ -81,7 +82,7 @@
 
     function quickRemove(a) {
         var tr = $(a).parent().parent();
-        var id = tr.find("#inId").val();
+        var id = tr.find("#lblId")[0].innerHTML;
         var jmeno = tr.find("#inJmeno").val();
         var prijmeni = tr.find("#inPrijmeni").val();
         var email = tr.find("#inEmail").val();
@@ -127,7 +128,7 @@
 
     function quickUpdate(a) {
         var tr = $(a).parent().parent();
-        var id = tr.find("#lblId").innerHTML;
+        var id = tr.find("#lblId")[0].innerHTML;
         var jmeno = tr.find("#inJmeno").val();
         var prijmeni = tr.find("#inPrijmeni").val();
         var email = tr.find("#inEmail").val();
@@ -155,10 +156,9 @@
                 //tr.find("#inId").val(Osoba.id);
                 tr.find("#inJmeno").val(Osoba.jmeno);
                 tr.find("#inPrijmeni").val(Osoba.prijmeni);
-                tr.find("#inId").val(Osoba.id);
                 tr.find("#inEmail").val(Osoba.email);
 
-                tr.find("#lblId").val(Osoba.id);
+                tr.find("#lblId")[0].innerHTML = Osoba.id;
                 tr.find("#lblJmeno")[0].innerHTML = Osoba.jmeno;
                 tr.find("#lblPrijmeni")[0].innerHTML = Osoba.prijmeni;
                 tr.find("#lblId")[0].innerHTML = Osoba.id;

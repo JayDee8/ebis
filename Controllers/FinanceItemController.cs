@@ -15,72 +15,23 @@ namespace ebis.Controllers
 
         public ActionResult FinanceGridPartial(string akceId)
         {
-            var naklady = db.akce_naklady.Where(i => i.akce_id == Convert.ToInt32(akceId));
-            
+            IEnumerable<akce_naklady> naklady = db.akce_naklady.Include("naklady").ToList().Where(i => i.akce_id == Convert.ToInt32(akceId));
+            ViewBag.idAkce = akceId;
             return PartialView("_financeGrid", naklady.ToList());
         }
 
         [HttpPost]
-        public JsonResult QuickInsert(ubytovani inUbytovani)
-        {
-            int[] result = { 0, -1 };
-
-            ubytovani u = db.ubytovani.SingleOrDefault(p => p.pk_id == inUbytovani.pk_id);
-
-            if (u == null)
-            {
-                db.ubytovani.AddObject(inUbytovani);
-                db.SaveChanges();
-                result[0] = 1;
-                result[1] = inUbytovani.pk_id;
-            }
-            else
-            {
-                result[0] = 0;
-                result[1] = -1;
-            }
-
-            return Json(result, JsonRequestBehavior.AllowGet);
-        }
-
-        [HttpPost]
-        public JsonResult QuickDelete(ubytovani inUbytovani)
+        public JsonResult QuickUpdate(akce_naklady inFinance)
         {
             String result = String.Empty;
-
-            ubytovani u = db.ubytovani.SingleOrDefault(p => p.pk_id == inUbytovani.pk_id);
-
-            if (u != null)
+            akce_naklady nakl = db.akce_naklady.SingleOrDefault(p => p.naklady_id == inFinance.naklady_id && p.akce_id == inFinance.akce_id);
+            if (nakl != null)
             {
-                db.ubytovani.DeleteObject(u);
-                db.SaveChanges();
-                result = "1";
-            }
-            else
-            {
-                result = "0";
-            }
+                db.akce_naklady.Attach(nakl);
 
-            return Json(result, JsonRequestBehavior.AllowGet);
-        }
+                nakl.cena = inFinance.cena;
 
-        [HttpPost]
-        public JsonResult QuickUpdate(ubytovani inUbytovani)
-        {
-            String result = String.Empty;
-            ubytovani u = db.ubytovani.SingleOrDefault(p => p.pk_id == inUbytovani.pk_id);
-            if (u != null)
-            {
-                db.ubytovani.Attach(u);
-
-                u.osoby_id = inUbytovani.osoby_id;
-                u.lokace_id = inUbytovani.lokace_id;
-                u.pokoj = inUbytovani.pokoj;
-                u.cena1 = inUbytovani.cena1;
-                u.cena2 = inUbytovani.cena2;
-                u.cena3 = inUbytovani.cena3;
-
-                db.ObjectStateManager.ChangeObjectState(u, EntityState.Modified);
+                db.ObjectStateManager.ChangeObjectState(nakl, EntityState.Modified);
                 db.SaveChanges();
                 result = "1";
                 return Json(result, JsonRequestBehavior.AllowGet);

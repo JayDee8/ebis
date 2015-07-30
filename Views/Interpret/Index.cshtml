@@ -44,6 +44,9 @@
              async: true,
              success: function(result){
                 $("#partialDiv").html(result);
+             },
+             error: function(err){
+                console.log(err);
              }
          });
  
