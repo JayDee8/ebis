@@ -15,43 +15,43 @@
                     Format = @<text>
                                 <input type="hidden" id="inId_@item.pk_id" value="@item.pk_id" />
                                 
-                                <input type="text" id="inDatum_@item.pk_id" class = "datepicker" onchange="test();" value="@String.Format("{0:dd.MM.yyyy}",item.datum ?? String.Empty)" placeholder="Datum"/>
+                                <input type="text" id="inDatum_@item.pk_id" class = "datepicker" onchange="save(this);" value="@String.Format("{0:dd.MM.yyyy}",item.datum ?? String.Empty)" placeholder="Datum"/>
                             </text>
                 },
                 new WebGridColumn{
                     Header="Čas", 
                     Format = @<text>
-                                <input type="text" id="inCas_@item.pk_id" value="@item.cas" onchange="test();" placeholder="Čas"/>
+                                <input type="text" id="inCas_@item.pk_id" value="@item.cas" onchange="save(this);" placeholder="Čas"/>
                                 </text>
                 },
                 new WebGridColumn{
                     Header="Orchestr", 
                     Format = @<text>
-                                <input type="text" id="inOrchestr_@item.pk_id" value="@item.orchestr" placeholder="Orchestr"/>
+                                <input type="text" id="inOrchestr_@item.pk_id" value="@item.orchestr" onchange="save(this);" placeholder="Orchestr"/>
                                 </text>
                 },
                 new WebGridColumn{
                     Header="Sbor", 
                     Format = @<text>
-                                <input type="text" id="inSbor_@item.pk_id" value="@item.sbor" placeholder="Sbor"/>
+                                <input type="text" id="inSbor_@item.pk_id" value="@item.sbor" onchange="save(this);" placeholder="Sbor"/>
                                 </text>
                 },
                 new WebGridColumn{
                     Header="Sólisti", 
                     Format = @<text>
-                                <input type="text" id="inSolisti_@item.pk_id" value="@item.solisti" placeholder="Sólisti"/>
+                                <input type="text" id="inSolisti_@item.pk_id" value="@item.solisti" onchange="save(this);" placeholder="Sólisti"/>
                                 </text>
                 },
                 new WebGridColumn{
                     Header="Lokace", 
                     Format = @<text> 
                                 @{var idLoc = "lokace_id_"+@item.pk_id;}
-                                @Html.DropDownList("dd", new SelectList(ViewBag.lokace, "pk_id", "jmeno", @item.lokace_id),new {@id=idLoc}) 
+                                @Html.DropDownList("dd", new SelectList(ViewBag.lokace, "pk_id", "jmeno", @item.lokace_id), new { @id = idLoc, @onchange = "save(this);" }) 
                                 </text>
                 },
                 new WebGridColumn{
                     Format = @<text>
-                                <a href="javascript:void(0);" title="uložit tento řádek" class="glyphicon glyphicon-edit" onclick="javascript:quickUpdateSch(this)"></a>&nbsp;
+                                @*<a href="javascript:void(0);" title="uložit tento řádek" class="glyphicon glyphicon-edit" onclick="javascript:quickUpdateSch(this)"></a>&nbsp;*@
                                 <a href="javascript:void(0);" title="vymazat tento řádek" class="glyphicon glyphicon-remove" onclick="javascript:quickRemoveSch(this)"></a>
                             </text>
                 }
@@ -64,6 +64,11 @@
 <script type="text/javascript">
     //---- pro zobrazení v debuggeru, šikovné
     
+    function save(item)
+    {
+        quickUpdateSch(item);
+    }
+
     function toggleVisible(a) {
         var tr = $(a).parent().parent();
         tr.find('.edit, .display').toggle();

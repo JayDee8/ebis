@@ -10,13 +10,14 @@
                     Header="Druh",
                     Format = @<text> 
                                 <input type="hidden" id="inId_@item.naklady.pk_id" value="@item.naklady.pk_id" />
+                                <input type="hidden" id="inTyp_@item.naklady.pk_id" value="@item.naklady.typ" />
                                 <label id="inNaklad_@item.naklady.pk_id" >@item.naklady.jmeno</label>
                                 </text>
                 },
                 new WebGridColumn{
                     Header="Cena", 
                     Format = @<text> 
-                                <input type="number" id="inCena_@item.naklady.pk_id" value="@item.cena" placeholder="cena" onfocus="saveCena(this);" onchange="reSum(this);" />
+                                <input type="number" name="@item.naklady.typ" id="inCena_@item.naklady.pk_id" value="@item.cena" placeholder="cena" onfocus="saveCena(this);" onchange="reSum(this);" />
                                 </text>
                 }
                 /*,
@@ -37,21 +38,80 @@
 
 <script type="text/javascript">
     //---- pro zobrazení v debuggeru, šikovné
-    //# sourceURL=_accommodationGrid.cshtml
+    
 
     var sCena = 0;
     function saveCena(item) {
-        sCena = item.value;
+        sCena = parseFloat(item.value);
     }
-    function reSum(item) {
+    function reSum(item) {//# sourceURL=_financeGrid.cshtml
        // $("#sumCena1")[0].innerHTML = parseFloat($("#sumCena1")[0].innerHTML) - parseFloat(sCena1) + parseFloat(item.value);
        // $("#sumAll")[0].innerHTML = parseFloat($("#sumCena1")[0].innerHTML) + parseFloat($("#sumCena2")[0].innerHTML) + parseFloat($("#sumCena3")[0].innerHTML)
         //item.parentElement.parentElement.querySelector("label[id*='inCenaSum_']").innerHTML = parseFloat(item.parentElement.parentElement.querySelector("label[id*='inCenaSum_']").innerHTML) - parseFloat(sCena1) + parseFloat(item.value);
+
+        $("td[id='sumCena" + item.name + "']")[0].innerHTML = parseFloat($("td[id='sumCena" + item.name + "']")[0].innerHTML) - sCena + parseFloat(item.value);
+        $("td[id='totalSumCena']")[0].innerHTML = parseFloat($("td[id='totalSumCena']")[0].innerHTML) - sCena + parseFloat(item.value);
+        
+
+                
         sCena = item.value;
         quickUpdateFin(item);
     }
 
 
+    $(document).ready(function () {
+        var type = 0;
+        var sum = 0;
+        var totalSum = 0;
+        var row ="";
+
+        types = $("#financeDiv input[id*='inTyp']");
+        var i = 0;
+            //# sourceURL=_financeGrid.cshtml
+        for(i = 0; i<types.length;i++)
+        {
+            if (parseInt(types[i].value) !== parseInt(type) || i == types.length-1)
+            {
+                if(i == types.length-1)
+                  sum += parseInt($(types[i]).parent().next()[0].querySelector("input[id^='inCena']").value);
+                  
+                switch(parseInt(type)) {
+                    case 0:
+                        row = $("<tr class='sum'><td>Honorářové náklady</td><td id='sumCena0'>"+sum+"</td></tr>"); break;
+                    case 1:
+                        row = $("<tr class='sum'><td>Materiální náklady</td><td id='sumCena1'>"+sum+"</td></tr>"); break;
+                    case 2:
+                        row = $("<tr class='sum'><td>Nemateriální náklady</td><td id='sumCena2'>"+sum+"</td></tr>"); break;
+                    case 3:
+                        row = $("<tr class='sum'><td>Produkční náklady</td><td id='sumCena3'>"+sum+"</td></tr>"); break;
+                    case 4:
+                        row = $("<tr class='sum'><td>Pronájmy</td><td id='sumCena4'>"+sum+"</td></tr>"); break;
+                    case 5:
+                        row = $("<tr class='sum'><td>PR</td><td id='sumCena5'>"+sum+"</td></tr>"); break;
+                }
+                if(i == types.length - 1)
+                  row.insertAfter(types[i].closest("tr"));
+                else
+                  row.insertBefore(types[i].closest("tr"));
+                type = types[i].value;
+                
+
+                totalSum += sum;
+                if (i != types.length-1)
+                {
+                  sum = 0;
+                  sum += parseInt($(types[i]).parent().next()[0].querySelector("input[id^='inCena']").value);
+                }
+                //totalSum += sum;
+                                
+            }else{
+                sum += parseInt($(types[i]).parent().next()[0].querySelector("input[id^='inCena']").value);
+                //totalSum += sum;
+            }
+        }
+        $("<tr class='totalSum'><td>Celkem</td><td id='totalSumCena'>"+totalSum+"</td></tr>").insertAfter(row);//types[types.length-1].closest("tr"));
+        //$()
+    });    
     function quickUpdateFin(element) {
         var naklady_id = element.parentNode.parentNode.querySelector("input[id^='inId']").value;
         var cena = element.parentNode.parentNode.querySelector("input[id^='inCena']").value;

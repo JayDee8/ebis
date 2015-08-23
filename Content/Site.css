@@ -1,3 +1,13 @@
+.sum
+{
+    background-color: #C2C2C2 !important;
+}
+
+.sum td:last-child
+{
+    font-weight: bold;
+}
+
 #accommodationGrid label{
     line-height: normal;
     margin-left: 5px;

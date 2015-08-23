@@ -11,20 +11,20 @@
                     Format = @<text> 
                                 <input type="hidden" id="inId_@item.pk_id" value="@item.pk_id" />
                                 @{var idInt = "osoby_id_"+@item.pk_id;}
-                                @Html.DropDownList("dd", new SelectList(ViewBag.osoby, "pk_id", "prijmeniJmenoId", @item.osoby_id), new { @id = idInt }) 
+                                @Html.DropDownList("dd", new SelectList(ViewBag.osoby, "pk_id", "prijmeniJmenoId", @item.osoby_id), new { @id = idInt, @onchange = "quickUpdateAcc(this);" }) 
                                 </text>
                 },
                 new WebGridColumn{
                     Header="Lokace", 
                     Format = @<text> 
                                 @{var idLoc = "lokace_id_"+@item.pk_id;}
-                                @Html.DropDownList("dd1", new SelectList(ViewBag.lokace, "pk_id", "jmeno", @item.lokace_id),new {@id=idLoc}) 
+                                @Html.DropDownList("dd1", new SelectList(ViewBag.lokace, "pk_id", "jmeno", @item.lokace_id), new { @id = idLoc, @onchange = "quickUpdateAcc(this);" }) 
                                 </text>
                 },
                 new WebGridColumn{
                     Header="Pokoj", 
                     Format = @<text>
-                                <input type="text" id="inPokoj_@item.pk_id" value="@item.pokoj" placeholder="pokoj"  />
+                                <input type="text" id="inPokoj_@item.pk_id" value="@item.pokoj" placeholder="pokoj" onchange="quickUpdateAcc(this);" />
                                 </text>
                 },
                 new WebGridColumn{
